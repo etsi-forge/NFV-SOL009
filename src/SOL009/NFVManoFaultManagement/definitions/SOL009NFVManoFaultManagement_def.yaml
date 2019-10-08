@@ -1,0 +1,472 @@
+# Copyright (c) ETSI 2019.
+# https://forge.etsi.org/etsi-forge-copyright-notice.txt
+
+definitions:
+    FmSubscriptionRequest:
+      description: >
+        This type represents a subscription request related to notifications
+        about NFV-MANO faults.
+      type: object
+      required:
+        - callbackUri
+      properties:
+        filter:
+          description: >
+            Filter settings for this subscription, to define the subset of all
+            notifications this subscription relates to. A particular
+            notification is sent to the subscriber if the filter matches, or if
+            there is no filter.
+          $ref: "#/definitions/FmNotificationsFilter"
+        callbackUri:
+          description: >
+            The URI of the endpoint to send the notification to.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/Uri"
+        authentication:
+          description: >
+            Authentication parameters to configure the use of Authorization when sending notifications
+            corresponding to this subscription, as defined in clause 8.3.4 of ETSI GS NFV-SOL 013.
+            This attribute shall only be present if the subscriber requires authorization of notifications.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/SubscriptionAuthentication"
+
+    FmSubscription:
+      description: >
+        This type represents a subscription related to notifications about VNF
+        faults.
+      type: object
+      required:
+        - id
+        - callbackUri
+        - _links
+      properties:
+        id:
+          description: >
+            Identifier of this "Individual subscription" resource.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+        filter:
+          description: >
+            Filter settings for this subscription, to define the subset of all
+            notifications this subscription relates to. A particular
+            notification is sent to the subscriber if the filter matches, or if
+            there is no filter.
+          $ref: "#/definitions/FmNotificationsFilter"
+        callbackUri:
+          description: >
+            The URI of the endpoint to send the notification to.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/Uri"
+        _links:
+          description: >
+            Links for this resource.
+          type: object
+          required:
+            - self
+          properties:
+            self:
+              description: >
+                URI of this resource.
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/Link"
+
+    Alarm:
+      description: >
+        The alarm data type encapsulates information about an alarm.
+      type: object
+      required:
+        - id
+        - managedObjectId
+        - alarmRaisedTime
+        - ackState
+        - perceivedSeverity
+        - eventTime
+        - eventType
+        - probableCause
+        - isRootCause
+        - _links
+      properties:
+        id:
+          description: >
+            Identifier of this Alarm information element.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+        managedObjectId:
+          description: >
+            Identifier of the affected NFV-MANO instance.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+        associatedFaultyInstanceId:
+          description: >
+            The resources that are causing the fault.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/ManoManagedObjectReference"
+        alarmRaisedTime:
+          description: >
+            Time stamp indicating when the alarm is raised by the managed
+            object.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/DateTime"
+        alarmChangedTime:
+          description: >
+            Time stamp indicating when the alarm was last changed. It shall be
+            present if the alarm has been updated.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/DateTime"
+        alarmClearedTime:
+          description: >
+            Time stamp indicating when the alarm was cleared. It shall be
+            present if the alarm has been cleared.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/DateTime"
+        ackState:
+          description: >
+            Acknowledgement state of the alarm.
+            Permitted values:
+            * UNACKNOWLEDGED
+            * ACKNOWLEDGED.
+          type: string
+          enum:
+            - UNACKNOWLEDGED
+            - ACKNOWLEDGED
+        perceivedSeverity:
+          description: >
+            Perceived severity of the managed object failure.
+          $ref: "#/definitions/PerceivedSeverityType"
+        eventTime:
+          description: >
+            Time stamp indicating when the fault was observed.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/DateTime"
+        eventType:
+          description: >
+            Type of event.
+          $ref: "#/definitions/EventType"
+        faultType:
+          description: >
+            Additional information to clarify the type of the fault.
+          type: string
+        probableCause:
+          description: >
+            Information about the probable cause of the fault.
+          type: string
+        isRootCause:
+          description: >
+            Attribute indicating if this fault is the root for other correlated
+            alarms. If true, then the alarms listed in the attribute
+            CorrelatedAlarmId are caused by this fault.
+          type: boolean
+        correlatedAlarmIds:
+          description: >
+            List of identifiers of other alarms correlated to this fault.
+          type: array
+          items:
+            $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+        faultDetails:
+          description: >
+            Provides additional information about the fault.
+          type: array
+          items:
+            type: string
+        _links:
+          description: >
+            Links for this resource.
+          type: object
+          required:
+            - self
+          properties:
+            self:
+              description: >
+                URI of this resource.
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/Link"
+            objectInstance:
+              description: >
+                Link to the resource representing the VNF instance to which the
+                notified alarm is correlated. Shall be present if the VNF
+                instance information is accessible as a resource.
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/Link"
+
+    AlarmNotification:
+      description: >
+        This type represents an alarm notification about NFV-MANO functional entity faults.
+        It shall comply with the provisions defined in table 7.6.2.5-1.
+        This notification shall be triggered by the NFV-MANO functional entity when:
+        -	An alarm has been created.
+        -	An alarm has been updated, e.g. if the severity of the alarm has changed.
+
+      type: object
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timeStamp
+        - alarm
+        - _links
+      properties:
+        id:
+          description: >
+            Identifier of this notification. If a notification is sent multiple
+            times due to multiple subscriptions, the "id" attribute of all these
+            notifications shall have the same value.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+        notificationType:
+          description: >
+            Discriminator for the different notification types. Shall be set to
+            "AlarmNotification" for this notification type.
+          type: string
+          enum:
+            - AlarmNotification
+        subscriptionId:
+          description: >
+            Identifier of the subscription that this notification relates to.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+        timeStamp:
+          description: >
+            Date-time of the generation of the notification.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/DateTime"
+        alarm:
+          description: >
+            Information about an alarm including AlarmId, affected VNF
+            identifier, and FaultDetails.
+          $ref: "#/definitions/Alarm"
+        _links:
+          description: >
+            Links to resources related to this notification.
+          type: object
+          required:
+            - subscription
+          properties:
+            subscription:
+              description: >
+                Link to the related subscription.
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/NotificationLink"
+
+    AlarmClearedNotification:
+      description: >
+        This type represents an alarm cleared notification about VNF faults.
+        The notification shall be triggered by the VNFM when an alarm has been
+        cleared.
+      type: object
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timeStamp
+        - alarmId
+        - alarmClearedTime
+        - _links
+      properties:
+        id:
+          description: >
+            Identifier of this notification. If a notification is sent multiple
+            times due to multiple subscriptions, the "id" attribute of all these
+            notifications shall have the same value.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+        notificationType:
+          description: >
+            Discriminator for the different notification types. Shall be set to
+            "AlarmClearedNotification" for this notification type.
+          type: string
+          enum:
+            - AlarmClearedNotification
+        subscriptionId:
+          description: >
+            Identifier of the subscription that this notification relates to.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+        timeStamp:
+          description: >
+            Date-time of the generation of the notification.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/DateTime"
+        alarmId:
+          description: >
+            Alarm identifier.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+        alarmClearedTime:
+          description: >
+            The time stamp indicating when the alarm was cleared.
+        _links:
+          description: >
+            Links to resources related to this notification.
+          type: object
+          required:
+            - subscription
+            - alarm
+          properties:
+            subscription:
+              description: >
+                Link to the related subscription.
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/NotificationLink"
+            alarm:
+              description: >
+                Link to the resource that represents the related alarm.
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/NotificationLink"
+
+    AlarmListRebuiltNotification:
+      description: >
+        This type represents a notification that the alarm list has been
+        rebuilt, e.g. if the VNFM detects its storage holding the alarm
+        list is corrupted.
+        The notification shall be triggered by the VNFM when the alarm list has
+        been rebuilt.
+      type: object
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timeStamp
+        - _links
+      properties:
+        id:
+          description: >
+            Identifier of this notification. If a notification is sent multiple
+            times due to multiple subscriptions, the "id" attribute of all these
+            notifications shall have the same value.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+        notificationType:
+          description: >
+            Discriminator for the different notification types. Shall be set to
+            "AlarmListRebuiltNotification" for this notification type.
+          type: string
+          enum:
+            - AlarmListRebuiltNotification
+        subscriptionId:
+          description: >
+            Identifier of the subscription that this notification relates to.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+        timeStamp:
+          description: >
+            Date-time of the generation of the notification.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/DateTime"
+        _links:
+          description: >
+            Links to resources related to this notification.
+          type: object
+          required:
+            - subscription
+            - alarms
+          properties:
+            subscription:
+              description: >
+                Link to the related subscription.
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/NotificationLink"
+            alarms:
+              description: >
+                Link to the alarm list, i.e. the "Alarms" resource.
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/NotificationLink"
+
+    AlarmModifications:
+      description: >
+        This type represents attribute modifications for an "Individual alarm"
+        resource, i.e. modifications to a resource representation based on the
+        "Alarm" data type. The attributes of "Alarm" that can be modified
+        are included in the "AlarmModifications" data type.
+      type: object
+      required:
+        - ackState
+      properties:
+        ackState:
+          description: >
+            New value of the "ackState" attribute in "Alarm".
+            Permitted values:
+            * ACKNOWLEDGED
+          type: string
+          enum:
+            - ACKNOWLEDGED
+
+    EventType:
+      description: >
+        The enumeration EventType represents those types of events that trigger
+        an alarm.
+        * COMMUNICATIONS_ALARM: An alarm of this type is associated with the
+          procedure and/or process required conveying information from one point
+          to another (ITU-T Recommendation X.733).
+        * PROCESSING_ERROR_ALARM: An alarm of this type is associated with a
+          software or processing fault (ITU-T Recommendation X.733).
+        * ENVIRONMENTAL_ALARM: An alarm of this type is associated with a
+          condition related to an enclosure in which the equipment resides
+          (ITU-T Recommendation X.733).
+        * QOS_ALARM: An alarm of this type is associated with degradation in the
+          quality of a service (ITU-T Recommendation X.733).
+        * EQUIPMENT_ALARM: An alarm of this type is associated with an equipment
+          fault (ITU-T Recommendation X.733).
+      type: string
+      enum:
+        - COMMUNICATIONS_ALARM
+        - PROCESSING_ERROR_ALARM
+        - ENVIRONMENTAL_ALARM
+        - QOS_ALARM
+        - EQUIPMENT_ALARM
+
+    FmNotificationsFilter:
+      description: >
+        This type represents a subscription filter related to notifications about NFV-MANO functional entity faults.
+        It shall comply with the provisions defined in table 7.6.3.2-1. At a particular nesting level in the filter
+        structure, the following applies: All attributes shall match in order for the filter to match (logical "and"
+        between different filter attributes). If an attribute is an array, the attribute shall match if at least one
+        of the values in the array matches (logical "or" between the values of one filter attribute).
+
+      type: object
+      properties:
+        notificationTypes:
+          description: >
+            Match particular notification types.
+            Permitted values:
+            * AlarmNotification
+            * AlarmClearedNotification
+            * AlarmListRebuiltNotification
+            The permitted values of the "notificationTypes" attribute are
+            spelled exactly as the names of the notification types to
+            facilitate automated code generation systems.
+          type: array
+          items:
+            type: string
+            enum:
+              - AlarmNotification
+              - AlarmClearedNotification
+              - AlarmListRebuiltNotification
+        perceivedSeverities:
+          description: >
+            Match VNF alarms with a perceived severity listed in this attribute.
+          type: array
+          items:
+            $ref: "#/definitions/PerceivedSeverityType"
+        eventTypes:
+          description: >
+            Match VNF alarms with an event type listed in this attribute.
+          type: array
+          items:
+            $ref: "#/definitions/EventType"
+        probableCauses:
+          description: >
+            Match VNF alarms with a probable cause listed in this attribute.
+          type: array
+          items:
+            type: string
+
+    PerceivedSeverityType:
+      description: >
+        Indicates the relative level of urgency for operator attention.
+        * CRITICAL: The Critical severity level indicates that a service
+          affecting condition has occurred and an immediate corrective action
+          is required. Such a severity can be reported, for example, when a
+          managed object becomes totally out of service and its capability needs
+          to be restored (ITU-T Recommendation X.733).
+        * MAJOR: The Major severity level indicates that a service affecting
+          condition has developed and an urgent corrective action is required.
+          Such a severity can be reported, for example, when there is a severe
+          degradation in the capability of the managed object and its full
+          capability needs to be restored (ITU-T Recommendation X.733).
+        * MINOR: The Minor severity level indicates the existence of a
+          non-service affecting fault condition and that corrective action
+          should be taken in order to prevent a more serious (for example,
+          service affecting) fault. Such a severity can be reported, for
+          example, when the detected alarm condition is not currently degrading
+          the capacity of the managed object (ITU-T Recommendation X.733).
+        * WARNING: The Warning severity level indicates the detection of a
+          potential or impending service affecting fault, before any significant
+          effects have been felt. Action should be taken to further diagnose (if
+          necessary) and correct the problem in order to prevent it from
+          becoming a more serious service affecting fault (ITU-T Recommendation
+          X.733).
+        * INDETERMINATE: The Indeterminate severity level indicates that the
+          severity level cannot be determined (ITU-T Recommendation X.733).
+        * CLEARED: The Cleared severity level indicates the clearing of one or
+          more previously reported alarms. This alarm clears all alarms for this
+          managed object that have the same Alarm type, Probable cause and
+          Specific problems (if given) (ITU-T Recommendation X.733).
+      type: string
+      enum:
+        - CRITICAL
+        - MAJOR
+        - MINOR
+        - WARNING
+        - INDETERMINATE
+        - CLEARED
