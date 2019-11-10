@@ -29,6 +29,13 @@ definitions:
           where the {apiRoot} part is omitted) if the {apiRoot}
           information is not available.
         $ref: "#/definitions/Uri"
+  IpAddress:
+    description: >
+      An IPV4 or IPV6 address. Representation: In case of an IPV4 address, string that consists of four decimal
+      integers separated by dots, each integer ranging from 0 to 255. In case of an IPV6 address, string that
+      consists of groups of zero to four hexadecimal digits, separated by colons.
+    type: string
+    format: IP
 
   KeyValuePairs:
     description: >

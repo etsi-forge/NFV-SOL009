@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.2
 info:
   version: 1.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
   title: SOL009 - NFV-MANO Fault Management Notification interface
@@ -14,6 +14,10 @@ info:
 externalDocs:
   description: ETSI GS NFV-SOL 009 V0.8.0
   url: https://docbox.etsi.org/ISG/NFV/Open/Drafts/SOL009ed331_MANO_mgmt_stage_3/NFV-SOL009ed331v080.zip
+
+servers:
+  - url: /callback/v1
+
 paths:
   /URI-is-provided-by-the-client-when-creating-the-subscription-AlarmNotification:
     post:
@@ -26,7 +30,7 @@ paths:
         response data structures, and response codes.
       parameters:
         - name: Authorization
-          description: |
+          description: >
             The authorization token for the request. Reference: IETF RFC 7235
           in: header
           required: false
@@ -41,7 +45,7 @@ paths:
           schema:
             type: string
         - name: Version
-          description: |
+          description: >
             Version of the API requested to use when responding to this request.
           in: header
           required: true
@@ -52,7 +56,7 @@ paths:
           application/json:
             schema:
               $ref: ../NFVManoFaultManagement/definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/AlarmNotification
-        description: |
+        description: >
           Information of a NFV-MANO functional entity alarm.
         required: true
       responses:
@@ -395,8 +399,8 @@ paths:
             204 NO CONTENT
 
             Shall be returned to indicate that the notification endpoint has been tested successfully. The response body shall be empty.
-          headers:
-            WWW-Authenticate:
+              headers:
+                WWW-Authenticate:
               description: >
                 Challenge if the corresponding HTTP request has not provided
                 authorization, or error details if the corresponding HTTP
@@ -426,5 +430,4 @@ paths:
           $ref: ../responses/SOL009_resp.yaml#/responses/500
         "503":
           $ref: ../responses/SOL009_resp.yaml#/responses/503
-servers:
-  - url: /callback/v1
+
