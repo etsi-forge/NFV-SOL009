@@ -103,22 +103,22 @@ responses:
           type: string
           maximum: 1
           minimum: 1
-        WWW-Authenticate:
-          description: >
-            Challenge if the corresponding HTTP request has not provided
-            authorization, or error details if the corresponding HTTP
-            request has provided an invalid authorization token.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 0
-        Version:
-          description: >
-            Version of the API used in the response.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 1
+      WWW-Authenticate:
+        description: >
+          Challenge if the corresponding HTTP request has not provided
+          authorization, or error details if the corresponding HTTP
+          request has provided an invalid authorization token.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
+      Version:
+        description: >
+          Version of the API used in the response.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
     content:
       application/json:
         schema:
@@ -139,22 +139,22 @@ responses:
           type: string
           maximum: 1
           minimum: 1
-        WWW-Authenticate:
-          description: >
-            Challenge if the corresponding HTTP request has not provided
-            authorization, or error details if the corresponding HTTP
-            request has provided an invalid authorization token.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 0
-        Version:
-          description: >
-            Version of the API used in the response.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 1
+      WWW-Authenticate:
+        description: >
+          Challenge if the corresponding HTTP request has not provided
+          authorization, or error details if the corresponding HTTP
+          request has provided an invalid authorization token.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
+      Version:
+        description: >
+          Version of the API used in the response.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
     content:
       application/json:
         schema:
@@ -175,22 +175,22 @@ responses:
           type: string
           maximum: 1
           minimum: 1
-        WWW-Authenticate:
-          description: >
-            Challenge if the corresponding HTTP request has not provided
-            authorization, or error details if the corresponding HTTP
-            request has provided an invalid authorization token.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 0
-        Version:
-          description: >
-            Version of the API used in the response.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 1
+      WWW-Authenticate:
+        description: >
+          Challenge if the corresponding HTTP request has not provided
+          authorization, or error details if the corresponding HTTP
+          request has provided an invalid authorization token.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
+      Version:
+        description: >
+          Version of the API used in the response.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
     content:
       application/json:
         schema:
@@ -216,22 +216,22 @@ responses:
           type: string
           maximum: 1
           minimum: 1
-        WWW-Authenticate:
-          description: >
-            Challenge if the corresponding HTTP request has not provided
-            authorization, or error details if the corresponding HTTP
-            request has provided an invalid authorization token.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 0
-        Version:
-          description: >
-            Version of the API used in the response.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 1
+      WWW-Authenticate:
+        description: >
+          Challenge if the corresponding HTTP request has not provided
+          authorization, or error details if the corresponding HTTP
+          request has provided an invalid authorization token.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
+      Version:
+        description: >
+          Version of the API used in the response.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
     content:
       application/json:
         schema:
@@ -250,22 +250,22 @@ responses:
           type: string
           maximum: 1
           minimum: 1
-        WWW-Authenticate:
-          description: >
-            Challenge if the corresponding HTTP request has not provided
-            authorization, or error details if the corresponding HTTP
-            request has provided an invalid authorization token.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 0
-        Version:
-          description: >
-            Version of the API used in the response.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 1
+      WWW-Authenticate:
+        description: >
+          Challenge if the corresponding HTTP request has not provided
+          authorization, or error details if the corresponding HTTP
+          request has provided an invalid authorization token.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
+      Version:
+        description: >
+          Version of the API used in the response.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
     content:
       application/json:
         schema:
@@ -285,22 +285,22 @@ responses:
           type: string
           maximum: 1
           minimum: 1
-        WWW-Authenticate:
-          description: >
-            Challenge if the corresponding HTTP request has not provided
-            authorization, or error details if the corresponding HTTP
-            request has provided an invalid authorization token.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 0
-        Version:
-          description: >
-            Version of the API used in the response.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 1
+      WWW-Authenticate:
+        description: >
+          Challenge if the corresponding HTTP request has not provided
+          authorization, or error details if the corresponding HTTP
+          request has provided an invalid authorization token.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
+      Version:
+        description: >
+          Version of the API used in the response.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
     content:
       application/json:
         schema:
@@ -316,22 +316,22 @@ responses:
           type: string
           maximum: 1
           minimum: 1
-        WWW-Authenticate:
-          description: >
-            Challenge if the corresponding HTTP request has not provided
-            authorization, or error details if the corresponding HTTP
-            request has provided an invalid authorization token.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 0
-        Version:
-          description: >
-            Version of the API used in the response.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 1
+      WWW-Authenticate:
+        description: >
+          Challenge if the corresponding HTTP request has not provided
+          authorization, or error details if the corresponding HTTP
+          request has provided an invalid authorization token.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
+      Version:
+        description: >
+          Version of the API used in the response.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
     content:
       application/json:
         schema:
@@ -352,22 +352,22 @@ responses:
           type: string
           maximum: 1
           minimum: 1
-        WWW-Authenticate:
-          description: >
-            Challenge if the corresponding HTTP request has not provided
-            authorization, or error details if the corresponding HTTP
-            request has provided an invalid authorization token.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 0
-        Version:
-          description: >
-            Version of the API used in the response.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 1
+      WWW-Authenticate:
+        description: >
+          Challenge if the corresponding HTTP request has not provided
+          authorization, or error details if the corresponding HTTP
+          request has provided an invalid authorization token.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
+      Version:
+        description: >
+          Version of the API used in the response.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
     content:
       application/json:
         schema:
@@ -387,22 +387,22 @@ responses:
           type: string
           maximum: 1
           minimum: 1
-        WWW-Authenticate:
-          description: >
-            Challenge if the corresponding HTTP request has not provided
-            authorization, or error details if the corresponding HTTP
-            request has provided an invalid authorization token.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 0
-        Version:
-          description: >
-            Version of the API used in the response.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 1
+      WWW-Authenticate:
+        description: >
+          Challenge if the corresponding HTTP request has not provided
+          authorization, or error details if the corresponding HTTP
+          request has provided an invalid authorization token.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
+      Version:
+        description: >
+          Version of the API used in the response.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
     content:
       application/json:
         schema:
@@ -422,22 +422,22 @@ responses:
           type: string
           maximum: 1
           minimum: 1
-        WWW-Authenticate:
-          description: >
-            Challenge if the corresponding HTTP request has not provided
-            authorization, or error details if the corresponding HTTP
-            request has provided an invalid authorization token.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 0
-        Version:
-          description: >
-            Version of the API used in the response.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 1
+      WWW-Authenticate:
+        description: >
+          Challenge if the corresponding HTTP request has not provided
+          authorization, or error details if the corresponding HTTP
+          request has provided an invalid authorization token.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
+      Version:
+        description: >
+          Version of the API used in the response.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
     content:
       application/json:
         schema:
@@ -453,22 +453,22 @@ responses:
           type: string
           maximum: 1
           minimum: 1
-        WWW-Authenticate:
-          description: >
-            Challenge if the corresponding HTTP request has not provided
-            authorization, or error details if the corresponding HTTP
-            request has provided an invalid authorization token.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 0
-        Version:
-          description: >
-            Version of the API used in the response.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 1
+      WWW-Authenticate:
+        description: >
+          Challenge if the corresponding HTTP request has not provided
+          authorization, or error details if the corresponding HTTP
+          request has provided an invalid authorization token.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
+      Version:
+        description: >
+          Version of the API used in the response.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
     content:
       application/json:
         schema:
@@ -491,22 +491,22 @@ responses:
           type: string
           maximum: 1
           minimum: 1
-        WWW-Authenticate:
-          description: >
-            Challenge if the corresponding HTTP request has not provided
-            authorization, or error details if the corresponding HTTP
-            request has provided an invalid authorization token.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 0
-        Version:
-          description: >
-            Version of the API used in the response.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 1
+      WWW-Authenticate:
+        description: >
+          Challenge if the corresponding HTTP request has not provided
+          authorization, or error details if the corresponding HTTP
+          request has provided an invalid authorization token.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
+      Version:
+        description: >
+          Version of the API used in the response.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
     content:
       application/json:
         schema:
@@ -531,22 +531,22 @@ responses:
           type: string
           maximum: 1
           minimum: 1
-        WWW-Authenticate:
-          description: >
-            Challenge if the corresponding HTTP request has not provided
-            authorization, or error details if the corresponding HTTP
-            request has provided an invalid authorization token.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 0
-        Version:
-          description: >
-            Version of the API used in the response.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 1
+      WWW-Authenticate:
+        description: >
+          Challenge if the corresponding HTTP request has not provided
+          authorization, or error details if the corresponding HTTP
+          request has provided an invalid authorization token.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
+      Version:
+        description: >
+          Version of the API used in the response.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
     content:
       application/json:
         schema:
@@ -567,22 +567,22 @@ responses:
           type: string
           maximum: 1
           minimum: 1
-        WWW-Authenticate:
-          description: >
-            Challenge if the corresponding HTTP request has not provided
-            authorization, or error details if the corresponding HTTP
-            request has provided an invalid authorization token.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 0
-        Version:
-          description: >
-            Version of the API used in the response.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 1
+      WWW-Authenticate:
+        description: >
+          Challenge if the corresponding HTTP request has not provided
+          authorization, or error details if the corresponding HTTP
+          request has provided an invalid authorization token.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
+      Version:
+        description: >
+          Version of the API used in the response.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
     content:
       application/json:
         schema:
@@ -603,22 +603,22 @@ responses:
           type: string
           maximum: 1
           minimum: 1
-        WWW-Authenticate:
-          description: >
-            Challenge if the corresponding HTTP request has not provided
-            authorization, or error details if the corresponding HTTP
-            request has provided an invalid authorization token.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 0
-        Version:
-          description: >
-            Version of the API used in the response.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 1
+      WWW-Authenticate:
+        description: >
+          Challenge if the corresponding HTTP request has not provided
+          authorization, or error details if the corresponding HTTP
+          request has provided an invalid authorization token.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
+      Version:
+        description: >
+          Version of the API used in the response.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
     content:
       application/json:
         schema:
@@ -638,22 +638,22 @@ responses:
           type: string
           maximum: 1
           minimum: 1
-        WWW-Authenticate:
-          description: >
-            Challenge if the corresponding HTTP request has not provided
-            authorization, or error details if the corresponding HTTP
-            request has provided an invalid authorization token.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 0
-        Version:
-          description: >
-            Version of the API used in the response.
-          schema:
-            type: string
-            maximum: 1
-            minimum: 1
+      WWW-Authenticate:
+        description: >
+          Challenge if the corresponding HTTP request has not provided
+          authorization, or error details if the corresponding HTTP
+          request has provided an invalid authorization token.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
+      Version:
+        description: >
+          Version of the API used in the response.
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
     content:
       application/json:
         schema:
