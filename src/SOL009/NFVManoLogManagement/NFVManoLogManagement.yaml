@@ -1698,7 +1698,7 @@ components:
                 encryptionCertificate:
                   description: >-
                     X.509 certificate with the public key to use for the encryption of the compiled log file.
-                  type: String
+                  type: string
                 cipherAlgorithm:
                   description: >-
                     Cryptographic algorithm to be used for the encryption of the compiled log file. More than
