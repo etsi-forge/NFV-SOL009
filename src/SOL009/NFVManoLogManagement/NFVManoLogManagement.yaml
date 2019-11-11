@@ -517,10 +517,10 @@ components:
       in: query
       description: >-
        Indicates to exclude the following complex attributes from the response. See clause 5.3 of ETSI GS NFV-SOL 013
-      for details. The NFV-MANO functional entity shall support this parameter.
-      The following attributes shall be excluded from the LoggingJob structure in the response body if this parameter
-      is provided, or none of the parameters "all_fields," "fields", "exclude_fields", "exclude_default" are provided
-      -logReports
+       for details. The NFV-MANO functional entity shall support this parameter.
+       The following attributes shall be excluded from the LoggingJob structure in the response body if this parameter
+       is provided, or none of the parameters "all_fields," "fields", "exclude_fields", "exclude_default" are provided
+        -logReports
       required: false
       schema:
         type: string
