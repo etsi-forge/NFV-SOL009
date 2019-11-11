@@ -23,7 +23,6 @@ servers:
   - url: http://127.0.0.1/nfvmanologm/v1
   - url: https://127.0.0.1/nfvmanologm/v1
 
-
 paths:
   "/api_versions":
       $ref: '../endpoints/SOL009_endpoints.yaml#/endpoints/api_versions'

@@ -15,8 +15,13 @@ externalDocs:
   description: ETSI GS NFV-SOL 009 V0.8.0
   url: https://docbox.etsi.org/ISG/NFV/Open/Drafts/SOL009ed331_MANO_mgmt_stage_3/NFV-SOL009ed331v080.zip
 
+security:
+  - OauthSecurity:
+      - all
+
 servers:
-  - url: /callback/v1
+  - url: http://127.0.0.1//callback/v1
+  - url: https://127.0.0.1//callback/v1
 
 paths:
   /URI-is-provided-by-the-client-when-creating-the-subscription-AlarmNotification:
