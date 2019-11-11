@@ -1072,13 +1072,13 @@ components:
             - manoServiceIds
             - manoServiceNames
         - required:
-            - oneOf:
-                - manoServiceInterfaceIds
-                - manoServiceInterfaceNames
+          - oneOf:
+            - manoServiceInterfaceIds
+            - manoServiceInterfaceNames
         - required:
-            - oneOf:
-                - consumedManoInterfaceIds
-                - consumedManoInterfaceNames
+          - oneOf:
+            - consumedManoInterfaceIds
+            - consumedManoInterfaceNames
       properties:
         manoEntityId:
           description: >-
