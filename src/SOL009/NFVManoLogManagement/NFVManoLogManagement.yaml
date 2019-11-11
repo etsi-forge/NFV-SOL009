@@ -1416,7 +1416,7 @@ components:
               logReportId:
                 description: >-
                   Identifier of the available log report.
-                '../definitions/SOL009_def.yaml#/definitions/Identifier'
+                $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
               logReportLoc:
                 description: >-
                   Link to the available log report.
