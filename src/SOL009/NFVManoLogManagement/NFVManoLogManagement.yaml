@@ -1594,7 +1594,7 @@ components:
         logGarbageCollection:
           description: >-
             Indicates to collect logged information about garbage collection processes associated to NFV-MANO services.
-        type: boolean
+          type: boolean
 
     LoggingJobSystemCriteria:
       description: >-
