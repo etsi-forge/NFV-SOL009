@@ -191,7 +191,7 @@ paths:
         8.5.5.3.2-2 for URI query parameters, request and response data structures, and response codes.
       parameters:
         - $ref: "#/components/parameters/logJobId"
-        - $ref: "#/components/parameters/logJobReportId"
+        - $ref: "#/components/parameters/logJReportId"
         - $ref: "#/components/parameters/Version"
         - $ref: "#/components/parameters/Accept"
         - $ref: "#/components/parameters/Authorization"
@@ -462,6 +462,14 @@ components:
       in: path
       description: >-
         Identifier of the logging job.
+      required: true
+      schema:
+        $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
+    logJReportId:
+      name: logJReportId
+      in: path
+      description: >-
+        Identifier of the report.
       required: true
       schema:
         $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
