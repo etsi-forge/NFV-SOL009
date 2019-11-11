@@ -32,10 +32,10 @@ responses:
         type: string
         maximum: 1
         minimum: 1
-      content:
-        application/json:
-          schema:
-            $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   303:
     description: >
@@ -109,10 +109,10 @@ responses:
         type: string
         maximum: 1
         minimum: 1
-      content:
-        application/json:
-          schema:
-            $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   401:
     description: >
@@ -142,10 +142,10 @@ responses:
         type: string
         maximum: 1
         minimum: 1
-      content:
-        application/json:
-          schema:
-            $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   403:
     description: >
@@ -175,10 +175,10 @@ responses:
         type: string
         maximum: 1
         minimum: 1
-      content:
-        application/json:
-          schema:
-            $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   404:
     description: >
@@ -213,10 +213,10 @@ responses:
         type: string
         maximum: 1
         minimum: 1
-      content:
-        application/json:
-          schema:
-            $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   405:
     description: >
@@ -244,10 +244,10 @@ responses:
         type: string
         maximum: 1
         minimum: 1
-      content:
-        application/json:
-          schema:
-            $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   406:
     description: >
@@ -276,10 +276,10 @@ responses:
         type: string
         maximum: 1
         minimum: 1
-      content:
-        application/json:
-          schema:
-            $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   409:
     description: >
@@ -304,10 +304,10 @@ responses:
         type: string
         maximum: 1
         minimum: 1
-      content:
-        application/json:
-          schema:
-            $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   412:
     description: >
@@ -337,10 +337,10 @@ responses:
         type: string
         maximum: 1
         minimum: 1
-      content:
-        application/json:
-          schema:
-            $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   413:
     description: >
@@ -369,10 +369,10 @@ responses:
         type: string
         maximum: 1
         minimum: 1
-      content:
-        application/json:
-          schema:
-            $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   414:
     description: >
@@ -401,10 +401,10 @@ responses:
         type: string
         maximum: 1
         minimum: 1
-      content:
-        application/json:
-          schema:
-            $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   416:
     description: >
@@ -429,10 +429,10 @@ responses:
         type: string
         maximum: 1
         minimum: 1
-      content:
-        application/json:
-          schema:
-            $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   422:
     description: >
@@ -464,10 +464,10 @@ responses:
         type: string
         maximum: 1
         minimum: 1
-      content:
-        application/json:
-          schema:
-            $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   429:
     description: >
@@ -501,10 +501,10 @@ responses:
         type: string
         maximum: 1
         minimum: 1
-      content:
-        application/json:
-          schema:
-            $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   500:
     description: >
@@ -534,10 +534,10 @@ responses:
         type: string
         maximum: 1
         minimum: 1
-      content:
-        application/json:
-          schema:
-            $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   503:
     description: >
@@ -567,10 +567,10 @@ responses:
         type: string
         maximum: 1
         minimum: 1
-      content:
-        application/json:
-          schema:
-            $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   504:
     description: >
@@ -599,7 +599,7 @@ responses:
         type: string
         maximum: 1
         minimum: 1
-      content:
-        application/json:
-          schema:
-            $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
