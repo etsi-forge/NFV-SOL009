@@ -1066,19 +1066,19 @@ components:
         This type represents subscription filter criteria to match NFV-MANO functional entities and their
         associated managed objects. It shall comply with the provisions defined in Table 4.3.2.2-1.
       type: object
-      anyOf:
+      oneOf:
         - required:
-          - oneOf:
-            - manoServiceIds
-            - manoServiceNames
+          - manoServiceIds
         - required:
-          - oneOf:
-            - manoServiceInterfaceIds
-            - manoServiceInterfaceNames
+          - manoServiceNames
         - required:
-          - oneOf:
-            - consumedManoInterfaceIds
-            - consumedManoInterfaceNames
+          - manoServiceInterfaceIds
+        - required:
+          - manoServiceInterfaceNames
+        - required:
+          - consumedManoInterfaceIds
+        - required:
+          - consumedManoInterfaceNames
       properties:
         manoEntityId:
           description: >-
