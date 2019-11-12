@@ -1,0 +1,2635 @@
+openapi: 3.0.2
+info:
+  version: 1.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
+  title: SOL009 - NFV-MANO Configuration and Information Management Interface
+  description: >
+    SOL009 - NFV-MANO Configuration and Information Management Interface
+
+    IMPORTANT: Please note that this file might be not aligned to the current
+    version of the ETSI Group Specification it refers to and has not been
+    approved by the ETSI NFV ISG. In case of discrepancies the published ETSI
+    Group Specification takes precedence.
+    Please report bugs to https://forge.etsi.org/bugzilla/buglist.cgi?component=Nfv-Openapis
+  license:
+    name: ETSI Forge copyright notice
+    url: https://forge.etsi.org/etsi-forge-copyright-notice.txt
+  contact:
+    name: NFV-SOL WG
+externalDocs:
+  description: ETSI GS NFV-SOL 009 V0.8.0
+  url: https://docbox.etsi.org/ISG/NFV/Open/Drafts/SOL009ed331_MANO_mgmt_stage_3/NFV-SOL009ed331v080.zip
+
+servers:
+  - url: http://0.0.0.0/nfvmanocim/v1
+    description: >
+      API HTTP Server
+  - url: https://0.0.0.0/nfvmanocim/v1
+    description: >
+      API HTTPS Server
+
+paths:
+
+  /mano_entity:
+    get:
+      description: >
+        Retrives information about an NFV-MANO functional entity 
+        by reading the NFV-MANO entity resource.
+        This method shall follow the provisions specified in the 
+        tables 5.5.3.3.2-1 and 5.5.3.3.2-2 for URI query parameters, 
+        request and response data structures, and response codes.       
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200":
+          $ref: "#/components/responses/mano_entity.get.200"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+    patch:
+      description: >
+        Modifies the NFV-MANO entity resource.
+        Changes to the various configuration and information 
+        attributes are applied to the NFV-MANO functional entity, 
+        and are reflected in the representation of this resource.
+        This method shall follow the provisions specified in the 
+        tables 5.5.3.3.4-1 and 5.5.3.3.4-2 for URI query parameters, 
+        request and response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      requestBody:
+        $ref: "#/components/requestBodies/ModifyManoEntityRequest"
+      responses:
+        "200": 
+          $ref: "#/components/responses/mano_entity.patch.200"
+        "409": 
+          $ref: "#/components/responses/mano_entity.patch.409"
+        "412":
+          $ref: "#/components/responses/mano_entity.patch.412"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+
+  /mano_entity/change_state:
+    post:
+      description: >
+        Requests to change the state of the NFV-MANO functional 
+        entity application.
+
+        This method shall follow the provisions specified in the tables 
+        5.5.7.3.1-1 and 5.5.7.3.1-2 for URI query parameters, request and 
+        response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      requestBody:
+        $ref: "#/components/requestBodies/ChangeManoEntityStateRequest"
+      responses:
+        "202": 
+          $ref: "#/components/responses/mano_entity-change_state.post.202"
+        "409": 
+          $ref: "#/components/responses/mano_entity-change_state.post.409"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+
+  /mano_entity/mano_interfaces:
+    get:
+      description: >
+        Queries information about multiple NFV-MANO service interfaces of 
+        the NFV-MANO functional entity.
+        This method shall follow the provisions specified in the tables 
+        5.5.10.3.2-1 and 5.5.10.3.2-2 for URI query parameters, request 
+        and response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/filter.ManoServiceInterface"
+        - $ref: "#/components/parameters/all_fields"
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/exclude_fields"
+        - $ref: "#/components/parameters/exclude_default.ManoServiceInterface"
+        - $ref: "#/components/parameters/nextpage_opaque_marker"
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200": 
+          $ref: "#/components/responses/mano_entity-mano_interfaces.get.200"
+        "400": 
+          $ref: "#/components/responses/mano_entity-mano_interfaces.get.400"
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+  /mano_entity/mano_interfaces/{manoServiceInterfaceId}:
+    get:
+      description: >
+        retrieves information about an NFV-MANO service interface of the 
+        producer NFV-MANO functional entity by reading an "Individual 
+        NFV-MANO service interface" resource.
+
+        This method shall follow the provisions specified in the tables 
+        5.5.11.3.2-1 and 5.5.11.3.2-2 for URI query parameters, request 
+        and response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200": 
+          $ref: "#/components/responses/mano_entity-mano_interface.get.200"
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+    patch:
+      description: >
+        Modifies an "Individual NFV-MANO service interface" resource.
+
+        Changes to the configurable parameters of the corresponding 
+        NFV-MANO service interface are applied to the information managed 
+        by the producer NFV-MANO functional entity and reflected in the 
+        representation of this resource.
+
+        This method shall follow the provisions specified in the tables 
+        5.5.11.3.4-1 and 5.5.11.3.4-2 for URI query parameters, request 
+        and response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      requestBody:
+        $ref: "#/components/requestBodies/ModifyManoEnityInterfaceRequest"
+      responses:
+        "200": 
+          $ref: "#/components/responses/mano_entity-mano_interface.patch.200"
+        "409": 
+          $ref: "#/components/responses/mano_entity-mano_interface.patch.409"
+        "412": 
+          $ref: "#/components/responses/mano_entity-mano_interface.patch.412"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+
+  /mano_entity/mano_interfaces/{manoServiceInterfaceId}/change_state:
+    post:
+      description: >
+        Requests to change the state of the NFV-MANO service interface 
+        produced by the NFV-MANO functional entity.
+
+        This method shall follow the provisions specified in the tables 
+        5.5.12.3.1-1 and 5.5.12.3.1-2 for URI query parameters, request 
+        and response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      requestBody:
+        $ref: "#/components/requestBodies/ChangeManoEntityInterfaceStateRequest"
+      responses:
+        "202": 
+          $ref: "#/components/responses/mano_entity-mano_interface-change_state.post.202"
+        "409": 
+          $ref: "#/components/responses/mano_entity-mano_interface-change_state.post.409"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+
+  /subscriptions:
+    post:
+      description: >
+        Creates a new subscription.
+
+        This method shall follow the provisions specified in the tables 
+        5.5.4.3.1-1 and 5.5.4.3.1-2 for URI query parameters, request and 
+        response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      requestBody:
+        $ref: "#/components/requestBodies/CreateSubscriptionRequest"
+      responses:
+        "201": 
+          $ref: "#/components/responses/subscriptions.post.201"
+        "303": 
+          $ref: "#/components/responses/subscriptions.post.303"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+    get:
+      description: >
+        queries the list of active subscriptions of the API consumer that 
+        invokes the method. It can be used, e.g., for resynchronization 
+        after error situations.
+
+        This method shall follow the provisions specified in the tables 
+        5.5.4.3.2-1 and 5.5.4.3.2-2 for URI query parameters, request 
+        and response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/filter.CimSubscription"
+        - $ref: "#/components/parameters/nextpage_opaque_marker"
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200": 
+          $ref: "#/components/responses/subscriptions.get.200"
+        "400": 
+          $ref: "#/components/responses/subscriptions.get.400"
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+
+  /subscriptions/{subscriptionId}:
+    get:
+      description: >
+        Retrieves information about a subscription by reading an "Individual 
+        subscription" resource.
+
+        This method shall follow the provisions specified in the tables 
+        5.5.5.3.2-1 and 5.5.5.3.2-2 for URI query parameters, request and 
+        response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200": 
+          $ref: "#/components/responses/subscription.get.200"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504              
+    delete:
+      description: >
+        Terminates an individual subscription.
+
+        This method shall follow the provisions specified in the tables 
+        5.5.5.3.5-1 and 5.5.5.3.5-2 for URI query parameters, request 
+        and response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "204": 
+          $ref: "#/components/responses/subscription.delete.204"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504  
+
+  /change_state_ops:
+    get:
+      description: >
+        The API consumer can use the GET method to query status information 
+        about multiple change state operation occurrences.
+
+        This method shall follow the provisions specified in the tables 
+        5.5.8.3.2-1 and 5.5.8.3.2-2 for URI query parameters, request and 
+        response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/filter.ChangeStateOpOcc"
+        - $ref: "#/components/parameters/all_fields"
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/exclude_fields"
+        - $ref: "#/components/parameters/exclude_default.ChangeStateOpOcc"
+        - $ref: "#/components/parameters/nextpage_opaque_marker"
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200": 
+          $ref: "#/components/responses/change_state_ops.get.200"
+        "400": 
+          $ref: "#/components/responses/change_state_ops.get.400"
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+
+  /change_state_ops/{changeStateOpOccId}:
+    get:
+      description: >
+        The API consumer can use the GET method to retrieve status 
+        information about a change state operation occurrence by reading 
+        an "Individual change state operation occurrence" resource.
+
+        This method shall follow the provisions specified in the tables 
+        5.5.9.3.2-1 and 5.5.9.3.2-2 for URI query parameters, request 
+        and response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200": 
+          $ref: "#/components/responses/change_state_op.get.200"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+
+  /peer_entities:
+    post:
+      description: >
+        Creates in the producer NFV-MANO functional entity a new peer 
+        entity resource which contains configuration and information 
+        with regards to the peer functional entity.
+
+        This method shall follow the provisions specified in the tables 
+        5.5.13.3.1-1 and 5.5.13.3.1-2 for URI query parameters, request 
+        and response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      requestBody:
+        $ref: "#/components/requestBodies/CreatePeerEntityRequest"
+      responses:
+        "201": 
+          $ref: "#/components/responses/peer_entities.post.201"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+    get:
+      description: >
+        Queries information and configuration in the producer NFV-MANO 
+        functional entity with regards to multiple peer entities.
+
+        This method shall follow the provisions specified in the tables 
+        5.5.13.3.2-1 and 5.5.13.3.2-2 for URI query parameters, request 
+        and response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/filter.PeerEntity"
+        - $ref: "#/components/parameters/all_fields"
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/exclude_fields"
+        - $ref: "#/components/parameters/exclude_default.PeerEntity"
+        - $ref: "#/components/parameters/nextpage_opaque_marker"
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200": 
+          $ref: "#/components/responses/peer_entities.get.200"
+        "400": 
+          $ref: "#/components/responses/peer_entities.get.400"
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+  
+  /peer_entities/{peerEntityId}:
+    get:
+      description: >
+        Retrieves information and configuration hold in the producer NFV-MANO 
+        functional entity with regards to a peer entity by reading an individual 
+        peer entity resource.
+
+        This method shall follow the provisions specified in the tables 
+        5.5.14.3.2-1 and 5.5.14.3.2-2 for URI query parameters, request 
+        and response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200": 
+          $ref: "#/components/responses/peer_entitie.get.200"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+    patch:
+      description: >
+        Modifies configuration and information of the producer NFV-MANO 
+        functional entity with regards to a peer functional entity by 
+        updating the corresponding "Individual peer entity" resource.
+
+        Changes to the configurable parameters of the corresponding peer 
+        entity are applied to the information managed by the producer 
+        NFV-MANO functional entity and reflected in the representation 
+        of this resource.
+
+        This method shall follow the provisions specified in the tables 
+        5.5.14.3.4-1 and 5.5.14.3.4-2 for URI query parameters, request 
+        and response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      requestBody:
+        $ref: "#/components/requestBodies/ModifyPeerEntityRequest"
+      responses:
+        "200": 
+          $ref: "#/components/responses/peer_entitie.patch.200"
+        "409": 
+          $ref: "#/components/responses/peer_entitie.patch.409"
+        "412": 
+          $ref: "#/components/responses/peer_entitie.patch.412"
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+    delete:
+      description: >
+        Ddeletes an individual peer entity resource. By deleting such 
+        a resource in the producer NFV-MANO functional entity representing 
+        a peer NFV-MANO entity, the configuration and information with 
+        regards to such peer entity is deleted. Consequently, the peering 
+        relationship between the producer NFV-MANO functional entity and 
+        the peer entity is terminated, i.e., the producer NFV-MANO functional 
+        entity does not have the necessary information to communicate/interact 
+        with the peer entity.
+
+        This method shall follow the provisions specified in the tables 
+        5.5.14.3.5-1 and 5.5.14.3.5-2 for URI query parameters, request 
+        and response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "204": 
+          $ref: "#/components/responses/peer_entitie.delete.204"
+        "409": 
+          $ref: "#/components/responses/peer_entitie.delete.409"
+        "412": 
+          $ref: "#/components/responses/peer_entitie.delete.412"
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+
+components:
+  schemas:   
+    ManoEntity:
+      description: >
+        This type represents an NFV-MANO functional entity.
+      type: object
+      required:
+        - id
+        - type
+        - name
+        - description
+        - provider
+        - softwareVersion
+        - manoConfigurableParams
+        - manoApplicationState
+        - _links
+      properties:
+        id:
+          description: >
+            Identifier of the NFV-MANO functional entity. The identifier shall be set during 
+            the initial deployment of the NFV-MANO functional entity and its value allocated 
+            based on network operator policies. The value of this identifier shall be unique 
+            at least in the scope of the NFV-MANO deployment.
+          $ref: "##Identifier"
+        type:
+          description: >
+            Type of NFV-MANO functional entity.
+          $ref: "#/components/schemas/ManoEntityEnumType"
+        name:
+          description: >
+            Human-readable name of the NFV-MANO functional entity.
+            
+            This attribute can be modified with the PATCH method.
+          type: string
+        description:
+          description: >
+            Human-readable description of the NFV-MANO functional entity.
+            
+            This attribute can be modified with the PATCH method.
+          type: string
+        provider:
+          description: >
+            Information about the provider of the NFV-MANO functional entity. 
+            It typically includes the name of the provider.
+          type: string
+        softwareVersion:
+          description: >
+            The version of the software of the NFV-MANO functional entity.
+            $ref: "##Version"
+        manoEntityComponents:
+          description: >
+            The deployed NFV-MANO functional entity components which realize the 
+            NFV-MANO functional entity. 
+
+            NOTE:	It is optional for the API producer to support the "manoEntityComponents" 
+            attribute.
+          type: array
+          items: 
+            $ref: "#/components/schemas/ManoEntityComponent"
+            minminItems: 0
+        manoServices:
+          description: >
+            Information about the NFV-MANO services provided by the NFV-MANO 
+            functional entity.
+          type: array
+          items: 
+            $ref: "#/components/schemas/ManoService"
+            minminItems: 1
+        manoConfigurableParams:
+          description: >
+            Information and current values of the configurable parameters.
+
+            This attribute can be modified with the PATCH method.
+          $ref: "#/components/schemas/ManoConfigurableParams"
+        manoApplicationState:
+          description: >
+            Information and current values of the NFV-MANO functional entity’s application state. 
+          type: object
+          required:
+            - operationalState
+            - administrativeState
+            - usageState
+          properties:
+            operationalState:
+              description: >
+                The operational state of the NFV-MANO functional entity application.
+              $ref: "#/components/schemas/OperationalStateEnumType"
+            administrativeState:
+              description: >
+                The administrative state of the NFV-MANO functional entity application.
+              $ref: "#/components/schemas/AdministrativeStateEnumType"
+            usageState:
+              description: >
+                The usage state of the NFV-MANO functional entity application.
+              $ref: "#/components/schemas/UsageStateEnumType"
+        nfvoSpecificInfo:
+          description: >
+            The information specific to an NFVO entity.
+
+            NOTE: It shall be present when "type" attribute is "NFVO", and it 
+            shall be absent in any other case.
+
+            NOTE: The information about the NFV-MANO services offered by a 
+            specific type of NFV-MANO functional entity is specified by the 
+            manoServices attribute.
+          $ref: "#/components/schemas/nfvoSpecificInfo"
+        vnfmSpecificInfo:
+          description: >
+            The information specific to a VNFM entity.
+
+            NOTE: It shall be present when "type" attribute is "VNFM", and 
+            it shall be absent in any other case.
+            NOTE: The information about the NFV-MANO services offered by a 
+            specific type of NFV-MANO functional entity is specified by the 
+            manoServices attribute.
+          $ref: "#/components/schemas/VnfmSpecificInfo"
+        vimSpecificInfo:
+          description: >
+            The information specific to an VIM entity.
+
+            NOTE: It shall be present when "type" attribute is "VIM", and 
+            it shall be absent in any other case.
+            NOTE: The information about the NFV-MANO services offered by a 
+            specific type of NFV-MANO functional entity is specified by the 
+            manoServices attribute.
+          $ref: "#/components/schemas/VimSpecificInfo"
+        _links:
+          description: >
+            Links to resources related to this resource.
+          type: object
+          required:
+            - self
+            - manoServiceInterfaces
+            - peerEntities
+            - changeState
+            - changeStateOpOccs
+          properties:
+            self:
+              description: URI of this resource.
+              $ref: "##Link"
+            manoServiceInterfaces:
+              description: Link to the "NFV-MANO service interfaces" resource.
+              $ref: "##Link"
+            peerEntities:
+              description: Link to "Peer entities" resource.
+              $ref: "##Link"
+            changeState:
+              description: Link to the "Change state" task resource.
+              $ref: "##Link"
+            changeStateOpOccs:
+              description: Link to the "Change state operation occurrences" resource.
+              $ref: "##Link"        
+
+    ManoConfigModificationRequest:
+      description: >
+
+      type:
+        
+    
+    ManoConfigModifications:
+      description: >
+
+      type:
+        
+
+    CimSubscriptionRequest:
+      description: >
+
+      type:
+        
+
+    CimSubscription:
+      description: >
+
+      type:
+        
+
+    InformationChangedNotification:
+      description: >
+
+      type:
+        
+
+    ChangeStateRequest:
+      description: >
+
+      type:
+        
+
+    ChangeStateOpOcc:
+      description: >
+
+      type:
+        
+
+    ChangeStateNotification:
+      description: >
+
+      type:
+        
+
+    ManoServiceInterface:
+      description: >
+
+      type:
+        
+
+    ManoServiceInterfaceModificationRequest:
+      description: >
+
+      type:
+        
+
+    ManoServiceInterfaceModifications:
+      description: >
+
+      type:
+        
+
+    CreatePeerEntityRequest:
+      description: >
+
+      type:
+        
+
+    PeerEntity:
+      description: >
+
+      type:
+        
+
+    PeerEntityConfigModificationRequest:
+      description: >
+
+      type:
+        
+
+    PeerEntityConfigModifications:
+      description: >
+
+      type:
+        
+
+    #referenced
+    ManoEntityComponent:
+      description: >
+
+      type:
+        
+
+    ManoService:
+      description: >
+
+      type:
+        
+
+    NfvoSpecificInfo:
+      description: >
+
+      type:
+        
+
+    VnfmSpecificInfo:
+      description: >
+
+      type:
+        
+
+    VimSpecificInfo:
+      description: >
+
+      type:
+        
+
+    ManoEntityConfigurableParams:
+      description: >
+
+      type:
+        
+
+    ConsumedManoInterfaceInfo:
+      description: >
+
+      type:
+        
+
+    CimNotificationsFilter:
+      description: >
+
+      type:
+        
+
+    ClockSyncInfo:
+      description: >
+
+      type:
+        
+
+    ServerInterfaceSecurityInfo:
+      description: >
+
+      type:
+        
+
+    ClientInterfaceSecurityInfo:
+      description: >
+        This type represents security related information for accessing an NFV-MANO 
+        service interface produced by an NFV-MANO functional entity.
+      type: object
+      required:
+        - authType
+        - oauthServerInfo
+      properties:
+        authType: 
+          description: >
+            Type of API request authorization to be used by the API consumer accessing 
+            the API.
+
+            The support of authorization methods for the API consumer is specified in 
+            clause 8.3.6 of ETSI GS NFV-SOL 013.
+
+            Permitted values:
+            - TLS_TUNNEL: Using TLS tunnel, as defined by TLS 1.2 in IETF RFC 5246.
+            - OAUTH2: Using access token, as defined by the OAuth 2.0 specification 
+            in IETF RFC 6749. 
+          type: array
+          items:
+            type: string
+            enum:
+              - TLS_TUNNEL
+              - OAUTH2
+          minItems: 1
+        oauthServerInfo:
+          description: >
+            OAuth 2.0 authorization server information and configuration.
+          type: object
+          properties:
+            dynamicDiscovery:
+              description: >
+                Configuration data used when performing dynamic discovery of the authorization 
+                server identifier. 
+
+                NOTE:	Provided configuration of the OAuth 2.0 authorization server information 
+                and configuration shall be supported, and dynamic configuration may be supported.
+              type: object
+              required:
+                - webFingerHost
+              properties:
+                webFingerHost:
+                  description: >
+                    Server where the WebFinger service is hosted. When used, the request to 
+                    the WebFinger resource shall conform as specified in clause 5.1.3 of 
+                    ETSI GS NFV-SEC 022.
+                  type: string
+                  format: uri
+            providedConfiguration:
+              description: >
+                Configuration data used to setup the authorization server identifier. 
+
+                NOTE:	Provided configuration of the OAuth 2.0 authorization server information 
+                and configuration shall be supported, and dynamic configuration may be supported.
+              type: object
+              required:
+                - authServerId
+              properties:
+                authServerId:
+                  description: >
+                    Authorization server identifier as defined in ETSI GS NFV-SEC 022.
+                  type: string
+                  format: uri
+            tlsCipherSuites:
+              description: >
+                List of cipher suites that shall be declared as supported by the API consumer when 
+                performing the SSL or TLS negotiation with the authorization server. Valid values 
+                of cipher suites are defined in IETF RFC 8447.
+              type: array
+              items:
+                type: string
+                minItems: 1
+        tlsTunnelInfo:
+          description: >
+            Information and configuration related to the use of TLS tunnel. Shall be 
+            present if authType contains "TLS_TUNNEL".
+          type: object
+          properties:
+            tlsTunnelCipherSuites:
+              description: >
+                List of cipher suites that shall be declared as supported by the API 
+                consumer when performing the SSL or TLS negotiation with the API producer. 
+                Valid values of cipher suites are defined in IETF RFC 8447.
+              type: array
+              items:
+                type: string
+                minItems: 1
+
+    #referenced simple data types
+    ManoServiceInterfaceTypeShortName:
+      description: >
+        For the RESTful NFV-MANO APIs, valid values are all values for "apiName" as defined 
+        in ETSI GS NFV-SOL 002, ETSI GS NFV-SOL 003, and ETSI GS NFV-SOL 005.
+        
+        For the NFV-MANO service interfaces for which no API is specified by ETSI NFV, valid 
+        values are defined in table 5.6.4.3-1.
+
+        NOTE:	The table is expected to be updated, by removing the corresponding listed entries, 
+        once the interfaces are specified as a RESTful NFV-MANO API. 
+      type: string
+
+    OperationalStateEnumType:
+      description: >
+        The enumeration OperationalStateEnumType defines values representing the 
+        operational state of an NFV-MANO functional application type of managed entity. 
+        The OperationalStateEnumType shall comply with the provisions:
+          - STARTED	The managed entity is operational.
+          - STOPPED	The managed entity is not operational.
+          - STOPPING	The managed entity is in the transition to stop.
+          - STARTING	The managed entity is in the transition to start and become operational.
+          - RESTARTING	The managed entity is in the transition to stop and start again.
+      type: string
+      enum:
+        - STARTED
+        - STOPPED
+        - STOPPING
+        - STARTING
+        - RESTARTING
+
+    AdministrativeStateEnumType:
+      description: >
+        The enumeration AdministrativeStateEnumType defines values representing 
+        the administrative state of a managed entity. 
+        The AdministrativeStateEnumType shall comply with the provisions: 
+          - LOCKED	The managed entity is administratively prohibited to be used.
+          - UNLOCKED	The managed entity is administratively allowed to be used.
+          - LOCKING	The managed entity is in the transition to be locked.
+      type: string
+      enum:
+        - LOCKED
+        - UNLOCKED
+        - LOCKING
+
+    UsageStateEnumType:
+      description: >
+        The enumeration UsageStateEnumType defines values representing the usage 
+        state of a managed entity. 
+        The UsageStateEnumType shall comply with the provisions:
+          - IN_USE	The managed entity is currently being used.
+          - NOT_IN_USE	The managed entity is currently not being used.
+      type: string
+      enum:
+        - IN_USE
+        - NOT_IN_USE
+
+    ChangeOperationalStateEnumType:
+      description: >
+        The enumeration ChangeOperationalStateEnumType defines permitted values 
+        for the change state operation. 
+        The ChangeOperationalStateEnumType shall comply with the provisions:
+          - START	To start the managed entity.
+          - STOP	To stop the managed entity.
+          - RESTART	To stop and start again the managed entity.
+      type: string
+      enum:
+        - START 
+        - STOP
+        - RESTART
+
+    ChangeAdministrativeStateEnumType:
+      description: >
+        The enumeration ChangeAdministrativeStateEnumType defines permitted values 
+        for the change of administrative state operation. 
+        The ChangeAdministrativeStateEnumType shall comply with the provisions:
+          - LOCK	To lock the managed entity.
+          - UNLOCK	To unlock the managed entity.
+      type: string
+      enum:
+        - LOCK
+        - UNLOCK
+
+    InterfaceOperationalStateEnumType:
+      description: >
+        The enumeration InterfaceOperationalStateEnumType defines values representing 
+        the operational state of an NFV-MANO service interface type of managed entity. 
+        The InterfaceOperationalStateEnumType shall comply with the provisions :
+           - STARTED	The managed entity is operational.
+           - STOPPED	The managed entity is not operational.
+           - STOPPING	The managed entity is in the transition to stop.
+           - STARTING	The managed entity is in the transition to start and become operational.
+      type: string
+      enum:
+        - STARTED
+        - STOPPED
+        - STOPPING
+        - STARTING
+
+    StopEnumType:
+      description: >
+        The enumeration ChangeStateOpOccStateEnumType defines permitted values 
+        for the change state operation. It shall comply with the provisions:
+          - GRACEFUL	To stop the managed entity immediately after accepting the request.
+          - FORCEFUL	To stop the managed entity attempting to gracefully discharge the entity from service.
+      type: string
+      enum:
+        - GRACEFUL
+        - FORCEFUL
+
+    ChangeStateOpOccStateEnumType:
+      description: >
+        The enumeration ChangeStateOpOccStateEnumType defines permitted values 
+        for the change state operation. It shall comply with the provisions :
+          - PROCESSING	The change state operation is currently in execution.
+          - COMPLETED	The change state operation has been completed successfully.
+          - FAILED	The change state operation has failed.
+      type: string
+      enum:
+        - PROCESSING
+        - COMPLETED
+        - FAILED
+
+    ManoEntityEnumType:
+      desciption: > 
+        The enumeration ManoEntityEnumType defines the permitted values to 
+        represent NFV-MANO functional entities. It shall comply with 
+        the provisions :
+          - NFVO	The NFV-MANO functional entity is an NFVO.
+          - VNFM	The NFV-MANO functional entity is a VNFM.
+          - VIM	The NFV-MANO functional entity is a VIM.
+      type: string
+      enum:
+        - NFVO
+        - VNFM
+        - VIM
+
+    PeerEntityEnumType:
+      description: >
+        The enumeration PeerEntityEnumType defines the permitted values 
+        to represent peer functional entities. it shall complains with 
+        the provisions : 
+        - NFVO	The peer functional entity is an NFVO.
+        - VNFM	The peer functional entity is a VNFM.
+        - VIM	  The peer functional entity is a VIM.
+        - WIM	  The peer functional entity is a WIM.
+        - EM	  The peer functional entity is an EM.
+        - OSS	  The peer functional entity is an OSS/BSS.
+      type: string
+      enum:
+        - NFVO
+        - VNFM
+        - VIM
+        - WIM
+        - EM
+        - OSS
+
+  parameters:
+    Version:
+      name: Version
+      description: >
+        Version of the API requested to use when responding to this request.
+      in: header
+      required: true
+      schema:
+        type: string
+    
+    Accept:
+      name: Accept
+      description: >
+        Content-Types that are acceptable for the response. Reference: IETF RFC 7231.
+      in: header
+      required: true
+      schema:
+        type: string
+    
+    Authorization:
+      name: Authorization
+      description: >
+        The authorization token for the request. Reference: IETF RFC 7235.
+      in: header
+      required: false
+      schema:
+        type: string
+    
+    filter.ManoServiceInterface:
+      name: filter
+      description: >
+        Attribute-based filtering expression according to clause 5.2 of 
+        ETSI GS NFV-SOL 013. 
+
+        The NFV-MANO functional entity shall support receiving this parameter 
+        as part of the URI query string. The API consumer may supply this 
+        parameter. 
+
+        All attribute names that appear in the ManoServiceInterface and in data 
+        types referenced from it shall be supported by the NFV-MANO functional 
+        entity in the expression. 
+      in: query
+      required: false
+      schema:
+        type: string
+    filter.CimSubscription:
+      name: filter
+      description: >
+        Attribute-based filtering expression according to clause 5.2 of 
+        ETSI GS NFV-SOL 013. 
+
+        The NFV-MANO functional entity shall support receiving this parameter 
+        as part of the URI query string. The API consumer may supply this 
+        parameter. 
+
+        All attribute names that appear in the CimSubscription and in data 
+        types referenced from it shall be supported by the NFV-MANO functional 
+        entity in the expression. 
+      in: query
+      required: false
+      schema:
+        type: string
+    filter.ChangeStateOpOcc:
+      name: filter
+      description: >
+        Attribute-based filtering expression according to clause 5.2 of 
+        ETSI GS NFV-SOL 013. 
+
+        The NFV-MANO functional entity shall support receiving this parameter 
+        as part of the URI query string. The API consumer may supply this 
+        parameter. 
+
+        All attribute names that appear in the ChangeStateOpOcc and in data 
+        types referenced from it shall be supported by the NFV-MANO functional 
+        entity in the expression. 
+      in: query
+      required: false
+      schema:
+        type: string
+    filter.PeerEntity:
+      name: filter
+      description: >
+        Attribute-based filtering expression according to clause 5.2 of 
+        ETSI GS NFV-SOL 013. 
+
+        The NFV-MANO functional entity shall support receiving this parameter 
+        as part of the URI query string. The API consumer may supply this 
+        parameter. 
+
+        All attribute names that appear in the PeerEntity and in data 
+        types referenced from it shall be supported by the NFV-MANO functional 
+        entity in the expression. 
+      in: query
+      required: false
+      schema:
+        type: string
+
+    all_fields:
+      name: all_fields
+      description: >
+        Include all complex attributes in the response. See clause 
+        5.3 of ETSI GS NFV-SOL 013. The NFV-MANO functional entity 
+        shall support this parameter.
+      in: query
+      required: false
+      schema:
+        type: string
+
+    fields:
+      name: fields
+      description: >
+        Complex attributes to be included into the response. See clause 
+        5.3 of ETSI GS NFV-SOL 013 for details. The NFV-MANO functional 
+        entity should support this parameter.
+      in: query
+      required: false
+      schema:
+        type: string
+
+    exclude_fields:
+      name: exclude_fields
+      description: >
+        Complex attributes to be excluded from the response. See clause 
+        5.3 of ETSI GS NFV-SOL 013 for details. The NFV-MANO functional 
+        entity should support this parameter.
+      in: query
+      required: false
+      schema:
+        type: string
+
+    exclude_default.ManoServiceInterface:
+      name: exclude_default
+      description: >
+        Indicates to exclude the following complex attributes from the 
+        response. See clause 5.3 of ETSI GS NFV-SOL 013 for details. 
+        The NFV-MANO functional entity shall support this parameter.
+
+        The following attributes shall be excluded from the ManoServiceInterface 
+        structure in the response body if this parameter is provided, or none of 
+        the parameters "all_fields," "fields", "exclude_fields", "exclude_default" 
+        are provided:
+        - none
+      in: query
+      required: false
+      schema:
+        type: string
+    exclude_default.CimSubscription:
+      name: exclude_default
+      description: >
+        Indicates to exclude the following complex attributes from the 
+        response. See clause 5.3 of ETSI GS NFV-SOL 013 for details. 
+        The NFV-MANO functional entity shall support this parameter.
+
+        The following attributes shall be excluded from the CimSubscription 
+        structure in the response body if this parameter is provided, or none of 
+        the parameters "all_fields," "fields", "exclude_fields", "exclude_default" 
+        are provided:
+        - none
+      in: query
+      required: false
+      schema:
+        type: string
+    exclude_default.ChangeStateOpOcc:
+      name: exclude_default
+      description: >
+        Indicates to exclude the following complex attributes from the 
+        response. See clause 5.3 of ETSI GS NFV-SOL 013 for details. 
+        The NFV-MANO functional entity shall support this parameter.
+
+        The following attributes shall be excluded from the ChangeStateOpOcc 
+        structure in the response body if this parameter is provided, or none of 
+        the parameters "all_fields," "fields", "exclude_fields", "exclude_default" 
+        are provided:
+        - none
+      in: query
+      required: false
+      schema:
+        type: string
+    exclude_default.PeerEntity:
+      name: exclude_default
+      description: >
+        Indicates to exclude the following complex attributes from the 
+        response. See clause 5.3 of ETSI GS NFV-SOL 013 for details. 
+        The NFV-MANO functional entity shall support this parameter.
+
+        The following attributes shall be excluded from the PeerEntity 
+        structure in the response body if this parameter is provided, or none of 
+        the parameters "all_fields," "fields", "exclude_fields", "exclude_default" 
+        are provided:
+        - none
+      in: query
+      required: false
+      schema:
+        type: string
+
+    nextpage_opaque_marker:
+      name: nextpage_opaque_marker
+      description: >
+        Marker to obtain the next page of a paged response. Shall be supported by 
+        the NFV-MANO functional entity if the entity supports alternative 2 (paging) 
+        according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this resource.
+      in: query
+      required: false
+      schema:
+        type: string
+  
+  requestBodies:
+    ModifyManoEntityRequest:
+      description: >
+        Parameters for the NFV-MANO configuration and information 
+        modification, as defined in clause 5.6.2.3.
+        The Content-Type header shall be set to "application/merge-patch+json" 
+        according to IETF RFC 7396.
+      content:
+        application/merge-patch+json:
+          schema:
+            $ref: "#/components/schemas/ManoConfigModificationRequest"
+      required: true
+    
+    ChangeManoEntityStateRequest:
+      description: >
+        Parameters for the change state operation, as defined in clause 5.6.2.8.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ChangeStateRequest"
+      required: true
+    
+    ModifyManoEnityInterfaceRequest:
+      description: >
+        Parameters for the modification of configuration parameters of 
+        the NFV-MANO service interface, as defined in clause 5.6.2.12.
+
+        The Content-Type header shall be set to "application/merge-patch+json"
+        according to IETF RFC 7396.
+      content:
+        application/merge-patch+json:
+          schema:
+            $ref: "#/components/schemas/ManoServiceInterfaceModificationRequest" 
+      required: true
+    
+    ChangeManoEntityInterfaceStateRequest:
+      description: >
+        Parameters for the change state operation, as defined in 
+        clause 5.6.2.8.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ChangeStateRequest"
+      required: true
+    
+    CreateSubscriptionRequest:
+      description: >
+        Details of the subscription to be created, as defined in 
+        clause 5.6.2.5-1.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/CimSubscriptionRequest"
+      required: true
+    
+    CreatePeerEntityRequest:
+      description: >
+        The peer entity creation parameters, as defined in clause 5.6.2.14.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/CreatePeerEntityRequest"
+      required: true
+    
+    ModifyPeerEntityRequest:
+      description: >
+        Parameters for the modification of configuration parameters of 
+        the peer functional entity, as defined in clause 5.6.2.16
+
+        The Content-Type header shall be set to "application/merge-patch+json" 
+        according to IETF RFC 7396.
+      content:
+        application/merge-patch+json:
+          schema:
+            $ref: "#/components/schemas/PeerEntityConfigModificationRequest"
+      required: true
+
+  responses:
+    mano_entity.get.200:
+      description: >
+        200 OK
+
+        Shall be returned when configuration and information about 
+        the NFV-MANO functional entity has been read successfully.
+        The response body shall contain a representation of the NFV-MANO
+        functional entity, as defined in clause 5.6.2.2.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ManoEntity"
+
+    mano_entity.patch.200:
+      description: >
+        200 OK
+
+        Shall be returned when the modification of configuration on the 
+        NFV-MANO functional entity has been accepted and completed.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ManoConfigModifications"
+    mano_entity.patch.409:
+      description: >
+        409 CONFLICT
+
+        Shall be returned upon the following error: The operation cannot 
+        be executed currently, due to a conflict with the state of the 
+        "NFV-MANO entity" resource.
+
+        Typically, this is due to the fact that another configuration and 
+        information modification is ongoing.
+
+        The response body shall contain a ProblemDetails structure, in which 
+        the "detail" attribute should convey more information about the error.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+    mano_entity.patch.412:
+      description: >
+        412 PRECONDITION FAILED
+
+        Shall be returned upon the following error: A precondition given in 
+        an HTTP request header is not fulfilled.
+
+        Typically, this is due to an ETag mismatch, indicating that the resource 
+        was modified by another entity.
+
+        The response body should contain a ProblemDetails structure, in which 
+        the "detail" attribute should convey more information about the error
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+
+    mano_entity-change_state.post.202:
+      description: >
+        202 ACCEPTED
+
+        Shall be returned when the request has been accepted for processing.
+
+        The response body shall be empty.
+
+        The HTTP response shall include a "Location" HTTP header that contains 
+        the URI of the newly-created "Individual change state operation occurrence"
+        resource corresponding to the operation.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+        Location:
+          description: >
+            The resource URI of the created "Individual change state operation occurence" resource.
+          schema:
+            type: string
+            format: url
+            minimum: 1
+            maximum: 1
+    mano_entity-change_state.post.409:
+      description: >
+        409 CONFLICT
+
+        Shall be returned upon the following error: The operation cannot be 
+        executed currently, due to a conflict with the state of the resource.
+
+        Typically, this is due to the fact that the resource is in an incompatible 
+        state, or that another change state operation is ongoing.
+
+        The response body shall contain a ProblemDetails structure, in which the 
+        "detail" attribute shall convey more information about the error.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+        
+    mano_entity-mano_interfaces.get.200:
+      description: >
+        200 OK
+
+        Shall be returned when information about zero or more NFV-MANO 
+        service interfaces has been queried successfully.
+
+        The response body shall contain in an array the representations 
+        of zero or more NFV-MANO service interfaces, as defined in 
+        clause 5.6.2.11.
+
+        If the “filter" URI parameter or one of the "all_fields", "fields" 
+        (if supported), "exclude_fields" (if supported) or "exclude_default" 
+        URI parameters was supplied in the request, the data in the response 
+        body shall have been transformed according to the rules specified in 
+        clauses 5.2.2 and 5.3.2 of ETSI GS NFV-SOL 013, respectively.
+
+        If the NFV-MANO functional entity supports alternative N°2 (paging) 
+        according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this resource, 
+        inclusion of the Link HTTP header in this response shall follow the 
+        provisions in clause 5.4.2.3 of ETSI GS NFV-SOL 013.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+        Link:
+          description: >
+            Reference to other resources. Link HTTP header in this response 
+            shall follow the provisions in clause 5.4.2.3 of ETSI GS NFV-SOL 013.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/ManoServiceInterface"
+    mano_entity-mano_interfaces.get.400:
+      description: >
+        400 BAD REQUEST
+
+        Shall be returned upon the following errors: 
+          - Invalid attribute-based filtering expression.
+            The response body shall contain a ProblemDetails structure, in which 
+            the "detail" attribute should convey more information about the error.
+          - Invalid attribute selector.
+            The response body shall contain a ProblemDetails structure, in which 
+            the "detail" attribute should convey more information about the error.
+          - Response too big.
+            If the NFV-MANO functional entity supports alternative N°1 (error) 
+            according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this resource, 
+            this error response shall follow the provisions in clause 5.4.2.2 of 
+            ETSI GS NFV-SOL 013.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+    
+    mano_entity-mano_interface.get.200:
+      description: >
+        200 OK
+
+        Shall be returned when information about an individual NFV-MANO 
+        service interface has been read successfully.
+
+        The response body shall contain a representation of the NFV-MANO 
+        service interface, as defined in clause 5.6.2.11.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ManoServiceInterface"
+    mano_entity-mano_interface.patch.200:
+      description: >
+        200 OK
+
+        Shall be returned when the request has been accepted and completed.
+
+        The response body shall contain a representation of the attribute 
+        modifications for the "Individual NFV-MANO service interface" resource,
+        as defined in clause 5.6.2.13.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ManoServiceInterfaceModifications"
+    mano_entity-mano_interface.patch.409:
+      description: >
+        409 CONFLICT
+
+        Shall be returned upon the following error: The operation cannot 
+        be executed currently, due to a conflict with the state of the 
+        "Individual NFV-MANO service interface" resource.
+
+        Typically, this is due to the fact that another operation is 
+        ongoing.
+
+        The response body shall contain a ProblemDetails structure, 
+        in which the "detail" attribute should convey more information 
+        about the error.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string      
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+    mano_entity-mano_interface.patch.412:
+      description: >
+        412 PRECONDITION FAILED
+
+        Shall be returned upon the following error: A precondition given 
+        in an HTTP request header is not fulfilled.
+
+        Typically, this is due to an ETag mismatch, indicating that the 
+        resource was modified by another entity.
+
+        The response body should contain a ProblemDetails structure, 
+        in which the "detail" attribute should convey more information 
+        about the error.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+    
+    mano_entity-mano_interface-change_state.post.202:
+      description: >
+        202 ACCEPTED
+
+        Shall be returned when the request has been accepted for 
+        processing.
+
+        The response body shall be empty.
+
+        The HTTP response shall include a “Location” HTTP header that 
+        contains the URI of the newly-created "Individual change state 
+        operation occurrence" resource corresponding to the operation.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+        Location:
+          description: >
+            The resource URI of the created "Individual change state 
+            operation occurence" resource.
+          schema:
+            type: string
+            format: url
+            minimum: 1
+            maximum: 1
+    mano_entity-mano_interface-change_state.post.409:
+      description: >
+        409 CONFLICT
+
+        Shall be returned upon the following error: The operation cannot be 
+        executed currently, due to a conflict with the state of the resource.
+
+        Typically, this is due to the fact that the resource is in an incompatible 
+        state, or that another change state operation is ongoing.
+
+        The response body shall contain a ProblemDetails structure, in which the 
+        "detail" attribute shall convey more information about the error.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+    
+    subscriptions.post.201:
+      description: >
+        201 CREATED
+
+        Shall be returned when the subscription has been created 
+        successfully.
+
+        The response body shall contain a representation of the 
+        created "Individual subscription" resource.
+
+        The HTTP response shall include a "Location" HTTP header 
+        that points to the created "Individual subscription" resource.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+        Location:
+          description: >
+            The resource URI of the created "Individual subscription" resource.
+          schema:
+            type: string
+            format: url
+            minimum: 1
+            maximum: 1
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/CimSubscription"
+    subscriptions.post.303:
+      description: >
+        303 SEE OTHER
+
+        SShall be returned when a subscription with the same 
+        callbackURI and the same filter already exists and the 
+        policy of NFV-MANO functional entity is to not create 
+        redundant subscriptions.
+
+        The HTTP response shall include a "Location" HTTP header 
+        that contains the resource URI of the existing "Individual 
+        subscription" resource.
+
+        The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+        Location:
+          description: >
+            The resource URI of the created "Individual subscription" resource.
+          schema:
+            type: string
+            format: url
+            minimum: 1
+            maximum: 1
+    subscriptions.get.200:
+      description: >
+        200 OK
+
+        Shall be returned when the list of subscriptions has been queried 
+        successfully.
+
+        The response body shall contain in an array the representations of 
+        all active subscriptions of the functional block that invokes the 
+        method, i.e., zero or more representations of NFV-MANO configuration 
+        and information management subscriptions as defined in clause 5.6.2.6.
+
+        If the "filter" URI parameter was supplied in the request, the data in 
+        the response body shall have been transformed according to the rules 
+        specified in clause 5.2.2 of ETSI GS NFV-SOL 013.
+
+        If the NFV-MANO functional entity supports alternative N°2 (paging) 
+        according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this resource, 
+        inclusion of the Link HTTP header in this response shall follow the 
+        provisions in clause 5.4.2.3 of ETSI GS NFV-SOL 013.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+        Link:
+          description: >
+            Reference to other resources. Link HTTP header in this response 
+            shall follow the provisions in clause 5.4.2.3 of ETSI GS NFV-SOL 013.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/CimSubscription"
+    subscriptions.get.400:
+      description: >
+        400 BAD REQUEST
+
+        Shall be returned upon the following errors: 
+          - Invalid attribute-based filtering expression.
+            The response body shall contain a ProblemDetails structure, in which 
+            the "detail" attribute should convey more information about the error.
+          - Response too big.
+            If the NFV-MANO functional entity supports alternative N°1 (error) 
+            according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this resource, 
+            this error response shall follow the provisions in clause 5.4.2.2 of 
+            ETSI GS NFV-SOL 013.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+    
+    subscription.get.200:
+      description: >
+        200 OK
+
+        Shall be returned when information about an individual subscription 
+        has been read successfully.
+
+        The response body shall contain a representation of the "Individual 
+        subscription" resource.
+            headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/CimSubscription"
+    subscription.delete.204:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned when the "Individual subscription" resource 
+        has been deleted successfully.
+
+        The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+    
+    change_state_ops.get.200:
+      description: >
+        200 OK
+
+        Shall be returned when status information for zero or more 
+        "change state operation occurrences" has been queried successfully.
+
+        The response body shall contain in an array the status information 
+        about zero or more "Individual change state operation occurrences", 
+        as defined in clause 5.6.2.9.
+
+        If the “filter" URI parameter or one of the "all_fields", "fields" 
+        (if supported), "exclude_fields" (if supported) or "exclude_default" 
+        URI parameters was supplied in the request, the data in the response 
+        body shall have been transformed according to the rules specified in 
+        clauses 5.2.2 and 5.3.2 of ETSI GS NFV-SOL 013, respectively.
+
+        If the NFV-MANO functional entity supports alternative N°2 (paging) 
+        according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this resource, 
+        inclusion of the Link HTTP header in this response shall follow the 
+        provisions in clause 5.4.2.3 of ETSI GS NFV-SOL 013.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+        Link:
+          description: >
+            Reference to other resources. Link HTTP header in this response 
+            shall follow the provisions in clause 5.4.2.3 of ETSI GS NFV-SOL 013.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/ChangeStateOpOcc"
+    change_state_ops.get.400:
+      description: >
+        400 BAD REQUEST
+
+        Shall be returned upon the following errors: 
+          - Invalid attribute-based filtering expression.
+            The response body shall contain a ProblemDetails structure, in which 
+            the "detail" attribute should convey more information about the error.
+          - Invalid attribute selector.
+            The response body shall contain a ProblemDetails structure, in which 
+            the "detail" attribute should convey more information about the error.
+          - Response too big.
+            If the NFV-MANO functional entity supports alternative N°1 (error) 
+            according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this resource, 
+            this error response shall follow the provisions in clause 5.4.2.2 of 
+            ETSI GS NFV-SOL 013.
+            headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+    
+    change_state_op.get.200:
+      description: >
+        200 OK
+
+        Shall be returned when information about an "Individual change 
+        state operation occurrence" resource has been read successfully.
+
+        The response body shall contain status information about a change 
+        state operation occurrence, as defined in clause 5.6.2.9.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ChangeStateOpOcc"
+    
+    peer_entities.post.201:
+      description: >
+        201 CREATED
+
+        Shall be returned when a new "Individual peer entity" resource 
+        has been created successfully.
+
+        The response body shall contain a representation of the created 
+        resource with regards to a peer entity, as defined in 
+        clause 5.6.2.15.
+
+        The HTTP response shall include a “Location” HTTP header that 
+        points to the created "Individual peer entity" resource.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+        Location:
+          description: >
+            The resource URI of the created "Individual peer entity" resource.
+          schema:
+            type: string
+            format: url
+            minimum: 1
+            maximum: 1
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/PeerEntity"
+    peer_entities.get.200:
+      description: >
+        200 OK
+
+        Shall be returned when information about zero or more peer 
+        entities has been queried successfully.
+
+        The response body shall contain in an array the resource 
+        representations of zero or more peer entities, as defined 
+        in clause 5.6.2.15.
+
+        If the “filter" URI parameter or one of the "all_fields", "fields" 
+        (if supported), "exclude_fields" (if supported) or "exclude_default" 
+        URI parameters was supplied in the request, the data in the response 
+        body shall have been transformed according to the rules specified in 
+        clauses 5.2.2 and 5.3.2 of ETSI GS NFV-SOL 013, respectively.
+
+        If the NFV-MANO functional entity supports alternative N°2 (paging) 
+        according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this resource, 
+        inclusion of the Link HTTP header in this response shall follow the 
+        provisions in clause 5.4.2.3 of ETSI GS NFV-SOL 013.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+        Link:
+          description: >
+            Reference to other resources. Link HTTP header in this response 
+            shall follow the provisions in clause 5.4.2.3 of ETSI GS NFV-SOL 013.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/PeerEntity"
+    peer_entities.get.400:
+      description: >
+        400 BAD REQUEST
+
+        Shall be returned upon the following errors: 
+          - Invalid attribute-based filtering expression.
+            The response body shall contain a ProblemDetails structure, in which 
+            the "detail" attribute should convey more information about the error.
+          - Invalid attribute selector.
+            The response body shall contain a ProblemDetails structure, in which 
+            the "detail" attribute should convey more information about the error.
+          - Response too big.
+            If the NFV-MANO functional entity supports alternative N°1 (error) 
+            according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this resource, 
+            this error response shall follow the provisions in clause 5.4.2.2 of 
+            ETSI GS NFV-SOL 013.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+    
+    peer_entitie.get.200:
+      description: >
+        200 OK
+
+        Shall be returned when information about an individual peer 
+        functional entity has been read successfully.
+
+        The response body shall contain a resource representation of 
+        the peer functional entity, as defined in clause 5.6.2.15.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/PeerEntity"
+    peer_entitie.patch.200:
+      description: >
+        200 OK
+
+        Shall be returned when the request has been accepted and completed.
+
+        The response body shall contain a representation of the attribute 
+        modifications for the "Individual peer entity" resource, as defined 
+        in clause 5.6.2.17.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/PeerEntityConfigModifications"
+    peer_entitie.patch.409:
+      description: >
+        409 CONFLICT.
+
+        Shall be returned upon the following error: The operation cannot be 
+        executed currently, due to a conflict with the state of the 
+        "Individual peer entity" resource.
+
+        Typically, this is due to the fact that another operation is ongoing.
+
+        The response body shall contain a ProblemDetails structure, in which 
+        the "detail" attribute should convey more information about the error.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+    peer_entitie.patch.412:
+      description: >
+        412 PRECONDITION FAILED
+
+        Shall be returned upon the following error: A precondition given in 
+        an HTTP request header is not fulfilled.
+
+        Typically, this is due to an ETag mismatch, indicating that the 
+        resource was modified by another entity.
+
+        The response body should contain a ProblemDetails structure, in which 
+        the "detail" attribute should convey more information about the error.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+    peer_entitie.delete.204:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned when the "Individual peer entity" resource 
+        has been deleted successfully.
+
+        The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+    peer_entitie.delete.409:
+      description: >
+        409 CONFLICT.
+
+        Shall be returned upon the following error: The operation cannot be 
+        executed currently, due to a conflict with the state of the 
+        "Individual peer entity" resource.
+
+        Typically, this is due to the fact that another operation is ongoing.
+
+        The response body shall contain a ProblemDetails structure, in which 
+        the "detail" attribute should convey more information about the error.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+    peer_entitie.delete.412:
+      description: >
+        412 PRECONDITION FAILED
+
+        Shall be returned upon the following error: A precondition given in 
+        an HTTP request header is not fulfilled.
+
+        Typically, this is due to an ETag mismatch, indicating that the 
+        resource was modified by another entity.
+
+        The response body should contain a ProblemDetails structure, in which 
+        the "detail" attribute should convey more information about the error.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+    
+  #callbacks:
