@@ -1,0 +1,1765 @@
+openapi: 3.0.2
+info:
+  version: 1.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
+  title: SOL009 - NFV-MANO Performance Management Interface
+  description: >
+    SOL009 - NFV-MANO Performance Management Interface
+
+    IMPORTANT: Please note that this file might be not aligned to the current
+    version of the ETSI Group Specification it refers to and has not been
+    approved by the ETSI NFV ISG. In case of discrepancies the published ETSI
+    Group Specification takes precedence.
+    Please report bugs to https://forge.etsi.org/bugzilla/buglist.cgi?component=Nfv-Openapis
+  license:
+    name: ETSI Forge copyright notice
+    url: https://forge.etsi.org/etsi-forge-copyright-notice.txt
+  contact:
+    name: NFV-SOL WG
+externalDocs:
+  description: ETSI GS NFV-SOL 009 V0.8.0
+  url: https://docbox.etsi.org/ISG/NFV/Open/Drafts/SOL009ed331_MANO_mgmt_stage_3/NFV-SOL009ed331v080.zip
+
+servers:
+  - url: http://0.0.0.0/nfvmanopm/v1
+    description: >
+      API HTTP Server
+  - url: https://0.0.0.0/nfvmanopm/v1
+    description: >
+      API HTTPS Server
+
+paths:
+  /api_versions:
+    $ref: ../endpoints/SOL009_endpoints.yaml#/endpoints/api_versions
+    
+  /pm_jobs:
+    post:
+      description: >
+        Creates a PM job.
+
+        This method shall follow the provisions specified in the tables 
+        6.5.3.3.1-1 and 6.5.3.3.1-2 for URI query parameters, request and 
+        response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      requestBody:
+        $ref: "#/components/requestBodies/CreatePMJobRequest"
+      responses:
+        "201": 
+          $ref: "#/components/responses/pm_jobs.post.201"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+    get:
+      description: >
+        The client can use this method to retrieve information about PM jobs.
+      parameters:
+        - $ref: "#/components/parameters/filter.PmJob"
+        - $ref: "#/components/parameters/all_fields"
+        - $ref: "#/components/parameters/fields"
+        - $ref: "#/components/parameters/exclude_fields"
+        - $ref: "#/components/parameters/exclude_default.PmJob"
+        - $ref: "#/components/parameters/nextpage_opaque_marker"
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200": 
+          $ref: "#/components/responses/pm_jobs.get.200"
+        "400": 
+          $ref: "#/components/responses/pm_jobs.get.400"
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+
+  /pm_jobs/{pmJobId}:
+    get:
+      description: >
+        The client can use this method for reading an individual PM job. 
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200": 
+          $ref: "#/components/responses/pm_job.get.200"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+    delete:
+      description: >
+        This method terminates an individual PM job.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "204": 
+          $ref: "#/components/responses/pm_job.delete.204"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+  
+  /pm_jobs/{pmJobId}/reports/{reportId}:
+    get:
+      description: >
+        The client can use this method for reading an individual 
+        performance report. 
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200": 
+          $ref: "#/components/responses/pm_job.report.get.200"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+
+  /thresholds:
+    post:
+      description: >
+        The POST method can be used by the client to create a threshold.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      requestBody:
+        $ref: "#/components/requestBodies/CreateThesholdRequest"
+      responses:
+        "201": 
+          $ref: "#/components/responses/thresholds.post.201"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+    get:
+      description: >
+        The client can use this method to query information about thresholds.
+      parameters:
+        - $ref: "#/components/parameters/filter.Threshold"
+        - $ref: "#/components/parameters/nextpage_opaque_marker"
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200": 
+          $ref: "#/components/responses/thresholds.get.200"
+        "400": 
+          $ref: "#/components/responses/thresholds.get.400"
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+    
+  /thresholds/{thresholdId}:
+    get:
+      description: >
+        The client can use this method for reading an individual threshold 
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200": 
+          $ref: "#/components/responses/threshold.get.200"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+    delete:
+      description: >
+        This method allows to delete a threshold.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "204": 
+          $ref: "#/components/responses/threshold.delete.204"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+
+  /subscriptions:
+    post:
+      description: >
+        The POST method creates a new subscription.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      requestBody:
+        $ref: "#/components/requestBodies/CreateSubscriptionRequest"
+      responses:
+        "201": 
+          $ref: "#/components/responses/subscriptions.post.201"
+        "303": 
+          $ref: "#/components/responses/subscriptions.post.303"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+    get:
+      description: >
+        The client can use this method to query the list of active subscriptions 
+        to performance management notifications subscribed by the client.
+      parameters:
+        - $ref: "#/components/parameters/filter.PmSubscription"
+        - $ref: "#/components/parameters/nextpage_opaque_marker"
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200": 
+          $ref: "#/components/responses/subscriptions.get.200"
+        "400": 
+          $ref: "#/components/responses/subscriptions.get.400"
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+
+  /subscriptions/{subscriptionId}:
+    get:
+      description: >
+        The client can use this method for reading an individual subscription 
+        about performance management notifications subscribed by the client.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200": 
+          $ref: "#/components/responses/subscription.get.200"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+    delete:
+      description: >
+        This method terminates an individual subscription.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "204": 
+          $ref: "#/components/responses/subscription.delete.204"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+
+
+components:
+  schemas:
+    PmSubscriptionRequest:
+      description: >
+        This type represents a subscription request. 
+      type: object
+      properties:
+        filter:
+          description: >
+            Filter settings for this subscription, to define the subset of all 
+            notifications this subscription relates to. A particular notification 
+            is sent to the subscriber if the filter matches, or if there is no filter.
+          $ref: "#/components/schemas/PmNotificationsFilter"
+        callbackUri:
+          description: >
+            The URI of the endpoint to send the notification to.
+          $ref: "#/components/schemas/Uri"
+        authentication:
+          description: >
+            Authentication parameters to configure the use of Authorization when 
+            sending notifications corresponding to this subscription, as defined 
+            in clause 8.3.4 of ETSI GS NFV-SOL 013.
+            This attribute shall only be present if the subscriber requires authorization 
+            of notifications.
+          $ref: "#/components/schemas/SubscriptionAuthentication"
+      required:
+        - callbackUri
+
+    PmSubscription:
+      description: >
+        This type represents a subscription. 
+      type: object
+      properties:
+        id:
+          description: >
+            Identifier that identifies the subscription
+          $ref: "#/components/schemas/Identifier"
+        filter:
+          description: >
+            Filter settings for this subscription, to define the subset of all 
+            notifications this subscription relates to. A particular notification 
+            is sent to the subscriber if the filter matches, or if there is no filter.
+          $ref: "#/components/schemas/PmNotificationsFilter"
+        callbackUri:
+          description: >
+            The URI of the endpoint to send the notification to.
+          type: object
+          properties:
+            links:
+              description: >
+                Links to resources related to this resource.
+              $ref: "#/components/schemas/Uri"
+            self:
+              description: >
+                URI of this resource.
+              $ref: "#/components/schemas/Link"
+          required:            
+            - links
+            - self
+      required: 
+        - id
+        - callbackUri
+
+    ThresholdCrossedNotification:
+      description: >
+        This type represents a notification that is sent when a threshold has been crossed. 
+
+        NOTE:	The timing of sending this notification is determined by the capability of 
+        the producing entity to evaluate the threshold crossing condition.
+
+        The notification shall be triggered by the NFV-MANO functional entity when 
+        a threshold has been crossed.
+      type: object
+      properties:
+        id:
+          description: >
+            Identifier of this notification. If a notification is sent multiple times due 
+            to multiple subscriptions, the "id" attribute of all these notifications shall 
+            have the same value.
+          $ref: "#/components/schemas/Identifier"
+        notificationType:
+          description: >
+            Discriminator for the different notification types. Shall be set to 
+            "ThresholdCrossedNotification" for this notification type.
+          $ref: "#/components/schemas/String"
+        subscriptionId:
+          description: >  
+            Identifier of the subscription that this notification relates to.
+          $ref: "#/components/schemas/Identifier"
+        timeStamp:
+          description: >
+            Date and time of the generation of the notification.
+          $ref: "#/components/schemas/DateTime"
+        thresholdId:
+          description: >
+            Identifier of the threshold which has been crossed.
+          $ref: "#/components/schemas/Identifier"
+        crossingDirection:
+          description: >
+            An indication of whether the threshold was crossed in upward or downward direction.
+          $ref: "#/components/schemas/CrossingDirectionType"
+        objectType:
+          description: >
+            Type of measured object.The applicable measured object type for a measurement 
+            is defined in clause 8.2 of ETSI GS NFV-IFA 031.
+          $ref: "#/components/schemas/String"
+        objectInstanceId:
+          description: >
+            Identifier of the measured object instance. This attribute shall contain the 
+            identifier of the instance of the measure object according to their type.
+            See also definitions in clause 8.2 of ETSI GS NFV-IFA 031 
+          $ref: "#/components/schemas/Identifier"
+        subObjectInstanceId:
+          description: >
+            Identifier of the sub-object of the measured object to which the measurement 
+            applies. Shall be present if this is required in clause 8.2 of ETSI GS NFV-IFA 031
+            for the related measured object type. Shall be absent otherwise.
+          $ref: "#/components/schemas/IdentifierInManoEntity"
+        performanceMetric:
+          description: >
+            Performance metric associated with the threshold.
+            This attribute shall contain the related "Measurement Name" value as defined 
+            in clause 8.4 of ETSI GS NFV-IFA 031
+          $ref: "#/components/schemas/String"
+        performanceValue:
+          description: >
+            Value of the metric that resulted in threshold crossing.
+            The type of this attribute shall correspond to the related "Measurement Unit" 
+            as defined in clause 8.4 of ETSI GS NFV-IFA 031.
+          $ref: "#/components/schemas/AnyValue"
+        _links:
+          description: >
+            Links to resources related to this notification.
+          type: object
+          properties:
+            subscription:
+              description: >
+                Link to the related subscription. 
+              $ref: "#/components/schemas/NotificationLink"
+            objectInstance:
+              description: >
+                Link to the resource representing the measured object instance to which 
+                the notified change applies. Shall be present if the measured object 
+                instance information is accessible as a resource.
+              $ref: "#/components/schemas/NotificationLink"
+            objectInstance:
+              description: >
+                Link to the resource that represents the threshold that was crossed.
+              $ref: "#/components/schemas/NotificationLink"
+          required:
+            - subscription
+            - objectInstance
+      required:
+       - id
+       - notificationType
+       - subscriptionId
+       - timeStamp
+       - thresholdId
+       - crossingDirection
+       - objectType
+       - objectInstanceId
+       - performanceMetric
+       - performanceValue
+       - _links
+
+    PerformanceInformationAvailableNotification:
+      description: >
+        This notification informs the receiver that performance information is available. 
+      type: object
+      properties:
+        id:
+          description: >
+            Identifier of this notification. If a notification is sent multiple times due 
+            to multiple subscriptions, the "id" attribute of all these notifications shall 
+            have the same value.
+          $ref: "#/components/schemas/Identifier"
+        notificationType:
+          description: >
+            Discriminator for the different notification types. 
+            Shall be set to "PerformanceInformationAvailableNotification" for this 
+            notification type.
+          $ref: "#/components/schemas/String"
+        subscriptionId:
+          description: >
+            Identifier of the subscription that this notification relates to.
+          $ref: "#/components/schemas/Identifier"
+        timeStamp:
+          description: >
+            Date and time of the generation of the notification.
+          $ref: "#/components/schemas/DateTime"
+        objectType:
+          description: >
+            Type of measured object.
+            The applicable measured object type for a measurement is defined in clause 8.2 
+            of ETSI GS NFV-IFA 031.
+          $ref: "#/components/schemas/String"
+        objectInstanceId:
+          description: >
+            Type of measured object.
+            The applicable measured object type for a measurement is defined in clause 8.2 
+            of ETSI GS NFV-IFA 031 
+          $ref: "#/components/schemas/Identifier"
+        subObjectInstanceId:
+          description: >
+            Identifier of the sub-object of the measured object instance for which the 
+            measurements have been taken. Shall be present if the related PM job has been 
+            set up to measure a sub-object instance of the measured object instance and a 
+            sub-object is defined in clause 8.2 of ETSI GS NFV-IFA 031 for the related 
+            measured object type. Shall be absent otherwise.
+          $ref: "#/components/schemas/IdentifierInManoEntity"
+        _links:
+          description: >
+            Links to resources related to this notification.
+          type: object
+          properties:
+            subscription:
+              description: >
+                Link to the related subscription. 
+              $ref: "#/components/schemas/NotificationLink"
+            objectInstance:
+              description: >
+                Link to the resource representing the measured object instance to which the 
+                notification applies. Shall be present if the measured object instance 
+                information is accessible as a resource. 
+              $ref: "#/components/schemas/NotificationLink"
+            pmJob:
+              description: >
+                Link to the resource that represents the PM job for which performance 
+                information is available.
+              $ref: "#/components/schemas/NotificationLink"
+            performanceReport:
+              description: >
+                Link from which the available performance information of data type 
+                "PerformanceReport" can be obtained. 
+                This link should point to an "Individual performance report" resource. 
+              $ref: "#/components/schemas/NotificationLink"
+          required:
+            - subscription
+            - pmJob
+            - performanceReport
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timeStamp
+        - objectType
+        - objectInstanceId
+        - _links
+
+    CreatePmJobRequest:
+      description: >
+
+      type: object
+      properties:
+      required:
+
+    PmJob:
+      description: >
+
+      type: object
+      properties:
+      required:
+
+    CreateThresholdRequest :
+      description: >
+
+      type: object
+      properties:
+      required:
+
+    Threshold:
+      description: >
+
+      type: object
+      properties:
+      required:
+
+    #----------
+
+    PmNotificationsFilter:
+      description: >
+        This type represents a filter that can be used to subscribe for notifications 
+        related to performance management events. 
+        At a particular nesting level in the filter structure, the following applies: 
+        All attributes shall match in order for the filter to match (logical "and" between 
+        different filter attributes). If an attribute is an array, the attribute shall 
+        match if at least one of the values in the array matches (logical "or" between the 
+        values of one filter attribute).
+      type: object
+      properties:
+        pmSubscriptionFilter:
+          description: >
+            pmSubscriptionFilter	ManoEntitySubscriptionFilter	0..1	Filter criteria 
+            to select object instance about which to notify.
+          $ref: "#/components/schemas/ManoEntitySubscriptionFilter"
+        notificationTypes:
+          description: >
+            Match particular notification types. 
+            Permitted values:
+              - ThresholdCrossedNotification
+              - PerformanceInformationAvailableNotification
+
+            The permitted values of the "notificationTypes" attribute are spelled exactly 
+            as the names of the notification types to facilitate automated code generation 
+            systems.
+          type: string
+          enum:
+            - ThresholdCrossedNotification
+            - PerformanceInformationAvailableNotification
+
+    PmJobCriteria:
+      description: >
+        This type represents collection criteria for PM jobs.
+      type: object
+      properties:
+        performanceMetric: 
+          description: >
+            This defines the types of performance metrics for the specified measured 
+            object(s). This attribute’s value shall contain the related "Measurement Name" 
+            values as defined in clause 8.4 of ETSI GS NFV-IFA 031. 
+            At least one of the two attributes (performance metric or group) shall be present.
+          type: array
+          items:
+            type: string
+        performanceMetricGroup:
+          description: >
+            Group of performance metrics.
+            A metric group is a pre-defined list of metrics, known to the producer that it 
+            can decompose to individual metrics. This attribute’s value shall contain the 
+            related "Measurement Group" values as defined in clause 8.4 of ETSI GS 
+            NFV-IFA 031.
+            At least one of the two attributes (performance metric or group) shall be present.
+          type: array
+          items:
+            type: string
+        collectionPeriod:
+          description: >
+            Specifies the periodicity at which the producer will collect performance 
+            information. The unit shall be seconds. 
+
+            At the end of each reportingPeriod, the producer will inform the API consumer 
+            about availability of the performance data collected for each completed 
+            collection period during this reportingPeriod. The reportingPeriod should 
+            be equal to or a multiple of the collectionPeriod. In the latter case, the 
+            performance data for the collection periods within one reporting period 
+            are reported together. 
+
+            In particular when choosing short collection and reporting periods, the 
+            number of PM jobs that can be supported depends on the capability of the 
+            producing entity.
+          type: integer
+        reportingPeriod:
+          description: >
+            Specifies the periodicity at which the producer will report to the API consumer 
+            about performance information. The unit shall be seconds.
+
+            At the end of each reportingPeriod, the producer will inform the API consumer 
+            about availability of the performance data collected for each completed 
+            collection period during this reportingPeriod. The reportingPeriod should 
+            be equal to or a multiple of the collectionPeriod. In the latter case, the 
+            performance data for the collection periods within one reporting period 
+            are reported together. 
+
+            In particular when choosing short collection and reporting periods, the 
+            number of PM jobs that can be supported depends on the capability of the 
+            producing entity.
+          type: integer
+        reportingBoundary:
+          description: >
+            Identifies a time boundary after which the reporting will stop.
+            The boundary shall allow a single reporting as well as periodic reporting up to 
+            the boundary.
+          $ref: "#/components/schemas/DateTime"
+      required:
+        - collectionPeriod
+        - reportingPeriod
+
+    ThresholdCriteria:
+      description: >
+        This type represents criteria that define a threshold.
+      type: object
+      properties:
+        performanceMetric:
+          description: >
+            Defines the performance metric associated with the threshold. 
+            This attribute’s value shall contain the related "Measurement Name" values 
+            as defined in clause 8.4 of ETSI GS NFV-IFA 031 
+          type: string
+        thresholdType:
+          description: >
+            Type of threshold. This attribute determines which other attributes are 
+            present in the data structure.
+            Permitted values:
+              - SIMPLE: Single-valued static threshold
+            
+            In the present document, simple thresholds are defined. The definition 
+            of additional threshold types is left for future specification.
+          type: string
+          enum:
+            - SIMPLE
+        simpleThresholdDetails:
+          description: >
+            Details of a simple threshold. Shall be present if thresholdType="SIMPLE".
+          type: object
+          properties:
+            thresholdValue:
+              description: >
+                The threshold value. Shall be represented as a floating point number. 
+              $ref: "#/components/schemas/Number"
+            hysteresis:
+              description: >
+                The hysteresis of the threshold. 
+                Shall be represented as a non-negative floating point number.
+                A notification with crossing direction "UP" will be generated if the 
+                measured value reaches or exceeds "thresholdValue" + "hysteresis". 
+                A notification with crossing direction "DOWN" will be generated if 
+                the measured value reaches or undercuts "thresholdValue" - "hysteresis". 
+
+                The hysteresis is defined to prevent storms of threshold crossing notifications.
+                When processing a request to create a threshold, implementations should enforce 
+                a suitable minimum value for this attribute (e.g. override the value or reject 
+                the request). 
+              $ref: "#/components/schemas/Number"
+          required: 
+            - thresholdValue
+            - hysteresis
+      required:
+        - performanceMetric
+        - thresholdType
+
+    #----------------
+    # common types to SOL009
+    #----------------
+
+    ManoEntitySubscriptionFilter:
+      description: >
+        This type represents subscription filter criteria to match NFV-MANO functional 
+        entities and their associated managed objects. 
+      type: object
+      properties:
+        manoEntityId:
+          descriptin: >
+            If present, match the NFV-MANO functional entity with an 
+            instance identifier listed in this attribute.
+          required: false
+          $ref: "#/components/schemas/Identifier"
+        manoServiceIds:
+          description: >
+            manoServiceIds	IdentifierInManoEntity	0..N	If present, match NFV-MANO 
+            services with an instance identifier listed in this attribute.
+            
+            The attributes "manoServiceIds" and "manoServiceNames" are alternatives 
+            to reference to NFV-MANO services in a filter. They should not be used 
+            together in the same filter instance, but one alternative should be chosen.
+          type: array
+          items:
+            $ref: "#/components/schemas/IdentifierInManoEntity"
+        manoServiceNames:
+          description: >
+            If present, match NFV-MANO services with an NFV-MANO service name listed 
+            in this attribute.
+
+            The attributes "manoServiceIds" and "manoServiceNames" are alternatives 
+            to reference to NFV-MANO services in a filter. They should not be used 
+            together in the same filter instance, but one alternative should be chosen.
+          type: array
+          items:
+            type: string
+        manoServiceInterfaceIds:
+          description: >
+            If present, match NFV-MANO functional entity produced interfaces with an 
+            instance identifier listed in this attribute.
+
+            The attributes "manoServiceInterfaceIds" and "manoServiceInterfaceNames" 
+            are alternatives to reference to NFV-MANO functional entity produced 
+            interfaces in a filter. They should not be used both in the same filter 
+            instance, but one alternative should be chosen.
+          type: array
+          items:
+            $ref: "#/components/schemas/IdentifierInManoEntity"
+        manoServiceInterfaceNames:
+          description: >
+            If present, match NFV-MANO functional entity produced interfaces with an 
+            instance Name listed in this attribute.
+
+            The attributes "manoServiceInterfaceIds" and "manoServiceInterfaceNames" 
+            are alternatives to reference to NFV-MANO functional entity produced 
+            interfaces in a filter. They should not be used both in the same filter 
+            instance, but one alternative should be chosen.
+          type: array
+          items:
+            $ref: string
+        consumedManoInterfaceIds:
+          description: >
+            If present, match NFV-MANO functional entity consumed interfaces with an 
+            instance identifier listed in this attribute.
+
+            The attributes "consumedManoInterfaceIds" and "consumedManoInterfaceNames" 
+            are alternatives to reference to NFV-MANO functional entity consumed 
+            interfaces in a filter. They should not be used both in the same filter 
+            instance, but one alternative should be chosen.
+          type: array
+          items:
+            $ref: "#/components/schemas/identifier"
+        consumedManoInterfaceNames:
+          description: >
+            If present, match NFV-MANO functional entity consumed interfaces with an 
+            instance Name listed in this attribute.
+
+            The attributes "consumedManoInterfaceIds" and "consumedManoInterfaceNames" 
+            are alternatives to reference to NFV-MANO functional entity consumed 
+            interfaces in a filter. They should not be used both in the same filter 
+            instance, but one alternative should be chosen.
+          type: array
+          items:
+            $ref: string
+
+    ManoManagedObjectReference:
+      description: >
+        This type represents the identifier to reference a managed object of a 
+        particular type. 
+      type: object
+      properties:
+        type:
+          description: >
+            Indicates the type of managed object.
+            Permitted values:
+              - MANO_ENTITY
+              - MANO_SERVICE
+              - MANO_SERVICE_IF
+              - CONSUMED_MANO_IF
+              - MANO_ENTITY_COMPONENT
+            
+            The "MANO_ENTITY COMPONENT" is only applicable if attribute
+            "manoEntityComponents" in "ManoEntity" is supported by the API producer.
+          type: string
+          enum:
+           - MANO_ENTITY
+           - MANO_SERVICE
+           - MANO_SERVICE_IF
+           - CONSUMED_MANO_IF
+           - MANO_ENTITY_COMPONENT
+        objectId:
+          description: >
+            Identifier of the managed object.
+            - If type="MANO_ENTITY", it corresponds to the value of the attribute "id" 
+              of the "ManoEntity" representing an NFV-MANO functional entity.
+            - If type="MANO_SERVICE", it corresponds to the value of the attribute "id" 
+              of the "ManoEntity" representing the NFV-MANO functional entity that contains 
+              the "ManoService" sub-object.
+            - If type="MANO_SERVICE_IF", it corresponds to the value of the attribute "id" 
+              of the "ManoServiceInterface" representing the NFV-MANO functional entity that 
+              contains the "ManoServiceInterface" sub-object.
+            - If type="CONSUMED_MANO_IF", the value corresponds to the value of the attribute 
+              "id" of the "ConsumedManoInterfaceInfo" representing a consumed NFV-MANO service 
+              interface from a peer functional entity.
+            - If type="MANO_ENTITY_COMPONENT", the value corresponds to the value of 
+              the attribute "id" of the "ManoEntity" representing the NFV-MANO functional 
+              entity that contains the "ManoEntityComponent" sub-object.
+
+            The "MANO_ENTITY COMPONENT" is only applicable if attribute
+            "manoEntityComponents" in "ManoEntity" is supported by the API producer.
+          $ref: "#/components/schemas/Identifier"
+        subObjectId:
+          description: >
+            Identifier of the managed sub-object. It shall be present if type equals to 
+            "MANO_SERVICE" or "MANO_SERVICE_IF" or "MANO_ENTITY_COMPONENT".
+            - If type="MANO_SERVICE", it corresponds to the value of the attribute "id" 
+              of the "ManoService" representing an individual NFV-MANO service.
+            - If type="MANO_SERVICE_IF", it corresponds to the value of the attribute "id" 
+              of the "ManoServiceInterface" representing an individual NFV-MANO service 
+              interface.
+            - If type="MANO_ENTITY_COMPONENT", it corresponds to the value of the attribute 
+              "id" of the "ManoEntityComponent" representing an NFV-MANO functional entity 
+              component.
+
+            The "MANO_ENTITY COMPONENT" is only applicable if attribute
+            "manoEntityComponents" in "ManoEntity" is supported by the API producer.
+          $ref: "#/components/schemas/IdentifierInManoEntity"
+      required:
+        - type
+        - objectId
+
+    CrossingDirectionType:
+      description: >
+        CrossingDirectionType enumeration.
+        Permited values:
+          - UP: The threshold was crossed in upward direction.
+          - DOWN : The threshold was crossed in downward direction.
+      type: string
+      enum:
+        - UP
+        - DOWN
+
+    DateTime:
+      description: >
+        Date-time stamp.
+        Representation: String formatted according toas defined by the date-time production in IETF RFC 3339.
+      format: date-time
+    Number:
+      description: >
+        A number as defined in IETF RFC 8259.
+      type: number
+    Identifier:
+      description: (...)
+      type: string
+    IdentifierInManoEntity:
+      description: (...)
+      type: string
+
+  responses:
+    pm_jobs.post.201:
+      description: >
+        201 CREATED
+
+        Shall be returned when the PM job has been created successfully.
+
+        The response body shall contain a representation of the created 
+        "Individual PM job" resource, as defined in clause 6.6.2.7.
+
+        The HTTP response shall include a "Location" HTTP header that 
+        points to the created "Individual PM job" resource.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/PmJob"
+    pm_jobs.get.200:
+      description: >
+        200 OK
+
+        Shall be returned when information about zero or more PM jobs has 
+        been queried successfully.
+
+        The response body shall contain in an array the representations 
+        of zero or more PM jobs, as defined in clause 6.6.2.7.
+
+        If the "filter" URI parameter or one of the "all_fields", "fields" 
+        (if supported), "exclude_fields" (if supported) or "exclude_default" 
+        URI parameters was supplied in the request, the data in the response 
+        body shall have been transformed according to the rules specified in 
+        clauses 5.2.2 and 5.3.2 of ETSI GS NFV-SOL 013, respectively.
+
+        If the NFV-MANO functional entity supports alternative 2 (paging) 
+        according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this 
+        resource, inclusion of the Link HTTP header in this response shall 
+        follow the provisions in clause 5.4.2.3 of ETSI GS NFV-SOL 013 .
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+        Link:
+          description: >
+            Reference to other resources. Link HTTP header in this response 
+            shall follow the provisions in clause 5.4.2.3 of ETSI GS NFV-SOL 013.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/PmJob"
+    pm_jobs.get.400:
+      description: >
+        400 BAD REQUEST
+
+        Shall be returned upon the following errors: 
+          - Invalid attribute-based filtering expression.
+            The response body shall contain a ProblemDetails structure, in which 
+            the "detail" attribute should convey more information about the error.
+          - Invalid attribute selector.
+            The response body shall contain a ProblemDetails structure, in which 
+            the "detail" attribute should convey more information about the error.
+          - Response too big.
+            If the NFV-MANO functional entity supports alternative N°1 (error) 
+            according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this resource, 
+            this error response shall follow the provisions in clause 5.4.2.2 of 
+            ETSI GS NFV-SOL 013.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+
+    pm_job.get.200:
+      description: >
+        200 OK
+
+        Shall be returned when information about an individual PM job 
+        has been read successfully.
+
+        The response body shall contain a representation of the
+        "Individual PM job" resource, as defined in clause 6.6.2.7.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/PmJob"
+    pm_job.delete.204:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned when the PM job has been deleted successfully.
+
+        The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+
+    pm_job.report.get.200:
+      description: >
+        200 OK
+
+        Shall be returned when information of an individual performance 
+        report has been read successfully.
+
+        The response body shall contain a representation of the 
+        "Individual performance report" resource, as defined 
+        in clause 6.6.2.10.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/PerformanceReport"
+
+    thresholds.post.201:
+      description: >
+        201 CREATED
+
+        Shall be returned when a threshold has been created successfully. 
+
+        The response body shall contain a representation of the created 
+        "Individual threshold" resource, as defined in clause 6.6.2.9.
+
+        The HTTP response shall include a "Location" HTTP header that 
+        contains the resource URI of the created "Individual threshold" 
+        resource.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+        Location:
+          description: >
+            The resource URI of the created "Individual change state 
+            operation occurence" resource.
+          schema:
+            type: string
+            format: url
+            minimum: 1
+            maximum: 1
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Threshold"
+    thresholds.get.200:
+      description: >
+        200 OK
+
+        Shall be returned when information about zero or more thresholds 
+        has been queried successfully.
+
+        The response body shall contain in an array the representations 
+        of zero or more thresholds, as defined in clause 6.6.2.9.
+
+        If the "filter" URI parameter was supplied in the request, the 
+        data in the response body shall have been transformed according 
+        to the rules specified in clause 5.2.2 of ETSI GS NFV-SOL 013.
+
+        If the NFV-MANO functional entity supports alternative 2 (paging) 
+        according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this resource, 
+        inclusion of the Link HTTP header in this response shall follow the 
+        provisions in clause 5.4.2.3 of ETSI GS NFV-SOL 013.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/Threshold"
+    thresholds.get.400:
+      description: >
+        400 BAD REQUEST
+
+        Shall be returned upon the following errors: 
+          - Invalid attribute-based filtering expression.
+            The response body shall contain a ProblemDetails structure, in which 
+            the "detail" attribute should convey more information about the error.
+          - Response too big.
+            If the NFV-MANO functional entity supports alternative N°1 (error) 
+            according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this resource, 
+            this error response shall follow the provisions in clause 5.4.2.2 of 
+            ETSI GS NFV-SOL 013.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+
+    threshold.get.200:
+      description: >
+        200 OK
+
+        Shall be returned when information about an individual threshold 
+        has been read successfully.
+
+        The response body shall contain a representation of the threshold, 
+        as defined in clause 6.6.2.9.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Threshold"
+    threshold.delete.204:
+      description: >
+        204 NO CONTENT
+        
+        Shall be returned when the threshold has been deleted successfully.
+
+        The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+
+    subscriptions.post.201:
+      description: >
+        201 CREATED 
+
+        Shall be returned when the subscription has been created successfully.
+
+        A representation of the created subscription resource shall be returned 
+        in the response body, as defined in clause 6.6.2.3.
+
+        The HTTP response shall include a "Location" HTTP header that contains 
+        the resource URI of the created "Individual subscription" resource.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+        Location:
+          description: >
+            The resource URI of the created "Individual change state 
+            operation occurence" resource.
+          schema:
+            type: string
+            format: url
+            minimum: 1
+            maximum: 1
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/PmSubscription"
+    subscriptions.post.303:
+      description: >
+        303 SEE OTHER
+
+        Shall be returned when a subscription with the same callbackURI and 
+        the same filter already exists and the policy of the NFV-MANO functional 
+        entity is to not create redundant subscriptions.
+
+        The HTTP response shall include a "Location" HTTP header that contains 
+        the resource URI of the existing "Individual subscription" resource.
+
+        The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+        Location:
+          description: >
+            The resource URI of the created "Individual change state 
+            operation occurence" resource.
+          schema:
+            type: string
+            format: url
+            minimum: 1
+            maximum: 1
+    subscriptions.get.200:
+      description: >
+        Shall be returned when the list of subscriptions has been queried 
+        successfully.
+
+        The response body shall contain in an array the representations 
+        of all active subscriptions of the functional block that invokes 
+        the method, i.e. zero or more representations of PM subscriptions 
+        as defined in clause 6.6.2.3.
+
+        If the "filter" URI parameter was supplied in the request, the data 
+        in the response body shall have been transformed according to the 
+        rules specified in clause 5.2.2 of ETSI GS NFV-SOL 013.
+
+        If the NFV-MANO functional entity supports alternative 2 (paging) 
+        according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this resource, 
+        inclusion of the Link HTTP header in this response shall follow the 
+        provisions in clause 5.4.2.3 of ETSI GS NFV-SOL 013.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/PmSubscription"
+    subscriptions.get.400:
+      description: >
+        400 BAD REQUEST
+
+        Shall be returned upon the following errors: 
+          - Invalid attribute-based filtering expression.
+            The response body shall contain a ProblemDetails structure, in which 
+            the "detail" attribute should convey more information about the error.
+          - Response too big.
+            If the NFV-MANO functional entity supports alternative N°1 (error) 
+            according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this resource, 
+            this error response shall follow the provisions in clause 5.4.2.2 of 
+            ETSI GS NFV-SOL 013.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetails"
+
+    subscription.get.200:
+      description: >
+        200 OK
+
+        Shall be returned when the subscription has been read successfully.
+
+        The response body shall contain a representation of the 
+        "Individual subscription" resource, as defined in clause 6.6.2.3.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/PmSubscription"
+    subscription.delete.204:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned when the "Individual subscription" resource has 
+        been deleted successfully.
+
+        The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+
+  parameters:
+    Version:
+      name: Version
+      description: >
+        Version of the API requested to use when responding to this request.
+      in: header
+      required: true
+      schema:
+        type: string
+    
+    Accept:
+      name: Accept
+      description: >
+        Content-Types that are acceptable for the response. Reference: IETF RFC 7231.
+      in: header
+      required: true
+      schema:
+        type: string
+    
+    Authorization:
+      name: Authorization
+      description: >
+        The authorization token for the request. Reference: IETF RFC 7235.
+      in: header
+      required: false
+      schema:
+        type: string
+
+    filter.PmJob :
+      name: filter
+      description: >
+        Attribute-based filtering expression according to clause 5.2 of 
+        ETSI GS NFV-SOL 013. 
+
+        The NFV-MANO functional entity shall support receiving this parameter 
+        as part of the URI query string. The API consumer may supply this 
+        parameter. 
+
+        All attribute names that appear in the PmJob  and in data 
+        types referenced from it shall be supported by the NFV-MANO functional 
+        entity in the expression. 
+      in: query
+      required: false
+      schema:
+        type: string
+    filter.Threshold :
+      name: filter
+      description: >
+        Attribute-based filtering expression according to clause 5.2 of 
+        ETSI GS NFV-SOL 013. 
+
+        The NFV-MANO functional entity shall support receiving this parameter 
+        as part of the URI query string. The API consumer may supply this 
+        parameter. 
+
+        All attribute names that appear in the Threshold  and in data 
+        types referenced from it shall be supported by the NFV-MANO functional 
+        entity in the expression. 
+      in: query
+      required: false
+      schema:
+        type: string
+    filter.PmSubscription :
+      name: filter
+      description: >
+        Attribute-based filtering expression according to clause 5.2 of 
+        ETSI GS NFV-SOL 013. 
+
+        The NFV-MANO functional entity shall support receiving this parameter 
+        as part of the URI query string. The API consumer may supply this 
+        parameter. 
+
+        All attribute names that appear in the PmSubscription  and in data 
+        types referenced from it shall be supported by the NFV-MANO functional 
+        entity in the expression. 
+      in: query
+      required: false
+      schema:
+        type: string
+
+    all_fields:
+      name: all_fields
+      description: >
+        Include all complex attributes in the response. See clause 
+        5.3 of ETSI GS NFV-SOL 013. The NFV-MANO functional entity 
+        shall support this parameter.
+      in: query
+      required: false
+      schema:
+        type: string
+
+    fields:
+      name: fields
+      description: >
+        Complex attributes to be included into the response. See clause 
+        5.3 of ETSI GS NFV-SOL 013 for details. The NFV-MANO functional 
+        entity should support this parameter.
+      in: query
+      required: false
+      schema:
+        type: string
+
+    exclude_fields:
+      name: exclude_fields
+      description: >
+        Complex attributes to be excluded from the response. See clause 
+        5.3 of ETSI GS NFV-SOL 013 for details. The NFV-MANO functional 
+        entity should support this parameter.
+      in: query
+      required: false
+      schema:
+        type: string
+
+    exclude_default.PmJob :
+      name: exclude_default
+      description: >
+        Indicates to exclude the following complex attributes from the 
+        response. See clause 5.3 of ETSI GS NFV-SOL 013 for details. 
+        The NFV-MANO functional entity shall support this parameter.
+
+        The following attributes shall be excluded from the PmJob 
+        structure in the response body if this parameter is provided, or none of 
+        the parameters "all_fields," "fields", "exclude_fields", "exclude_default" 
+        are provided:
+        - none
+      in: query
+      required: false
+      schema:
+        type: string
+
+    nextpage_opaque_marker:
+      name: nextpage_opaque_marker
+      description: >
+        Marker to obtain the next page of a paged response. Shall be supported by 
+        the NFV-MANO functional entity if the entity supports alternative 2 (paging) 
+        according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this resource.
+      in: query
+      required: false
+      schema:
+        type: string
+  
+  requestBodies:
+    CreatePMJobRequest:
+      description: >
+        PM job creation request.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/CreatePmJobRequest"
+      required: true
+
+    CreateThesholdRequest:
+      description: >
+        Request parameters to create a threshold. 
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/CreateThresholdRequest"
+      required: true
+
+    CreateSubscriptionRequest:
+      description: >
+        Details of the subscription to be created.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/PmSubscriptionRequest"
+      required: true
