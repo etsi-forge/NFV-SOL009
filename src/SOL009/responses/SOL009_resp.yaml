@@ -9,31 +9,37 @@ responses:
       Content-Type:
         description: >
           The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       Content-Range:
         description: >
           The Content-Range response HTTP header indicates where in a full body message a partial message belongs.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
-    schema:
-      $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   303:
     description: >
@@ -41,23 +47,26 @@ responses:
     headers:
       Content-Type:
         description: The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
 
   400:
     description: >
@@ -90,25 +99,30 @@ responses:
     headers:
       Content-Type:
         description: The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
-    schema:
-      $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   401:
     description: >
@@ -121,25 +135,30 @@ responses:
     headers:
       Content-Type:
         description: The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
-    schema:
-      $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   403:
     description: >
@@ -152,25 +171,30 @@ responses:
     headers:
       Content-Type:
         description: The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
-    schema:
-      $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   404:
     description: >
@@ -188,25 +212,30 @@ responses:
     headers:
       Content-Type:
         description: The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
-    schema:
-      $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   405:
     description: >
@@ -217,25 +246,30 @@ responses:
     headers:
       Content-Type:
         description: The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
-    schema:
-      $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   406:
     description: >
@@ -247,25 +281,30 @@ responses:
     headers:
       Content-Type:
         description: The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
-    schema:
-      $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   409:
     description: >
@@ -273,25 +312,30 @@ responses:
     headers:
       Content-Type:
         description: The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
-    schema:
-      $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   412:
     description: >
@@ -304,25 +348,30 @@ responses:
     headers:
       Content-Type:
         description: The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
-    schema:
-      $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   413:
     description: >
@@ -334,25 +383,30 @@ responses:
     headers:
       Content-Type:
         description: The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
-    schema:
-      $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   414:
     description: >
@@ -364,25 +418,30 @@ responses:
     headers:
       Content-Type:
         description: The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
-    schema:
-      $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   416:
     description: >
@@ -390,25 +449,30 @@ responses:
     headers:
       Content-Type:
         description: The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
-    schema:
-      $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   422:
     description: >
@@ -423,25 +487,30 @@ responses:
     headers:
       Content-Type:
         description: The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
-    schema:
-      $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   429:
     description: >
@@ -458,25 +527,30 @@ responses:
     headers:
       Content-Type:
         description: The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
-    schema:
-      $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   500:
     description: >
@@ -489,25 +563,30 @@ responses:
     headers:
       Content-Type:
         description: The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
-    schema:
-      $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   503:
     description: >
@@ -520,25 +599,30 @@ responses:
     headers:
       Content-Type:
         description: The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
-    schema:
-      $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
 
   504:
     description: >
@@ -550,22 +634,27 @@ responses:
     headers:
       Content-Type:
         description: The MIME type of the body of the response.
-        type: string
-        maximum: 1
-        minimum: 1
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
       WWW-Authenticate:
         description: >
           Challenge if the corresponding HTTP request has not provided
           authorization, or error details if the corresponding HTTP
           request has provided an invalid authorization token.
-        type: string
-        maximum: 1
-        minimum: 0
+        schema:
+          type: string
+          maximum: 1
+          minimum: 0
       Version:
         description: >
           Version of the API used in the response.
-        type: string
-        maximum: 1
-        minimum: 1
-    schema:
-      $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"
+        schema:
+          type: string
+          maximum: 1
+          minimum: 1
+    content:
+      application/json:
+        schema:
+          $ref: "../definitions/SOL009_def.yaml#/definitions/ProblemDetails"

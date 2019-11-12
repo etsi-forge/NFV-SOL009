@@ -23,10 +23,9 @@ servers:
   - url: http://127.0.0.1/nfvmanologm/v1
   - url: https://127.0.0.1/nfvmanologm/v1
 
-
 paths:
   "/api_versions":
-      $ref: ../endpoints/SOL009_endpoints.yaml#/endpoints/api_versions
+      $ref: '../endpoints/SOL009_endpoints.yaml#/endpoints/api_versions'
   "/log_jobs":
     description: >-
       This resource represents logging jobs. The API consumer can use this resource to create and query logging jobs.
@@ -158,25 +157,25 @@ paths:
         "204":
           $ref: '#/components/responses/LoggingJob.Delete'
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: '../responses/SOL009_resp.yaml#/responses/400'
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: '../responses/SOL009_resp.yaml#/responses/401'
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: '../responses/SOL009_resp.yaml#/responses/403'
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: '../responses/SOL009_resp.yaml#/responses/404'
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: '../responses/SOL009_resp.yaml#/responses/405'
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: '../responses/SOL009_resp.yaml#/responses/406'
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: '../responses/SOL009_resp.yaml#/responses/422'
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: '../responses/SOL009_resp.yaml#/responses/500'
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: '../responses/SOL009_resp.yaml#/responses/503'
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: '../responses/SOL009_resp.yaml#/responses/504'
 
   "/log_jobs/{logJobId}/log_reports/{logReportId}":
     description: >-
@@ -192,7 +191,7 @@ paths:
         8.5.5.3.2-2 for URI query parameters, request and response data structures, and response codes.
       parameters:
         - $ref: "#/components/parameters/logJobId"
-        - $ref: "#/components/parameters/logJobReportId"
+        - $ref: "#/components/parameters/logJReportId"
         - $ref: "#/components/parameters/Version"
         - $ref: "#/components/parameters/Accept"
         - $ref: "#/components/parameters/Authorization"
@@ -202,25 +201,25 @@ paths:
         "202":
           $ref: '#/components/responses/LogReport.Get.202'
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: '../responses/SOL009_resp.yaml#/responses/400'
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: '../responses/SOL009_resp.yaml#/responses/401'
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: '../responses/SOL009_resp.yaml#/responses/403'
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: '../responses/SOL009_resp.yaml#/responses/404'
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: '../responses/SOL009_resp.yaml#/responses/405'
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: '../responses/SOL009_resp.yaml#/responses/406'
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: '../responses/SOL009_resp.yaml#/responses/422'
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: '../responses/SOL009_resp.yaml#/responses/500'
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: '../responses/SOL009_resp.yaml#/responses/503'
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: '../responses/SOL009_resp.yaml#/responses/504'
 
   "/log_jobs/{logJobId}/compile_log":
     description: >-
@@ -254,28 +253,183 @@ paths:
         "422":
           $ref: '#/components/responses/LogReportCompiled.422'
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: '../responses/SOL009_resp.yaml#/responses/400'
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: '../responses/SOL009_resp.yaml#/responses/401'
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: '../responses/SOL009_resp.yaml#/responses/403'
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: '../responses/SOL009_resp.yaml#/responses/404'
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: '../responses/SOL009_resp.yaml#/responses/405'
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: '../responses/SOL009_resp.yaml#/responses/406'
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: '../responses/SOL009_resp.yaml#/responses/500'
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: '../responses/SOL009_resp.yaml#/responses/503'
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: '../responses/SOL009_resp.yaml#/responses/504'
 
   "/subscriptions":
+    description: >-
+      This resource represents subscriptions. The client can use this resource to subscribe to notifications
+      related to NFV-MANO performance management and to query its subscriptions.
+    post:
+      description: >-
+        The POST method creates a new subscription.
+        This method shall follow the provisions specified in the tables 8.5.7.3.1-1 and 8.5.7.3.1-2 for URI query
+         parameters, request and response data structures, and response codes.
+        As the result of successfully executing this method, a new "Individual subscription" resource as defined in
+        clause 8.5.8 shall have been created. This method shall not trigger any notification.
+        Creation of two "Individual subscription" resources with the same callbackURI and the same filter can result
+        in performance degradation and will provide duplicates of notifications to the API consumer, and might make
+        sense only in very rare use cases. Consequently, the NFV-MANO functional entity may either allow creating a
+        new "Individual subscription" resource if another "Individual subscription" resource with the same filter
+        and callbackUri already exists (in which case it shall return the "201 Created" response code), or may decide
+        to not create a duplicate "Individual subscription" resource (in which case it shall return a "303 See Other"
+        response code referencing the existing "Individual subscription" resource with the same filter and callbackUri).
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      requestBody:
+        $ref: '#/components/requestBodies/LogmSubscriptionRequest'
+      responses:
+        "201":
+          $ref: '#/components/responses/LogmSubscription'
+        "303":
+          $ref: '#/components/responses/LogmSubscription.303'
+        "422":
+          $ref: '../responses/SOL009_resp.yaml#/responses/422'
+        "400":
+          $ref: '../responses/SOL009_resp.yaml#/responses/400'
+        "401":
+          $ref: '../responses/SOL009_resp.yaml#/responses/401'
+        "403":
+          $ref: '../responses/SOL009_resp.yaml#/responses/403'
+        "404":
+          $ref: '../responses/SOL009_resp.yaml#/responses/404'
+        "405":
+          $ref: '../responses/SOL009_resp.yaml#/responses/405'
+        "406":
+          $ref: '../responses/SOL009_resp.yaml#/responses/406'
+        "500":
+          $ref: '../responses/SOL009_resp.yaml#/responses/500'
+        "503":
+          $ref: '../responses/SOL009_resp.yaml#/responses/503'
+        "504":
+          $ref: '../responses/SOL009_resp.yaml#/responses/504'
+    get:
+      description: >-
+        The API consumer can use this method to query the list of active subscriptions to log management
+        notifications subscribed by the API consumer.
+        This method shall follow the provisions specified in the tables 8.5.7.3.2-1 and 8.5.7.3.2-2 for URI
+        query parameters, request and response data structures, and response codes.
+
+      parameters:
+        - $ref: "#/components/parameters/filter"
+        - $ref: "#/components/parameters/nextpage_opaque_marker"
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200":
+          $ref: '#/components/responses/LogmSubscriptions'
+        "400":
+          $ref: '../responses/SOL009_resp.yaml#/responses/400'
+        "401":
+          $ref: '../responses/SOL009_resp.yaml#/responses/401'
+        "403":
+          $ref: '../responses/SOL009_resp.yaml#/responses/403'
+        "404":
+          $ref: '../responses/SOL009_resp.yaml#/responses/404'
+        "405":
+          $ref: '../responses/SOL009_resp.yaml#/responses/405'
+        "406":
+          $ref: '../responses/SOL009_resp.yaml#/responses/406'
+        "500":
+          $ref: '../responses/SOL009_resp.yaml#/responses/500'
+        "503":
+          $ref: '../responses/SOL009_resp.yaml#/responses/503'
+        "504":
+          $ref: '../responses/SOL009_resp.yaml#/responses/504'
 
   "/subscriptions/{subscriptionId}":
+    description: >-
+      This resource represents an individual subscription for notifications about log management related events.
+      The API consumer can use this resource to read and to terminate a subscription to notifications related
+      o NFV-MANO log management.
+    parameters:
+      - $ref: "#/components/parameters/subscriptionId"
+    get:
+      description: >-
+        The API consumer can use this method for reading an individual subscription about log management
+        notifications subscribed by the API consumer.
+        This method shall follow the provisions specified in the tables 8.5.8.3.2-1 and 8.5.8.3.2-2 for
+        URI query parameters, request and response data structures, and response codes.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Accept"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "200":
+          $ref: '#/components/responses/LogmSubscription.Get'
+        "400":
+          $ref: '../responses/SOL009_resp.yaml#/responses/400'
+        "401":
+          $ref: '../responses/SOL009_resp.yaml#/responses/401'
+        "403":
+          $ref: '../responses/SOL009_resp.yaml#/responses/403'
+        "404":
+          $ref: '../responses/SOL009_resp.yaml#/responses/404'
+        "405":
+          $ref: '../responses/SOL009_resp.yaml#/responses/405'
+        "406":
+          $ref: '../responses/SOL009_resp.yaml#/responses/406'
+        "500":
+          $ref: '../responses/SOL009_resp.yaml#/responses/500'
+        "503":
+          $ref: '../responses/SOL009_resp.yaml#/responses/503'
+        "504":
+          $ref: '../responses/SOL009_resp.yaml#/responses/504'
 
+    delete:
+      description: >-
+        This method terminates an individual subscription.
+        This method shall follow the provisions specified in the tables 8.5.8.3.5-1 and 8.5.8.3.5-2 for
+        URI query parameters, request and response data structures, and response codes.
+        As the result of successfully executing this method, the "Individual subscription" resource shall not exist any
+        longer. This means that no notifications for that subscription shall be sent to the
+        formerly-subscribed API consumer.
+        NOTE:	Due to race conditions, some notifications might still be received by the formerly-subscribed
+        API consumer for a certain time period after the deletion.
+      parameters:
+        - $ref: "#/components/parameters/Version"
+        - $ref: "#/components/parameters/Authorization"
+      responses:
+        "204":
+          $ref: '#/components/responses/LogmSubscription.Delete'
+        "400":
+          $ref: '../responses/SOL009_resp.yaml#/responses/400'
+        "401":
+          $ref: '../responses/SOL009_resp.yaml#/responses/401'
+        "403":
+          $ref: '../responses/SOL009_resp.yaml#/responses/403'
+        "404":
+          $ref: '../responses/SOL009_resp.yaml#/responses/404'
+        "405":
+          $ref: '../responses/SOL009_resp.yaml#/responses/405'
+        "406":
+          $ref: '../responses/SOL009_resp.yaml#/responses/406'
+        "422":
+          $ref: '../responses/SOL009_resp.yaml#/responses/422'
+        "500":
+          $ref: '../responses/SOL009_resp.yaml#/responses/500'
+        "503":
+          $ref: '../responses/SOL009_resp.yaml#/responses/503'
+        "504":
+          $ref: '../responses/SOL009_resp.yaml#/responses/504'
 
 components:
   parameters:
@@ -310,7 +464,23 @@ components:
         Identifier of the logging job.
       required: true
       schema:
-        type: string
+        $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
+    logJReportId:
+      name: logJReportId
+      in: path
+      description: >-
+        Identifier of the report.
+      required: true
+      schema:
+        $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
+    subscriptionId:
+      name: subscriptionId
+      in: path
+      description: >-
+        Identifier of the subscription
+      required: true
+      schema:
+        $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
     filter:
       name: filter
       in: query
@@ -355,10 +525,10 @@ components:
       in: query
       description: >-
        Indicates to exclude the following complex attributes from the response. See clause 5.3 of ETSI GS NFV-SOL 013
-      for details. The NFV-MANO functional entity shall support this parameter.
-      The following attributes shall be excluded from the LoggingJob structure in the response body if this parameter
-      is provided, or none of the parameters "all_fields," "fields", "exclude_fields", "exclude_default" are provided
-      -logReports
+       for details. The NFV-MANO functional entity shall support this parameter.
+       The following attributes shall be excluded from the LoggingJob structure in the response body if this parameter
+       is provided, or none of the parameters "all_fields," "fields", "exclude_fields", "exclude_default" are provided
+        -logReports
       required: false
       schema:
         type: string
@@ -374,6 +544,13 @@ components:
         type: string
 
   requestBodies:
+    LogmSubscriptionRequest:
+      description: >-
+        Details of the subscription to be created
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/LogmSubscriptionRequest"
     CreateLoggingJobRequest:
       description: >-
         This type represents a request to create a logging job. It shall comply with the provisions
@@ -393,6 +570,154 @@ components:
       required: true
 
   responses:
+    LogmSubscription.Delete:
+      description: >-
+        Shall be returned when the "Individual subscription" resource has been deleted successfully.
+        The response body shall be empty.
+      headers:
+        Content-Type:
+          description: The MIME type of the body of the response.
+          schema:
+            type: string
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+
+    LogmSubscription.Get:
+      description: >-
+        Shall be returned when the subscription has been read successfully.
+        The response body shall contain a representation of the "Individual subscription" resource,
+        as defined in clause 8.6.2.3.
+      headers:
+        Content-Type:
+          description: The MIME type of the body of the response.
+          schema:
+            type: string
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/LogmSubscription"
+
+    LogmSubscriptions:
+      description: >-
+        Shall be returned when the list of subscriptions has been queried successfully.
+        The response body shall contain in an array the representations of all active subscriptions of
+        the functional block that invokes the method, i.e. zero or more representations of log management
+        subscriptions as defined in clause 8.6.2.3.
+        If the "filter" URI parameter was supplied in the request, the data in the response body shall have
+        been transformed according to the rules specified in clause 5.2.2 of ETSI GS NFV-SOL 013.
+        If the NFV-MANO functional entity supports alternative 2 (paging) according to clause 5.4.2.1 of
+        ETSI GS NFV-SOL 013 for this resource, inclusion of the Link HTTP header in this response shall follow
+        the provisions in clause 5.4.2.3 of ETSI GS NFV-SOL 013 .
+      headers:
+        Content-Type:
+          description: The MIME type of the body of the response.
+          schema:
+            type: string
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/LogmSubscription"
+
+    LogmSubscription:
+      description: >-
+        Shall be returned when the subscription has been created successfully.
+        A representation of the created "Individual subscription" resource shall be returned in the response body,
+        as defined in clause 8.6.2.3.
+        The HTTP response shall include a "Location" HTTP header that contains the resource URI of the created
+        "Individual subscription" resource.
+      headers:
+        Content-Type:
+          description: The MIME type of the body of the response.
+          schema:
+            type: string
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+        Location:
+          description: >
+            URI of the "Individual log report" resource just created
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/LogmSubscription"
+
+    LogmSubscription.303:
+      description: >-
+        Shall be returned when a subscription with the same callbackURI and the same filter already exists and the
+        policy of the NFV-MANO functional entity is to not create redundant subscriptions.
+        The HTTP response shall include a "Location" HTTP header that contains the resource URI of the existing
+        "Individual subscription" resource.
+        The response body shall be empty.
+      headers:
+        Content-Type:
+          description: The MIME type of the body of the response.
+          schema:
+            type: string
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+        Location:
+          description: >
+            URI of the "Individual log report" resource just created
+          schema:
+            type: string
+
     LogReportCompiled:
       description: >-
         Shall be returned for a successful compilation of the log data and creation of the associated log report
@@ -679,6 +1004,127 @@ components:
             items:
               $ref: "#/components/schemas/LoggingJob"
   schemas:
+    LogmSubscription:
+      description: >-
+        This type represents a subscription. It shall comply with the provisions defined in table 8.6.2.3-1.
+      type: object
+      required:
+        - id
+        - callbackUri
+        - _links
+      properties:
+        id:
+          description: >-
+            Identifier that identifies the subscription.
+          $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
+        filter:
+          description: >-
+            Filter settings for this subscription, to define the subset of all notifications this subscription
+            relates to. A particular notification is sent to the subscriber if the filter matches,
+            or if there is no filter
+          $ref: "#/components/schemas/LogmNotificationsFilter"
+        callbackUri:
+          description: >-
+            The URI of the endpoint to send the notification to.
+          $ref: '../definitions/SOL009_def.yaml#/definitions/Uri'
+        _links:
+          description: >-
+            Links to resources related to this resource.
+          type: object
+          required:
+            - self
+          properties:
+            self:
+              description: >-
+                URI of this resource.
+              $ref: '../definitions/SOL009_def.yaml#/definitions/Link'
+
+    LogmNotificationsFilter:
+      description: >-
+        This type represents a filter that can be used to subscribe for notifications related to log
+        management events. It shall comply with the provisions defined in table 8.6.3.7-1.
+        At a particular nesting level in the filter structure, the following applies: All attributes
+        shall match in order for the filter to match (logical "and" between different filter attributes).
+        If an attribute is an array, the attribute shall match if at least one of the values in the array matches
+        (logical "or" between the values of one filter attribute).
+      type: object
+      properties:
+        objectInstanceFilter:
+          description: >-
+            Filter criteria to select object instance about which to notify.
+          $ref: "#/components/schemas/ManoEntitySubscriptionFilter"
+        notificationTypes:
+          description: >-
+            Match particular notification types.
+            Permitted values:
+            - LogReportAvailableNotification
+          type: string
+          enum: [LogReportAvailableNotification]
+
+    ManoEntitySubscriptionFilter:
+      description: >-
+        This type represents subscription filter criteria to match NFV-MANO functional entities and their
+        associated managed objects. It shall comply with the provisions defined in Table 4.3.2.2-1.
+      type: object
+      oneOf:
+        - required:
+          - manoServiceIds
+        - required:
+          - manoServiceNames
+        - required:
+          - manoServiceInterfaceIds
+        - required:
+          - manoServiceInterfaceNames
+        - required:
+          - consumedManoInterfaceIds
+        - required:
+          - consumedManoInterfaceNames
+      properties:
+        manoEntityId:
+          description: >-
+            If present, match the NFV-MANO functional entity with an instance identifier listed in this attribute.
+          $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
+        manoServiceIds:
+          description: >-
+            If present, match NFV-MANO services with an instance identifier listed in this attribute.
+          type: array
+          items:
+            $ref: '../definitions/SOL009_def.yaml#/definitions/IdentifierInManoEntity'
+        manoServiceNames:
+          description: >-
+            If present, match NFV-MANO services with an NFV-MANO service name listed in this attribute.
+          type: array
+          items:
+            type: string
+        manoServiceInterfaceIds:
+          description: >-
+            If present, match NFV-MANO functional entity produced interfaces with an instance
+            identifier listed in this attribute.
+          type: array
+          items:
+            $ref: '../definitions/SOL009_def.yaml#/definitions/IdentifierInManoEntity'
+        manoServiceInterfaceNames:
+          description: >-
+            If present, match NFV-MANO functional entity produced interfaces with an instance Name listed in
+            this attribute.
+          type: array
+          items:
+            type: string
+        consumedManoInterfaceIds:
+          description: >-
+            If present, match NFV-MANO functional entity consumed interfaces with an instance identifier
+            listed in this attribute.
+          type: array
+          items:
+            $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
+        consumedManoInterfaceNames:
+          description: >-
+            If present, match NFV-MANO functional entity consumed interfaces with an instance Name
+            listed in this attribute.
+          type: array
+          items:
+            type: string
+
     CompileLogRequest:
       description: >
         This type represents a request to compile the logged data associated to an object instance.
@@ -833,6 +1279,31 @@ components:
               items:
                 $ref: '../definitions/SOL009_def.yaml#/definitions/Link'
 
+    LogmSubscriptionRequest:
+      description: >-
+        Information on application context created by the MEC system
+        type: object
+      required:
+        - callbackUri
+      type: object
+      properties:
+        filter:
+          description: >-
+            Filter settings for this subscription, to define the subset of all notifications this subscription
+            relates to. A particular notification is sent to the subscriber if the filter matches,
+            or if there is no filter.
+          $ref: "#/components/schemas/LogmNotificationsFilter"
+        callbackUri:
+          description: >
+            The URI of the endpoint to send the notification to.
+          $ref: "../definitions/SOL009_def.yaml#/definitions/Uri"
+        authentication:
+          description: >
+            Authentication parameters to configure the use of Authorization when sending notifications
+            corresponding to this subscription, as defined in clause 8.3.4 of ETSI GS NFV-SOL 013.
+            This attribute shall only be present if the subscriber requires authorization of notifications.
+          $ref: "../definitions/SOL009_def.yaml#/definitions/SubscriptionAuthentication"
+
     CreateLoggingJobRequest:
       description: >-
         Information on application context created by the MEC system
@@ -955,7 +1426,7 @@ components:
               logReportId:
                 description: >-
                   Identifier of the available log report.
-                '../definitions/SOL009_def.yaml#/definitions/Identifier'
+                $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
               logReportLoc:
                 description: >-
                   Link to the available log report.
@@ -1125,7 +1596,7 @@ components:
         logGarbageCollection:
           description: >-
             Indicates to collect logged information about garbage collection processes associated to NFV-MANO services.
-        type: boolean
+          type: boolean
 
     LoggingJobSystemCriteria:
       description: >-
@@ -1229,7 +1700,7 @@ components:
                 encryptionCertificate:
                   description: >-
                     X.509 certificate with the public key to use for the encryption of the compiled log file.
-                  type: String
+                  type: string
                 cipherAlgorithm:
                   description: >-
                     Cryptographic algorithm to be used for the encryption of the compiled log file. More than
