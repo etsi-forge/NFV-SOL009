@@ -771,7 +771,7 @@ components:
             the initial deployment of the NFV-MANO functional entity and its value allocated 
             based on network operator policies. The value of this identifier shall be unique 
             at least in the scope of the NFV-MANO deployment.
-          $ref: "##Identifier"
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
         type:
           description: >
             Type of NFV-MANO functional entity.
@@ -796,7 +796,7 @@ components:
         softwareVersion:
           description: >
             The version of the software of the NFV-MANO functional entity.
-            $ref: "##Version"
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
         manoEntityComponents:
           description: >
             The deployed NFV-MANO functional entity components which realize the 
@@ -807,7 +807,7 @@ components:
           type: array
           items: 
             $ref: "#/components/schemas/ManoEntityComponent"
-            minminItems: 0
+            minItems: 0
         manoServices:
           description: >
             Information about the NFV-MANO services provided by the NFV-MANO 
@@ -815,7 +815,7 @@ components:
           type: array
           items: 
             $ref: "#/components/schemas/ManoService"
-            minminItems: 1
+            minItems: 1
         manoConfigurableParams:
           description: >
             Information and current values of the configurable parameters.
@@ -853,7 +853,7 @@ components:
             NOTE: The information about the NFV-MANO services offered by a 
             specific type of NFV-MANO functional entity is specified by the 
             manoServices attribute.
-          $ref: "#/components/schemas/nfvoSpecificInfo"
+          $ref: "#/components/schemas/NfvoSpecificInfo"
         vnfmSpecificInfo:
           description: >
             The information specific to a VNFM entity.
@@ -887,171 +887,1520 @@ components:
           properties:
             self:
               description: URI of this resource.
-              $ref: "##Link"
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/Link"
             manoServiceInterfaces:
               description: Link to the "NFV-MANO service interfaces" resource.
-              $ref: "##Link"
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/Link"
             peerEntities:
               description: Link to "Peer entities" resource.
-              $ref: "##Link"
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/Link"
             changeState:
               description: Link to the "Change state" task resource.
-              $ref: "##Link"
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/Link"
             changeStateOpOccs:
               description: Link to the "Change state operation occurrences" resource.
-              $ref: "##Link"        
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/Link"        
 
     ManoConfigModificationRequest:
       description: >
+        This type represents attribute modifications for configuration parameters 
+        of an NFV-MANO functional entity. 
+      type: object
+      properties:
+        name:
+          description: >
+            New value of the "name" attribute in "ManoEntity".
+          type: string
+        description:
+          description: >
+            New value of the "description" attribute in "ManoEntity".
+          type: string
+        clockSyncs:
+          description: >
+            New content of certain entries in the "clockSyncs" attribute array in 
+            the "ManoEntityConfigurableParams", as defined below this table. 
+          type: array
+          items:
+            $ref: "#/components/schemas/ClockSyncInfo"
+        clockSyncsDeleteIds:
+          description: >
+            List of identifiers entries to be deleted from the "clockSyncs" 
+            attribute array in the "ManoEntityConfigurableParams", as defined 
+            below this table.
+          type: array
+          items:
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+        defaultLogCompileBySizeValue:
+          description: >
+            New value of the "defaultLogCompileBySizeValue" attribute in the 
+            "ManoEntityConfigurableParams".
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/UnsignedInt"
+        defaultLogCompileByTimerValue:
+          description: >
+            New value of the "defaultLogCompileByTimerValue" attribute in the 
+            "ManoEntityConfigurableParams".
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/UnsignedInt"
+        manoServiceModifications:
+          description: >
+            New content of certain entries in the "manoServices" attribute array 
+            in the "ManoEntity", as defined below this table.
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                description: >
+                  Identifier of the NFV-MANO service to modify.
+                $ref: "../components/SOL009_comps.yaml#/components/schemas/IdentifierInManoEntity"
+              name:
+                description: >
+                  New value for the "name" attribute in the "ManoService". 
+                  
+                  NOTE:	At least one of these attributes shall be provided if requesting 
+                  a modification of the NFV-MANO service identified by "id".
+                type: string
+              description:
+                description: >
+                  New value for the "description" attribute in the "ManoService".
+                  
+                  NOTE:	At least one of these attributes shall be provided if requesting 
+                  a modification of the NFV-MANO service identified by "id".
+                type: string
+            required:
+              - id
 
-      type:
-        
-    
     ManoConfigModifications:
       description: >
-
-      type:
-        
+        This type represents attribute modifications that were performed on the 
+        "NFV-MANO entity" resource of the producer NFV-MANO functional entity. 
+        The attributes that can be included consist of those requested to be 
+        modified explicitly in the "ManoConfigModificationRequest" data structure. 
+      type: object
+      properties:
+        name: 
+          description: >
+            If present, this attribute signals modifications of the "name" 
+            attribute in "ManoEntity", as defined in clause 5.6.2.3
+          type: string
+        description: 
+          description: >
+            If present, this attribute signals modifications of the "description" 
+            attribute in "ManoEntity", as defined in clause 5.6.2.3.
+          type: string
+        clockSyncs: 
+          description: >
+            If present, this attribute signals modifications of the "clockSyncs" 
+            attribute in "ManoEntityConfigurableParams", as defined in 
+            clause 5.6.2.3.
+          type: array
+          items:
+            $ref: "#/components/schemas/ClockSyncInfo"
+        clockSyncsDeleteIds: 
+          description: >
+            If present, this attribute signals modifications of certain entries in 
+            "clockSyncs" attribute in "ManoEntityConfigurableParams", as defined 
+            in clause 5.6.2.3.
+          type: array
+          items:
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+        defaultLogCompileBySizeValue: 
+          description: >
+            If present, this attribute signals modifications of the 
+            "defaultLogCompileBySizeValue" attribute in the 
+            "ManoEntityConfigurableParams".
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/UnsignedInt"
+        defaultLogCompileByTimerValue: 
+          description: >
+            If present, this attribute signals modifications of the 
+            "defaultLogCompileByTimerValue" attribute in the 
+            "ManoEntityConfigurableParams".
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/UnsignedInt"
+        manoServiceModifications: 
+          description: >
+            If present, this attribute signals modifications of the "manoServices" 
+            attribute array in the "ManoEntity", as defined in clause 5.6.2.3.
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                description: >
+                  Identifier of the NFV-MANO service that has been modified.
+                $ref: "../components/SOL009_comps.yaml#/components/schemas/IdentifierInManoEntity"
+              name:
+                description: >
+                  If present, this attribute signals modification of the "name" 
+                  attribute in the "ManoService".
+                type: string
+              description:
+                description: >
+                  If present, this attribute signals modification of the 
+                  "description" attribute in the "ManoService".
+                type: string
+            required:
+              - id
 
     CimSubscriptionRequest:
       description: >
+        This type represents a subscription request related to notifications 
+        about NFV-MANO configuration and information management changes. 
+      type: object
+      properties:
+        filter:
+          description: >
+            Filter settings for this subscription, to define the subset of all 
+            notifications this subscription relates to. A particular notification 
+            is sent to the subscriber if the filter matches, or if there is no filter.
+          $ref: "#/components/schemas/CimNotificationsFilter"
+        callbackUri:
+          description: >
+            The URI of the endpoint to send the notification to.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+        authentication:
+          description: >
+            Authentication parameters to configure the use of Authorization when 
+            sending notifications corresponding to this subscription, as defined 
+            in clause 8.3.4 of ETSI GS NFV-SOL 013.
 
-      type:
-        
+            This attribute shall only be present if the subscriber requires 
+            authorization of notifications.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/SubscriptionAuthentication"
+      required:
+        - callbackUri
 
     CimSubscription:
       description: >
-
-      type:
-        
+        This type represents a subscription related to notifications about 
+        NFV-MANO configuration and information management changes
+      type: object
+      properties:
+        id:
+          description: >
+            Identifier that identifies the subscription
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+        filter:
+          description: >
+            Filter settings for this subscription, to define the subset of all 
+            notifications this subscription relates to. A particular notification 
+            is sent to the subscriber if the filter matches, or if there is no filter.
+          $ref: "#/components/schemas/CimNotificationsFilter"
+        callbackUri:
+          description: >
+            The URI of the endpoint to send the notification to.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+        _links:
+          description: >
+            Links to resources related to this resource.
+          type: object 
+          properties:
+            self: 
+              description: >
+                URI of this resource.
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/Link"
+          required:
+            - self
+      required:
+        - id
+        - callbackUri
+        - _links
 
     InformationChangedNotification:
       description: >
-
-      type:
-        
+        This type represents a notification that is sent when data about 
+        configuration and information of the NFV-MANO functional entity 
+        have been changed. 
+      type: object
+      properties:
+        id:
+          description: >
+            Identifier of this notification. If a notification is sent multiple 
+            times due to multiple subscriptions, the "id" attribute of all these
+            notifications shall have the same value.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+        notificationType:
+          description: >
+            Discriminator for the different notification types. Shall be set to 
+            "InformationChangedNotification" for this notification type.
+          type: string
+        subscriptionId:
+          description: >
+            Identifier of the subscription that this notification relates to.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+        timeStamp:
+          description: >
+            Date and time of the generation of the notification.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/DateTime"
+        informationChangedTime:
+          description: >
+            Timestamp indicating when the information was changed.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/DateTime"
+        manoEntityId:
+          description: >
+            Identifier of the MANO entity of which the information was changed.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+        changedInfo:
+          description: >
+            Data about the changed configuration and information of the NFV-MANO 
+            functional entity.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/KeyValuePairs"
+        _links:
+          description: >
+            Links to resources related to this notification.
+          type: object
+          properties:
+            self:
+              description: >
+                Link to the related subscription.
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/NotificationLink"
+            subscription:
+              description: >
+                Link to the related subscription.
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/NotificationLink"
+          required:
+            - self
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timeStamp
+        - informationChangedTime
+        - manoEntityId
+        - changedInfo
+        - _links
 
     ChangeStateRequest:
       description: >
-
-      type:
-        
+        This type represents request parameters for changing the state of a managed entity. 
+      type: object
+      properties:
+        operationalStateChange:
+          description: >
+            A change of operational state. Shall be present if the state change request
+            refers to the operational state. 
+            NOTE:	In the present document version, a request shall only include an 
+            operational state change (attribute "operationalStateChange") or an 
+            administrative state change request (attribute "administrativeStateChange"), 
+            but not both.
+          type: object
+          properties:
+            operationalStateAction:
+              description: >
+                The desired operation state to change the managed object to. In case of 
+                changing the state of an NFV-MANO service interface the value 
+                "RESTART" shall not be used.
+              $ref: "#/components/schemas/ChangeOperationalStateEnumType"
+            stopType:
+              description: >
+                It signals the type of stop. 
+                
+                NOTE:	The "stopType" shall only be provided when the "operationalStateAction" 
+                attribute is equal to "STOP" or "RESTART".  The "gracefulStopTimeout" shall 
+                be absent when the "stopType" attribute is equal to "FORCEFUL", and may 
+                be provided otherwise.
+              $ref: "#/components/schemas/StopEnumType"
+            gracefulStopTimeout:
+              description: >
+                The time internal (in seconds) to wait for the entity to be taken out 
+                of service during graceful stop. 
+                
+                NOTE:	The "stopType" shall only be provided when the "operationalStateAction" 
+                attribute is equal to "STOP" or "RESTART".  The "gracefulStopTimeout" shall 
+                be absent when the "stopType" attribute is equal to "FORCEFUL", and may 
+                be provided otherwise.
+              type: integer
+          required:
+            - operationalStateAction
+        administrativeStateChange:
+          description: >
+            A change of administrative state. Shall be present if the state change request
+            refers to the administrative state. 
+            
+            NOTE:	In the present document version, a request shall only include an 
+            operational state change (attribute "operationalStateChange") or an 
+            administrative state change request (attribute "administrativeStateChange"), 
+            but not both.
+          type: object
+          properties:
+            administrativeStateAction:
+              description: > 
+                The desired administrative state to change the managed object to.
+              $ref: "#/components/schemas/ChangeAdministrativeStateEnumType"
+          required:
+            - administrativeStateAction
 
     ChangeStateOpOcc:
       description: >
+        This type represents a Change state operation occurrence. 
+      type: object
+      properties:
+        id: 
+          description: >
+            Identifier of this change state operation occurrence.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+        operationState: 
+          description: >
+            The state of the "change state operation occurrence".
+          $ref: "#/components/schemas/ChangeStateOpOccStateEnumType"
+        stateEnteredTime: 
+          description: >
+            Date-time when the current state was entered.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/DateTime"
+        startTime: 
+          description: >
+            Date-time of the start of the operation.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/DateTime"
+        managedObjectRef: 
+          description: >
+            Reference of the managed object to which the change state operation 
+            occurrence relates. The value of the "type" attribute shall be 
+            "MANO_ENTITY" or "MANO_SERVICE_IF".
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/ManoManagedObjectReference"
+        changeOperationalStateRequest: 
+          description: >
+            The type of the change of operational state that was requested. Shall 
+            be present if the change of state operation triggered a change of 
+            operational state.
+          $ref: "#/components/schemas/ChangeOperationalStateEnumType"
+        changeAdministrativeStateRequest: 
+          description: >
+            The type of the change of administrative state that was requested. Shall 
+            be present if the change of state operation triggered a change of 
+            administrative state.
+          $ref: "#/components/schemas/ChangeAdministrativeStateEnumType"
+        operationParams: 
+          description: >
+            Input parameters of the change state operation. This attribute shall be 
+            formatted according to the request data type of the related change state 
+            operation. 
 
-      type:
-        
+            The following mapping between operationType and the data type of this 
+            attribute shall apply:
+              - CHANGE_STATE: ChangeStateRequest
+              
+            This attribute shall be present if this data type is returned in a response 
+            to reading an individual resource, and may be present according to the chosen 
+            attribute selector parameter if this data type is returned in a response to 
+            a query of a container resource.
+      required:
+        - id
+        - operationState
+        - stateEnteredTime
+        - startTime
+        - managedObjectRef
 
     ChangeStateNotification:
       description: >
+        This type represents a Change state operation occurrence. 
+      type: object
+      properties:
+        id:
+          description: >
+            Identifier of this notification. If a notification is sent multiple times 
+            due to multiple subscriptions, the "id" attribute of all these notifications 
+            shall have the same value.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+        notificationType:
+          description: >
+            Discriminator for the different notification types. Shall be set to 
+            "ChangeStateNotification" for this notification type.
+          type: string
+        subscriptionId:
+          description: >
+            Identifier of the subscription that this notification relates to.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+        timestamp:
+          description: >
+            Date-time of the generation of the notification.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/DateTime"
+        changeStateOpOccId:
+          description: >
+            Identifier of the change state operation occurrence associated to the 
+            notification.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+        stateChangedTime:
+          description: >
+            Timestamp indicating when the state on the managed object was changed.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/DateTime"
+        changeStateOperationState:
+          description: >
+            The state of the "change state operation occurrence".
+          $ref: "#/components/schemas/ChangeStateOpOccStateEnumType"
+        managedObjectRef:
+          description: >
+            Reference of the managed object to which the state change notification relates.
+            The value of the "type" attribute shall be "MANO_ENTITY" or "MANO_SERVICE_IF".
+          $ref: "#../components/SOL009_comps.yaml#/components/schemas/ManoManagedObjectReference"
+        operationalState:
+          description: >
+            New operational state of the managed object. Shall only be present when 
+            there is a change in the operational state.
+          $ref: "#/components/schemas/OperationalStateEnumType"
+        administrativeState:
+          description: >
+            New administrative state of the managed object. Shall only be present 
+            when there is a change in the administrative state.
+          $ref: "#/components/schemas/AdministrativeStateEnumType"
+        _links:
+          description: >
+            Links to resources related to this notification.
+          type: object
+          properties:
+            subscription: 
+              description: >
+                Link to the related subscription.
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/NotificationLink"
+            objectInstance: 
+              description: >
+                Link to the resource representing the object to which the change 
+                state applies. Shall be present if the object instance is accessible 
+                as a resource.
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/NotificationLink"
+            changeStateOpOcc: 
+              description: >
+                Link to the change state operation occurrence that this notification 
+                is related to.
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/NotificationLink"
+          required:
+            - subscription
+            - objectInstance
+            - changeStateOpOcc
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timestamp
+        - changeStateOpOccId
+        - stateChangedTime
+        - changeStateOperationState
+        - managedObjectRef
+        - _links
 
-      type:
-        
 
     ManoServiceInterface:
       description: >
+        This type represents an individual NFV-MANO service interface produced by 
+        an NFV-MANO functional entity. 
+      type: object
+      properties:
+        id:
+          description: >
+            Identifier of the NFV-MANO functional entity interface.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/IdentifierInManoEntity"
+        name:
+          description: >
+            Human-readable name of the NFV-MANO functional entity interface.
+            
+            This attribute can be modified with the PATCH method.
+          type: string
+        type:
+          description: >
+            Type of the NFV-MANO service interface produced by the NFV-MANO functional 
+            entity. Valid values are defined in clause 5.6.4.3.
+          type: string
+        standardVersion:
+          description: >
+            Version of the standard the interface is compliant to. 
+            
+            NOTE 1:	The information to be provided in this attribute shall relate to 
+            the specification and version of the specification. For instance, 
+            "ETSI GS NFV-SOL 003 (V2.4.1)".
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
+        providerSpecificApiVersion:
+          description: >
+            Provider-specific software API version.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
+        apiVersion:
+          description: >
+            API version, in compliance with the version identifiers and parameters 
+            format specified in clause 9.1 of ETSI GS NFV-SOL 013.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
+        apiEndpoint:
+          description: >
+            Exposed API endpoint of the interface.
+          type: object
+          properties:
+            apiRoot:
+              description: >
+                Indicates the scheme ("http" or "https"), the host name and optional port, 
+                and an optional sequence of path segments that together represent a prefix 
+                path. Shall be present for ETSI NFV specified RESTful NFV-MANO APIs 
+                (see also clause 4.1 of ETSI GS NFV-SOL 013). May be present otherwise.
 
-      type:
-        
+                This attribute can be modified with the PATCH method.
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+            apiName:
+              description: >
+                Indicates the interface name in an abbreviated form. Shall be present 
+                for ETSI NFV specified RESTful NFV-MANO APIs. The {apiName} of each 
+                interface is defined in the standard the interface is compliant to 
+                (see also clause 4.1 of ETSI GS NFV-SOL 013). May be present otherwise.
+              type: string
+            apiMajorVersion:
+              description: >
+                Indicates the current major version of the API. Shall be present for 
+                ETSI NFV specified RESTful NFV-MANO APIs. The major version is defined 
+                in the standard the interface is compliant to (see also clause 4.1 of 
+                ETSI GS NFV-SOL 013). May be present otherwise.
+              type: string
+            apiUri:
+              description: >
+                URL of the API endpoint. For ETSI NFV specified RESTful NFV-MANO APIs, 
+                the following prefix structure is used (see also clause 4.1 of ETSI 
+                GS NFV-SOL 013): {apiRoot}/{apiName}/{apiMajorVersion}
+                For APIs not specified by ETSI NFV as part of the RESTful NFV-MANO APIs, 
+                this attribute can be modified with the PATCH method. For RESTful NFV-MANO 
+                APIs specified by ETSI NFV, this attribute shall not be modified. Instead, 
+                changes are handled indirectly via patching of the "apiRoot" attribute’s 
+                value.
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+          required:
+            - apiUri
+        maxConcurrentIntOpNumber:
+          description: >
+            Maximum number of concurrent operation requests supported on this interface. 
+            
+            NOTE:	If this attribute is not present, the value of this parameter 
+            is undefined. Overload is handled by the error handling schemes defined 
+            by the applicable API specification.
+          type: integer
+        supportedOperations:
+          description: >
+            Information about supported operations of this interface.
+          type: array
+          items:
+            type: object
+            properties:
+              operationName:
+                description: >
+                  Name of the operation supported on the interface.
+                type: string
+              maxConcurrentOpNumber:
+                description: >
+                  Maximum number of concurrent requests supported by the interface operation. 
+                  
+                  NOTE:	If this attribute is not present, the value of this parameter 
+                  is undefined. Overload is handled by the error handling schemes defined 
+                  by the applicable API specification.
+                type: integer
+            required:
+              - operationName
+          minItems: 1
+        interfaceState:
+          description: >
+            State of the NFV-MANO service interface.
+          properties:
+            operationalState:
+              description: >
+                The operational state of the NFV-MANO service interface.
+              $ref: "#/components/schemas/InterfaceOperationalStateEnumType"
+            administrativeState:
+              description: >
+                The administrative state of the NFV-MANO service interface.
+              $ref: "#/components/schemas/AdministrativeStateEnumType"
+            usageState:
+              description: >
+                The usage state of the NFV-MANO service interface.
+              $ref: "#/components/schemas/UsageStateEnumType"
+          required:
+            - operationalState
+            - administrativeState
+            - usageState
+        securityInfo:
+          description: >
+            Security related information.
+
+            This attribute can be modified with the PATCH method. 
+            
+            NOTE:	Due to the security sensitive information associated to the attribute, 
+            based on access control policies, the API consumer might have read only, 
+            write only, read/write, or no access at all to the attribute’s value. 
+            In case the API consumer is not allowed to read the value of the security 
+            sensitive attribute, the attribute shall be omitted when the information 
+            is to be provided in a response message, and shall be provided otherwise. 
+            In case the API consumer is not allowed to modify the value of the security 
+            sensitive attribute, and the modification request includes new attribute 
+            values, the whole modification request shall be rejected, and proper error 
+            information returned.
+          $ref: "#/components/schemas/ServerInterfaceSecurityInfo"
+        metadata:
+          description: >
+            Additional attributes that provide metadata describing the NFV-MANO 
+            service interface.
+            These attributes can be created, modified or removed with the PATCH 
+            method.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/KeyValuePairs"
+      required:
+        - id
+        - name
+        - type
+        - standardVersion
+        - providerSpecificApiVersion
+        - apiVersion
+        - apiEndpoint
+        - supportedOperations
+        - interfaceState
 
     ManoServiceInterfaceModificationRequest:
       description: >
-
-      type:
-        
-
+        This type represents attribute modifications for configuration parameters of 
+        an NFV-MANO service interface of the producer NFV-MANO functional entity. 
+      type: object
+      properties:
+        name:
+          description: >
+            New value of the "name" attribute in "ManoServiceInterface". 
+            
+            NOTE:	Changing the name does not change the corresponding standardized 
+            API name in the resource URI (refer to "{apiName}" defined in clause 4.1 
+            of ETSI GS NFV-SOL 013).
+          type: string
+        apiRoot:
+          description: >
+            New value of the "apiRoot" attribute in "ManoServiceInterface". 
+            
+            NOTE:	The change of apiRoot or apiUri on an enabled and in use API may 
+            be service disruptive. Also, that change invalidates any related URI that 
+            might have been cached at API consumers.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+        apiUri:
+          description: >
+            New value of the "apiUri" attribute in "ManoServiceInterface". 
+            
+            NOTE:	The change of apiRoot or apiUri on an enabled and in use API may 
+            be service disruptive. Also, that change invalidates any related URI that 
+            might have been cached at API consumers.
+            
+            Shall not be provided if a change of "apiRoot" is present in the request.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+        securityInfo:
+          description: >
+            New value of the "securityInfo" attribute in "ManoServiceInterface".
+            
+            NOTE:	Due to the security sensitive information associated to the attribute, 
+            based on access control policies, the API consumer might have read only, 
+            write only, read/write, or no access at all to the attribute’s value. 
+            In case the API consumer is not allowed to modify the value of the security 
+            sensitive attribute, and the modification request includes new attribute 
+            values, the whole modification request shall be rejected, and proper error 
+            information returned.
+          $ref: "#/components/schemas/ServerInterfaceSecurityInfo"
+        metadata:
+          description: >
+            Modifications of the "metadata" attribute in "ManoServiceInterface". 
+            If present, these modifications shall be applied according to the rules 
+            of JSON Merge PATCH (see IETF RFC 7396).
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/KeyValuePairs"
+            
     ManoServiceInterfaceModifications:
       description: >
-
-      type:
-        
+        This type represents attribute modifications that were performed on an 
+        Individual NFV-MANO service interface" resource. The attributes that can 
+        be included consist of those requested to be modified explicitly in the 
+        "ManoServiceInterfaceModificationRequest" data structure. If applicable, 
+        additional attributes of the "ManoServiceInterface" data structure that 
+        were modified implicitly shall also be provided. 
+      type: object
+      properties:
+        name:
+          description: >
+            If present, this attribute signals modifications of the "name" attribute in 
+            "ManoServiceInterface", as defined in clause 5.6.2.11.
+          type: string
+        apiRoot:
+          description: >
+            If present, this attribute signals modifications of the "apiRoot" attribute 
+            in "ManoServiceInterface", as defined in clause 5.6.2.11.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+        apiUri:
+          description: >
+            If present, this attribute signals modifications of the "apiUri" attribute 
+            in "ManoServiceInterface", as defined in clause 5.6.2.11.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+        securityInfo:
+          description: >
+            If present, this attribute signals modifications of the "securityInfo" 
+            attribute in "ManoServiceInterface", as defined in clause 5.6.2.11. 
+            
+            NOTE:	Due to the security sensitive information associated to the attribute, 
+            based on access control policies, the API consumer might have read only, 
+            write only, read/write, or no access at all to the attribute’s value. 
+            In case the API consumer is not allowed to read the value of the security 
+            sensitive attribute, the attribute shall be omitted when the information 
+            is to be provided in a response message.
+          $ref: "#/components/schemas/ServerInterfaceSecurityInfo"
+        metadata:
+          description: >
+            If present, this attribute signals modifications of the "metadata" attribute 
+            in "ManoServiceInterface", as defined in clause 5.6.2.11.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/KeyValuePairs"
 
     CreatePeerEntityRequest:
       description: >
-
-      type:
-        
+        This type represents request parameters for the creation of a new peer entity resource. 
+      type: object
+      properties:
+        peerEntityId:
+          description: >
+            Identifier of the peer functional entity. 
+            
+            NOTE:	The value of the "peerEntityId" attribute is the same as the value of 
+            the "id" attribute in the "ManoEntity" of the corresponding NFV-MANO functional 
+            entity that acts as peer entity, and shall follow the uniqueness requirements 
+            set out in clause 5.6.2.2 for the "id" attribute.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier" 
+        name:
+          description: >
+            Human-readable name of the peer functional entity.
+          type: string
+        type:
+          description: >
+            Type of the peer functional entity.
+          $ref: "#/components/schemas/PeerEntityEnumType" 
+        description:
+          description: >
+            Human-readable description of the peer functional entity.
+          type: string
+        consumedManoInterfaces:
+          description: >
+            Information of the interface consumed by the NFV-MANO functional entity 
+            from the peer functional entity.
+          type: array
+          items:
+            $ref: "#/components/schemas/ConsumedManoInterfaceInfo"
+        peerEntityState:
+          description: >
+            Current values of the state of the peer functional entity.
+          type: object
+          properties:
+            operationalState:
+              description: >
+                TThe operation state of the peer functional entity’s application.
+              $ref: "#/components/schemas/OperationalStateEnumType" 
+            administrativeState:
+              description: >
+                The administrative state of the peer functional entity’s application.
+              $ref: "#/components/schemas/AdministrativeStateEnumType" 
+          required:
+            - operationalState
+            - administrativeState
+      required:
+        - peerEntityId
+        - name
+        - type
 
     PeerEntity:
       description: >
+        This type represents an individual peer entity. 
+      type: object
+      properties:
+        id:
+          description: >
+            Identifier of the resource representing the peer functional entity. 
+            This identifier is allocated by the producer NFV-MANO functional entity.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier" 
+        peerEntityId:
+          description: >
+            Identifier of the peer functional entity. 
+            
+            NOTE :	The value of the "peerEntityId" attribute is the same as the value 
+            of the "id" attribute in the "ManoEntity" of the corresponding NFV-MANO 
+            functional entity that acts as peer entity, and shall follow the uniqueness 
+            requirements set out in clause 5.6.2.2 for the "id" attribute.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier" 
+        name:
+          description: >
+            Human-readable name of the peer functional entity.
 
-      type:
-        
+            This attribute can be modified with the PATCH method.
+          type: string
+        type:
+          description: >
+            Type of the peer functional entity.
+          $ref: "#/components/schemas/PeerEntityEnumType" 
+        description:
+          description: >
+            Human-readable description of the peer functional entity.
+
+            This attribute can be modified with the PATCH method.
+          type: string
+        consumedManoInterfaces:
+          description: >
+            Information of the interface consumed by the NFV-MANO functional entity 
+            from the peer functional entity.
+
+            This attribute can be modified with the PATCH method.
+          type: array
+          items:
+            $ref: "#/components/schemas/ConsumedManoInterfaceInfo" 
+        peerEntityState:
+          description: >
+            State of the peer functional entity as provided by the API consumer when 
+            creating the resource or when updating it with the PATCH method.
+          type: object
+          properties:
+            operationalState:
+              description: >
+                The operational state of the peer functional entity’s application.
+              $ref: "#/components/schemas/OperationalStateEnumType" 
+            administrativeState:
+              description: 
+                The administrative state of the peer functional entity’s application.
+              $ref: "#/components/schemas/AdministrativeStateEnumType" 
+          required:
+            - operationalState
+            - administrativeState
+      required:
+        - id
+        - peerEntityId
+        - name
+        - type
+        - peerEntityState
 
     PeerEntityConfigModificationRequest:
       description: >
-
-      type:
-        
+        This type represents attribute modifications for configuration parameters 
+        of a peer entity. 
+      type: object
+      properties:
+        name:
+          description: >
+            New value of the "name" attribute in "PeerEntity".
+          type: string
+        description:
+          description: >
+            New value of the "description" attribute in "PeerEntity", or "null" to 
+            remove the attribute.
+          type: string
+        consumedManoInterfaces:
+          description: >
+            New content of certain entries in the "consumedManoInterfaces" attribute 
+            array in the "PeerEntity", as defined below this table. 
+            
+            NOTE:	Due to the security sensitive information contained within the attribute 
+            (refer to "securityInfo" within the "ConsumedManoInterfaceInfo"), based on 
+            access control policies, the API consumer might have read only, write only, 
+            read/write, or no access at all to the attribute’s value. In case the 
+            API consumer is not allowed to modify the value of the security sensitive 
+            attribute, and the modification request includes new attribute values, 
+            the whole modification request shall be rejected, and proper error information 
+            returned.
+          type: array
+          items:
+            $ref: "#/components/schemas/ConsumedManoInterfaceInfo"
+        consumedManoInterfaceDeleteIds:
+          description: >
+            List of identifiers entries to be deleted from the "consumedManoInterfaces" 
+            attribute array in the " PeerEntity ", as defined below this table.
+          type: array
+          items:
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+        operationalState:
+          description: >
+            New content of the "operationalState" attribute in the "peerEntityState" 
+            structure in the "PeerEntity".
+          $ref: "#/components/schemas/OperationalStateEnumType"
+        administrativeState:
+          description: >
+            New content of the "administrativeState" attribute in the "peerEntityState" 
+            structure in the "PeerEntity".
+          $ref: "#/components/schemas/AdministrativeStateEnumType"
 
     PeerEntityConfigModifications:
       description: >
+        This type represents attribute modifications that were performed on an 
+        "Individual peer entity" resource. The attributes that can be included 
+        consist of those requested to be modified explicitly in the 
+        "PeerEntityConfigModificationRequest" data structure. If applicable, 
+        additional attributes of the "PeerEntity" data structure that were 
+        modified implicitly shall also be provided.
+      type: object
+      properties:
+        name:
+          description: >
+            If present, this attribute signals modifications of the "name" attribute 
+            in "PeerEntity", as defined in clause 5.6.2.15.
+          type: string
+        description:
+          description: >
+            If present, this attribute signals modifications of the "description" 
+            attribute in "PeerEntity", as defined in clause 5.6.2.15.
+          type: string
+        consumedManoInterfaces:
+          description: >
+            If present, this attribute signals modifications of certain entries in 
+            "consumedManoInterfaces" attribute in "PeerEntity", as defined in 
+            clause 5.6.2.15. 
+            
+            NOTE:	Due to the security sensitive information contained within the 
+            attribute (refer to "securityInfo" within the "ConsumedManoInterfaceInfo"), 
+            based on access control policies, the API consumer might have read only, 
+            write only, read/write, or no access at all to the attribute’s value. 
+            In case the API consumer is not allowed to read the value of the security 
+            sensitive attribute, the attribute shall be omitted when the information 
+            is to be provided in a response message.
+          type: array
+          items:
+            $ref: "#/components/schemas/ConsumedManoInterfaceInfo"
+        consumedManoInterfaceDeleteIds:
+          description: >
+            If present, this attribute signals the deletions of certain entries in the 
+            "consumedManoInterfaces" attribute in "PeerEntity", as defined in 
+            clause 5.6.2.15.
+          type: array
+          items:
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+        operationalState:
+          description: >
+            If present, this attribute signals modifications of the "operationalState" 
+            attribute in the "peerEntityState" structure in the "PeerEntity", as defined 
+            in clause 5.6.2.15.
+          $ref: "#/components/schemas/OperationalStateEnumType"
+        administrativeState:
+          description: >
+            If present, this attribute signals modifications of the "administrativeState" 
+            attribute in the "peerEntityState" structure in the "PeerEntity", as defined 
+            in clause 5.6.2.15. 
+          $ref: "#/components/schemas/AdministrativeStateEnumType"
 
-      type:
-        
+    ManoConfigurableParams:
+      description: >
+        # Warning: No definition found in the document
+        ManoConfigurableParams
 
     #referenced
     ManoEntityComponent:
       description: >
-
-      type:
-        
+        This type represents information of a deployed component realizing part of an 
+        NFV-MANO functional entity. It is optional for the API producer to support 
+        this type. 
+      type: object
+      properties:
+          id:
+            description: >
+              Identifier of the NFV-MANO functional entity component.
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/IdentifierInManoEntity"
+          manoServiceIds:
+            description: >
+              References to the NFV-MANO services that depend on the NFV-MANO functional 
+              entity component. The identifier of the ManoService is referred. A service 
+              may depend on multiple components. Multiple services may depend on the same 
+              component.
+            type: array
+            items:
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/IdentifierInManoEntity"
+      required:
+        - id
 
     ManoService:
       description: >
+        This type represents information about an NFV-MANO service provided by the 
+        NFV-MANO functional entity.
+      type: object
+      properties:
+        id:
+          description: >
+            Identifier of the NFV-MANO service.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/IdentifierInManoEntity"
+        name:
+          description: >
+            Human-readable name of the NFV-MANO service.
 
-      type:
-        
+            This attribute can be modified with the PATCH method.
+          type: string
+        description:
+          description: >
+            Human-readable description of the NFV-MANO service.
+
+            This attribute can be modified with the PATCH method.
+          type: string     
+        manoServiceInterfaceIds:
+          description: >
+            Reference to the NFV-MANO interfaces associated to the NFV-MANO service. 
+            If cardinality is greater than one, the type of ManoServiceInterface 
+            (see clause 5.6.3.3) shall be the same. The identifier of the 
+            ManoServiceInterface is referred. 
+
+            NOTE:	A cardinality greater than one supports having different interface 
+            versions or apiEndpoints to be used for accessing the same instance of a 
+            NFV-MANO service.
+          type: array
+          items:
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/IdentifierInManoEntity"
+          minItems: 1       
+        _links:
+          description: >
+            Links to resources related to this resource.
+          type: object
+          properties:
+            manoServiceInterfaces:
+              description: >
+                Link to the "individual NFV-MANO service interface" resources with 
+                information about the associated interfaces to the NFV-MANO service.
+              type: array
+              items:
+                $ref: "../components/SOL009_comps.yaml#/components/schemas/Link"
+              minItems: 1
+          required:
+            - manoServiceInterfaces
+      required:
+        - id
+        - name
+        - description
+        - manoServiceInterfaceIds
+        - _links
 
     NfvoSpecificInfo:
       description: >
+        This type represents information attributes specific to an NFVO entity, 
+        and that can be relevant to more than one NFV-MANO service offered by an 
+        NFVO entity. 
+      type: object
+      properties:
+        maxOnboardedNsdNum:
+          description: >
+            Maximum number of NSDs that can be on-boarded on the NFVO. 
+            
+            NOTE: If this attribute is not present, the value of this parameter 
+            is undefined.
+          type: integer
+        maxOnboardedVnfPkgNum:
+          description: >
+            Maximum number of VNF Packages that can be on-boarded on the NFVO. 
 
-      type:
+            NOTE: If this attribute is not present, the value of this parameter 
+            is undefined.
+          type: integer
+        supportedVnfdFormats:
+          description: >
+            Supported VNFD data formats.
+          type: object
+          properties:
+            vnfdFormat:
+              description: >
+                Name of the VNFD format.
+
+                Permitted values:
+                  - TOSCA: The VNFD follows TOSCA definition, according to ETSI 
+                  GS NFV-SOL 001 standard.
+                  - YANG: The VNFD follows YANG definition according to ETSI 
+                  GS NFV-SOL 006 standard.
+              type: string
+              enum:
+                - TOSCA
+                - YANG
+            standardVersion:
+              description: >
+                Name and version of the standard the VNFD is compliant to. 
+                
+                NOTE: The information to be provided in this attribute shall relate 
+                to the specification and version of the specification. For instance, 
+                "ETSI GS NFV-SOL 001 (V2.5.1)".
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
+          required:
+            - vnfdFormat
+            - standardVersion
+        supportedNsdFormats:
+          description: >
+            Supported NSD data formats.
+          type: object
+          properties:
+            nsdFormat:
+              description: >
+                Name of the NSD format.
+
+                Permitted values:
+                  - TOSCA: The VNFD follows TOSCA definition, according to ETSI 
+                  GS NFV-SOL 001 standard.
+                  - YANG: The VNFD follows YANG definition according to ETSI 
+                  GS NFV-SOL 006 standard.
+              type: string
+              enum:
+                - TOSCA
+                - YANG
+            standardVersion:
+              description: >
+                Name and version of the standard the NSD is compliant to. 
+                
+                NOTE: The information to be provided in this attribute shall relate 
+                to the specification and version of the specification. For instance, 
+                "ETSI GS NFV-SOL 001 (V2.5.1)".
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
+          required:
+            - nsdFormat
+            - standardVersion
+      required:
+        - supportedVnfdFormats
+        - supportedNsdFormats
         
-
     VnfmSpecificInfo:
       description: >
+        This type represents information attributes specific to a VNFM entity, 
+        and that can be relevant to more than one NFV-MANO service offered by 
+        a VNFM entity.
+      type: object
+      properties:
+        resoruceMgmtModeSupport:
+          description: >
+            The supported resource management modes of the VNFM.
 
-      type:
-        
+            Permitted values:
+              - DIRECT: The VNFM supports direct mode only.
+              - INDIRECT: The VNFM supports indirect mode only.
+              - BOTH: The VNFM supports both direct and indirect mode.
+          type: string
+          enum:
+            - DIRECT
+            - INDIRECT
+            - BOTH
+        managedVnfInstanceInfos:
+          description: >
+            The kinds of VNF instances that can be managed, e.g. to determine the 
+            compatibility of a VNF with certain VNFM according to the vnfmInfo 
+            attribute in the VNFD (see table 7.1.2.2-1 in ETSI GS NFV-IFA 011).
+          type: array
+          items:
+            type: string
+          minItems: 1
+        supportedVnfdFormats:
+          description: >
+            Supported VNFD data formats.
+          type: array
+          items:
+            type: object
+            properties:
+              vnfdFormat:
+                description: >
+                  Name of the VNFD format.
+
+                  Permitted values:
+                    - TOSCA: The VNFD follows TOSCA definition, according to ETSI 
+                    GS NFV-SOL 001 standard.
+                    - YANG: The VNFD follows YANG definition according to ETSI 
+                    GS NFV-SOL 006 standard.
+                type: string
+                enum:
+                  - TOSCA
+                  - YANG
+              standardVersion:
+                description: >
+                  Name and version of the standard the VNFD is compliant to. 
+
+                  NOTE: The information to be provided in this attribute shall relate 
+                  to the specification and version of the specification. For instance, 
+                  "ETSI GS NFV-SOL 001 (V2.5.1)".
+                $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
+            required:
+              - vnfdFormat
+              - standardVersion
+          minItems: 1
+      required:
+        - resoruceMgmtModeSupport
+        - managedVnfInstanceInfos
+        - supportedVnfdFormats
 
     VimSpecificInfo:
       description: >
-
-      type:
+        This type represents information attributes specific to a VIM entity, 
+        and that can be relevant to more than one NFV-MANO service offered by 
+        a VIM entity.
+      type: object
         
-
     ManoEntityConfigurableParams:
       description: >
-
-      type:
+        This type represents list of parameters that can be configured on the 
+        NFV MANO functional entity. 
+      type: object
+      properties:
+        clockSyncs:
+          description: 
+            Properties of the clock synchronization to be used by the NFV-MANO 
+            functional entity.
+          type: array
+          items:
+            $ref: "#/components/schemas/ClockSyncInfo"
+          minItems: 1
+        defaultLogCompileBySizeValue:
+          description: 
+            Default value for the log compilation by size to be used.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/UnsignedInt"
+        defaultLogCompileByTimerValue:
+          description: 
+            Default value for the log compilation by timer to be used.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/UnsignedInt"
+      required:
+        - clockSyncs
+        - defaultLogCompileBySizeValue
+        - defaultLogCompileByTimerValue
         
-
     ConsumedManoInterfaceInfo:
       description: >
+        This type represents an interface consumed by the producer NFV MANO 
+        functional entity from another peer functional entity. 
+      type: object
+      properties:
+        id:
+          description: >
+            Identifier of the consumed NFV-MANO interface. This identifier is
+            managed by the API consumer.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+        name:
+          description: >
+            Human-readable name of the NFV-MANO interface.
+          type: string
+        type:
+          description: >
+            Type of the NFV-MANO service interface consumed by the NFV-MANO 
+            functional entity. Valid values are defined in clause 5.6.4.3.
+          type: string
+        standardVersion:
+          description: >
+            Version of the standard the interface is compliant to.
+            
+            NOTE: The information to be provided in this attribute shall relate 
+            to the specification and its version. For instance, 
+            "ETSI GS NFV-SOL 003 (V2.4.1)".
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
+        apiVersion:
+          description: >
+            API version, in compliance with the version identifiers and parameters 
+            format specified in clause 9.1 of ETSI GS NFV-SOL 013.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
+        apiEndpoint:
+          description: >
+            Consumable API endpoint of the interface.
+            It provides the information relevant about the protocol, host and port, 
+            and path where the interface API can be accessed.
+          type: object
+          properties:
+            apiRoot:
+              description: >
+                Indicates the scheme ("http" or "https"), the host name and optional 
+                port, and an optional sequence of path segments that together 
+                represent a prefix path. Shall be present for ETSI NFV specified 
+                RESTful NFV-MANO APIs (see also clause 4.1 of ETSI GS NFV-SOL 013). 
+                May be present otherwise.
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri" 
+            apiName:
+              description: >
+                Indicates the interface name in an abbreviated form. Shall be present 
+                for ETSI NFV specified RESTful NFV-MANO APIs. The {apiName} of each 
+                interface is defined in the standard the interface is compliant to 
+                (see also clause 4.1 of ETSI GS NFV-SOL 013). May be present otherwise.
+              type: string
+            apiMajorVersion:
+              description: >
+                Indicates the current major version of the API. Shall be present for 
+                ETSI NFV specified RESTful NFV-MANO APIs. The major version is defined 
+                in the standard the interface is compliant to (see also clause 4.1 
+                of ETSI GS NFV-SOL 013). May be present otherwise.
+              type: string 
+            apiUri:
+              description: >
+                URL of the API endpoint. For ETSI NFV specified RESTful NFV-MANO APIs, 
+                the following prefix structure is used (see also clause 4.1 of ETSI 
+                GS NFV-SOL 013): {apiRoot}/{apiName}/{apiMajorVersion}
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri" 
+          required:
+            - apiUri
+        securityInfo:
+          description: >
+            Security related information including credentials information if needed 
+            for consuming the API.
 
-      type:
+            NOTE: Due to the security sensitive information associated to the attribute, 
+            based on access control policies, the API consumer might have read only, 
+            write only, read/write, or no access at all to the attribute’s value. 
+            In case the API consumer is not allowed to read the value of the security 
+            sensitive attribute, the attribute shall be omitted when the information 
+            is to be provided in a response message, and shall be provided otherwise. 
+            In case the API consumer is not allowed to modify the value of the security 
+            sensitive attribute, and the modification request includes new attribute values, 
+            the whole modification request shall be rejected, and proper error information 
+            returned.
+          $ref: "#/components/schemas/ClientInterfaceSecurityInfo"
+      required:
+        - id
+        - name
+        - type
+        - standardVersion
+        - apiVersion
+        - apiEndpoint
         
-
     CimNotificationsFilter:
       description: >
+        This type represents a subscription filter related to notifications 
+        about NFV-MANO configuration and information management. 
+      type: object
+      properties:
+        manoEntitySubscriptionFilter:
+          description: >
+            Filter criteria to select the NFV-MANO functional entity and its 
+            associated managed objects.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/ManoEntitySubscriptionFilter"
+        notificationTypes:
+          description: >
+            Match particular notification types. 
 
-      type:
-        
+            Permitted values:
+              - InformationChangedNotification
+              - ChangeStateNotification
+
+            NOTE:	The permitted values of the "notificationTypes" attribute are 
+            spelled exactly as the names of the notification types to facilitate 
+            automated code generation systems.
+          type: array
+          items:
+            type: string
+            enum:
+              - InformationChangedNotification
+              - ChangeStateNotification
 
     ClockSyncInfo:
       description: >
+        This type represents parameters for connecting to an NTP server. 
+      type: object
+      properties:
+        id:
+          description: >
+            The identifier of the clock synchronization information entry. 
+            This identifier is managed by the API consumer.
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+        type:
+          description: >
+            Type of clock synchronization.
 
-      type:
+            Permitted values:
+              - NTP: For Network Time Protocol (NTP) based clock synchronization.
+              - OTHER: For other types of clock synchronization.
+          type: string
+          enum:
+            - NTP
+            - OTHER
+        ntpServerInfo:
+          description: >
+            Information for the NTP based clock synchronization. 
+            Shall be present if type = "NTP".
+          type: object
+          properties:
+            ipAddress:
+              description: >
+                0..1	IP address of the NTP server. 
+                
+                NOTE:	Either ipAddress or hostname shall be set, but not both 
+                at the same time.
+              $ref: "../components/SOL009_comps.yaml#/components/schemas/IpAddress"
+            hostname:
+              description: >
+                Indicates the hostname of the NTP server. 
+                
+                NOTE:	Either ipAddress or hostname shall be set, but not both 
+                at the same time.
+              type: string
+        otherClockSyncParams:
+          description: >
+            Information for the other types of clock synchronization. 
+            May be present if type = "OTHER".
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/KeyValuePairs"
+      required:
+        - id
+        - type
         
-
     ServerInterfaceSecurityInfo:
       description: >
+        This type represents security related information of an NFV-MANO 
+        service interface produced by an NFV-MANO functional entity. 
+      type: object
+      properties:
+        authType:
+          description: >
+            Type of API request authorization to be used by the API producer.
 
-      type:
+            The support of authorization methods for the API producer is specified 
+            in clause 8.3.6 of ETSI GS NFV-SOL 013.
+
+            Permitted values:
+              - TLS_TUNNEL: Using TLS tunnel, as defined by TLS 1.2 in IETF RFC 5246.
+              - OAUTH2: Using access token, as defined by the OAuth 2.0 specification 
+              in IETF RFC 6749. 
+          type: array
+          items:
+            type: string
+            enum:
+              - TLS_TUNNEL
+              - OAUTH2
+          minItems: 1
+        oauthServerInfo:
+          description: >
+            OAuth 2.0 authorization server information and configuration.
+          type: object
+          properties:
+            dynamicDiscovery:
+              description: >
+                Configuration data used when performing dynamic discovery of 
+                the authorization server identifier. 
+                
+                NOTE:	Provided configuration of the OAuth 2.0 authorization 
+                server information and configuration shall be supported, and 
+                dynamic configuration may be supported.
+              type: object
+              properties:
+                webFingerHost:
+                  description: >
+                    Server where the WebFinger service is hosted. When used, 
+                    the request to the WebFinger resource shall conform as specified 
+                    in clause 5.1.3 of ETSI GS NFV-SEC 022.
+                  $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+              required:
+                - webFingerHost
+            providedConfiguration:
+              description: >
+                Configuration data used to setup the authorization server identifier. 
+                
+                NOTE:	Provided configuration of the OAuth 2.0 authorization 
+                server information and configuration shall be supported, and 
+                dynamic configuration may be supported.
+              type: object
+              properties:
+                authServerId:
+                  description: >
+                    Authorization server identifier as defined in ETSI GS NFV-SEC 022.
+                  $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+              required:
+                - authServerId
+            tlsCipherSuites:
+              description: >
+                List of cipher suites that shall be declared as supported by the 
+                API producer when performing the SSL or TLS negotiation with the 
+                authorization server. Valid values of cipher suites are defined 
+                in IETF RFC 8447.
+              type: array
+              items:
+                type: string
+              minItems: 1
+          required:
+            - providedConfiguration
+            - tlsCipherSuites
+        tlsTunnelInfo:
+          description: >
+            Information and configuration related to the use of TLS tunnel. 
+            Shall be present if authType contains "TLS_TUNNEL".
+          type: object
+          properties:
+            tlsTunnelCipherSuites:
+              description: 
+                List of cipher suites that shall be declared as supported by the API 
+                producer when performing the SSL or TLS negotiation with the API client. 
+                Valid values of cipher suites are defined in IETF RFC 8447.
+              type: array
+              items:
+                type: string
+              minItems: 1
+          required:
+            - tlsTunnelCipherSuites
+      required:
+        - authType
+        - oauthServerInfo
         
-
     ClientInterfaceSecurityInfo:
       description: >
         This type represents security related information for accessing an NFV-MANO 
@@ -1267,7 +2616,7 @@ components:
         - FAILED
 
     ManoEntityEnumType:
-      desciption: > 
+      description: > 
         The enumeration ManoEntityEnumType defines the permitted values to 
         represent NFV-MANO functional entities. It shall comply with 
         the provisions :
@@ -1662,7 +3011,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
     mano_entity.patch.412:
       description: >
         412 PRECONDITION FAILED
@@ -1691,7 +3040,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
 
     mano_entity-change_state.post.202:
       description: >
@@ -1753,7 +3102,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
         
     mano_entity-mano_interfaces.get.200:
       description: >
@@ -1835,7 +3184,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
     
     mano_entity-mano_interface.get.200:
       description: >
@@ -1919,7 +3268,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
     mano_entity-mano_interface.patch.412:
       description: >
         412 PRECONDITION FAILED
@@ -1949,7 +3298,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
     
     mano_entity-mano_interface-change_state.post.202:
       description: >
@@ -2013,7 +3362,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
     
     subscriptions.post.201:
       description: >
@@ -2163,7 +3512,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
     
     subscription.get.200:
       description: >
@@ -2293,7 +3642,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
     
     change_state_op.get.200:
       description: >
@@ -2440,7 +3789,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
     
     peer_entitie.get.200:
       description: >
@@ -2522,7 +3871,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
     peer_entitie.patch.412:
       description: >
         412 PRECONDITION FAILED
@@ -2551,7 +3900,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
     peer_entitie.delete.204:
       description: >
         204 NO CONTENT
@@ -2601,7 +3950,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
     peer_entitie.delete.412:
       description: >
         412 PRECONDITION FAILED
@@ -2630,6 +3979,6 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
     
   #callbacks:
