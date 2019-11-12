@@ -1329,7 +1329,7 @@ components:
           description: >
             Reference of the managed object to which the state change notification relates.
             The value of the "type" attribute shall be "MANO_ENTITY" or "MANO_SERVICE_IF".
-          $ref: "#../components/SOL009_comps.yaml#/components/schemas/ManoManagedObjectReference"
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/ManoManagedObjectReference"
         operationalState:
           description: >
             New operational state of the managed object. Shall only be present when 

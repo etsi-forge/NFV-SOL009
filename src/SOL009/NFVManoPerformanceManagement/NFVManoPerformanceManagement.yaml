@@ -560,7 +560,7 @@ components:
         crossingDirection:
           description: >
             An indication of whether the threshold was crossed in upward or downward direction.
-          $ref: "#/components/schemas/CrossingDirectionType"
+          $ref: "../components/SOL009_comps.yaml#/components/schemas/CrossingDirectionType"
         objectType:
           description: >
             Type of measured object.The applicable measured object type for a measurement 
