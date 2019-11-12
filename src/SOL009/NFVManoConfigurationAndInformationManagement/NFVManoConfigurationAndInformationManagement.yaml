@@ -38,9 +38,9 @@ paths:
         tables 5.5.3.3.2-1 and 5.5.3.3.2-2 for URI query parameters, 
         request and response data structures, and response codes.       
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
           $ref: "#/components/responses/mano_entity.get.200"
@@ -74,9 +74,9 @@ paths:
         tables 5.5.3.3.4-1 and 5.5.3.3.4-2 for URI query parameters, 
         request and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         $ref: "#/components/requestBodies/ModifyManoEntityRequest"
       responses:
@@ -117,9 +117,9 @@ paths:
         5.5.7.3.1-1 and 5.5.7.3.1-2 for URI query parameters, request and 
         response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         $ref: "#/components/requestBodies/ChangeManoEntityStateRequest"
       responses:
@@ -158,14 +158,14 @@ paths:
         and response data structures, and response codes.
       parameters:
         - $ref: "#/components/parameters/filter.ManoServiceInterface"
-        - $ref: "#/components/parameters/all_fields"
-        - $ref: "#/components/parameters/fields"
-        - $ref: "#/components/parameters/exclude_fields"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/all_fields"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/fields"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/exclude_fields"
         - $ref: "#/components/parameters/exclude_default.ManoServiceInterface"
-        - $ref: "#/components/parameters/nextpage_opaque_marker"
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200": 
           $ref: "#/components/responses/mano_entity-mano_interfaces.get.200"
@@ -200,9 +200,9 @@ paths:
         5.5.11.3.2-1 and 5.5.11.3.2-2 for URI query parameters, request 
         and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200": 
           $ref: "#/components/responses/mano_entity-mano_interface.get.200"
@@ -237,9 +237,9 @@ paths:
         5.5.11.3.4-1 and 5.5.11.3.4-2 for URI query parameters, request 
         and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         $ref: "#/components/requestBodies/ModifyManoEnityInterfaceRequest"
       responses:
@@ -280,9 +280,9 @@ paths:
         5.5.12.3.1-1 and 5.5.12.3.1-2 for URI query parameters, request 
         and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         $ref: "#/components/requestBodies/ChangeManoEntityInterfaceStateRequest"
       responses:
@@ -320,9 +320,9 @@ paths:
         5.5.4.3.1-1 and 5.5.4.3.1-2 for URI query parameters, request and 
         response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         $ref: "#/components/requestBodies/CreateSubscriptionRequest"
       responses:
@@ -361,10 +361,10 @@ paths:
         and response data structures, and response codes.
       parameters:
         - $ref: "#/components/parameters/filter.CimSubscription"
-        - $ref: "#/components/parameters/nextpage_opaque_marker"
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200": 
           $ref: "#/components/responses/subscriptions.get.200"
@@ -399,9 +399,9 @@ paths:
         5.5.5.3.2-1 and 5.5.5.3.2-2 for URI query parameters, request and 
         response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200": 
           $ref: "#/components/responses/subscription.get.200"
@@ -433,9 +433,9 @@ paths:
         5.5.5.3.5-1 and 5.5.5.3.5-2 for URI query parameters, request 
         and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204": 
           $ref: "#/components/responses/subscription.delete.204"
@@ -471,14 +471,14 @@ paths:
         response data structures, and response codes.
       parameters:
         - $ref: "#/components/parameters/filter.ChangeStateOpOcc"
-        - $ref: "#/components/parameters/all_fields"
-        - $ref: "#/components/parameters/fields"
-        - $ref: "#/components/parameters/exclude_fields"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/all_fields"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/fields"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/exclude_fields"
         - $ref: "#/components/parameters/exclude_default.ChangeStateOpOcc"
-        - $ref: "#/components/parameters/nextpage_opaque_marker"
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200": 
           $ref: "#/components/responses/change_state_ops.get.200"
@@ -514,9 +514,9 @@ paths:
         5.5.9.3.2-1 and 5.5.9.3.2-2 for URI query parameters, request 
         and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200": 
           $ref: "#/components/responses/change_state_op.get.200"
@@ -552,9 +552,9 @@ paths:
         5.5.13.3.1-1 and 5.5.13.3.1-2 for URI query parameters, request 
         and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         $ref: "#/components/requestBodies/CreatePeerEntityRequest"
       responses:
@@ -590,14 +590,14 @@ paths:
         and response data structures, and response codes.
       parameters:
         - $ref: "#/components/parameters/filter.PeerEntity"
-        - $ref: "#/components/parameters/all_fields"
-        - $ref: "#/components/parameters/fields"
-        - $ref: "#/components/parameters/exclude_fields"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/all_fields"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/fields"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/exclude_fields"
         - $ref: "#/components/parameters/exclude_default.PeerEntity"
-        - $ref: "#/components/parameters/nextpage_opaque_marker"
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200": 
           $ref: "#/components/responses/peer_entities.get.200"
@@ -633,9 +633,9 @@ paths:
         5.5.14.3.2-1 and 5.5.14.3.2-2 for URI query parameters, request 
         and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200": 
           $ref: "#/components/responses/peer_entitie.get.200"
@@ -674,9 +674,9 @@ paths:
         5.5.14.3.4-1 and 5.5.14.3.4-2 for URI query parameters, request 
         and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         $ref: "#/components/requestBodies/ModifyPeerEntityRequest"
       responses:
@@ -719,9 +719,9 @@ paths:
         5.5.14.3.5-1 and 5.5.14.3.5-2 for URI query parameters, request 
         and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204": 
           $ref: "#/components/responses/peer_entitie.delete.204"
@@ -771,7 +771,7 @@ components:
             the initial deployment of the NFV-MANO functional entity and its value allocated 
             based on network operator policies. The value of this identifier shall be unique 
             at least in the scope of the NFV-MANO deployment.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         type:
           description: >
             Type of NFV-MANO functional entity.
@@ -796,7 +796,7 @@ components:
         softwareVersion:
           description: >
             The version of the software of the NFV-MANO functional entity.
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/Version"
         manoEntityComponents:
           description: >
             The deployed NFV-MANO functional entity components which realize the 
@@ -887,19 +887,19 @@ components:
           properties:
             self:
               description: URI of this resource.
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/Link"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
             manoServiceInterfaces:
               description: Link to the "NFV-MANO service interfaces" resource.
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/Link"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
             peerEntities:
               description: Link to "Peer entities" resource.
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/Link"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
             changeState:
               description: Link to the "Change state" task resource.
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/Link"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
             changeStateOpOccs:
               description: Link to the "Change state operation occurrences" resource.
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/Link"        
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"        
 
     ManoConfigModificationRequest:
       description: >
@@ -929,17 +929,17 @@ components:
             below this table.
           type: array
           items:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         defaultLogCompileBySizeValue:
           description: >
             New value of the "defaultLogCompileBySizeValue" attribute in the 
             "ManoEntityConfigurableParams".
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/UnsignedInt"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/UnsignedInt"
         defaultLogCompileByTimerValue:
           description: >
             New value of the "defaultLogCompileByTimerValue" attribute in the 
             "ManoEntityConfigurableParams".
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/UnsignedInt"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/UnsignedInt"
         manoServiceModifications:
           description: >
             New content of certain entries in the "manoServices" attribute array 
@@ -951,7 +951,7 @@ components:
               id:
                 description: >
                   Identifier of the NFV-MANO service to modify.
-                $ref: "../components/SOL009_comps.yaml#/components/schemas/IdentifierInManoEntity"
+                $ref: "../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
               name:
                 description: >
                   New value for the "name" attribute in the "ManoService". 
@@ -1002,19 +1002,19 @@ components:
             in clause 5.6.2.3.
           type: array
           items:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         defaultLogCompileBySizeValue: 
           description: >
             If present, this attribute signals modifications of the 
             "defaultLogCompileBySizeValue" attribute in the 
             "ManoEntityConfigurableParams".
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/UnsignedInt"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/UnsignedInt"
         defaultLogCompileByTimerValue: 
           description: >
             If present, this attribute signals modifications of the 
             "defaultLogCompileByTimerValue" attribute in the 
             "ManoEntityConfigurableParams".
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/UnsignedInt"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/UnsignedInt"
         manoServiceModifications: 
           description: >
             If present, this attribute signals modifications of the "manoServices" 
@@ -1026,7 +1026,7 @@ components:
               id:
                 description: >
                   Identifier of the NFV-MANO service that has been modified.
-                $ref: "../components/SOL009_comps.yaml#/components/schemas/IdentifierInManoEntity"
+                $ref: "../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
               name:
                 description: >
                   If present, this attribute signals modification of the "name" 
@@ -1055,7 +1055,7 @@ components:
         callbackUri:
           description: >
             The URI of the endpoint to send the notification to.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
         authentication:
           description: >
             Authentication parameters to configure the use of Authorization when 
@@ -1064,7 +1064,7 @@ components:
 
             This attribute shall only be present if the subscriber requires 
             authorization of notifications.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/SubscriptionAuthentication"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
       required:
         - callbackUri
 
@@ -1077,7 +1077,7 @@ components:
         id:
           description: >
             Identifier that identifies the subscription
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         filter:
           description: >
             Filter settings for this subscription, to define the subset of all 
@@ -1087,7 +1087,7 @@ components:
         callbackUri:
           description: >
             The URI of the endpoint to send the notification to.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
         _links:
           description: >
             Links to resources related to this resource.
@@ -1096,7 +1096,7 @@ components:
             self: 
               description: >
                 URI of this resource.
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/Link"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
           required:
             - self
       required:
@@ -1116,7 +1116,7 @@ components:
             Identifier of this notification. If a notification is sent multiple 
             times due to multiple subscriptions, the "id" attribute of all these
             notifications shall have the same value.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         notificationType:
           description: >
             Discriminator for the different notification types. Shall be set to 
@@ -1125,24 +1125,24 @@ components:
         subscriptionId:
           description: >
             Identifier of the subscription that this notification relates to.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         timeStamp:
           description: >
             Date and time of the generation of the notification.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/DateTime"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
         informationChangedTime:
           description: >
             Timestamp indicating when the information was changed.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/DateTime"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
         manoEntityId:
           description: >
             Identifier of the MANO entity of which the information was changed.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         changedInfo:
           description: >
             Data about the changed configuration and information of the NFV-MANO 
             functional entity.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/KeyValuePairs"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
         _links:
           description: >
             Links to resources related to this notification.
@@ -1151,11 +1151,11 @@ components:
             self:
               description: >
                 Link to the related subscription.
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/NotificationLink"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
             subscription:
               description: >
                 Link to the related subscription.
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/NotificationLink"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
           required:
             - self
       required:
@@ -1236,7 +1236,7 @@ components:
         id: 
           description: >
             Identifier of this change state operation occurrence.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         operationState: 
           description: >
             The state of the "change state operation occurrence".
@@ -1244,17 +1244,17 @@ components:
         stateEnteredTime: 
           description: >
             Date-time when the current state was entered.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/DateTime"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
         startTime: 
           description: >
             Date-time of the start of the operation.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/DateTime"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
         managedObjectRef: 
           description: >
             Reference of the managed object to which the change state operation 
             occurrence relates. The value of the "type" attribute shall be 
             "MANO_ENTITY" or "MANO_SERVICE_IF".
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/ManoManagedObjectReference"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
         changeOperationalStateRequest: 
           description: >
             The type of the change of operational state that was requested. Shall 
@@ -1298,7 +1298,7 @@ components:
             Identifier of this notification. If a notification is sent multiple times 
             due to multiple subscriptions, the "id" attribute of all these notifications 
             shall have the same value.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         notificationType:
           description: >
             Discriminator for the different notification types. Shall be set to 
@@ -1307,20 +1307,20 @@ components:
         subscriptionId:
           description: >
             Identifier of the subscription that this notification relates to.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         timestamp:
           description: >
             Date-time of the generation of the notification.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/DateTime"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
         changeStateOpOccId:
           description: >
             Identifier of the change state operation occurrence associated to the 
             notification.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         stateChangedTime:
           description: >
             Timestamp indicating when the state on the managed object was changed.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/DateTime"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
         changeStateOperationState:
           description: >
             The state of the "change state operation occurrence".
@@ -1329,7 +1329,7 @@ components:
           description: >
             Reference of the managed object to which the state change notification relates.
             The value of the "type" attribute shall be "MANO_ENTITY" or "MANO_SERVICE_IF".
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/ManoManagedObjectReference"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
         operationalState:
           description: >
             New operational state of the managed object. Shall only be present when 
@@ -1348,18 +1348,18 @@ components:
             subscription: 
               description: >
                 Link to the related subscription.
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/NotificationLink"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
             objectInstance: 
               description: >
                 Link to the resource representing the object to which the change 
                 state applies. Shall be present if the object instance is accessible 
                 as a resource.
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/NotificationLink"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
             changeStateOpOcc: 
               description: >
                 Link to the change state operation occurrence that this notification 
                 is related to.
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/NotificationLink"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
           required:
             - subscription
             - objectInstance
@@ -1385,7 +1385,7 @@ components:
         id:
           description: >
             Identifier of the NFV-MANO functional entity interface.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/IdentifierInManoEntity"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
         name:
           description: >
             Human-readable name of the NFV-MANO functional entity interface.
@@ -1404,16 +1404,16 @@ components:
             NOTE 1:	The information to be provided in this attribute shall relate to 
             the specification and version of the specification. For instance, 
             "ETSI GS NFV-SOL 003 (V2.4.1)".
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Version"
         providerSpecificApiVersion:
           description: >
             Provider-specific software API version.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Version"
         apiVersion:
           description: >
             API version, in compliance with the version identifiers and parameters 
             format specified in clause 9.1 of ETSI GS NFV-SOL 013.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Version"
         apiEndpoint:
           description: >
             Exposed API endpoint of the interface.
@@ -1427,7 +1427,7 @@ components:
                 (see also clause 4.1 of ETSI GS NFV-SOL 013). May be present otherwise.
 
                 This attribute can be modified with the PATCH method.
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
             apiName:
               description: >
                 Indicates the interface name in an abbreviated form. Shall be present 
@@ -1452,7 +1452,7 @@ components:
                 APIs specified by ETSI NFV, this attribute shall not be modified. Instead, 
                 changes are handled indirectly via patching of the "apiRoot" attribute’s 
                 value.
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
           required:
             - apiUri
         maxConcurrentIntOpNumber:
@@ -1528,7 +1528,7 @@ components:
             service interface.
             These attributes can be created, modified or removed with the PATCH 
             method.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/KeyValuePairs"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
       required:
         - id
         - name
@@ -1561,7 +1561,7 @@ components:
             NOTE:	The change of apiRoot or apiUri on an enabled and in use API may 
             be service disruptive. Also, that change invalidates any related URI that 
             might have been cached at API consumers.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
         apiUri:
           description: >
             New value of the "apiUri" attribute in "ManoServiceInterface". 
@@ -1571,7 +1571,7 @@ components:
             might have been cached at API consumers.
             
             Shall not be provided if a change of "apiRoot" is present in the request.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
         securityInfo:
           description: >
             New value of the "securityInfo" attribute in "ManoServiceInterface".
@@ -1589,7 +1589,7 @@ components:
             Modifications of the "metadata" attribute in "ManoServiceInterface". 
             If present, these modifications shall be applied according to the rules 
             of JSON Merge PATCH (see IETF RFC 7396).
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/KeyValuePairs"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
             
     ManoServiceInterfaceModifications:
       description: >
@@ -1610,12 +1610,12 @@ components:
           description: >
             If present, this attribute signals modifications of the "apiRoot" attribute 
             in "ManoServiceInterface", as defined in clause 5.6.2.11.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
         apiUri:
           description: >
             If present, this attribute signals modifications of the "apiUri" attribute 
             in "ManoServiceInterface", as defined in clause 5.6.2.11.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
         securityInfo:
           description: >
             If present, this attribute signals modifications of the "securityInfo" 
@@ -1632,7 +1632,7 @@ components:
           description: >
             If present, this attribute signals modifications of the "metadata" attribute 
             in "ManoServiceInterface", as defined in clause 5.6.2.11.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/KeyValuePairs"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
 
     CreatePeerEntityRequest:
       description: >
@@ -1647,7 +1647,7 @@ components:
             the "id" attribute in the "ManoEntity" of the corresponding NFV-MANO functional 
             entity that acts as peer entity, and shall follow the uniqueness requirements 
             set out in clause 5.6.2.2 for the "id" attribute.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier" 
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier" 
         name:
           description: >
             Human-readable name of the peer functional entity.
@@ -1697,7 +1697,7 @@ components:
           description: >
             Identifier of the resource representing the peer functional entity. 
             This identifier is allocated by the producer NFV-MANO functional entity.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier" 
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier" 
         peerEntityId:
           description: >
             Identifier of the peer functional entity. 
@@ -1706,7 +1706,7 @@ components:
             of the "id" attribute in the "ManoEntity" of the corresponding NFV-MANO 
             functional entity that acts as peer entity, and shall follow the uniqueness 
             requirements set out in clause 5.6.2.2 for the "id" attribute.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier" 
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier" 
         name:
           description: >
             Human-readable name of the peer functional entity.
@@ -1793,7 +1793,7 @@ components:
             attribute array in the " PeerEntity ", as defined below this table.
           type: array
           items:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         operationalState:
           description: >
             New content of the "operationalState" attribute in the "peerEntityState" 
@@ -1848,7 +1848,7 @@ components:
             clause 5.6.2.15.
           type: array
           items:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         operationalState:
           description: >
             If present, this attribute signals modifications of the "operationalState" 
@@ -1878,7 +1878,7 @@ components:
           id:
             description: >
               Identifier of the NFV-MANO functional entity component.
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/IdentifierInManoEntity"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
           manoServiceIds:
             description: >
               References to the NFV-MANO services that depend on the NFV-MANO functional 
@@ -1887,7 +1887,7 @@ components:
               component.
             type: array
             items:
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/IdentifierInManoEntity"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
       required:
         - id
 
@@ -1900,7 +1900,7 @@ components:
         id:
           description: >
             Identifier of the NFV-MANO service.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/IdentifierInManoEntity"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
         name:
           description: >
             Human-readable name of the NFV-MANO service.
@@ -1925,7 +1925,7 @@ components:
             NFV-MANO service.
           type: array
           items:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/IdentifierInManoEntity"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
           minItems: 1       
         _links:
           description: >
@@ -1938,7 +1938,7 @@ components:
                 information about the associated interfaces to the NFV-MANO service.
               type: array
               items:
-                $ref: "../components/SOL009_comps.yaml#/components/schemas/Link"
+                $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
               minItems: 1
           required:
             - manoServiceInterfaces
@@ -1995,7 +1995,7 @@ components:
                 NOTE: The information to be provided in this attribute shall relate 
                 to the specification and version of the specification. For instance, 
                 "ETSI GS NFV-SOL 001 (V2.5.1)".
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Version"
           required:
             - vnfdFormat
             - standardVersion
@@ -2024,7 +2024,7 @@ components:
                 NOTE: The information to be provided in this attribute shall relate 
                 to the specification and version of the specification. For instance, 
                 "ETSI GS NFV-SOL 001 (V2.5.1)".
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Version"
           required:
             - nsdFormat
             - standardVersion
@@ -2088,7 +2088,7 @@ components:
                   NOTE: The information to be provided in this attribute shall relate 
                   to the specification and version of the specification. For instance, 
                   "ETSI GS NFV-SOL 001 (V2.5.1)".
-                $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
+                $ref: "../components/SOL009_schemas.yaml#/components/schemas/Version"
             required:
               - vnfdFormat
               - standardVersion
@@ -2122,11 +2122,11 @@ components:
         defaultLogCompileBySizeValue:
           description: 
             Default value for the log compilation by size to be used.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/UnsignedInt"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/UnsignedInt"
         defaultLogCompileByTimerValue:
           description: 
             Default value for the log compilation by timer to be used.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/UnsignedInt"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/UnsignedInt"
       required:
         - clockSyncs
         - defaultLogCompileBySizeValue
@@ -2142,7 +2142,7 @@ components:
           description: >
             Identifier of the consumed NFV-MANO interface. This identifier is
             managed by the API consumer.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         name:
           description: >
             Human-readable name of the NFV-MANO interface.
@@ -2159,12 +2159,12 @@ components:
             NOTE: The information to be provided in this attribute shall relate 
             to the specification and its version. For instance, 
             "ETSI GS NFV-SOL 003 (V2.4.1)".
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Version"
         apiVersion:
           description: >
             API version, in compliance with the version identifiers and parameters 
             format specified in clause 9.1 of ETSI GS NFV-SOL 013.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Version"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Version"
         apiEndpoint:
           description: >
             Consumable API endpoint of the interface.
@@ -2179,7 +2179,7 @@ components:
                 represent a prefix path. Shall be present for ETSI NFV specified 
                 RESTful NFV-MANO APIs (see also clause 4.1 of ETSI GS NFV-SOL 013). 
                 May be present otherwise.
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri" 
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri" 
             apiName:
               description: >
                 Indicates the interface name in an abbreviated form. Shall be present 
@@ -2199,7 +2199,7 @@ components:
                 URL of the API endpoint. For ETSI NFV specified RESTful NFV-MANO APIs, 
                 the following prefix structure is used (see also clause 4.1 of ETSI 
                 GS NFV-SOL 013): {apiRoot}/{apiName}/{apiMajorVersion}
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri" 
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri" 
           required:
             - apiUri
         securityInfo:
@@ -2236,7 +2236,7 @@ components:
           description: >
             Filter criteria to select the NFV-MANO functional entity and its 
             associated managed objects.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/ManoEntitySubscriptionFilter"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/ManoEntitySubscriptionFilter"
         notificationTypes:
           description: >
             Match particular notification types. 
@@ -2264,7 +2264,7 @@ components:
           description: >
             The identifier of the clock synchronization information entry. 
             This identifier is managed by the API consumer.
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/Identifier"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         type:
           description: >
             Type of clock synchronization.
@@ -2288,7 +2288,7 @@ components:
                 
                 NOTE:	Either ipAddress or hostname shall be set, but not both 
                 at the same time.
-              $ref: "../components/SOL009_comps.yaml#/components/schemas/IpAddress"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/IpAddress"
             hostname:
               description: >
                 Indicates the hostname of the NTP server. 
@@ -2300,7 +2300,7 @@ components:
           description: >
             Information for the other types of clock synchronization. 
             May be present if type = "OTHER".
-          $ref: "../components/SOL009_comps.yaml#/components/schemas/KeyValuePairs"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
       required:
         - id
         - type
@@ -2349,7 +2349,7 @@ components:
                     Server where the WebFinger service is hosted. When used, 
                     the request to the WebFinger resource shall conform as specified 
                     in clause 5.1.3 of ETSI GS NFV-SEC 022.
-                  $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+                  $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
               required:
                 - webFingerHost
             providedConfiguration:
@@ -2364,7 +2364,7 @@ components:
                 authServerId:
                   description: >
                     Authorization server identifier as defined in ETSI GS NFV-SEC 022.
-                  $ref: "../components/SOL009_comps.yaml#/components/schemas/Uri"
+                  $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
               required:
                 - authServerId
             tlsCipherSuites:
@@ -2650,33 +2650,7 @@ components:
         - OSS
 
   parameters:
-    Version:
-      name: Version
-      description: >
-        Version of the API requested to use when responding to this request.
-      in: header
-      required: true
-      schema:
-        type: string
-    
-    Accept:
-      name: Accept
-      description: >
-        Content-Types that are acceptable for the response. Reference: IETF RFC 7231.
-      in: header
-      required: true
-      schema:
-        type: string
-    
-    Authorization:
-      name: Authorization
-      description: >
-        The authorization token for the request. Reference: IETF RFC 7235.
-      in: header
-      required: false
-      schema:
-        type: string
-    
+
     filter.ManoServiceInterface:
       name: filter
       description: >
@@ -2741,39 +2715,6 @@ components:
         All attribute names that appear in the PeerEntity and in data 
         types referenced from it shall be supported by the NFV-MANO functional 
         entity in the expression. 
-      in: query
-      required: false
-      schema:
-        type: string
-
-    all_fields:
-      name: all_fields
-      description: >
-        Include all complex attributes in the response. See clause 
-        5.3 of ETSI GS NFV-SOL 013. The NFV-MANO functional entity 
-        shall support this parameter.
-      in: query
-      required: false
-      schema:
-        type: string
-
-    fields:
-      name: fields
-      description: >
-        Complex attributes to be included into the response. See clause 
-        5.3 of ETSI GS NFV-SOL 013 for details. The NFV-MANO functional 
-        entity should support this parameter.
-      in: query
-      required: false
-      schema:
-        type: string
-
-    exclude_fields:
-      name: exclude_fields
-      description: >
-        Complex attributes to be excluded from the response. See clause 
-        5.3 of ETSI GS NFV-SOL 013 for details. The NFV-MANO functional 
-        entity should support this parameter.
       in: query
       required: false
       schema:
@@ -2844,17 +2785,6 @@ components:
       schema:
         type: string
 
-    nextpage_opaque_marker:
-      name: nextpage_opaque_marker
-      description: >
-        Marker to obtain the next page of a paged response. Shall be supported by 
-        the NFV-MANO functional entity if the entity supports alternative 2 (paging) 
-        according to clause 5.4.2.1 of ETSI GS NFV-SOL 013 for this resource.
-      in: query
-      required: false
-      schema:
-        type: string
-  
   requestBodies:
     ModifyManoEntityRequest:
       description: >
@@ -3011,7 +2941,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
     mano_entity.patch.412:
       description: >
         412 PRECONDITION FAILED
@@ -3040,7 +2970,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
 
     mano_entity-change_state.post.202:
       description: >
@@ -3102,7 +3032,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
         
     mano_entity-mano_interfaces.get.200:
       description: >
@@ -3184,7 +3114,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
     
     mano_entity-mano_interface.get.200:
       description: >
@@ -3268,7 +3198,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
     mano_entity-mano_interface.patch.412:
       description: >
         412 PRECONDITION FAILED
@@ -3298,7 +3228,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
     
     mano_entity-mano_interface-change_state.post.202:
       description: >
@@ -3362,7 +3292,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
     
     subscriptions.post.201:
       description: >
@@ -3512,7 +3442,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
     
     subscription.get.200:
       description: >
@@ -3642,7 +3572,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
     
     change_state_op.get.200:
       description: >
@@ -3789,7 +3719,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
     
     peer_entitie.get.200:
       description: >
@@ -3871,7 +3801,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
     peer_entitie.patch.412:
       description: >
         412 PRECONDITION FAILED
@@ -3900,7 +3830,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
     peer_entitie.delete.204:
       description: >
         204 NO CONTENT
@@ -3950,7 +3880,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
     peer_entitie.delete.412:
       description: >
         412 PRECONDITION FAILED
@@ -3979,6 +3909,6 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_comps.yaml#/components/schemas/ProblemDetails"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
     
   #callbacks:
