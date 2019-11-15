@@ -49,25 +49,25 @@ paths:
         "201": 
           $ref: "#/components/responses/pm_jobs.post.201"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     get:
       description: >
         The client can use this method to retrieve information about PM jobs.
@@ -87,23 +87,23 @@ paths:
         "400": 
           $ref: "#/components/responses/pm_jobs.get.400"
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
   /pm_jobs/{pmJobId}:
     get:
@@ -117,25 +117,25 @@ paths:
         "200": 
           $ref: "#/components/responses/pm_job.get.200"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     delete:
       description: >
         This method terminates an individual PM job.
@@ -147,25 +147,25 @@ paths:
         "204": 
           $ref: "#/components/responses/pm_job.delete.204"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
   
   /pm_jobs/{pmJobId}/reports/{reportId}:
     get:
@@ -180,25 +180,25 @@ paths:
         "200": 
           $ref: "#/components/responses/pm_job.report.get.200"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
   /thresholds:
     post:
@@ -214,25 +214,25 @@ paths:
         "201": 
           $ref: "#/components/responses/thresholds.post.201"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     get:
       description: >
         The client can use this method to query information about thresholds.
@@ -248,23 +248,23 @@ paths:
         "400": 
           $ref: "#/components/responses/thresholds.get.400"
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     
   /thresholds/{thresholdId}:
     get:
@@ -278,25 +278,25 @@ paths:
         "200": 
           $ref: "#/components/responses/threshold.get.200"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     delete:
       description: >
         This method allows to delete a threshold.
@@ -308,25 +308,25 @@ paths:
         "204": 
           $ref: "#/components/responses/threshold.delete.204"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
   /subscriptions:
     post:
@@ -344,25 +344,25 @@ paths:
         "303": 
           $ref: "#/components/responses/subscriptions.post.303"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     get:
       description: >
         The client can use this method to query the list of active subscriptions 
@@ -379,23 +379,23 @@ paths:
         "400": 
           $ref: "#/components/responses/subscriptions.get.400"
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
   /subscriptions/{subscriptionId}:
     get:
@@ -410,25 +410,25 @@ paths:
         "200": 
           $ref: "#/components/responses/subscription.get.200"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     delete:
       description: >
         This method terminates an individual subscription.
@@ -440,25 +440,25 @@ paths:
         "204": 
           $ref: "#/components/responses/subscription.delete.204"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
 components:
   schemas:

@@ -45,25 +45,25 @@ paths:
         "200":
           $ref: "#/components/responses/mano_entity.get.200"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     patch:
       description: >
         Modifies the NFV-MANO entity resource.
@@ -87,25 +87,25 @@ paths:
         "412":
           $ref: "#/components/responses/mano_entity.patch.412"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
   /mano_entity/change_state:
     post:
@@ -128,25 +128,25 @@ paths:
         "409": 
           $ref: "#/components/responses/mano_entity-change_state.post.409"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
   /mano_entity/mano_interfaces:
     get:
@@ -172,23 +172,23 @@ paths:
         "400": 
           $ref: "#/components/responses/mano_entity-mano_interfaces.get.400"
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
   /mano_entity/mano_interfaces/{manoServiceInterfaceId}:
     get:
       description: >
@@ -207,23 +207,23 @@ paths:
         "200": 
           $ref: "#/components/responses/mano_entity-mano_interface.get.200"
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     patch:
       description: >
         Modifies an "Individual NFV-MANO service interface" resource.
@@ -250,25 +250,25 @@ paths:
         "412": 
           $ref: "#/components/responses/mano_entity-mano_interface.patch.412"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
   /mano_entity/mano_interfaces/{manoServiceInterfaceId}/change_state:
     post:
@@ -291,25 +291,25 @@ paths:
         "409": 
           $ref: "#/components/responses/mano_entity-mano_interface-change_state.post.409"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
   /subscriptions:
     post:
@@ -331,25 +331,25 @@ paths:
         "303": 
           $ref: "#/components/responses/subscriptions.post.303"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     get:
       description: >
         queries the list of active subscriptions of the API consumer that 
@@ -371,23 +371,23 @@ paths:
         "400": 
           $ref: "#/components/responses/subscriptions.get.400"
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
   /subscriptions/{subscriptionId}:
     get:
@@ -406,25 +406,25 @@ paths:
         "200": 
           $ref: "#/components/responses/subscription.get.200"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504              
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504              
     delete:
       description: >
         Terminates an individual subscription.
@@ -440,25 +440,25 @@ paths:
         "204": 
           $ref: "#/components/responses/subscription.delete.204"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504  
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504  
 
   /change_state_ops:
     get:
@@ -485,23 +485,23 @@ paths:
         "400": 
           $ref: "#/components/responses/change_state_ops.get.400"
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
   /change_state_ops/{changeStateOpOccId}:
     get:
@@ -521,25 +521,25 @@ paths:
         "200": 
           $ref: "#/components/responses/change_state_op.get.200"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
   /peer_entities:
     post:
@@ -561,25 +561,25 @@ paths:
         "201": 
           $ref: "#/components/responses/peer_entities.post.201"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     get:
       description: >
         Queries information and configuration in the producer NFV-MANO 
@@ -604,23 +604,23 @@ paths:
         "400": 
           $ref: "#/components/responses/peer_entities.get.400"
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
   
   /peer_entities/{peerEntityId}:
     get:
@@ -640,25 +640,25 @@ paths:
         "200": 
           $ref: "#/components/responses/peer_entitie.get.200"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     patch:
       description: >
         Modifies configuration and information of the producer NFV-MANO 
@@ -687,23 +687,23 @@ paths:
         "412": 
           $ref: "#/components/responses/peer_entitie.patch.412"
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     delete:
       description: >
         Ddeletes an individual peer entity resource. By deleting such 
@@ -730,23 +730,23 @@ paths:
         "412": 
           $ref: "#/components/responses/peer_entitie.delete.412"
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
 components:
   schemas:   

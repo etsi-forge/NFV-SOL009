@@ -34,33 +34,14 @@ paths:
         7.5.7.3.1-1 and 7.5.7.3.1-2 for URI query parameters, request and
         response data structures, and response codes.
       parameters:
-        - name: Authorization
-          description: >
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Content-Type
-          description: >
-            The Content-Type header shall be set to
-            "application/merge-patch+json" according to IETF RFC 7396.
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: Version
-          description: >
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ../NFVManoFaultManagement/definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/AlarmNotification
+              $ref: "#/components/schemas/AlarmNotification"
         description: >
           Information of a NFV-MANO functional entity alarm.
         required: true
@@ -88,19 +69,19 @@ paths:
                 minimum: 1
                 maximum: 1
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
     get:
       description: >
         The GET method allows the server to test the notification endpoint that
@@ -109,20 +90,8 @@ paths:
         7.5.7.3.2-2 for URI query parameters, request and response data
         structures, and response codes.
       parameters:
-        - name: Authorization
-          description: |
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Version
-          description: |
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
           description: >
@@ -148,19 +117,19 @@ paths:
                 minimum: 1
                 maximum: 1
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
   /URI-is-provided-by-the-client-when-creating-the-subscription-AlarmClearedNotification:
     post:
       description: >
@@ -171,33 +140,14 @@ paths:
         7.5.7.3.1-1 and 7.5.7.3.1-2 for URI query parameters, request and
         response data structures, and response codes.
       parameters:
-        - name: Authorization
-          description: |
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Content-Type
-          description: >
-            The Content-Type header shall be set to
-            "application/merge-patch+json" according to IETF RFC 7396.
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: Version
-          description: |
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ../NFVManoFaultManagement/definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/AlarmClearedNotification
+              $ref: "#/components/schemas/AlarmClearedNotification"
         description: |
           Information of the clearance of an NFV-MANO functional entity alarm.
         required: true
@@ -225,19 +175,19 @@ paths:
                 minimum: 1
                 maximum: 1
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
     get:
       description: >
         The GET method allows the server to test the notification endpoint that
@@ -246,20 +196,8 @@ paths:
         7.5.7.3.2-2 for URI query parameters, request and response data
         structures, and response codes.
       parameters:
-        - name: Authorization
-          description: |
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Version
-          description: |
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
           description: >
@@ -285,19 +223,19 @@ paths:
                 minimum: 1
                 maximum: 1
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
   /URI-is-provided-by-the-client-when-creating-the-subscription-AlarmListRebuiltNotification:
     post:
       description: >
@@ -308,33 +246,14 @@ paths:
         7.5.7.3.1-1 and 7.5.7.3.1-2 for URI query parameters, request and
         response data structures, and response codes.
       parameters:
-        - name: Authorization
-          description: |
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Content-Type
-          description: >
-            The Content-Type header shall be set to
-            "application/merge-patch+json" according to IETF RFC 7396.
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: Version
-          description: |
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ../NFVManoFaultManagement/definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/AlarmListRebuiltNotification
+              $ref: "#/components/schemas/AlarmListRebuiltNotification"
         description: >
           Information that the alarm list has been rebuilt by the NFV-MANO
           functional entity.
@@ -363,19 +282,19 @@ paths:
                 minimum: 1
                 maximum: 1
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
     get:
       description: >
         The GET method allows the server to test the notification endpoint that
@@ -384,29 +303,17 @@ paths:
         7.5.7.3.2-2 for URI query parameters, request and response data
         structures, and response codes.
       parameters:
-        - name: Authorization
-          description: |
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Version
-          description: |
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
           description: >
             204 NO CONTENT
 
             Shall be returned to indicate that the notification endpoint has been tested successfully. The response body shall be empty.
-              headers:
-                WWW-Authenticate:
-              description: >
+          headers:
+            WWW-Authenticate:
+              description: >-
                 Challenge if the corresponding HTTP request has not provided
                 authorization, or error details if the corresponding HTTP
                 request has provided an invalid authorization token.
@@ -415,24 +322,193 @@ paths:
                 minimum: 0
                 maximum: 1
             Version:
-              description: |
+              description: >-
                 Version of the API used in the response.
               schema:
                 type: string
                 minimum: 1
                 maximum: 1
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
 
+components:
+  schemas:
+    AlarmNotification:
+      description: >
+        This type represents an alarm notification about NFV-MANO functional entity faults.
+        It shall comply with the provisions defined in table 7.6.2.5-1.
+        This notification shall be triggered by the NFV-MANO functional entity when:
+        -	An alarm has been created.
+        -	An alarm has been updated, e.g. if the severity of the alarm has changed.
+
+      type: object
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timeStamp
+        - alarm
+        - _links
+      properties:
+        id:
+          description: >
+            Identifier of this notification. If a notification is sent multiple
+            times due to multiple subscriptions, the "id" attribute of all these
+            notifications shall have the same value.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        notificationType:
+          description: >
+            Discriminator for the different notification types. Shall be set to
+            "AlarmNotification" for this notification type.
+          type: string
+          enum:
+            - AlarmNotification
+        subscriptionId:
+          description: >
+            Identifier of the subscription that this notification relates to.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        timeStamp:
+          description: >
+            Date-time of the generation of the notification.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        alarm:
+          description: >
+            Information about an alarm including AlarmId, affected VNF
+            identifier, and FaultDetails.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Alarm"
+        _links:
+          description: >
+            Links to resources related to this notification.
+          type: object
+          required:
+            - subscription
+          properties:
+            subscription:
+              description: >
+                Link to the related subscription.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+
+    AlarmClearedNotification:
+      description: >
+        This type represents an alarm cleared notification about VNF faults.
+        The notification shall be triggered by the VNFM when an alarm has been
+        cleared.
+      type: object
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timeStamp
+        - alarmId
+        - alarmClearedTime
+        - _links
+      properties:
+        id:
+          description: >
+            Identifier of this notification. If a notification is sent multiple
+            times due to multiple subscriptions, the "id" attribute of all these
+            notifications shall have the same value.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        notificationType:
+          description: >
+            Discriminator for the different notification types. Shall be set to
+            "AlarmClearedNotification" for this notification type.
+          type: string
+          enum:
+            - AlarmClearedNotification
+        subscriptionId:
+          description: >
+            Identifier of the subscription that this notification relates to.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        timeStamp:
+          description: >
+            Date-time of the generation of the notification.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        alarmId:
+          description: >
+            Alarm identifier.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        alarmClearedTime:
+          description: >
+            The time stamp indicating when the alarm was cleared.
+        _links:
+          description: >
+            Links to resources related to this notification.
+          type: object
+          required:
+            - subscription
+            - alarm
+          properties:
+            subscription:
+              description: >
+                Link to the related subscription.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+            alarm:
+              description: >
+                Link to the resource that represents the related alarm.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+
+    AlarmListRebuiltNotification:
+      description: >
+        This type represents a notification that the alarm list has been
+        rebuilt, e.g. if the VNFM detects its storage holding the alarm
+        list is corrupted.
+        The notification shall be triggered by the VNFM when the alarm list has
+        been rebuilt.
+      type: object
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timeStamp
+        - _links
+      properties:
+        id:
+          description: >
+            Identifier of this notification. If a notification is sent multiple
+            times due to multiple subscriptions, the "id" attribute of all these
+            notifications shall have the same value.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        notificationType:
+          description: >
+            Discriminator for the different notification types. Shall be set to
+            "AlarmListRebuiltNotification" for this notification type.
+          type: string
+          enum:
+            - AlarmListRebuiltNotification
+        subscriptionId:
+          description: >
+            Identifier of the subscription that this notification relates to.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        timeStamp:
+          description: >
+            Date-time of the generation of the notification.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        _links:
+          description: >
+            Links to resources related to this notification.
+          type: object
+          required:
+            - subscription
+            - alarms
+          properties:
+            subscription:
+              description: >
+                Link to the related subscription.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+            alarms:
+              description: >
+                Link to the alarm list, i.e. the "Alarms" resource.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"

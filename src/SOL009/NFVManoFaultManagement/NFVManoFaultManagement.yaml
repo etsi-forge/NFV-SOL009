@@ -30,51 +30,11 @@ paths:
         in the tables 7.5.3.3.2-1 and 7.5.3.3.2-2 for URI query parameters,
         request and response data structures, and response codes.
       parameters:
-        - name: Accept
-          description: >
-            Content-Types that are acceptable for the response. Reference: IETF
-            RFC 7231
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: Authorization
-          description: |
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: filter
-          description: >
-            Attribute-based filtering expression according to clause 5.2 of ETSI
-            GS NFV-SOL 013. The NFV-MANO functional entity shall support
-            receiving this parameter as part of the URI query string. The API
-            consumer may supply this parameter. The following attribute names
-            shall be supported by the NFV-MANO functional entity in the
-            attribute-based filtering expression: id, managedObjectId,
-            eventType, perceivedSeverity, probableCause.
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: nextpage_opaque_marker
-          description: >
-            Marker to obtain the next page of a paged resource. Shall be
-            supported by the NFV-MANO functional entity if the entity supports
-            alternative 2 (paging) according to clause 5.4.2.1 of ETSI GS
-            NFV-SOL 013 for this resource.
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: Version
-          description: |
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/filter"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
       responses:
         "200":
           description: >
@@ -116,40 +76,30 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/Alarm
+                  $ref: "../components/SOL009_schemas.yaml#/components/schemas/Alarm"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
   "/alarms/{alarmId}":
     parameters:
-      - name: alarmId
-        description: >
-          Identifier of the alarm. This identifier can be retrieved from the
-          "id" attribute of the "alarm" attribute in the AlarmNotification or
-          AlarmClearedNotification. It can also be retrieved from the "id"
-          attribute of the applicable array element in the payload body of the
-          response to a GET request to the "Alarms" resource.
-        in: path
-        required: true
-        schema:
-          type: string
+      - $ref: "#/components/parameters/alarmId"
     get:
       description: >
         The client can use this method to read an individual alarm. This method
@@ -157,35 +107,9 @@ paths:
         7.5.4.3.2-2 for URI query parameters, request and response data
         structures, and response codes.
       parameters:
-        - name: Accept
-          description: >
-            Content-Types that are acceptable for the response. Reference: IETF
-            RFC 7231
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: Content-Type
-          description: |
-            The MIME type of the body of the request. Reference: IETF RFC 7231
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: Authorization
-          description: |
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Version
-          description: |
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
           description: >
@@ -205,27 +129,27 @@ paths:
           content:
             application/json:
               schema:
-                $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/Alarm
+                $ref: "../components/SOL009_schemas.yaml#/components/schemas/Alarm"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     patch:
       description: >
         This method modifies an "Individual alarm" resource. This method shall
@@ -233,43 +157,15 @@ paths:
         7.5.4.3.4-2 for URI query parameters, request and response data
         structures, and response codes.
       parameters:
-        - name: Accept
-          description: >
-            Content-Types that are acceptable for the response. Reference: IETF
-            RFC 7231
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: Authorization
-          description: |
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Content-Type
-          description: >
-            The Content-Type header shall be set to
-            "application/merge-patch+json" according to IETF RFC 7396.
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - application/merge-patch+json
-        - name: Version
-          description: |
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
       requestBody:
         content:
           application/json:
             schema:
-              $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/AlarmModifications
+              $ref: "#/components/schemas/AlarmModifications"
         description: >
           The parameter for the alarm modification, as defined in clause
           7.6.2.8. The Content-Type header shall be set to
@@ -303,31 +199,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/AlarmModifications
+                $ref: "#/components/schemas/AlarmModifications"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "409":
-          $ref: ../responses/SOL009_resp.yaml#/responses/409
+          $ref: ../components/SOL009_resp.yaml#/components/responses/409
         "412":
-          $ref: ../responses/SOL009_resp.yaml#/responses/412
+          $ref: ../components/SOL009_resp.yaml#/components/responses/412
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
   /subscriptions:
     post:
       description: >
@@ -350,40 +246,15 @@ paths:
         referencing the existing "Individual subscription" resource with the
         same filter and callbackUri).
       parameters:
-        - name: Accept
-          description: >
-            Content-Types that are acceptable for the response. Reference: IETF
-            RFC 7231
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: Authorization
-          description: |
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Content-Type
-          description: |
-            The MIME type of the body of the request. Reference: IETF RFC 7231
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: Version
-          description: |
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
       requestBody:
         content:
           application/json:
             schema:
-              $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/FmSubscriptionRequest
+              $ref: "#/components/schemas/FmSubscriptionRequest"
         description: >
           Details of the subscription to be created, as defined in clause
           7.6.2.2.
@@ -425,29 +296,29 @@ paths:
           content:
             application/json:
               schema:
-                $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/FmSubscription
+                $ref: "#/components/schemas/FmSubscription"
         "303":
-          $ref: ../responses/SOL009_resp.yaml#/responses/303
+          $ref: ../components/SOL009_resp.yaml#/components/responses/303
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     get:
       description: >
         Query Subscription Information
@@ -457,58 +328,11 @@ paths:
         shall follow the provisions specified in the tables 7.5.5.3.2-1 and 7.5.5.3.2-2 for URI query parameters,
         request and response data structures, and response codes.
       parameters:
-        - name: Accept
-          description: >
-            Content-Types that are acceptable for the response. Reference: IETF
-            RFC 7231
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: Authorization
-          description: |
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Content-Type
-          description: |
-            The MIME type of the body of the request. Reference: IETF RFC 7231
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: filter
-          description: >
-            Attribute-based filtering expression according to clause 5.2 of ETSI
-            GS NFV-SOL 013. The NFV-MANO functional entity shall support
-            receiving this parameter as part of the URI query string. The API
-            consumer may supply this parameter. All attribute names that appear
-            in the FmSubscription and in data types referenced from it shall be
-            supported by the NFV-MANO functional entity in the filter
-            expression.
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: nextpage_opaque_marker
-          description: >
-            Marker to obtain the next page of a paged response. Shall be
-            supported by the NFV-MANO functional entity if the entity supports
-            alternative 2 (paging) according to clause 5.4.2.1 of ETSI GS
-            NFV-SOL 013 for this resource.
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: Version
-          description: |
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/filter"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
       responses:
         "200":
           description: >
@@ -558,40 +382,30 @@ paths:
           content:
             application/json:
               schema:
-                $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/FmSubscription
+                $ref: "#/components/schemas/FmSubscription"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
   "/subscriptions/{subscriptionId}":
     parameters:
-      - name: subscriptionId
-        description: >
-          Identifier of this subscription. This identifier can be retrieved from
-          the resource referenced by the "Location" HTTP header in the response
-          to a POST request creating a new "Individual subscription" resource.
-          It can also be retrieved from the "id" attribute in the payload body
-          of that response.
-        in: path
-        required: true
-        schema:
-          type: string
+      - $ref: "#/components/parameters/subscriptionId"
     get:
       description: >
         Query Subscription Information. The client can use this method for
@@ -600,35 +414,9 @@ paths:
         specified in the tables 7.5.6.3.2-1 and 7.5.6.3.2-2 for URI query
         parameters, request and response data structures, and response codes.
       parameters:
-        - name: Accept
-          description: >
-            Content-Types that are acceptable for the response. Reference: IETF
-            RFC 7231
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: Authorization
-          description: |
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Content-Type
-          description: |
-            The MIME type of the body of the request. Reference: IETF RFC 7231
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: Version
-          description: |
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
           description: >
@@ -664,27 +452,27 @@ paths:
           content:
             application/json:
               schema:
-                $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/FmSubscription
+                $ref: "#/components/schemas/FmSubscription"
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     delete:
       description: >
         Terminate Subscription. This method terminates an individual
@@ -698,20 +486,8 @@ paths:
         be received by the formerly-subscribed API consumer for a certain time
         period after the deletion.
       parameters:
-        - name: Authorization
-          description: |
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Version
-          description: |
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
           description: >
@@ -737,23 +513,177 @@ paths:
                 minimum: 1
                 maximum: 1
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
+components:
+  parameters:
+    alarmId:
+      name: alarmId
+      description: >
+        Identifier of the alarm. This identifier can be retrieved from the
+        "id" attribute of the "alarm" attribute in the AlarmNotification or
+        AlarmClearedNotification. It can also be retrieved from the "id"
+        attribute of the applicable array element in the payload body of the
+        response to a GET request to the "Alarms" resource.
+      in: path
+      required: true
+      schema:
+        type: string
+    subscriptionId:
+      name: subscriptionId
+      description: >
+        Identifier of this subscription. This identifier can be retrieved from
+        the resource referenced by the "Location" HTTP header in the response
+        to a POST request creating a new "Individual subscription" resource.
+        It can also be retrieved from the "id" attribute in the payload body
+        of that response.
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    FmSubscriptionRequest:
+      description: >
+        This type represents a subscription request related to notifications
+        about NFV-MANO faults.
+      type: object
+      required:
+        - callbackUri
+      properties:
+        filter:
+          description: >
+            Filter settings for this subscription, to define the subset of all
+            notifications this subscription relates to. A particular
+            notification is sent to the subscriber if the filter matches, or if
+            there is no filter.
+          $ref: "#/components/schemas/FmNotificationsFilter"
+        callbackUri:
+          description: >
+            The URI of the endpoint to send the notification to.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
+        authentication:
+          description: >
+            Authentication parameters to configure the use of Authorization when sending notifications
+            corresponding to this subscription, as defined in clause 8.3.4 of ETSI GS NFV-SOL 013.
+            This attribute shall only be present if the subscriber requires authorization of notifications.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
+
+    FmSubscription:
+      description: >
+        This type represents a subscription related to notifications about VNF
+        faults.
+      type: object
+      required:
+        - id
+        - callbackUri
+        - _links
+      properties:
+        id:
+          description: >
+            Identifier of this "Individual subscription" resource.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        filter:
+          description: >
+            Filter settings for this subscription, to define the subset of all
+            notifications this subscription relates to. A particular
+            notification is sent to the subscriber if the filter matches, or if
+            there is no filter.
+          $ref: "#/components/schemas/FmNotificationsFilter"
+        callbackUri:
+          description: >
+            The URI of the endpoint to send the notification to.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
+        _links:
+          description: >
+            Links for this resource.
+          type: object
+          required:
+            - self
+          properties:
+            self:
+              description: >
+                URI of this resource.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
+
+    AlarmModifications:
+      description: >
+        This type represents attribute modifications for an "Individual alarm"
+        resource, i.e. modifications to a resource representation based on the
+        "Alarm" data type. The attributes of "Alarm" that can be modified
+        are included in the "AlarmModifications" data type.
+      type: object
+      required:
+        - ackState
+      properties:
+        ackState:
+          description: >
+            New value of the "ackState" attribute in "Alarm".
+            Permitted values:
+            * ACKNOWLEDGED
+          type: string
+          enum:
+            - ACKNOWLEDGED
+
+    FmNotificationsFilter:
+      description: >
+        This type represents a subscription filter related to notifications about NFV-MANO functional entity faults.
+        It shall comply with the provisions defined in table 7.6.3.2-1. At a particular nesting level in the filter
+        structure, the following applies: All attributes shall match in order for the filter to match (logical "and"
+        between different filter attributes). If an attribute is an array, the attribute shall match if at least one
+        of the values in the array matches (logical "or" between the values of one filter attribute).
+
+      type: object
+      properties:
+        notificationTypes:
+          description: >
+            Match particular notification types.
+            Permitted values:
+            * AlarmNotification
+            * AlarmClearedNotification
+            * AlarmListRebuiltNotification
+            The permitted values of the "notificationTypes" attribute are
+            spelled exactly as the names of the notification types to
+            facilitate automated code generation systems.
+          type: array
+          items:
+            type: string
+            enum:
+              - AlarmNotification
+              - AlarmClearedNotification
+              - AlarmListRebuiltNotification
+        perceivedSeverities:
+          description: >
+            Match VNF alarms with a perceived severity listed in this attribute.
+          type: array
+          items:
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/PerceivedSeverityType"
+        eventTypes:
+          description: >
+            Match VNF alarms with an event type listed in this attribute.
+          type: array
+          items:
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/EventType"
+        probableCauses:
+          description: >
+            Match VNF alarms with a probable cause listed in this attribute.
+          type: array
+          items:
+            type: string

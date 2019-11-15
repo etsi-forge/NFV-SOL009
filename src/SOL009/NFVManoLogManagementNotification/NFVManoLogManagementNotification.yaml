@@ -39,34 +39,33 @@ paths:
         This method shall follow the provisions specified in the tables 8.5.9.3.1-1 and 8.5.9.3.1-2 for URI query
         parameters, request and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         $ref: "#/components/requestBodies/LogReportAvailableNotification"
       responses:
         "204":
           $ref: '#/components/responses/LogReportAvailableNotification'
         "400":
-          $ref: '../responses/SOL009_resp.yaml#/responses/400'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
-          $ref: '../responses/SOL009_resp.yaml#/responses/401'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/401'
         "403":
-          $ref: '../responses/SOL009_resp.yaml#/responses/403'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/403'
         "404":
-          $ref: '../responses/SOL009_resp.yaml#/responses/404'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/404'
         "405":
-          $ref: '../responses/SOL009_resp.yaml#/responses/405'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/405'
         "406":
-          $ref: '../responses/SOL009_resp.yaml#/responses/406'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/406'
         "422":
-          $ref: '../responses/SOL009_resp.yaml#/responses/422'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/422'
         "500":
-          $ref: '../responses/SOL009_resp.yaml#/responses/500'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/500'
         "503":
-          $ref: '../responses/SOL009_resp.yaml#/responses/503'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/503'
         "504":
-          $ref: '../responses/SOL009_resp.yaml#/responses/504'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/504'
 
     get:
       description: >-
@@ -75,60 +74,34 @@ paths:
         This method shall follow the provisions specified in the tables 8.5.9.3.2-1 and 8.5.9.3.2-2 for URI
         query parameters, request and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
           $ref: '#/components/responses/LogReportNotification.Get'
         "400":
-          $ref: '../responses/SOL009_resp.yaml#/responses/400'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
-          $ref: '../responses/SOL009_resp.yaml#/responses/401'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/401'
         "403":
-          $ref: '../responses/SOL009_resp.yaml#/responses/403'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/403'
         "404":
-          $ref: '../responses/SOL009_resp.yaml#/responses/404'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/404'
         "405":
-          $ref: '../responses/SOL009_resp.yaml#/responses/405'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/405'
         "406":
-          $ref: '../responses/SOL009_resp.yaml#/responses/406'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/406'
         "422":
-          $ref: '../responses/SOL009_resp.yaml#/responses/422'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/422'
         "500":
-          $ref: '../responses/SOL009_resp.yaml#/responses/500'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/500'
         "503":
-          $ref: '../responses/SOL009_resp.yaml#/responses/503'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/503'
         "504":
-          $ref: '../responses/SOL009_resp.yaml#/responses/504'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/504'
 
 components:
-  parameters:
-    Version:
-      name: Version
-      description: >-
-        Version of the API requested to use when responding to this request
-      in: header
-      required: true
-      schema:
-        type: string
-    Accept:
-      name: Accept
-      description: >-
-        Content-Types that are acceptable for the response. Reference: IETF RFC 7231
-      in: header
-      required: true
-      schema:
-        type: string
-    Authorization:
-      name: Authorization
-      description: >-
-        The authorization token for the request. Reference: IETF RFC 7235
-      in: header
-      required: false
-      schema:
-        type: string
-
   requestBodies:
     LogReportAvailableNotification:
       description: >-
@@ -202,7 +175,7 @@ components:
           description: >-
             Identifier of this notification. If a notification is sent multiple times due to multiple subscriptions,
             the "id" attribute of all these notifications shall have the same value.
-          $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
+          $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
         notificationType:
           description: >-
             Discriminator for the different notification types.
@@ -211,16 +184,16 @@ components:
         subscriptionId:
           description: >-
             Identifier of the subscription that this notification relates to.
-          $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
+          $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
         timeStamp:
           description: >-
             Date and time of the generation of the notification.
-          $ref: '../definitions/SOL009_def.yaml#/definitions/DateTime'
+          $ref: '../components/SOL009_schemas.yaml#/components/schemas/DateTime'
         objectInstanceId:
           description: >-
             Identifier that identifies the object instance for which the log report is available.
             This attribute shall contain the identifier of the logged object according to their type.
-          $ref: "../NFVManoLogManagement/NFVManoLogManagement.yaml#/components/schemas/ManoManagedObjectReference"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
         _links:
           description: >-
             Links to resources related to this notification.
@@ -232,16 +205,16 @@ components:
             subscription:
               description: >-
                 Link to the related subscription.
-              $ref: '../definitions/SOL009_def.yaml#/definitions/NotificationLink'
+              $ref: '../components/SOL009_schemas.yaml#/components/schemas/NotificationLink'
             objectInstance:
               description: >-
                 Link to the resource representing the measured object instance to which the notified change applies.
                 Shall be present if the measured object instance information is accessible as a resource.
-              $ref: '../definitions/SOL009_def.yaml#/definitions/NotificationLink'
+              $ref: '../components/SOL009_schemas.yaml#/components/schemas/NotificationLink'
             LoggingJob:
               description: >-
                 Link to the resource that represents the logging job for which the log report is available.
-              $ref: '../definitions/SOL009_def.yaml#/definitions/NotificationLink'
+              $ref: '../components/SOL009_schemas.yaml#/components/schemas/NotificationLink'
             logReports:
               description: >-
                 Link from which the available log report can be obtained. Due to the relationship of the logging
@@ -249,4 +222,4 @@ components:
                 notification link can be provided.
               type: array
               items:
-                $ref: '../definitions/SOL009_def.yaml#/definitions/NotificationLink'
+                $ref: '../components/SOL009_schemas.yaml#/components/schemas/NotificationLink'
