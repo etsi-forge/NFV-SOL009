@@ -76,7 +76,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/Alarm
+                  $ref: "../components/SOL009_schemas.yaml#/components/schemas/Alarm"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -99,17 +99,7 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
   "/alarms/{alarmId}":
     parameters:
-      - name: alarmId
-        description: >
-          Identifier of the alarm. This identifier can be retrieved from the
-          "id" attribute of the "alarm" attribute in the AlarmNotification or
-          AlarmClearedNotification. It can also be retrieved from the "id"
-          attribute of the applicable array element in the payload body of the
-          response to a GET request to the "Alarms" resource.
-        in: path
-        required: true
-        schema:
-          type: string
+      - $ref: "#/components/parameters/alarmId"
     get:
       description: >
         The client can use this method to read an individual alarm. This method
@@ -139,7 +129,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/Alarm
+                $ref: "../components/SOL009_schemas.yaml#/components/schemas/Alarm"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -175,7 +165,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/AlarmModifications
+              $ref: "#/components/schemas/AlarmModifications"
         description: >
           The parameter for the alarm modification, as defined in clause
           7.6.2.8. The Content-Type header shall be set to
@@ -209,7 +199,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/AlarmModifications
+                $ref: "#/components/schemas/AlarmModifications"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -264,7 +254,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/FmSubscriptionRequest
+              $ref: "#/components/schemas/FmSubscriptionRequest"
         description: >
           Details of the subscription to be created, as defined in clause
           7.6.2.2.
@@ -306,7 +296,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/FmSubscription
+                $ref: "#/components/schemas/FmSubscription"
         "303":
           $ref: ../components/SOL009_resp.yaml#/components/responses/303
         "400":
@@ -392,7 +382,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/FmSubscription
+                $ref: "#/components/schemas/FmSubscription"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -415,17 +405,7 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
   "/subscriptions/{subscriptionId}":
     parameters:
-      - name: subscriptionId
-        description: >
-          Identifier of this subscription. This identifier can be retrieved from
-          the resource referenced by the "Location" HTTP header in the response
-          to a POST request creating a new "Individual subscription" resource.
-          It can also be retrieved from the "id" attribute in the payload body
-          of that response.
-        in: path
-        required: true
-        schema:
-          type: string
+      - $ref: "#/components/parameters/subscriptionId"
     get:
       description: >
         Query Subscription Information. The client can use this method for
@@ -472,7 +452,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/FmSubscription
+                $ref: "#/components/schemas/FmSubscription"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -553,3 +533,221 @@ paths:
         "504":
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
+components:
+  parameters:
+    alarmId:
+      name: alarmId
+      description: >
+        Identifier of the alarm. This identifier can be retrieved from the
+        "id" attribute of the "alarm" attribute in the AlarmNotification or
+        AlarmClearedNotification. It can also be retrieved from the "id"
+        attribute of the applicable array element in the payload body of the
+        response to a GET request to the "Alarms" resource.
+      in: path
+      required: true
+      schema:
+        type: string
+    subscriptionId:
+      name: subscriptionId
+      description: >
+        Identifier of this subscription. This identifier can be retrieved from
+        the resource referenced by the "Location" HTTP header in the response
+        to a POST request creating a new "Individual subscription" resource.
+        It can also be retrieved from the "id" attribute in the payload body
+        of that response.
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    FmSubscriptionRequest:
+      description: >
+        This type represents a subscription request related to notifications
+        about NFV-MANO faults.
+      type: object
+      required:
+        - callbackUri
+      properties:
+        filter:
+          description: >
+            Filter settings for this subscription, to define the subset of all
+            notifications this subscription relates to. A particular
+            notification is sent to the subscriber if the filter matches, or if
+            there is no filter.
+          $ref: "#/components/schemas/FmNotificationsFilter"
+        callbackUri:
+          description: >
+            The URI of the endpoint to send the notification to.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
+        authentication:
+          description: >
+            Authentication parameters to configure the use of Authorization when sending notifications
+            corresponding to this subscription, as defined in clause 8.3.4 of ETSI GS NFV-SOL 013.
+            This attribute shall only be present if the subscriber requires authorization of notifications.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
+
+    FmSubscription:
+      description: >
+        This type represents a subscription related to notifications about VNF
+        faults.
+      type: object
+      required:
+        - id
+        - callbackUri
+        - _links
+      properties:
+        id:
+          description: >
+            Identifier of this "Individual subscription" resource.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        filter:
+          description: >
+            Filter settings for this subscription, to define the subset of all
+            notifications this subscription relates to. A particular
+            notification is sent to the subscriber if the filter matches, or if
+            there is no filter.
+          $ref: "#/components/schemas/FmNotificationsFilter"
+        callbackUri:
+          description: >
+            The URI of the endpoint to send the notification to.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
+        _links:
+          description: >
+            Links for this resource.
+          type: object
+          required:
+            - self
+          properties:
+            self:
+              description: >
+                URI of this resource.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
+
+    AlarmModifications:
+      description: >
+        This type represents attribute modifications for an "Individual alarm"
+        resource, i.e. modifications to a resource representation based on the
+        "Alarm" data type. The attributes of "Alarm" that can be modified
+        are included in the "AlarmModifications" data type.
+      type: object
+      required:
+        - ackState
+      properties:
+        ackState:
+          description: >
+            New value of the "ackState" attribute in "Alarm".
+            Permitted values:
+            * ACKNOWLEDGED
+          type: string
+          enum:
+            - ACKNOWLEDGED
+
+    EventType:
+      description: >
+        The enumeration EventType represents those types of events that trigger
+        an alarm.
+        * COMMUNICATIONS_ALARM: An alarm of this type is associated with the
+          procedure and/or process required conveying information from one point
+          to another (ITU-T Recommendation X.733).
+        * PROCESSING_ERROR_ALARM: An alarm of this type is associated with a
+          software or processing fault (ITU-T Recommendation X.733).
+        * ENVIRONMENTAL_ALARM: An alarm of this type is associated with a
+          condition related to an enclosure in which the equipment resides
+          (ITU-T Recommendation X.733).
+        * QOS_ALARM: An alarm of this type is associated with degradation in the
+          quality of a service (ITU-T Recommendation X.733).
+        * EQUIPMENT_ALARM: An alarm of this type is associated with an equipment
+          fault (ITU-T Recommendation X.733).
+      type: string
+      enum:
+        - COMMUNICATIONS_ALARM
+        - PROCESSING_ERROR_ALARM
+        - ENVIRONMENTAL_ALARM
+        - QOS_ALARM
+        - EQUIPMENT_ALARM
+
+    FmNotificationsFilter:
+      description: >
+        This type represents a subscription filter related to notifications about NFV-MANO functional entity faults.
+        It shall comply with the provisions defined in table 7.6.3.2-1. At a particular nesting level in the filter
+        structure, the following applies: All attributes shall match in order for the filter to match (logical "and"
+        between different filter attributes). If an attribute is an array, the attribute shall match if at least one
+        of the values in the array matches (logical "or" between the values of one filter attribute).
+
+      type: object
+      properties:
+        notificationTypes:
+          description: >
+            Match particular notification types.
+            Permitted values:
+            * AlarmNotification
+            * AlarmClearedNotification
+            * AlarmListRebuiltNotification
+            The permitted values of the "notificationTypes" attribute are
+            spelled exactly as the names of the notification types to
+            facilitate automated code generation systems.
+          type: array
+          items:
+            type: string
+            enum:
+              - AlarmNotification
+              - AlarmClearedNotification
+              - AlarmListRebuiltNotification
+        perceivedSeverities:
+          description: >
+            Match VNF alarms with a perceived severity listed in this attribute.
+          type: array
+          items:
+            $ref: "#/components/schemas/PerceivedSeverityType"
+        eventTypes:
+          description: >
+            Match VNF alarms with an event type listed in this attribute.
+          type: array
+          items:
+            $ref: "#/components/schemas/EventType"
+        probableCauses:
+          description: >
+            Match VNF alarms with a probable cause listed in this attribute.
+          type: array
+          items:
+            type: string
+
+    PerceivedSeverityType:
+      description: >
+        Indicates the relative level of urgency for operator attention.
+        * CRITICAL: The Critical severity level indicates that a service
+          affecting condition has occurred and an immediate corrective action
+          is required. Such a severity can be reported, for example, when a
+          managed object becomes totally out of service and its capability needs
+          to be restored (ITU-T Recommendation X.733).
+        * MAJOR: The Major severity level indicates that a service affecting
+          condition has developed and an urgent corrective action is required.
+          Such a severity can be reported, for example, when there is a severe
+          degradation in the capability of the managed object and its full
+          capability needs to be restored (ITU-T Recommendation X.733).
+        * MINOR: The Minor severity level indicates the existence of a
+          non-service affecting fault condition and that corrective action
+          should be taken in order to prevent a more serious (for example,
+          service affecting) fault. Such a severity can be reported, for
+          example, when the detected alarm condition is not currently degrading
+          the capacity of the managed object (ITU-T Recommendation X.733).
+        * WARNING: The Warning severity level indicates the detection of a
+          potential or impending service affecting fault, before any significant
+          effects have been felt. Action should be taken to further diagnose (if
+          necessary) and correct the problem in order to prevent it from
+          becoming a more serious service affecting fault (ITU-T Recommendation
+          X.733).
+        * INDETERMINATE: The Indeterminate severity level indicates that the
+          severity level cannot be determined (ITU-T Recommendation X.733).
+        * CLEARED: The Cleared severity level indicates the clearing of one or
+          more previously reported alarms. This alarm clears all alarms for this
+          managed object that have the same Alarm type, Probable cause and
+          Specific problems (if given) (ITU-T Recommendation X.733).
+      type: string
+      enum:
+        - CRITICAL
+        - MAJOR
+        - MINOR
+        - WARNING
+        - INDETERMINATE
+        - CLEARED

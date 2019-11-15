@@ -447,3 +447,111 @@ components:
           format: URI
         #TODO: How to express "any additional attributes"?
 
+    Alarm:
+      description: >
+        The alarm data type encapsulates information about an alarm.
+      type: object
+      required:
+        - id
+        - managedObjectId
+        - alarmRaisedTime
+        - ackState
+        - perceivedSeverity
+        - eventTime
+        - eventType
+        - probableCause
+        - isRootCause
+        - _links
+      properties:
+        id:
+          description: >
+            Identifier of this Alarm information element.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        managedObjectId:
+          description: >
+            Identifier of the affected NFV-MANO instance.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        associatedFaultyInstanceId:
+          description: >
+            The resources that are causing the fault.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
+        alarmRaisedTime:
+          description: >
+            Time stamp indicating when the alarm is raised by the managed
+            object.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        alarmChangedTime:
+          description: >
+            Time stamp indicating when the alarm was last changed. It shall be
+            present if the alarm has been updated.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        alarmClearedTime:
+          description: >
+            Time stamp indicating when the alarm was cleared. It shall be
+            present if the alarm has been cleared.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        ackState:
+          description: >
+            Acknowledgement state of the alarm.
+            Permitted values:
+            * UNACKNOWLEDGED
+            * ACKNOWLEDGED.
+          type: string
+          enum:
+            - UNACKNOWLEDGED
+            - ACKNOWLEDGED
+        perceivedSeverity:
+          description: >
+            Perceived severity of the managed object failure.
+          $ref: "#/components/schemas/PerceivedSeverityType"
+        eventTime:
+          description: >
+            Time stamp indicating when the fault was observed.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        eventType:
+          description: >
+            Type of event.
+          $ref: "#/components/schemas/EventType"
+        faultType:
+          description: >
+            Additional information to clarify the type of the fault.
+          type: string
+        probableCause:
+          description: >
+            Information about the probable cause of the fault.
+          type: string
+        isRootCause:
+          description: >
+            Attribute indicating if this fault is the root for other correlated
+            alarms. If true, then the alarms listed in the attribute
+            CorrelatedAlarmId are caused by this fault.
+          type: boolean
+        correlatedAlarmIds:
+          description: >
+            List of identifiers of other alarms correlated to this fault.
+          type: array
+          items:
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        faultDetails:
+          description: >
+            Provides additional information about the fault.
+          type: array
+          items:
+            type: string
+        _links:
+          description: >
+            Links for this resource.
+          type: object
+          required:
+            - self
+          properties:
+            self:
+              description: >
+                URI of this resource.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
+            objectInstance:
+              description: >
+                Link to the resource representing the VNF instance to which the
+                notified alarm is correlated. Shall be present if the VNF
+                instance information is accessible as a resource.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
