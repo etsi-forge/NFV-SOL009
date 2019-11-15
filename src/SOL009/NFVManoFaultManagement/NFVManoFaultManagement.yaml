@@ -680,7 +680,7 @@ components:
             Match VNF alarms with an event type listed in this attribute.
           type: array
           items:
-            $ref: ""../components/SOL009_schemas.yaml#/components/schemas/EventType"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/EventType"
         probableCauses:
           description: >
             Match VNF alarms with a probable cause listed in this attribute.
