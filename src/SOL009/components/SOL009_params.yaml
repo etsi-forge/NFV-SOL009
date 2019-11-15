@@ -28,13 +28,13 @@ components:
         type: string
 
     ContentType:
-      - name: Content-Type
-        description: |
-          The MIME type of the body of the request. Reference: IETF RFC 7231
-        in: header
-        required: true
-        schema:
-          type: string
+      name: Content-Type
+      description: |
+        The MIME type of the body of the request. Reference: IETF RFC 7231
+      in: header
+      required: true
+      schema:
+        type: string
 
     filter:
       name: filter
