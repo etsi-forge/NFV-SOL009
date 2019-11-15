@@ -27,6 +27,30 @@ components:
       schema:
         type: string
 
+    ContentType:
+      - name: Content-Type
+        description: |
+          The MIME type of the body of the request. Reference: IETF RFC 7231
+        in: header
+        required: true
+        schema:
+          type: string
+
+    filter:
+      - name: filter
+        description: >
+          Attribute-based filtering expression according to clause 5.2 of ETSI
+          GS NFV-SOL 013. The NFV-MANO functional entity shall support
+          receiving this parameter as part of the URI query string. The API
+          consumer may supply this parameter. All attribute names that appear
+          in the FmSubscription and in data types referenced from it shall be
+          supported by the NFV-MANO functional entity in the filter
+          expression.
+        in: query
+        required: false
+        schema:
+          type: string
+
     all_fields:
       name: all_fields
       description: >
@@ -56,6 +80,16 @@ components:
         5.3 of ETSI GS NFV-SOL 013 for details. The NFV-MANO functional 
         entity should support this parameter.
       in: query
+      required: false
+      schema:
+        type: string
+
+    exclude_default:
+      name: exclude_default
+      in: query
+      description: >-
+        Indicates to exclude the following complex attributes from the response. See clause 5.3 of ETSI GS NFV-SOL 013
+        for details. The NFV-MANO functional entity shall support this parameter.
       required: false
       schema:
         type: string

@@ -34,28 +34,9 @@ paths:
         7.5.7.3.1-1 and 7.5.7.3.1-2 for URI query parameters, request and
         response data structures, and response codes.
       parameters:
-        - name: Authorization
-          description: >
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Content-Type
-          description: >
-            The Content-Type header shall be set to
-            "application/merge-patch+json" according to IETF RFC 7396.
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: Version
-          description: >
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         content:
           application/json:
@@ -109,20 +90,8 @@ paths:
         7.5.7.3.2-2 for URI query parameters, request and response data
         structures, and response codes.
       parameters:
-        - name: Authorization
-          description: |
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Version
-          description: |
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
           description: >
@@ -171,28 +140,9 @@ paths:
         7.5.7.3.1-1 and 7.5.7.3.1-2 for URI query parameters, request and
         response data structures, and response codes.
       parameters:
-        - name: Authorization
-          description: |
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Content-Type
-          description: >
-            The Content-Type header shall be set to
-            "application/merge-patch+json" according to IETF RFC 7396.
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: Version
-          description: |
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         content:
           application/json:
@@ -246,20 +196,8 @@ paths:
         7.5.7.3.2-2 for URI query parameters, request and response data
         structures, and response codes.
       parameters:
-        - name: Authorization
-          description: |
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Version
-          description: |
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
           description: >
@@ -308,28 +246,9 @@ paths:
         7.5.7.3.1-1 and 7.5.7.3.1-2 for URI query parameters, request and
         response data structures, and response codes.
       parameters:
-        - name: Authorization
-          description: |
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Content-Type
-          description: >
-            The Content-Type header shall be set to
-            "application/merge-patch+json" according to IETF RFC 7396.
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: Version
-          description: |
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         content:
           application/json:
@@ -384,29 +303,17 @@ paths:
         7.5.7.3.2-2 for URI query parameters, request and response data
         structures, and response codes.
       parameters:
-        - name: Authorization
-          description: |
-            The authorization token for the request. Reference: IETF RFC 7235
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: Version
-          description: |
-            Version of the API requested to use when responding to this request.
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
           description: >
             204 NO CONTENT
 
             Shall be returned to indicate that the notification endpoint has been tested successfully. The response body shall be empty.
-              headers:
-                WWW-Authenticate:
-              description: >
+          headers:
+            WWW-Authenticate:
+              description: >-
                 Challenge if the corresponding HTTP request has not provided
                 authorization, or error details if the corresponding HTTP
                 request has provided an invalid authorization token.
@@ -415,7 +322,7 @@ paths:
                 minimum: 0
                 maximum: 1
             Version:
-              description: |
+              description: >-
                 Version of the API used in the response.
               schema:
                 type: string

@@ -37,9 +37,10 @@ paths:
         As the result of successfully executing this method, a new "Individual logging job" resource as defined in
         clause 9.5.4 shall have been created.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         $ref: "#/components/requestBodies/CreateLoggingJobRequest"
       responses:
@@ -71,15 +72,15 @@ paths:
         This method shall follow the provisions specified in the tables 8.5.3.3.2-1 and 8.5.3.3.2-2 for
         URI query parameters, request and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/filter"
-        - $ref: "#/components/parameters/all_fields"
-        - $ref: "#/components/parameters/fields"
-        - $ref: "#/components/parameters/exclude_fields"
-        - $ref: "#/components/parameters/exclude_default"
-        - $ref: "#/components/parameters/nextpage_opaque_marker"
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/filter"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/all_fields"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/fields"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/exclude_fields"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/exclude_default"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
           $ref: '#/components/responses/LoggingJobs.Get'
@@ -115,9 +116,9 @@ paths:
         URI query parameters, request and response data structures, and response codes.
       parameters:
         - $ref: "#/components/parameters/logJobId"
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
 
       responses:
         "200":
@@ -151,8 +152,8 @@ paths:
         As the result of successfully executing this method, the "Individual logging job" resource shall not
         exist any longer
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
           $ref: '#/components/responses/LoggingJob.Delete'
@@ -192,9 +193,9 @@ paths:
       parameters:
         - $ref: "#/components/parameters/logJobId"
         - $ref: "#/components/parameters/logJReportId"
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
           $ref: '#/components/responses/LogReport.Get'
@@ -238,9 +239,10 @@ paths:
         query parameters, request and response data structures, and response codes.
       parameters:
         - $ref: "#/components/parameters/logJobId"
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         $ref: "#/components/requestBodies/CompileLogRequest"
       responses:
@@ -290,9 +292,10 @@ paths:
         to not create a duplicate "Individual subscription" resource (in which case it shall return a "303 See Other"
         response code referencing the existing "Individual subscription" resource with the same filter and callbackUri).
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         $ref: '#/components/requestBodies/LogmSubscriptionRequest'
       responses:
@@ -328,11 +331,11 @@ paths:
         query parameters, request and response data structures, and response codes.
 
       parameters:
-        - $ref: "#/components/parameters/filter"
-        - $ref: "#/components/parameters/nextpage_opaque_marker"
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/filter"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
           $ref: '#/components/responses/LogmSubscriptions'
@@ -369,9 +372,9 @@ paths:
         This method shall follow the provisions specified in the tables 8.5.8.3.2-1 and 8.5.8.3.2-2 for
         URI query parameters, request and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
           $ref: '#/components/responses/LogmSubscription.Get'
@@ -405,8 +408,8 @@ paths:
         NOTE:	Due to race conditions, some notifications might still be received by the formerly-subscribed
         API consumer for a certain time period after the deletion.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
           $ref: '#/components/responses/LogmSubscription.Delete'
@@ -433,30 +436,6 @@ paths:
 
 components:
   parameters:
-    Version:
-      name: Version
-      description: >-
-        Version of the API requested to use when responding to this request
-      in: header
-      required: true
-      schema:
-        type: string
-    Accept:
-      name: Accept
-      description: >-
-        Content-Types that are acceptable for the response. Reference: IETF RFC 7231
-      in: header
-      required: true
-      schema:
-        type: string
-    Authorization:
-      name: Authorization
-      description: >-
-        The authorization token for the request. Reference: IETF RFC 7235
-      in: header
-      required: false
-      schema:
-        type: string
     logJobId:
       name: logJobId
       in: path
@@ -481,67 +460,6 @@ components:
       required: true
       schema:
         $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
-    filter:
-      name: filter
-      in: query
-      description: >-
-        Attribute-based filtering expression according to clause 5.2 of ETSI GS NFV-SOL 013.
-        The NFV-MANO functional entity shall support receiving this parameter as part of the URI query string.
-        The API consumer may supply this parameter.
-        All attribute names that appear in the LoggingJob and in data types referenced from it shall be supported by
-        the NFV-MANO functional entity in the filter expression
-      required: false
-      schema:
-        type: string
-    all_fields:
-      name: all_fields
-      in: query
-      description: >-
-        Include all complex attributes in the response. See clause 5.3 of ETSI GS NFV-SOL 013 for details.
-        The NFV-MANO functional entity shall support this parameter.
-      required: false
-      schema:
-        type: string
-    fields:
-      name: fields
-      in: query
-      description: >-
-        Complex attributes to be included into the response. See clause 5.3 of ETSI GS NFV-SOL 013 for details.
-        The NFV-MANO functional entity should support this parameter.
-      required: false
-      schema:
-        type: string
-    exclude_fields:
-      name: exclude_fields
-      in: query
-      description: >-
-        Complex attributes to be excluded from the response. See clause 5.3 of ETSI GS NFV-SOL 013 for details.
-        The NFV-MANO functional entity should support this parameter.
-      required: false
-      schema:
-        type: string
-    exclude_default:
-      name: exclude_default
-      in: query
-      description: >-
-       Indicates to exclude the following complex attributes from the response. See clause 5.3 of ETSI GS NFV-SOL 013
-       for details. The NFV-MANO functional entity shall support this parameter.
-       The following attributes shall be excluded from the LoggingJob structure in the response body if this parameter
-       is provided, or none of the parameters "all_fields," "fields", "exclude_fields", "exclude_default" are provided
-        -logReports
-      required: false
-      schema:
-        type: string
-    nextpage_opaque_marker:
-      name: nextpage_opaque_marker
-      in: query
-      description: >-
-        Marker to obtain the next page of a paged response. Shall be supported by the NFV-MANO functional entity if
-        the NFV-MANO functional entity supports alternative 2 (paging) according to clause 5.4.2.1 of
-        ETSI GS NFV-SOL 013 for this resource.
-      required: false
-      schema:
-        type: string
 
   requestBodies:
     LogmSubscriptionRequest:

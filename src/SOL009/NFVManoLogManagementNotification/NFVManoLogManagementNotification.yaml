@@ -39,9 +39,8 @@ paths:
         This method shall follow the provisions specified in the tables 8.5.9.3.1-1 and 8.5.9.3.1-2 for URI query
         parameters, request and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
         $ref: "#/components/requestBodies/LogReportAvailableNotification"
       responses:
@@ -75,9 +74,9 @@ paths:
         This method shall follow the provisions specified in the tables 8.5.9.3.2-1 and 8.5.9.3.2-2 for URI
         query parameters, request and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/Version"
-        - $ref: "#/components/parameters/Accept"
-        - $ref: "#/components/parameters/Authorization"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
           $ref: '#/components/responses/LogReportNotification.Get'
@@ -103,32 +102,6 @@ paths:
           $ref: '../components/SOL009_resp.yaml#/components/responses/504'
 
 components:
-  parameters:
-    Version:
-      name: Version
-      description: >-
-        Version of the API requested to use when responding to this request
-      in: header
-      required: true
-      schema:
-        type: string
-    Accept:
-      name: Accept
-      description: >-
-        Content-Types that are acceptable for the response. Reference: IETF RFC 7231
-      in: header
-      required: true
-      schema:
-        type: string
-    Authorization:
-      name: Authorization
-      description: >-
-        The authorization token for the request. Reference: IETF RFC 7235
-      in: header
-      required: false
-      schema:
-        type: string
-
   requestBodies:
     LogReportAvailableNotification:
       description: >-
