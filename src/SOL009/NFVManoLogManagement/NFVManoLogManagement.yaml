@@ -1353,7 +1353,7 @@ components:
             contain the identifier of the instance of the object that is logged according to their type.
           type: array
           items:
-            $ref: "#/components/schemas/ManoManagedObjectReference"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
         jobCriteria:
           description: >-
             Criteria of the collection of logging information.
