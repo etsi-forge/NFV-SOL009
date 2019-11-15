@@ -1,0 +1,161 @@
+openapi: 3.0.2
+info:
+  version: 1.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
+  title: SOL009 - NFV-MANO Configuration and Information Management Notification Interface
+  description: >
+    SOL009 - NFV-MANO Configuration and Information Management Notification Interface
+
+    IMPORTANT: Please note that this file might be not aligned to the current
+    version of the ETSI Group Specification it refers to and has not been
+    approved by the ETSI NFV ISG. In case of discrepancies the published ETSI
+    Group Specification takes precedence.
+    Please report bugs to https://forge.etsi.org/bugzilla/buglist.cgi?component=Nfv-Openapis
+  license:
+    name: ETSI Forge copyright notice
+    url: https://forge.etsi.org/etsi-forge-copyright-notice.txt
+  contact:
+    name: NFV-SOL WG
+externalDocs:
+  description: ETSI GS NFV-SOL 009 V0.8.0
+  url: https://docbox.etsi.org/ISG/NFV/Open/Drafts/SOL009ed331_MANO_mgmt_stage_3/NFV-SOL009ed331v080.zip
+
+servers:
+  - url: http://0.0.0.0/callback/v1
+    description: >
+      API HTTP Server
+  - url: https://0.0.0.0/callback/v1
+    description: >
+      API HTTPS Server
+
+paths:
+  /URI-is-provided-by-the-client-when-creating-the-subscription-ConfigurationAndInformationNotification:
+    description: >
+      This resource represents a notification endpoint. The API producer can use this 
+      resource to send notifications related to NFV-MANO configuration and information 
+      management to a subscribed API consumer, which has provided the URI of this 
+      resource during the subscription process.
+    post:
+      description: >
+        The POST method delivers a notification from the API producer to an API consumer. 
+        The API consumer shall have previously created an "Individual subscription" 
+        resource with a matching filter.
+      parameters:
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
+      requestBody:
+        $ref: "#/components/requestBodies/CreateConfigurationAnfInformationNotificationRequest"
+      responses:
+        "204": 
+          $ref: "#/components/responses/notification.post.204"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+
+    get:
+      description: >
+        TThe GET method allows the API producer to test the notification endpoint that 
+        is provided by the API consumer, e.g., during the subscription process.
+      parameters:
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
+      responses:
+        "204": 
+          $ref: "#/components/responses/notification.get.204"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
+
+components:
+  responses:
+    notification.post.204:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned when the notification has been delivered successfully.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+
+    notification.get.204:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned to indicate that the notification endpoint has been 
+        tested successfully.
+
+        The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+
+  requestBodies:
+    CreateConfigurationAnfInformationNotificationRequest:
+      description: >
+        A notification about configuration and information data changes of the 
+        NFV-MANO functional entity, or state changes of the NFV-MANO functional 
+        entity and its managed objects.
+      content:
+        application/json:
+          schema: 
+            oneOf:
+              - $ref: "../NFVManoConfigurationAndInformationManagement/NFVManoConfigurationAndInformationManagement.yaml#/components/schemas/InformationChangedNotification"
+              - $ref: "../NFVManoConfigurationAndInformationManagement/NFVManoConfigurationAndInformationManagement.yaml#/components/schemas/ChangeStateNotification"
+      required: true
+
+  
