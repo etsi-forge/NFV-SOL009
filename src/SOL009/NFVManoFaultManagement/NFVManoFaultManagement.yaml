@@ -118,25 +118,25 @@ paths:
                 items:
                   $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/Alarm
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
   "/alarms/{alarmId}":
     parameters:
       - name: alarmId
@@ -207,25 +207,25 @@ paths:
               schema:
                 $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/Alarm
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     patch:
       description: >
         This method modifies an "Individual alarm" resource. This method shall
@@ -305,29 +305,29 @@ paths:
               schema:
                 $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/AlarmModifications
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "409":
-          $ref: ../responses/SOL009_resp.yaml#/responses/409
+          $ref: ../components/SOL009_resp.yaml#/components/responses/409
         "412":
-          $ref: ../responses/SOL009_resp.yaml#/responses/412
+          $ref: ../components/SOL009_resp.yaml#/components/responses/412
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
   /subscriptions:
     post:
       description: >
@@ -427,27 +427,27 @@ paths:
               schema:
                 $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/FmSubscription
         "303":
-          $ref: ../responses/SOL009_resp.yaml#/responses/303
+          $ref: ../components/SOL009_resp.yaml#/components/responses/303
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     get:
       description: >
         Query Subscription Information
@@ -560,25 +560,25 @@ paths:
               schema:
                 $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/FmSubscription
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
   "/subscriptions/{subscriptionId}":
     parameters:
       - name: subscriptionId
@@ -666,25 +666,25 @@ paths:
               schema:
                 $ref: definitions/SOL009NFVManoFaultManagement_def.yaml#/definitions/FmSubscription
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     delete:
       description: >
         Terminate Subscription. This method terminates an individual
@@ -737,23 +737,23 @@ paths:
                 minimum: 1
                 maximum: 1
         "400":
-          $ref: ../responses/SOL009_resp.yaml#/responses/400
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
-          $ref: ../responses/SOL009_resp.yaml#/responses/401
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
-          $ref: ../responses/SOL009_resp.yaml#/responses/403
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
         "404":
-          $ref: ../responses/SOL009_resp.yaml#/responses/404
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
         "405":
-          $ref: ../responses/SOL009_resp.yaml#/responses/405
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
-          $ref: ../responses/SOL009_resp.yaml#/responses/406
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
-          $ref: ../responses/SOL009_resp.yaml#/responses/500
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
-          $ref: ../responses/SOL009_resp.yaml#/responses/503
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
-          $ref: ../responses/SOL009_resp.yaml#/responses/504
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
 

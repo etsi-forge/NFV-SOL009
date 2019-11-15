@@ -48,25 +48,25 @@ paths:
         "204":
           $ref: '#/components/responses/LogReportAvailableNotification'
         "400":
-          $ref: '../responses/SOL009_resp.yaml#/responses/400'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
-          $ref: '../responses/SOL009_resp.yaml#/responses/401'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/401'
         "403":
-          $ref: '../responses/SOL009_resp.yaml#/responses/403'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/403'
         "404":
-          $ref: '../responses/SOL009_resp.yaml#/responses/404'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/404'
         "405":
-          $ref: '../responses/SOL009_resp.yaml#/responses/405'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/405'
         "406":
-          $ref: '../responses/SOL009_resp.yaml#/responses/406'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/406'
         "422":
-          $ref: '../responses/SOL009_resp.yaml#/responses/422'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/422'
         "500":
-          $ref: '../responses/SOL009_resp.yaml#/responses/500'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/500'
         "503":
-          $ref: '../responses/SOL009_resp.yaml#/responses/503'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/503'
         "504":
-          $ref: '../responses/SOL009_resp.yaml#/responses/504'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/504'
 
     get:
       description: >-
@@ -82,25 +82,25 @@ paths:
         "204":
           $ref: '#/components/responses/LogReportNotification.Get'
         "400":
-          $ref: '../responses/SOL009_resp.yaml#/responses/400'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
-          $ref: '../responses/SOL009_resp.yaml#/responses/401'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/401'
         "403":
-          $ref: '../responses/SOL009_resp.yaml#/responses/403'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/403'
         "404":
-          $ref: '../responses/SOL009_resp.yaml#/responses/404'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/404'
         "405":
-          $ref: '../responses/SOL009_resp.yaml#/responses/405'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/405'
         "406":
-          $ref: '../responses/SOL009_resp.yaml#/responses/406'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/406'
         "422":
-          $ref: '../responses/SOL009_resp.yaml#/responses/422'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/422'
         "500":
-          $ref: '../responses/SOL009_resp.yaml#/responses/500'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/500'
         "503":
-          $ref: '../responses/SOL009_resp.yaml#/responses/503'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/503'
         "504":
-          $ref: '../responses/SOL009_resp.yaml#/responses/504'
+          $ref: '../components/SOL009_resp.yaml#/components/responses/504'
 
 components:
   parameters:
