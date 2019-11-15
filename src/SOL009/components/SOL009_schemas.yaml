@@ -446,3 +446,4 @@ components:
           type: string
           format: URI
         #TODO: How to express "any additional attributes"?
+

@@ -20,13 +20,13 @@ definitions:
         callbackUri:
           description: >
             The URI of the endpoint to send the notification to.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/Uri"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
         authentication:
           description: >
             Authentication parameters to configure the use of Authorization when sending notifications
             corresponding to this subscription, as defined in clause 8.3.4 of ETSI GS NFV-SOL 013.
             This attribute shall only be present if the subscriber requires authorization of notifications.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/SubscriptionAuthentication"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
 
     FmSubscription:
       description: >
@@ -41,7 +41,7 @@ definitions:
         id:
           description: >
             Identifier of this "Individual subscription" resource.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         filter:
           description: >
             Filter settings for this subscription, to define the subset of all
@@ -52,7 +52,7 @@ definitions:
         callbackUri:
           description: >
             The URI of the endpoint to send the notification to.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/Uri"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
         _links:
           description: >
             Links for this resource.
@@ -63,7 +63,7 @@ definitions:
             self:
               description: >
                 URI of this resource.
-              $ref: "../../definitions/SOL009_def.yaml#/definitions/Link"
+              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Link"
 
     Alarm:
       description: >
@@ -84,30 +84,30 @@ definitions:
         id:
           description: >
             Identifier of this Alarm information element.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         managedObjectId:
           description: >
             Identifier of the affected NFV-MANO instance.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         associatedFaultyInstanceId:
           description: >
             The resources that are causing the fault.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/ManoManagedObjectReference"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
         alarmRaisedTime:
           description: >
             Time stamp indicating when the alarm is raised by the managed
             object.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/DateTime"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
         alarmChangedTime:
           description: >
             Time stamp indicating when the alarm was last changed. It shall be
             present if the alarm has been updated.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/DateTime"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
         alarmClearedTime:
           description: >
             Time stamp indicating when the alarm was cleared. It shall be
             present if the alarm has been cleared.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/DateTime"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
         ackState:
           description: >
             Acknowledgement state of the alarm.
@@ -125,7 +125,7 @@ definitions:
         eventTime:
           description: >
             Time stamp indicating when the fault was observed.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/DateTime"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
         eventType:
           description: >
             Type of event.
@@ -149,7 +149,7 @@ definitions:
             List of identifiers of other alarms correlated to this fault.
           type: array
           items:
-            $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+            $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         faultDetails:
           description: >
             Provides additional information about the fault.
@@ -166,13 +166,13 @@ definitions:
             self:
               description: >
                 URI of this resource.
-              $ref: "../../definitions/SOL009_def.yaml#/definitions/Link"
+              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Link"
             objectInstance:
               description: >
                 Link to the resource representing the VNF instance to which the
                 notified alarm is correlated. Shall be present if the VNF
                 instance information is accessible as a resource.
-              $ref: "../../definitions/SOL009_def.yaml#/definitions/Link"
+              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Link"
 
     AlarmNotification:
       description: >
@@ -196,7 +196,7 @@ definitions:
             Identifier of this notification. If a notification is sent multiple
             times due to multiple subscriptions, the "id" attribute of all these
             notifications shall have the same value.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         notificationType:
           description: >
             Discriminator for the different notification types. Shall be set to
@@ -207,11 +207,11 @@ definitions:
         subscriptionId:
           description: >
             Identifier of the subscription that this notification relates to.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         timeStamp:
           description: >
             Date-time of the generation of the notification.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/DateTime"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
         alarm:
           description: >
             Information about an alarm including AlarmId, affected VNF
@@ -227,7 +227,7 @@ definitions:
             subscription:
               description: >
                 Link to the related subscription.
-              $ref: "../../definitions/SOL009_def.yaml#/definitions/NotificationLink"
+              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
 
     AlarmClearedNotification:
       description: >
@@ -249,7 +249,7 @@ definitions:
             Identifier of this notification. If a notification is sent multiple
             times due to multiple subscriptions, the "id" attribute of all these
             notifications shall have the same value.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         notificationType:
           description: >
             Discriminator for the different notification types. Shall be set to
@@ -260,15 +260,15 @@ definitions:
         subscriptionId:
           description: >
             Identifier of the subscription that this notification relates to.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         timeStamp:
           description: >
             Date-time of the generation of the notification.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/DateTime"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
         alarmId:
           description: >
             Alarm identifier.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         alarmClearedTime:
           description: >
             The time stamp indicating when the alarm was cleared.
@@ -283,11 +283,11 @@ definitions:
             subscription:
               description: >
                 Link to the related subscription.
-              $ref: "../../definitions/SOL009_def.yaml#/definitions/NotificationLink"
+              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
             alarm:
               description: >
                 Link to the resource that represents the related alarm.
-              $ref: "../../definitions/SOL009_def.yaml#/definitions/NotificationLink"
+              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
 
     AlarmListRebuiltNotification:
       description: >
@@ -309,7 +309,7 @@ definitions:
             Identifier of this notification. If a notification is sent multiple
             times due to multiple subscriptions, the "id" attribute of all these
             notifications shall have the same value.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         notificationType:
           description: >
             Discriminator for the different notification types. Shall be set to
@@ -320,11 +320,11 @@ definitions:
         subscriptionId:
           description: >
             Identifier of the subscription that this notification relates to.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/Identifier"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         timeStamp:
           description: >
             Date-time of the generation of the notification.
-          $ref: "../../definitions/SOL009_def.yaml#/definitions/DateTime"
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
         _links:
           description: >
             Links to resources related to this notification.
@@ -336,11 +336,11 @@ definitions:
             subscription:
               description: >
                 Link to the related subscription.
-              $ref: "../../definitions/SOL009_def.yaml#/definitions/NotificationLink"
+              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
             alarms:
               description: >
                 Link to the alarm list, i.e. the "Alarms" resource.
-              $ref: "../../definitions/SOL009_def.yaml#/definitions/NotificationLink"
+              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
 
     AlarmModifications:
       description: >

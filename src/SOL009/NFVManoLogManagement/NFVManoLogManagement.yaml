@@ -464,7 +464,7 @@ components:
         Identifier of the logging job.
       required: true
       schema:
-        $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
+        $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
     logJReportId:
       name: logJReportId
       in: path
@@ -472,7 +472,7 @@ components:
         Identifier of the report.
       required: true
       schema:
-        $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
+        $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
     subscriptionId:
       name: subscriptionId
       in: path
@@ -480,7 +480,7 @@ components:
         Identifier of the subscription
       required: true
       schema:
-        $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
+        $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
     filter:
       name: filter
       in: query
@@ -843,7 +843,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '../definitions/SOL009_def.yaml#/definitions/ProblemDetails'
+            $ref: '../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails'
 
     LogReport.Get:
       description: >-
@@ -1016,7 +1016,7 @@ components:
         id:
           description: >-
             Identifier that identifies the subscription.
-          $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
+          $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
         filter:
           description: >-
             Filter settings for this subscription, to define the subset of all notifications this subscription
@@ -1026,7 +1026,7 @@ components:
         callbackUri:
           description: >-
             The URI of the endpoint to send the notification to.
-          $ref: '../definitions/SOL009_def.yaml#/definitions/Uri'
+          $ref: '../components/SOL009_schemas.yaml#/components/schemas/Uri'
         _links:
           description: >-
             Links to resources related to this resource.
@@ -1037,7 +1037,7 @@ components:
             self:
               description: >-
                 URI of this resource.
-              $ref: '../definitions/SOL009_def.yaml#/definitions/Link'
+              $ref: '../components/SOL009_schemas.yaml#/components/schemas/Link'
 
     LogmNotificationsFilter:
       description: >-
@@ -1083,13 +1083,13 @@ components:
         manoEntityId:
           description: >-
             If present, match the NFV-MANO functional entity with an instance identifier listed in this attribute.
-          $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
+          $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
         manoServiceIds:
           description: >-
             If present, match NFV-MANO services with an instance identifier listed in this attribute.
           type: array
           items:
-            $ref: '../definitions/SOL009_def.yaml#/definitions/IdentifierInManoEntity'
+            $ref: '../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity'
         manoServiceNames:
           description: >-
             If present, match NFV-MANO services with an NFV-MANO service name listed in this attribute.
@@ -1102,7 +1102,7 @@ components:
             identifier listed in this attribute.
           type: array
           items:
-            $ref: '../definitions/SOL009_def.yaml#/definitions/IdentifierInManoEntity'
+            $ref: '../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity'
         manoServiceInterfaceNames:
           description: >-
             If present, match NFV-MANO functional entity produced interfaces with an instance Name listed in
@@ -1116,7 +1116,7 @@ components:
             listed in this attribute.
           type: array
           items:
-            $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
+            $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
         consumedManoInterfaceNames:
           description: >-
             If present, match NFV-MANO functional entity consumed interfaces with an instance Name
@@ -1156,13 +1156,13 @@ components:
         id:
           description: >-
             Identifier of this log report.
-          $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
+          $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
         objectInstanceId:
           description: >-
             Identifiers of the object instance for which logging information is collected.
             This attribute shall contain the identifier of the instance of the object that is
             logged according to their type.
-          $ref: '#/components/schemas/ManoManagedObjectReference'
+          $ref: '../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference'
         compilationTrigger:
           description: >-
             The trigger for the compilation of the log file.
@@ -1175,11 +1175,11 @@ components:
         readyTime:
           description: >-
             The time when the report and log file was made available.
-          $ref: '../definitions/SOL009_def.yaml#/definitions/DateTime'
+          $ref: '../components/SOL009_schemas.yaml#/components/schemas/DateTime'
         expiryTime:
           description: >-
             The time when the report and log file will expire.
-          $ref: '../definitions/SOL009_def.yaml#/definitions/DateTime'
+          $ref: '../components/SOL009_schemas.yaml#/components/schemas/DateTime'
         fileSize:
           description: >-
             The size of the compiled log file in bytes, if known.
@@ -1270,14 +1270,14 @@ components:
             self:
               description: >-
                 URI of this resource.
-              $ref: '../definitions/SOL009_def.yaml#/definitions/Link'
+              $ref: '../components/SOL009_schemas.yaml#/components/schemas/Link'
             objects:
               description: >-
                 Links to resources representing the object instances that are logged. Shall be present
                 if the logged object instance information is accessible as a resource.
               type: array
               items:
-                $ref: '../definitions/SOL009_def.yaml#/definitions/Link'
+                $ref: '../components/SOL009_schemas.yaml#/components/schemas/Link'
 
     LogmSubscriptionRequest:
       description: >-
@@ -1296,13 +1296,13 @@ components:
         callbackUri:
           description: >
             The URI of the endpoint to send the notification to.
-          $ref: "../definitions/SOL009_def.yaml#/definitions/Uri"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
         authentication:
           description: >
             Authentication parameters to configure the use of Authorization when sending notifications
             corresponding to this subscription, as defined in clause 8.3.4 of ETSI GS NFV-SOL 013.
             This attribute shall only be present if the subscriber requires authorization of notifications.
-          $ref: "../definitions/SOL009_def.yaml#/definitions/SubscriptionAuthentication"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
 
     CreateLoggingJobRequest:
       description: >-
@@ -1322,7 +1322,7 @@ components:
           type: array
           minItems: 1
           items:
-            $ref: "#/components/schemas/ManoManagedObjectReference"
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
         jobCriteria:
           description: >-
             Criteria of the collection of logging information.
@@ -1331,57 +1331,6 @@ components:
           description: >-
             Configuration about the logging job.
           $ref: "#/components/schemas/LoggingJobConfig"
-
-    ManoManagedObjectReference:
-      description: >-
-        This type represents the identifier to reference a managed object of a particular type.
-        It shall comply with the provisions defined in Table 4.3.2.3-1.
-      type: object
-      required:
-        - type
-        - objectId
-      properties:
-        type:
-          description: >-
-            Indicates the type of managed object.
-
-            Permitted values:
-            - MANO_ENTITY
-            - MANO_SERVICE
-            - MANO_SERVICE_IF
-            - CONSUMED_MANO_IF
-            - MANO_ENTITY_COMPONENT
-          type: string
-          enum: [MANO_ENTITY, MANO_SERVICE, MANO_SERVICE_IF, CONSUMED_MANO_IF, MANO_ENTITY_COMPONENT]
-        objectId:
-          description: >-
-            Identifier of the managed object.
-
-            - If type="MANO_ENTITY", it corresponds to the value of the attribute "id" of the "ManoEntity"
-               representing an NFV-MANO functional entity.
-            - If type="MANO_SERVICE", it corresponds to the value of the attribute "id" of the "ManoEntity"
-               representing the NFV-MANO functional entity that contains the "ManoService" sub-object.
-            - If type="MANO_SERVICE_IF", it corresponds to the value of the attribute "id" of the
-              "ManoServiceInterface" representing the NFV-MANO functional entity that contains the
-              "ManoServiceInterface" sub-object.
-            - If type="CONSUMED_MANO_IF", the value corresponds to the value of the attribute "id" of the
-              "ConsumedManoInterfaceInfo" representing a consumed NFV-MANO service interface from a peer
-               functional entity.
-            - If type="MANO_ENTITY_COMPONENT", the value corresponds to the value of the attribute "id" of the
-               "ManoEntity" representing the NFV-MANO functional entity that contains
-          $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
-        subObjectId:
-          description: >-
-            Identifier of the managed sub-object. It shall be present if type equals to "MANO_SERVICE" or
-            "MANO_SERVICE_IF" or "MANO_ENTITY_COMPONENT".
-
-            - If type="MANO_SERVICE", it corresponds to the value of the attribute "id" of the "ManoService"
-               representing an individual NFV-MANO service.
-            - If type="MANO_SERVICE_IF", it corresponds to the value of the attribute "id" of the "ManoServiceInterface"
-              representing an individual NFV-MANO service interface.
-            - If type="MANO_ENTITY_COMPONENT", it corresponds to the value of the attribute "id" of the "ManoEntityComponent"
-              representing an NFV-MANO functional entity component
-          $ref: '../definitions/SOL009_def.yaml#/definitions/IdentifierInManoEntity'
 
     LoggingJob:
       description: >-
@@ -1397,7 +1346,7 @@ components:
         id:
           description: >-
             Identifier of this logging job.
-          $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
+          $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
         objectInstanceIds:
           description: >-
             Identifiers of the object instance for which logging information is collected. This attribute shall
@@ -1426,11 +1375,11 @@ components:
               logReportId:
                 description: >-
                   Identifier of the available log report.
-                $ref: '../definitions/SOL009_def.yaml#/definitions/Identifier'
+                $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
               logReportLoc:
                 description: >-
                   Link to the available log report.
-                $ref: '../definitions/SOL009_def.yaml#/definitions/Link'
+                $ref: '../components/SOL009_schemas.yaml#/components/schemas/Link'
         _links:
           description: >-
             Links for this resource.
@@ -1441,14 +1390,14 @@ components:
             self:
               description: >-
                 URI of this resource.
-              $ref: '../definitions/SOL009_def.yaml#/definitions/Link'
+              $ref: '../components/SOL009_schemas.yaml#/components/schemas/Link'
             objects:
               description: >-
                 Links to resources representing the object instances that are logged. Shall be present
                 if the logged object instance information is accessible as a resource.
               type: array
               items:
-                $ref: '../definitions/SOL009_def.yaml#/definitions/Link'
+                $ref: '../components/SOL009_schemas.yaml#/components/schemas/Link'
 
     LoggingJobCriteria:
       description: >-
@@ -1529,7 +1478,7 @@ components:
                   description: >-
                     IP address to match the source IP address of request messages to log. The API producer
                     shall support this attribute.
-                  $ref: '../definitions/SOL009_def.yaml#/definitions/IpAddress'
+                  $ref: '../components/SOL009_schemas.yaml#/components/schemas/IpAddress'
               requestMethod:
                 description: >-
                   HTTP request method to be matched. To match, the HTTP request method of the message shall be the
@@ -1547,7 +1496,7 @@ components:
                 description: >-
                   IP address to match the destination IP address of response messages to log. The API
                   producer shall support this attribute
-                $ref: '../definitions/SOL009_def.yaml#/definitions/IpAddress'
+                $ref: '../components/SOL009_schemas.yaml#/components/schemas/IpAddress'
               responseCodes:
                 description: >-
                   HTTP response codes or patterns to match. A list of all valid HTTP response codes and their
@@ -1610,7 +1559,7 @@ components:
         systemLogs:
           description: >-
             Values for the provider enabled system logs.
-          $ref: "../definitions/SOL009_def.yaml#/definitions/KeyValuePairs"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
         severityLevelScheme:
           description: >-
             Identifies a severity level scheme.
@@ -1639,12 +1588,12 @@ components:
           description: >-
             Specifies the time for the logging job to be started. If not provided, the logging job is
             requested to start immediately.
-          $ref: "../definitions/SOL009_def.yaml#/definitions/DateTime"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
         endTime:
           description: >-
             Specifies the time after which the logging job will stop. Shall only be provided if the
             logging job is requested to stop at a specific time.
-          $ref: "../definitions/SOL009_def.yaml#/definitions/DateTime"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
         reportingCondition:
           description: >-
             Specifies the condition under which the producer will report to the consumer about the compiled log data.

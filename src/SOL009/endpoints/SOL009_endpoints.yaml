@@ -34,7 +34,7 @@ endpoints:
           content:
             application/json:
               schema:
-                $ref: '../definitions/SOL009_def.yaml#/definitions/ApiVersionInformation'
+                $ref: '../components/SOL009_schemas.yaml#/components/schemas/ApiVersionInformation'
           headers:
             Content-Type:
               description: The MIME type of the body of the response.
