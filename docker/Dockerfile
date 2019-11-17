@@ -16,7 +16,7 @@ RUN gem install rdoc --pre || gem install rdoc --pre
 RUN gem install asciidoctor-pdf-cjk
 RUN wget https://forge.etsi.org/swagger2markup-cli-1.3.2.jar
 RUN npm config set proxy $http_proxy
-RUN npm install -g swagger-tools@0.10.3
+RUN npm install -g swagger-cli@0.10.3
 RUN npm install -g json-refs@3.0.2
 RUN npm install -g yamljs@0.3.0
 

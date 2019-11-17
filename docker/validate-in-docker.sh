@@ -32,7 +32,7 @@ function validate_api () {
   mv "${deliverable}-${api}-API.pdf" "../build/"
 
   echo "--- Validating ${merged_file}"
-  swagger-tools validate "${merged_file}"
+  swagger-cli validate "${merged_file}"
   vres=$?
   echo "--- Validation done ($vres)."
 
