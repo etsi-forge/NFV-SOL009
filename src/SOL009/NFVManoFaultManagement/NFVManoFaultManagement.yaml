@@ -12,8 +12,8 @@ info:
     name: ETSI Forge copyright notice
     url: https://forge.etsi.org/etsi-forge-copyright-notice.txt
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V0.8.0
-  url: https://docbox.etsi.org/ISG/NFV/Open/Drafts/SOL009ed331_MANO_mgmt_stage_3/NFV-SOL009ed331v080.zip
+  description: ETSI GS NFV-SOL 009 V3.3.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.03.01_60/gs_NFV-SOL009v030301p.pdf
 
 servers:
   - url: http://127.0.0.1/nfvmanofm/v1
@@ -37,46 +37,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
       responses:
         "200":
-          description: >
-            200 OK
-
-            Shall be returned when information about zero or more alarms has been queried successfully.
-            The response body shall contain in an array the representations of zero or more alarms as defined
-            in clause 7.6.2.4. If the "filter" URI parameter was supplied in the request, the data in the response
-            body shall have been transformed according to the rules specified in clause 5.2.2 of ETSI GS NFV-SOL 013.
-            If the NFV-MANO functional entity supports alternative 2 (paging) according to clause 5.4.2.1 of
-            ETSI GS NFV-SOL 013 for this resource, inclusion of the Link HTTP header in this response shall
-            follow the provisions in clause 5.4.2.3 of ETSI GS NFV-SOL 013.
-          headers:
-            Content-Type:
-              description: >
-                The MIME type of the body of the request. Reference: IETF RFC
-                7231
-              schema:
-                type: string
-                minimum: 1
-                maximum: 1
-            Version:
-              description: |
-                Version of the API used in the response.
-              schema:
-                type: string
-                minimum: 1
-                maximum: 1
-            Link:
-              description: >
-                Reference to other resources. Used for paging in the present
-                document.
-              schema:
-                type: string
-                minimum: 0
-                maximum: 1
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "../components/SOL009_schemas.yaml#/components/schemas/Alarm"
+          $ref: '#/components/responses/Alarms.get'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -112,24 +73,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
-          description: >
-            200 OK
-
-            Shall be returned when information about an individual alarm has been read successfully. The response body
-            shall contain a representation of the individual alarm
-          headers:
-            Content-Type:
-              description: >
-                The MIME type of the body of the request. Reference: IETF RFC
-                7231
-              schema:
-                type: string
-                minimum: 1
-                maximum: 1
-          content:
-            application/json:
-              schema:
-                $ref: "../components/SOL009_schemas.yaml#/components/schemas/Alarm"
+          $ref: '#/components/responses/Alarm.get'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -162,44 +106,10 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
       requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/AlarmModifications"
-        description: >
-          The parameter for the alarm modification, as defined in clause
-          7.6.2.8. The Content-Type header shall be set to
-          "application/merge-patch+json" according to IETF RFC 7396.
-        required: true
+        $ref: "#/components/requestBodies/AlarmModifications"
       responses:
         "200":
-          description: >
-            200 OK
-
-            Shall be returned when the request has been accepted and completed. ì The response body shall contain
-            attribute modifications for an "Individual alarm" resource (see clause 7.6.2.4).
-          headers:
-            Content-Type:
-              description: >
-                The MIME type of the body of the request. Reference: IETF RFC
-                7231
-              schema:
-                type: string
-                minimum: 1
-                maximum: 1
-            WWW-Authenticate:
-              description: >
-                Challenge if the corresponding HTTP request has not provided
-                authorization, or error details if the corresponding HTTP
-                request has provided an invalid authorization token.
-              schema:
-                type: string
-                minimum: 0
-                maximum: 1
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AlarmModifications"
+          $ref: '#/components/responses/Alarm.patch'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -251,52 +161,10 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
       requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/FmSubscriptionRequest"
-        description: >
-          Details of the subscription to be created, as defined in clause
-          7.6.2.2.
-        required: true
+        $ref: "#/components/requestBodies/FmSubscriptionRequest"
       responses:
         "201":
-          description: >
-            201 CREATED
-
-            Shall be returned when the subscription has been created successfully. The response body shall contain a
-            representation of the created "Individual subscription" resource. The HTTP response shall include a
-            "Location:"" HTTP header that points to the created "Individual subscription" resource.
-          headers:
-            Content-Type:
-              description: >
-                The MIME type of the body of the request. Reference: IETF RFC
-                7231
-              schema:
-                type: string
-                minimum: 1
-                maximum: 1
-            Location:
-              description: |
-                The resource URI of the created subscription resource.
-              schema:
-                type: string
-                format: url
-                minimum: 1
-                maximum: 1
-            WWW-Authenticate:
-              description: >
-                Challenge if the corresponding HTTP request has not provided
-                authorization, or error details if the corresponding HTTP
-                request has provided an invalid authorization token.
-              schema:
-                type: string
-                minimum: 0
-                maximum: 1
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/FmSubscription"
+          $ref: '#/components/responses/Subscriptions.post'
         "303":
           $ref: ../components/SOL009_resp.yaml#/components/responses/303
         "400":
@@ -335,54 +203,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
       responses:
         "200":
-          description: >
-            200 OK
-
-            Shall be returned when the list of subscriptions has been queried successfully. The response body shall
-            contain in an array the representations of all active subscriptions of the functional block that invokes
-            the method, i.e. zero or more representations of FM subscriptions as defined in clause 7.6.2.3. If the
-            "filter" URI parameter was supplied in the request, the data in the response body shall have been
-            transformed according to the rules specified in clause 5.2.2 of ETSI GS NFV-SOL 013. If the NFV-MANO
-            functional entity supports alternative 2 (paging) according to clause 5.4.2.1 of ETSI GS NFV-SOL 013
-            for this resource, inclusion of the Link HTTP header in this response shall follow the provisions in
-            clause 5.4.2.3 of ETSI GS NFV-SOL 013.
-          headers:
-            Content-Type:
-              description: >
-                The MIME type of the body of the request. Reference: IETF RFC
-                7231
-              schema:
-                type: string
-                minimum: 1
-                maximum: 1
-            WWW-Authenticate:
-              description: >
-                Challenge if the corresponding HTTP request has not provided
-                authorization, or error details if the corresponding HTTP
-                request has provided an invalid authorization token.
-              schema:
-                type: string
-                minimum: 0
-                maximum: 1
-            Version:
-              description: |
-                Version of the API used in the response.
-              schema:
-                type: string
-                minimum: 1
-                maximum: 1
-            Link:
-              description: >
-                Reference to other resources. Used for paging in the present
-                document, see clause 4.7.2.1.
-              schema:
-                type: string
-                minimum: 0
-                maximum: 1
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/FmSubscription"
+          $ref: '#/components/responses/Subscriptions.get'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -419,40 +240,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
-          description: >
-            200 OK
-
-            The operation has completed successfully. The response body shall contain a representation of the
-            subscription resource.
-          headers:
-            Content-Type:
-              description: >
-                The MIME type of the body of the request. Reference: IETF RFC
-                7231
-              schema:
-                type: string
-                minimum: 1
-                maximum: 1
-            WWW-Authenticate:
-              description: >
-                Challenge if the corresponding HTTP request has not provided
-                authorization, or error details if the corresponding HTTP
-                request has provided an invalid authorization token.
-              schema:
-                type: string
-                minimum: 0
-                maximum: 1
-            Version:
-              description: |
-                Version of the API used in the response.
-              schema:
-                type: string
-                minimum: 1
-                maximum: 1
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/FmSubscription"
+          $ref: '#/components/responses/Subscription.get'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -490,28 +278,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
-          description: >
-            204 NO CONTENT
-
-            Shall be returned when the "Individual subscription" resource has been deleted successfully.
-            The response body shall be empty.
-          headers:
-            WWW-Authenticate:
-              description: >
-                Challenge if the corresponding HTTP request has not provided
-                authorization, or error details if the corresponding HTTP
-                request has provided an invalid authorization token.
-              schema:
-                type: string
-                minimum: 0
-                maximum: 1
-            Version:
-              description: |
-                Version of the API used in the response.
-              schema:
-                type: string
-                minimum: 1
-                maximum: 1
+          $ref: '#/components/responses/Subscription.delete'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -687,3 +454,266 @@ components:
           type: array
           items:
             type: string
+  requestBodies:
+    AlarmModifications:
+      description: >
+        The parameter for the alarm modification, as defined in clause
+        7.6.2.8. The Content-Type header shall be set to
+        "application/merge-patch+json" according to IETF RFC 7396.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/AlarmModifications"
+      required: true
+
+    FmSubscriptionRequest:
+      description: >
+        Details of the subscription to be created, as defined in clause
+        7.6.2.2.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/FmSubscriptionRequest"
+      required: true
+
+  responses:
+    Alarms.get:
+      description: >
+        200 OK
+
+        Shall be returned when information about zero or more alarms has been queried successfully.
+        The response body shall contain in an array the representations of zero or more alarms as defined
+        in clause 7.6.2.4. If the "filter" URI parameter was supplied in the request, the data in the response
+        body shall have been transformed according to the rules specified in clause 5.2.2 of ETSI GS NFV-SOL 013.
+        If the NFV-MANO functional entity supports alternative 2 (paging) according to clause 5.4.2.1 of
+        ETSI GS NFV-SOL 013 for this resource, inclusion of the Link HTTP header in this response shall
+        follow the provisions in clause 5.4.2.3 of ETSI GS NFV-SOL 013.
+      headers:
+        Content-Type:
+          description: >
+            The MIME type of the body of the request. Reference: IETF RFC
+            7231
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+        Version:
+          description: |
+            Version of the API used in the response.
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+        Link:
+          description: >
+            Reference to other resources. Used for paging in the present
+            document.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Alarm"
+
+    Alarm.get:
+      description: >
+        200 OK
+
+        Shall be returned when information about an individual alarm has been read successfully. The response body
+        shall contain a representation of the individual alarm
+      headers:
+        Content-Type:
+          description: >
+            The MIME type of the body of the request. Reference: IETF RFC
+            7231
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+      content:
+        application/json:
+          schema:
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/Alarm"
+
+    Alarm.patch:
+      description: >
+        200 OK
+
+        Shall be returned when the request has been accepted and completed. ì The response body shall contain
+        attribute modifications for an "Individual alarm" resource (see clause 7.6.2.4).
+      headers:
+        Content-Type:
+          description: >
+            The MIME type of the body of the request. Reference: IETF RFC
+            7231
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/AlarmModifications"
+
+    Subscriptions.post:
+      description: >
+        201 CREATED
+
+        Shall be returned when the subscription has been created successfully. The response body shall contain a
+        representation of the created "Individual subscription" resource. The HTTP response shall include a
+        "Location:"" HTTP header that points to the created "Individual subscription" resource.
+      headers:
+        Content-Type:
+          description: >
+            The MIME type of the body of the request. Reference: IETF RFC
+            7231
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+        Location:
+          description: |
+            The resource URI of the created subscription resource.
+          schema:
+            type: string
+            format: url
+            minimum: 1
+            maximum: 1
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/FmSubscription"
+
+    Subscriptions.get:
+      description: >
+        200 OK
+
+        Shall be returned when the list of subscriptions has been queried successfully. The response body shall
+        contain in an array the representations of all active subscriptions of the functional block that invokes
+        the method, i.e. zero or more representations of FM subscriptions as defined in clause 7.6.2.3. If the
+        "filter" URI parameter was supplied in the request, the data in the response body shall have been
+        transformed according to the rules specified in clause 5.2.2 of ETSI GS NFV-SOL 013. If the NFV-MANO
+        functional entity supports alternative 2 (paging) according to clause 5.4.2.1 of ETSI GS NFV-SOL 013
+        for this resource, inclusion of the Link HTTP header in this response shall follow the provisions in
+        clause 5.4.2.3 of ETSI GS NFV-SOL 013.
+      headers:
+        Content-Type:
+          description: >
+            The MIME type of the body of the request. Reference: IETF RFC
+            7231
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+        Version:
+          description: |
+            Version of the API used in the response.
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+        Link:
+          description: >
+            Reference to other resources. Used for paging in the present
+            document, see clause 4.7.2.1.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/FmSubscription"
+
+    Subscription.get:
+      description: >
+        200 OK
+
+        The operation has completed successfully. The response body shall contain a representation of the
+        subscription resource.
+      headers:
+        Content-Type:
+          description: >
+            The MIME type of the body of the request. Reference: IETF RFC
+            7231
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+        Version:
+          description: |
+            Version of the API used in the response.
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/FmSubscription"
+
+    Subscription.delete:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned when the "Individual subscription" resource has been deleted successfully.
+        The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+        Version:
+          description: |
+            Version of the API used in the response.
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1

@@ -16,8 +16,8 @@ info:
   contact:
     name: NFV-SOL WG
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V0.8.0
-  url: https://docbox.etsi.org/ISG/NFV/Open/Drafts/SOL009ed331_MANO_mgmt_stage_3/NFV-SOL009ed331v080.zip
+  description: ETSI GS NFV-SOL 009 V3.3.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.03.01_60/gs_NFV-SOL009v030301p.pdf
 
 servers:
   - url: http://0.0.0.0/nfvmanopm/v1
@@ -589,6 +589,11 @@ components:
             Value of the metric that resulted in threshold crossing.
             The type of this attribute shall correspond to the related "Measurement Unit" 
             as defined in clause 8.4 of ETSI GS NFV-IFA 031.
+        context:
+          description: >-
+            Measurement context information related to the measured value. The set of applicable keys is defined per
+            measurement in clause 8.4 of ETSI GS NFV-IFA 031.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
         _links:
           description: >
             Links to resources related to this notification.

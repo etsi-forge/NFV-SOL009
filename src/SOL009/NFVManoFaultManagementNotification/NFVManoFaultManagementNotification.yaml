@@ -12,8 +12,8 @@ info:
     name: ETSI Forge copyright notice
     url: https://forge.etsi.org/etsi-forge-copyright-notice.txt
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V0.8.0
-  url: https://docbox.etsi.org/ISG/NFV/Open/Drafts/SOL009ed331_MANO_mgmt_stage_3/NFV-SOL009ed331v080.zip
+  description: ETSI GS NFV-SOL 009 V3.3.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.03.01_60/gs_NFV-SOL009v030301p.pdf
 
 security:
   - OauthSecurity:
@@ -38,36 +38,10 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/AlarmNotification"
-        description: >
-          Information of a NFV-MANO functional entity alarm.
-        required: true
+        $ref: "#/components/requestBodies/AlarmNotification"
       responses:
         "204":
-          description: >
-            204 NO CONTENT
-
-            Shall be returned when the notification has been delivered successfully. The response body shall be empty.
-          headers:
-            WWW-Authenticate:
-              description: >
-                Challenge if the corresponding HTTP request has not provided
-                authorization, or error details if the corresponding HTTP
-                request has provided an invalid authorization token.
-              schema:
-                type: string
-                minimum: 0
-                maximum: 1
-            Version:
-              description: |
-                Version of the API used in the response.
-              schema:
-                type: string
-                minimum: 1
-                maximum: 1
+          $ref: "#/components/responses/AlarmNotification.post"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -94,28 +68,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
-          description: >
-            204 NO CONTENT
-
-            Shall be returned to indicate that the notification endpoint has been tested successfully.
-            The response body shall be empty.
-          headers:
-            WWW-Authenticate:
-              description: >
-                Challenge if the corresponding HTTP request has not provided
-                authorization, or error details if the corresponding HTTP
-                request has provided an invalid authorization token.
-              schema:
-                type: string
-                minimum: 0
-                maximum: 1
-            Version:
-              description: |
-                Version of the API used in the response.
-              schema:
-                type: string
-                minimum: 1
-                maximum: 1
+          $ref: "#/components/responses/AlarmNotification.get"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -144,36 +97,10 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/AlarmClearedNotification"
-        description: |
-          Information of the clearance of an NFV-MANO functional entity alarm.
-        required: true
+        $ref: "#/components/requestBodies/AlarmClearedNotification"
       responses:
         "204":
-          description: >
-            204 NO CONTENT
-
-            Shall be returned when the notification has been delivered successfully. The response body shall be empty.
-          headers:
-            WWW-Authenticate:
-              description: >
-                Challenge if the corresponding HTTP request has not provided
-                authorization, or error details if the corresponding HTTP
-                request has provided an invalid authorization token.
-              schema:
-                type: string
-                minimum: 0
-                maximum: 1
-            Version:
-              description: |
-                Version of the API used in the response.
-              schema:
-                type: string
-                minimum: 1
-                maximum: 1
+          $ref: "#/components/responses/AlarmClearedNotification.post"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -200,28 +127,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
-          description: >
-            204 NO CONTENT
-
-            Shall be returned to indicate that the notification endpoint has been tested successfully.
-            The response body shall be empty.
-          headers:
-            WWW-Authenticate:
-              description: >
-                Challenge if the corresponding HTTP request has not provided
-                authorization, or error details if the corresponding HTTP
-                request has provided an invalid authorization token.
-              schema:
-                type: string
-                minimum: 0
-                maximum: 1
-            Version:
-              description: |
-                Version of the API used in the response.
-              schema:
-                type: string
-                minimum: 1
-                maximum: 1
+          $ref: "#/components/responses/AlarmClearedNotification.get"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -250,37 +156,10 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/AlarmListRebuiltNotification"
-        description: >
-          Information that the alarm list has been rebuilt by the NFV-MANO
-          functional entity.
-        required: true
+        $ref: "#/components/requestBodies/AlarmListRebuiltNotification"
       responses:
         "204":
-          description: >
-            204 NO CONTENT
-
-            Shall be returned when the notification has been delivered successfully. The response body shall be empty.
-          headers:
-            WWW-Authenticate:
-              description: >
-                Challenge if the corresponding HTTP request has not provided
-                authorization, or error details if the corresponding HTTP
-                request has provided an invalid authorization token.
-              schema:
-                type: string
-                minimum: 0
-                maximum: 1
-            Version:
-              description: |
-                Version of the API used in the response.
-              schema:
-                type: string
-                minimum: 1
-                maximum: 1
+          $ref: "#/components/responses/AlarmListRebuiltNotification.post"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -307,27 +186,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
-          description: >
-            204 NO CONTENT
-
-            Shall be returned to indicate that the notification endpoint has been tested successfully. The response body shall be empty.
-          headers:
-            WWW-Authenticate:
-              description: >-
-                Challenge if the corresponding HTTP request has not provided
-                authorization, or error details if the corresponding HTTP
-                request has provided an invalid authorization token.
-              schema:
-                type: string
-                minimum: 0
-                maximum: 1
-            Version:
-              description: >-
-                Version of the API used in the response.
-              schema:
-                type: string
-                minimum: 1
-                maximum: 1
+          $ref: "#/components/responses/AlarmListRebuiltNotification.get"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -344,6 +203,35 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/503
 
 components:
+  requestBodies:
+    AlarmNotification:
+      description: >
+        Information of a NFV-MANO functional entity alarm.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/AlarmNotification"
+      required: true
+
+    AlarmClearedNotification:
+      description: |
+        Information of the clearance of an NFV-MANO functional entity alarm.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/AlarmClearedNotification"
+      required: true
+
+    AlarmListRebuiltNotification:
+      description: >
+        Information that the alarm list has been rebuilt by the NFV-MANO
+        functional entity.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/AlarmListRebuiltNotification"
+      required: true
+
   schemas:
     AlarmNotification:
       description: >
@@ -512,3 +400,144 @@ components:
               description: >
                 Link to the alarm list, i.e. the "Alarms" resource.
               $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+
+  responses:
+    AlarmNotification.post:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned when the notification has been delivered successfully. The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+        Version:
+          description: |
+            Version of the API used in the response.
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+
+    AlarmNotification.get:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned to indicate that the notification endpoint has been tested successfully.
+        The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+        Version:
+          description: |
+            Version of the API used in the response.
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+
+    AlarmClearedNotification.post:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned when the notification has been delivered successfully. The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+        Version:
+          description: |
+            Version of the API used in the response.
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+
+    AlarmClearedNotification.get:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned to indicate that the notification endpoint has been tested successfully.
+        The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+        Version:
+          description: |
+            Version of the API used in the response.
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+
+    AlarmListRebuiltNotification.post:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned when the notification has been delivered successfully. The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+        Version:
+          description: |
+            Version of the API used in the response.
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+
+    AlarmListRebuiltNotification.get:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned to indicate that the notification endpoint has been tested successfully. The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >-
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+        Version:
+          description: >-
+            Version of the API used in the response.
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
