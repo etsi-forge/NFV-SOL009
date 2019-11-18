@@ -109,13 +109,14 @@ paths:
     description: >-
       This resource represents an individual logging job. The API consumer can use this resource to delete
       and read the underlying logging job.
+    parameters:
+      - $ref: "#/components/parameters/logJobId"
     get:
       description: >-
         The API consumer can use this method for reading an individual logging job.
         This method shall follow the provisions specified in the tables 8.5.4.3.2-1 and 8.5.4.3.2-2 for
         URI query parameters, request and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/logJobId"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
@@ -185,14 +186,15 @@ paths:
       The log report provides metadata information about a log and location information of the log file
       from where it can be obtained.
       NOTE:	The present document does not specify the mechanism how to retrieve the log files.
+    parameters:
+      - $ref: "#/components/parameters/logJobId"
+      - $ref: "#/components/parameters/logJReportId"
     get:
       description: >-
         The API consumer can use this method for reading an individual log report.
         This method shall follow the provisions specified in the tables 8.5.5.3.2-1 and
         8.5.5.3.2-2 for URI query parameters, request and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/logJobId"
-        - $ref: "#/components/parameters/logJReportId"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
@@ -232,13 +234,14 @@ paths:
       indicated by responding with "201 Created", the resource shall be created before the "201 Created" response
       is returned. In the asynchronous case, which is indicated by responding with "202 Accepted", the resource may
       be created after the response is returned.
+    parameters:
+      - $ref: "#/components/parameters/logJobId"
     post:
       description: >-
         The POST method requests to compile the logged data into a file and create an associated log report.
         This method shall follow the provisions specified in the tables 8.5.6.3.1-1 and 8.5.6.3.1-2 for URI
         query parameters, request and response data structures, and response codes.
       parameters:
-        - $ref: "#/components/parameters/logJobId"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
