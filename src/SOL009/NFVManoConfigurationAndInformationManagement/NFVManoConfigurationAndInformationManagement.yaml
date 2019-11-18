@@ -190,6 +190,8 @@ paths:
         "504":
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
   /mano_entity/mano_interfaces/{manoServiceInterfaceId}:
+    parameters:
+      - $ref: "#/components/parameters/manoServiceInterfaceId"
     get:
       description: >
         retrieves information about an NFV-MANO service interface of the 
@@ -271,6 +273,8 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
   /mano_entity/mano_interfaces/{manoServiceInterfaceId}/change_state:
+    parameters:
+      - $ref: "#/components/parameters/manoServiceInterfaceId"
     post:
       description: >
         Requests to change the state of the NFV-MANO service interface 
@@ -390,6 +394,8 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
   /subscriptions/{subscriptionId}:
+    parameters:
+      - $ref: "#/components/parameters/subscriptionId"
     get:
       description: >
         Retrieves information about a subscription by reading an "Individual 
@@ -504,6 +510,8 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
   /change_state_ops/{changeStateOpOccId}:
+    parameters:
+      - $ref: "#/components/parameters/changeStateOpOccId"
     get:
       description: >
         The API consumer can use the GET method to retrieve status 
@@ -623,6 +631,8 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
   
   /peer_entities/{peerEntityId}:
+    parameters:
+      - $ref: "#/components/parameters/peerEntityId"
     get:
       description: >
         Retrieves information and configuration hold in the producer NFV-MANO 
@@ -2784,6 +2794,42 @@ components:
       required: false
       schema:
         type: string
+
+    manoServiceInterfaceId:
+      name: manoServiceInterfaceId
+      in: path
+      description: >-
+        Identifier of the MANO service interface.
+      required: true
+      schema:
+        $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
+
+    subscriptionId:
+      name: subscriptionId
+      in: path
+      description: >-
+        Identifier of the subscription
+      required: true
+      schema:
+        $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
+
+    changeStateOpOccId:
+      name: changeStateOpOccId
+      in: path
+      description: >-
+        Identifier of the change state operation occurrence
+      required: true
+      schema:
+        $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
+
+    peerEntityId:
+      name: peerEntityId
+      in: path
+      description: >-
+        Identifier of the peer entity
+      required: true
+      schema:
+        $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
 
   requestBodies:
     ModifyManoEntityRequest:

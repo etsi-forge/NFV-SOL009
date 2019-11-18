@@ -106,6 +106,8 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
   /pm_jobs/{pmJobId}:
+    parameters:
+      - $ref: "#/components/parameters/pmJobId"
     get:
       description: >
         The client can use this method for reading an individual PM job. 
@@ -168,6 +170,9 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
   
   /pm_jobs/{pmJobId}/reports/{reportId}:
+    parameters:
+      - $ref: "#/components/parameters/pmJobId"
+      - $ref: "#/components/parameters/reportId"
     get:
       description: >
         The client can use this method for reading an individual 
@@ -267,6 +272,8 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
     
   /thresholds/{thresholdId}:
+    parameters:
+      - $ref: "#/components/parameters/thresholdId"
     get:
       description: >
         The client can use this method for reading an individual threshold 
@@ -398,6 +405,8 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
   /subscriptions/{subscriptionId}:
+    parameters:
+      - $ref: "#/components/parameters/subscriptionId"
     get:
       description: >
         The client can use this method for reading an individual subscription 
@@ -1774,7 +1783,43 @@ components:
       required: false
       schema:
         type: string
- 
+
+    subscriptionId:
+      name: subscriptionId
+      in: path
+      description: >-
+        Identifier of the subscription
+      required: true
+      schema:
+        $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
+
+    pmJobId:
+      name: pmJobId
+      in: path
+      description: >-
+        Identifier of the PM Job
+      required: true
+      schema:
+        $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
+
+    reportId:
+      name: reportId
+      in: path
+      description: >-
+        Identifier of the PM report
+      required: true
+      schema:
+        $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
+
+    thresholdId:
+      name: thresholdId
+      in: path
+      description: >-
+        Identifier of the PM threshold
+      required: true
+      schema:
+        $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
+
   requestBodies:
     CreatePMJobRequest:
       description: >
