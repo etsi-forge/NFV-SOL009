@@ -26,6 +26,7 @@ servers:
 paths:
   "/api_versions":
       $ref: '../endpoints/SOL009_endpoints.yaml#/endpoints/api_versions'
+
   "/log_jobs":
     description: >-
       This resource represents logging jobs. The API consumer can use this resource to create and query logging jobs.
