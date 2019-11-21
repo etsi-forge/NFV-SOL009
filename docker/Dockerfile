@@ -1,7 +1,7 @@
 # Copyright ETSI 2017
 # See: https://forge.etsi.org/etsi-forge-copyright-statement.txt
 
-FROM alpine:3.6
+FROM alpine:3.10.0
 
 RUN env
 RUN apk update
@@ -16,9 +16,9 @@ RUN gem install rdoc --pre || gem install rdoc --pre
 RUN gem install asciidoctor-pdf-cjk
 RUN wget https://forge.etsi.org/swagger2markup-cli-1.3.2.jar
 RUN npm config set proxy $http_proxy
-RUN npm install -g swagger-cli@0.10.3
-RUN npm install -g json-refs@3.0.2
-RUN npm install -g yamljs@0.3.0
+RUN npm install -g swagger-cli
+RUN npm install -g json-refs
+RUN npm install -g yamljs
 
 ADD validate-in-docker.sh /validate-in-docker.sh
 RUN chmod +x /validate-in-docker.sh
