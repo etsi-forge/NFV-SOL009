@@ -20,8 +20,8 @@ security:
       - all
 
 servers:
-  - url: http://127.0.0.1//callback/v1
-  - url: https://127.0.0.1//callback/v1
+  - url: http://127.0.0.1/callback/v1
+  - url: https://127.0.0.1/callback/v1
 
 paths:
   /URI-is-provided-by-the-client-when-creating-the-subscription-AlarmNotification:
