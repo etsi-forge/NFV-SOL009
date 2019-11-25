@@ -189,7 +189,7 @@ paths:
       NOTE:	The present document does not specify the mechanism how to retrieve the log files.
     parameters:
       - $ref: "#/components/parameters/logJobId"
-      - $ref: "#/components/parameters/logJReportId"
+      - $ref: "#/components/parameters/logReportId"
     get:
       description: >-
         The API consumer can use this method for reading an individual log report.
@@ -448,8 +448,8 @@ components:
       required: true
       schema:
         $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
-    logJReportId:
-      name: logJReportId
+    logReportId:
+      name: logReportId
       in: path
       description: >-
         Identifier of the report.
