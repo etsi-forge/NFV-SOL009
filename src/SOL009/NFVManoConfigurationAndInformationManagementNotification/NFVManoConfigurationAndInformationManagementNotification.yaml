@@ -259,7 +259,7 @@ components:
         changeStateOperationState:
           description: >
             The state of the "change state operation occurrence".
-          $ref: "#/components/schemas/ChangeStateOpOccStateEnumType"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/ChangeStateOpOccStateEnumType"
         managedObjectRef:
           description: >
             Reference of the managed object to which the state change notification relates.
@@ -269,12 +269,12 @@ components:
           description: >
             New operational state of the managed object. Shall only be present when
             there is a change in the operational state.
-          $ref: "#/components/schemas/OperationalStateEnumType"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/OperationalStateEnumType"
         administrativeState:
           description: >
             New administrative state of the managed object. Shall only be present
             when there is a change in the administrative state.
-          $ref: "#/components/schemas/AdministrativeStateEnumType"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/AdministrativeStateEnumType"
         _links:
           description: >
             Links to resources related to this notification.

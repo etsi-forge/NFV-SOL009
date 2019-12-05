@@ -846,11 +846,11 @@ components:
             operationalState:
               description: >
                 The operational state of the NFV-MANO functional entity application.
-              $ref: "#/components/schemas/OperationalStateEnumType"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/OperationalStateEnumType"
             administrativeState:
               description: >
                 The administrative state of the NFV-MANO functional entity application.
-              $ref: "#/components/schemas/AdministrativeStateEnumType"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/AdministrativeStateEnumType"
             usageState:
               description: >
                 The usage state of the NFV-MANO functional entity application.
@@ -1188,7 +1188,7 @@ components:
         operationState: 
           description: >
             The state of the "change state operation occurrence".
-          $ref: "#/components/schemas/ChangeStateOpOccStateEnumType"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/ChangeStateOpOccStateEnumType"
         stateEnteredTime: 
           description: >
             Date-time when the current state was entered.
@@ -1356,7 +1356,7 @@ components:
             administrativeState:
               description: >
                 The administrative state of the NFV-MANO service interface.
-              $ref: "#/components/schemas/AdministrativeStateEnumType"
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/AdministrativeStateEnumType"
             usageState:
               description: >
                 The usage state of the NFV-MANO service interface.
@@ -1535,11 +1535,11 @@ components:
             operationalState:
               description: >
                 TThe operation state of the peer functional entity’s application.
-              $ref: "#/components/schemas/OperationalStateEnumType" 
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/OperationalStateEnumType"
             administrativeState:
               description: >
                 The administrative state of the peer functional entity’s application.
-              $ref: "#/components/schemas/AdministrativeStateEnumType" 
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/AdministrativeStateEnumType"
           required:
             - operationalState
             - administrativeState
@@ -1601,11 +1601,11 @@ components:
             operationalState:
               description: >
                 The operational state of the peer functional entity’s application.
-              $ref: "#/components/schemas/OperationalStateEnumType" 
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/OperationalStateEnumType"
             administrativeState:
               description: 
                 The administrative state of the peer functional entity’s application.
-              $ref: "#/components/schemas/AdministrativeStateEnumType" 
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/AdministrativeStateEnumType"
           required:
             - operationalState
             - administrativeState
@@ -1658,12 +1658,12 @@ components:
           description: >
             New content of the "operationalState" attribute in the "peerEntityState" 
             structure in the "PeerEntity".
-          $ref: "#/components/schemas/OperationalStateEnumType"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/OperationalStateEnumType"
         administrativeState:
           description: >
             New content of the "administrativeState" attribute in the "peerEntityState" 
             structure in the "PeerEntity".
-          $ref: "#/components/schemas/AdministrativeStateEnumType"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/AdministrativeStateEnumType"
 
     PeerEntityConfigModifications:
       description: >
@@ -1714,13 +1714,13 @@ components:
             If present, this attribute signals modifications of the "operationalState" 
             attribute in the "peerEntityState" structure in the "PeerEntity", as defined 
             in clause 5.6.2.15.
-          $ref: "#/components/schemas/OperationalStateEnumType"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/OperationalStateEnumType"
         administrativeState:
           description: >
             If present, this attribute signals modifications of the "administrativeState" 
             attribute in the "peerEntityState" structure in the "PeerEntity", as defined 
             in clause 5.6.2.15. 
-          $ref: "#/components/schemas/AdministrativeStateEnumType"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/AdministrativeStateEnumType"
 
     ManoConfigurableParams:
       description: >
@@ -2365,38 +2365,6 @@ components:
         once the interfaces are specified as a RESTful NFV-MANO API. 
       type: string
 
-    OperationalStateEnumType:
-      description: >
-        The enumeration OperationalStateEnumType defines values representing the 
-        operational state of an NFV-MANO functional application type of managed entity. 
-        The OperationalStateEnumType shall comply with the provisions:
-          - STARTED	The managed entity is operational.
-          - STOPPED	The managed entity is not operational.
-          - STOPPING	The managed entity is in the transition to stop.
-          - STARTING	The managed entity is in the transition to start and become operational.
-          - RESTARTING	The managed entity is in the transition to stop and start again.
-      type: string
-      enum:
-        - STARTED
-        - STOPPED
-        - STOPPING
-        - STARTING
-        - RESTARTING
-
-    AdministrativeStateEnumType:
-      description: >
-        The enumeration AdministrativeStateEnumType defines values representing 
-        the administrative state of a managed entity. 
-        The AdministrativeStateEnumType shall comply with the provisions: 
-          - LOCKED	The managed entity is administratively prohibited to be used.
-          - UNLOCKED	The managed entity is administratively allowed to be used.
-          - LOCKING	The managed entity is in the transition to be locked.
-      type: string
-      enum:
-        - LOCKED
-        - UNLOCKED
-        - LOCKING
-
     UsageStateEnumType:
       description: >
         The enumeration UsageStateEnumType defines values representing the usage 
@@ -2461,19 +2429,6 @@ components:
       enum:
         - GRACEFUL
         - FORCEFUL
-
-    ChangeStateOpOccStateEnumType:
-      description: >
-        The enumeration ChangeStateOpOccStateEnumType defines permitted values 
-        for the change state operation. It shall comply with the provisions :
-          - PROCESSING	The change state operation is currently in execution.
-          - COMPLETED	The change state operation has been completed successfully.
-          - FAILED	The change state operation has failed.
-      type: string
-      enum:
-        - PROCESSING
-        - COMPLETED
-        - FAILED
 
     ManoEntityEnumType:
       description: > 
