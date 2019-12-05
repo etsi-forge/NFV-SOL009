@@ -1,9 +1,9 @@
 openapi: 3.0.2
 info:
   version: 1.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
-  title: SOL009 - NFV-MANO Fault Management Notification interface
+  title: SOL009 - NFV-MANO Fault Management Notification Operation
   description: >
-    SOL009 - NFV-MANO Fault Management Notification interface
+    SOL009 - NFV-MANO Fault Management Notification Operation
 
     IMPORTANT: Please note that this file might be not aligned to the current version of the ETSI Group Specification it refers to. In case of discrepancies the published ETSI Group Specification takes precedence.
 

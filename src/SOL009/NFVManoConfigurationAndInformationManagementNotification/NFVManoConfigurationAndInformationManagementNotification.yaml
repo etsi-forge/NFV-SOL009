@@ -1,9 +1,9 @@
 openapi: 3.0.2
 info:
   version: 1.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
-  title: SOL009 - NFV-MANO Configuration and Information Management Notification Interface
+  title: SOL009 - NFV-MANO Configuration and Information Management Notification Operation
   description: >
-    SOL009 - NFV-MANO Configuration and Information Management Notification Interface
+    SOL009 - NFV-MANO Configuration and Information Management Notification Operation
 
     IMPORTANT: Please note that this file might be not aligned to the current
     version of the ETSI Group Specification it refers to and has not been
@@ -44,7 +44,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
-        $ref: "#/components/requestBodies/CreateConfigurationAnfInformationNotificationRequest"
+        $ref: "#/components/requestBodies/ConfigurationAnfInformationNotification"
       responses:
         "204": 
           $ref: "#/components/responses/notification.post.204"
@@ -145,7 +145,7 @@ components:
             type: string
 
   requestBodies:
-    CreateConfigurationAnfInformationNotificationRequest:
+    ConfigurationAnfInformationNotification:
       description: >
         A notification about configuration and information data changes of the 
         NFV-MANO functional entity, or state changes of the NFV-MANO functional 
@@ -154,8 +154,158 @@ components:
         application/json:
           schema: 
             oneOf:
-              - $ref: "../NFVManoConfigurationAndInformationManagement/NFVManoConfigurationAndInformationManagement.yaml#/components/schemas/InformationChangedNotification"
-              - $ref: "../NFVManoConfigurationAndInformationManagement/NFVManoConfigurationAndInformationManagement.yaml#/components/schemas/ChangeStateNotification"
+              - $ref: "#/components/schemas/InformationChangedNotification"
+              - $ref: "#/components/schemas/ChangeStateNotification"
       required: true
 
-  
+  schemas:
+    InformationChangedNotification:
+      description: >
+        This type represents a notification that is sent when data about
+        configuration and information of the NFV-MANO functional entity
+        have been changed.
+      type: object
+      properties:
+        id:
+          description: >
+            Identifier of this notification. If a notification is sent multiple
+            times due to multiple subscriptions, the "id" attribute of all these
+            notifications shall have the same value.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        notificationType:
+          description: >
+            Discriminator for the different notification types. Shall be set to
+            "InformationChangedNotification" for this notification type.
+          type: string
+        subscriptionId:
+          description: >
+            Identifier of the subscription that this notification relates to.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        timeStamp:
+          description: >
+            Date and time of the generation of the notification.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        informationChangedTime:
+          description: >
+            Timestamp indicating when the information was changed.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        manoEntityId:
+          description: >
+            Identifier of the MANO entity of which the information was changed.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        changedInfo:
+          description: >
+            Data about the changed configuration and information of the NFV-MANO
+            functional entity.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+        _links:
+          description: >
+            Links to resources related to this notification.
+          type: object
+          properties:
+            self:
+              description: >
+                Link to the related subscription.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+            subscription:
+              description: >
+                Link to the related subscription.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+          required:
+            - self
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timeStamp
+        - informationChangedTime
+        - manoEntityId
+        - changedInfo
+        - _links
+
+    ChangeStateNotification:
+      description: >
+        This type represents a Change state operation occurrence.
+      type: object
+      properties:
+        id:
+          description: >
+            Identifier of this notification. If a notification is sent multiple times
+            due to multiple subscriptions, the "id" attribute of all these notifications
+            shall have the same value.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        notificationType:
+          description: >
+            Discriminator for the different notification types. Shall be set to
+            "ChangeStateNotification" for this notification type.
+          type: string
+        subscriptionId:
+          description: >
+            Identifier of the subscription that this notification relates to.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        timestamp:
+          description: >
+            Date-time of the generation of the notification.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        changeStateOpOccId:
+          description: >
+            Identifier of the change state operation occurrence associated to the
+            notification.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        stateChangedTime:
+          description: >
+            Timestamp indicating when the state on the managed object was changed.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        changeStateOperationState:
+          description: >
+            The state of the "change state operation occurrence".
+          $ref: "#/components/schemas/ChangeStateOpOccStateEnumType"
+        managedObjectRef:
+          description: >
+            Reference of the managed object to which the state change notification relates.
+            The value of the "type" attribute shall be "MANO_ENTITY" or "MANO_SERVICE_IF".
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
+        operationalState:
+          description: >
+            New operational state of the managed object. Shall only be present when
+            there is a change in the operational state.
+          $ref: "#/components/schemas/OperationalStateEnumType"
+        administrativeState:
+          description: >
+            New administrative state of the managed object. Shall only be present
+            when there is a change in the administrative state.
+          $ref: "#/components/schemas/AdministrativeStateEnumType"
+        _links:
+          description: >
+            Links to resources related to this notification.
+          type: object
+          properties:
+            subscription:
+              description: >
+                Link to the related subscription.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+            objectInstance:
+              description: >
+                Link to the resource representing the object to which the change
+                state applies. Shall be present if the object instance is accessible
+                as a resource.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+            changeStateOpOcc:
+              description: >
+                Link to the change state operation occurrence that this notification
+                is related to.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+          required:
+            - subscription
+            - objectInstance
+            - changeStateOpOcc
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timestamp
+        - changeStateOpOccId
+        - stateChangedTime
+        - changeStateOperationState
+        - managedObjectRef
+        - _links
