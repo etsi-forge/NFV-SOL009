@@ -304,7 +304,7 @@ paths:
         $ref: '#/components/requestBodies/LogmSubscriptionRequest'
       responses:
         "201":
-          $ref: '#/components/responses/LogmSubscription'
+          $ref: '#/components/responses/LogmSubscription.201'
         "303":
           $ref: '#/components/responses/LogmSubscription.303'
         "422":
@@ -342,7 +342,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
-          $ref: '#/components/responses/LogmSubscriptions'
+          $ref: '#/components/responses/LogmSubscriptions.200'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -541,7 +541,7 @@ components:
           schema:
             $ref: "#/components/schemas/LogmSubscription"
 
-    LogmSubscriptions:
+    LogmSubscriptions.200:
       description: >-
         Shall be returned when the list of subscriptions has been queried successfully.
         The response body shall contain in an array the representations of all active subscriptions of
@@ -576,7 +576,7 @@ components:
             items:
               $ref: "#/components/schemas/LogmSubscription"
 
-    LogmSubscription:
+    LogmSubscription.201:
       description: >-
         Shall be returned when the subscription has been created successfully.
         A representation of the created "Individual subscription" resource shall be returned in the response body,
