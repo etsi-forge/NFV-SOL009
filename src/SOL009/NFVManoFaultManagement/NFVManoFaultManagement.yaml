@@ -38,7 +38,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
       responses:
         "200":
-          $ref: '#/components/responses/Alarms.get'
+          $ref: '#/components/responses/Alarms.Get'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -74,7 +74,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
-          $ref: '#/components/responses/Alarm.get'
+          $ref: '#/components/responses/Alarm.Get'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -110,7 +110,7 @@ paths:
         $ref: "#/components/requestBodies/AlarmModifications"
       responses:
         "200":
-          $ref: '#/components/responses/Alarm.patch'
+          $ref: '#/components/responses/Alarm.Patch'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -165,7 +165,7 @@ paths:
         $ref: "#/components/requestBodies/FmSubscriptionRequest"
       responses:
         "201":
-          $ref: '#/components/responses/Subscriptions.post'
+          $ref: '#/components/responses/Subscriptions.Post'
         "303":
           $ref: ../components/SOL009_resp.yaml#/components/responses/303
         "400":
@@ -204,7 +204,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
       responses:
         "200":
-          $ref: '#/components/responses/Subscriptions.get'
+          $ref: '#/components/responses/Subscriptions.Get'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -241,7 +241,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
-          $ref: '#/components/responses/Subscription.get'
+          $ref: '#/components/responses/Subscription.Get'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -279,7 +279,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
-          $ref: '#/components/responses/Subscription.delete'
+          $ref: '#/components/responses/Subscription.Delete'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -478,7 +478,7 @@ components:
       required: true
 
   responses:
-    Alarms.get:
+    Alarms.Get:
       description: >
         200 OK
 
@@ -520,7 +520,7 @@ components:
             items:
               $ref: "../components/SOL009_schemas.yaml#/components/schemas/Alarm"
 
-    Alarm.get:
+    Alarm.Get:
       description: >
         200 OK
 
@@ -540,7 +540,7 @@ components:
           schema:
             $ref: "../components/SOL009_schemas.yaml#/components/schemas/Alarm"
 
-    Alarm.patch:
+    Alarm.Patch:
       description: >
         200 OK
 
@@ -569,7 +569,7 @@ components:
           schema:
             $ref: "#/components/schemas/AlarmModifications"
 
-    Subscriptions.post:
+    Subscriptions.Post:
       description: >
         201 CREATED
 
@@ -607,7 +607,7 @@ components:
           schema:
             $ref: "#/components/schemas/FmSubscription"
 
-    Subscriptions.get:
+    Subscriptions.Get:
       description: >
         200 OK
 
@@ -659,7 +659,7 @@ components:
             items:
               $ref: "#/components/schemas/FmSubscription"
 
-    Subscription.get:
+    Subscription.Get:
       description: >
         200 OK
 
@@ -695,7 +695,7 @@ components:
           schema:
             $ref: "#/components/schemas/FmSubscription"
 
-    Subscription.delete:
+    Subscription.Delete:
       description: >
         204 NO CONTENT
 
