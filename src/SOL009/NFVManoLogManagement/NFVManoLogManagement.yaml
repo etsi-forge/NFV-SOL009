@@ -46,7 +46,7 @@ paths:
         $ref: "#/components/requestBodies/CreateLoggingJobRequest"
       responses:
         "201":
-          $ref: '#/components/responses/LoggingJob.Post'
+          $ref: '#/components/responses/LoggingJob.post'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -84,7 +84,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
-          $ref: '#/components/responses/LoggingJobs.Get'
+          $ref: '#/components/responses/LoggingJobs.get'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -124,7 +124,7 @@ paths:
 
       responses:
         "200":
-          $ref: '#/components/responses/LoggingJob.Get'
+          $ref: '#/components/responses/LoggingJob.get'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -158,7 +158,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
-          $ref: '#/components/responses/LoggingJob.Delete'
+          $ref: '#/components/responses/LoggingJob.delete'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -201,9 +201,9 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
-          $ref: '#/components/responses/LogReport.Get'
+          $ref: '#/components/responses/LogReport.get.200'
         "202":
-          $ref: '#/components/responses/LogReport.Get.202'
+          $ref: '#/components/responses/LogReport.get.202'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -251,13 +251,13 @@ paths:
         $ref: "#/components/requestBodies/CompileLogRequest"
       responses:
         "200":
-          $ref: '#/components/responses/LogReportCompiled'
+          $ref: '#/components/responses/LogReportCompiled.post.200'
         "202":
-          $ref: '#/components/responses/LogReportCompiled.202'
+          $ref: '#/components/responses/LogReportCompiled.post.202'
         "303":
-          $ref: '#/components/responses/LogReportCompiled.303'
+          $ref: '#/components/responses/LogReportCompiled.post.303'
         "422":
-          $ref: '#/components/responses/LogReportCompiled.422'
+          $ref: '#/components/responses/LogReportCompiled.post.422'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -304,9 +304,9 @@ paths:
         $ref: '#/components/requestBodies/LogmSubscriptionRequest'
       responses:
         "201":
-          $ref: '#/components/responses/LogmSubscription.201'
+          $ref: '#/components/responses/LogmSubscription.post.201'
         "303":
-          $ref: '#/components/responses/LogmSubscription.303'
+          $ref: '#/components/responses/LogmSubscription.post.303'
         "422":
           $ref: '../components/SOL009_resp.yaml#/components/responses/422'
         "400":
@@ -342,7 +342,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
-          $ref: '#/components/responses/LogmSubscriptions.200'
+          $ref: '#/components/responses/LogmSubscriptions.get.200'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -381,7 +381,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
-          $ref: '#/components/responses/LogmSubscription.Get'
+          $ref: '#/components/responses/LogmSubscription.get.200'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -416,7 +416,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
-          $ref: '#/components/responses/LogmSubscription.Delete'
+          $ref: '#/components/responses/LogmSubscription.delete'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -492,7 +492,7 @@ components:
       required: true
 
   responses:
-    LogmSubscription.Delete:
+    LogmSubscription.delete:
       description: >-
         Shall be returned when the "Individual subscription" resource has been deleted successfully.
         The response body shall be empty.
@@ -514,7 +514,7 @@ components:
           schema:
             type: string
 
-    LogmSubscription.Get:
+    LogmSubscription.get.200:
       description: >-
         Shall be returned when the subscription has been read successfully.
         The response body shall contain a representation of the "Individual subscription" resource,
@@ -541,7 +541,7 @@ components:
           schema:
             $ref: "#/components/schemas/LogmSubscription"
 
-    LogmSubscriptions.200:
+    LogmSubscriptions.get.200:
       description: >-
         Shall be returned when the list of subscriptions has been queried successfully.
         The response body shall contain in an array the representations of all active subscriptions of
@@ -576,7 +576,7 @@ components:
             items:
               $ref: "#/components/schemas/LogmSubscription"
 
-    LogmSubscription.201:
+    LogmSubscription.post.201:
       description: >-
         Shall be returned when the subscription has been created successfully.
         A representation of the created "Individual subscription" resource shall be returned in the response body,
@@ -610,7 +610,7 @@ components:
           schema:
             $ref: "#/components/schemas/LogmSubscription"
 
-    LogmSubscription.303:
+    LogmSubscription.post.303:
       description: >-
         Shall be returned when a subscription with the same callbackURI and the same filter already exists and the
         policy of the NFV-MANO functional entity is to not create redundant subscriptions.
@@ -640,7 +640,7 @@ components:
           schema:
             type: string
 
-    LogReportCompiled:
+    LogReportCompiled.post.200:
       description: >-
         Shall be returned for a successful compilation of the log data and creation of the associated log report
         (synchronous mode).
@@ -674,7 +674,7 @@ components:
           schema:
             $ref: "#/components/schemas/LogReport"
 
-    LogReportCompiled.202:
+    LogReportCompiled.post.202:
       description: >-
         Shall be returned when the request has been accepted for processing, and it is expected to take some
         time to compile the log file and create the associated log report (asynchronous mode).
@@ -705,7 +705,7 @@ components:
           schema:
             type: string
 
-    LogReportCompiled.303:
+    LogReportCompiled.post.303:
       description: >-
         Shall be returned when a log data compilation and report creation is already ongoing, or a log report has just been
         created, for the specified logging job at the time of processing the request.
@@ -736,7 +736,7 @@ components:
           schema:
             type: string
 
-    LogReportCompiled.422:
+    LogReportCompiled.post.422:
       description: >-
         The general cause for this error and its handling is specified in clause 6.4 of ETSI GS NFV-SOL 013,
         including rules for the presence of the response body.
@@ -767,7 +767,7 @@ components:
           schema:
             $ref: '../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails'
 
-    LogReport.Get:
+    LogReport.get.200:
       description: >-
         Shall be returned when information of an individual log report has been read successfully.
         The response body shall contain a representation of the "Individual log report" resource, as
@@ -794,7 +794,7 @@ components:
           schema:
             $ref: "#/components/schemas/LogReport"
 
-    LogReport.Get.202:
+    LogReport.get.202:
       description: >-
         Shall be returned if the creation of the log report is ongoing and no log report is available yet
         (applicable in asynchronous mode of the "Compile log task" resource).
@@ -817,7 +817,7 @@ components:
           schema:
             type: string
 
-    LoggingJob.Get:
+    LoggingJob.get:
       description: >-
         Shall be returned when information about an individual logging job has been read successfully.
         The response body shall contain a representation of the "Individual logging job" resource,
@@ -844,7 +844,7 @@ components:
           schema:
             $ref: "#/components/schemas/LoggingJob"
 
-    LoggingJob.Delete:
+    LoggingJob.delete:
       description: >-
         Shall be returned when the logging job has been deleted successfully.
         The response body shall be empty.
@@ -862,7 +862,7 @@ components:
           schema:
             type: string
 
-    LoggingJob.Post:
+    LoggingJob.post:
       description: >-
         The response body contains the Application Context as it was created
         by the MEC system
@@ -887,7 +887,8 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/LoggingJob"
-    LoggingJobs.Get:
+
+    LoggingJobs.get:
       description: >-
         Shall be returned when information about zero or more logging jobs has been queried successfully.
 
