@@ -41,7 +41,7 @@ paths:
         $ref: "#/components/requestBodies/AlarmNotification"
       responses:
         "204":
-          $ref: "#/components/responses/AlarmNotification.post"
+          $ref: "#/components/responses/AlarmNotification.Post.204"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -68,7 +68,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
-          $ref: "#/components/responses/AlarmNotification.get"
+          $ref: "#/components/responses/AlarmNotification.Get.204"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -100,7 +100,7 @@ paths:
         $ref: "#/components/requestBodies/AlarmClearedNotification"
       responses:
         "204":
-          $ref: "#/components/responses/AlarmClearedNotification.post"
+          $ref: "#/components/responses/AlarmClearedNotification.Post.204"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -127,7 +127,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
-          $ref: "#/components/responses/AlarmClearedNotification.get"
+          $ref: "#/components/responses/AlarmClearedNotification.Get.204"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -159,7 +159,7 @@ paths:
         $ref: "#/components/requestBodies/AlarmListRebuiltNotification"
       responses:
         "204":
-          $ref: "#/components/responses/AlarmListRebuiltNotification.post"
+          $ref: "#/components/responses/AlarmListRebuiltNotification.Post.204"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -186,7 +186,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
-          $ref: "#/components/responses/AlarmListRebuiltNotification.get"
+          $ref: "#/components/responses/AlarmListRebuiltNotification.Get.204"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -402,7 +402,7 @@ components:
               $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
 
   responses:
-    AlarmNotification.post:
+    AlarmNotification.Post.204:
       description: >
         204 NO CONTENT
 
@@ -425,7 +425,7 @@ components:
             minimum: 1
             maximum: 1
 
-    AlarmNotification.get:
+    AlarmNotification.Get.204:
       description: >
         204 NO CONTENT
 
@@ -449,7 +449,7 @@ components:
             minimum: 1
             maximum: 1
 
-    AlarmClearedNotification.post:
+    AlarmClearedNotification.Post.204:
       description: >
         204 NO CONTENT
 
@@ -472,7 +472,7 @@ components:
             minimum: 1
             maximum: 1
 
-    AlarmClearedNotification.get:
+    AlarmClearedNotification.Get.204:
       description: >
         204 NO CONTENT
 
@@ -496,7 +496,7 @@ components:
             minimum: 1
             maximum: 1
 
-    AlarmListRebuiltNotification.post:
+    AlarmListRebuiltNotification.Post.204:
       description: >
         204 NO CONTENT
 
@@ -519,7 +519,7 @@ components:
             minimum: 1
             maximum: 1
 
-    AlarmListRebuiltNotification.get:
+    AlarmListRebuiltNotification.Get.204:
       description: >
         204 NO CONTENT
 
