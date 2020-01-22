@@ -1,0 +1,311 @@
+openapi: 3.0.2
+info:
+  version: 1.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
+  title: SOL009 - NFV-MANO Configuration and Information Management Notification Operation
+  description: >
+    SOL009 - NFV-MANO Configuration and Information Management Notification Operation
+
+    IMPORTANT: Please note that this file might be not aligned to the current
+    version of the ETSI Group Specification it refers to and has not been
+    approved by the ETSI NFV ISG. In case of discrepancies the published ETSI
+    Group Specification takes precedence.
+    Please report bugs to https://forge.etsi.org/bugzilla/buglist.cgi?component=Nfv-Openapis
+  license:
+    name: ETSI Forge copyright notice
+    url: https://forge.etsi.org/etsi-forge-copyright-notice.txt
+  contact:
+    name: NFV-SOL WG
+externalDocs:
+  description: ETSI GS NFV-SOL 009 V3.3.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.03.01_60/gs_NFV-SOL009v030301p.pdf
+
+servers:
+  - url: http://0.0.0.0/callback/v1
+    description: >
+      API HTTP Server
+  - url: https://0.0.0.0/callback/v1
+    description: >
+      API HTTPS Server
+
+paths:
+  /URI-is-provided-by-the-client-when-creating-the-subscription-ConfigurationAndInformationNotification:
+    description: >
+      This resource represents a notification endpoint. The API producer can use this 
+      resource to send notifications related to NFV-MANO configuration and information 
+      management to a subscribed API consumer, which has provided the URI of this 
+      resource during the subscription process.
+    post:
+      description: >
+        The POST method delivers a notification from the API producer to an API consumer. 
+        The API consumer shall have previously created an "Individual subscription" 
+        resource with a matching filter.
+      parameters:
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
+      requestBody:
+        $ref: "#/components/requestBodies/ConfigurationAnfInformationNotification"
+      responses:
+        "204": 
+          $ref: "#/components/responses/notification.post.204"
+        "400":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+        "401":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+        "403":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+        "404":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
+        "405":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+        "406":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+        "422":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
+        "500":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+        "503":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+        "504":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
+
+    get:
+      description: >
+        TThe GET method allows the API producer to test the notification endpoint that 
+        is provided by the API consumer, e.g., during the subscription process.
+      parameters:
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
+      responses:
+        "204": 
+          $ref: "#/components/responses/notification.get.204"
+        "400":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+        "401":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+        "403":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+        "404":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
+        "405":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+        "406":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+        "422":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/422
+        "500":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+        "503":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+        "504":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
+
+components:
+  responses:
+    notification.post.204:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned when the notification has been delivered successfully.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+
+    notification.get.204:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned to indicate that the notification endpoint has been 
+        tested successfully.
+
+        The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+
+  requestBodies:
+    ConfigurationAnfInformationNotification:
+      description: >
+        A notification about configuration and information data changes of the 
+        NFV-MANO functional entity, or state changes of the NFV-MANO functional 
+        entity and its managed objects.
+      content:
+        application/json:
+          schema: 
+            oneOf:
+              - $ref: "#/components/schemas/InformationChangedNotification"
+              - $ref: "#/components/schemas/ChangeStateNotification"
+      required: true
+
+  schemas:
+    InformationChangedNotification:
+      description: >
+        This type represents a notification that is sent when data about
+        configuration and information of the NFV-MANO functional entity
+        have been changed.
+      type: object
+      properties:
+        id:
+          description: >
+            Identifier of this notification. If a notification is sent multiple
+            times due to multiple subscriptions, the "id" attribute of all these
+            notifications shall have the same value.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        notificationType:
+          description: >
+            Discriminator for the different notification types. Shall be set to
+            "InformationChangedNotification" for this notification type.
+          type: string
+        subscriptionId:
+          description: >
+            Identifier of the subscription that this notification relates to.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        timeStamp:
+          description: >
+            Date and time of the generation of the notification.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        informationChangedTime:
+          description: >
+            Timestamp indicating when the information was changed.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        manoEntityId:
+          description: >
+            Identifier of the MANO entity of which the information was changed.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        changedInfo:
+          description: >
+            Data about the changed configuration and information of the NFV-MANO
+            functional entity.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+        _links:
+          description: >
+            Links to resources related to this notification.
+          type: object
+          properties:
+            self:
+              description: >
+                Link to the related subscription.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+            subscription:
+              description: >
+                Link to the related subscription.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+          required:
+            - self
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timeStamp
+        - informationChangedTime
+        - manoEntityId
+        - changedInfo
+        - _links
+
+    ChangeStateNotification:
+      description: >
+        This type represents a Change state operation occurrence.
+      type: object
+      properties:
+        id:
+          description: >
+            Identifier of this notification. If a notification is sent multiple times
+            due to multiple subscriptions, the "id" attribute of all these notifications
+            shall have the same value.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        notificationType:
+          description: >
+            Discriminator for the different notification types. Shall be set to
+            "ChangeStateNotification" for this notification type.
+          type: string
+        subscriptionId:
+          description: >
+            Identifier of the subscription that this notification relates to.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        timestamp:
+          description: >
+            Date-time of the generation of the notification.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        changeStateOpOccId:
+          description: >
+            Identifier of the change state operation occurrence associated to the
+            notification.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        stateChangedTime:
+          description: >
+            Timestamp indicating when the state on the managed object was changed.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        changeStateOperationState:
+          description: >
+            The state of the "change state operation occurrence".
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/ChangeStateOpOccStateEnumType"
+        managedObjectRef:
+          description: >
+            Reference of the managed object to which the state change notification relates.
+            The value of the "type" attribute shall be "MANO_ENTITY" or "MANO_SERVICE_IF".
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
+        operationalState:
+          description: >
+            New operational state of the managed object. Shall only be present when
+            there is a change in the operational state.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/OperationalStateEnumType"
+        administrativeState:
+          description: >
+            New administrative state of the managed object. Shall only be present
+            when there is a change in the administrative state.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/AdministrativeStateEnumType"
+        _links:
+          description: >
+            Links to resources related to this notification.
+          type: object
+          properties:
+            subscription:
+              description: >
+                Link to the related subscription.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+            objectInstance:
+              description: >
+                Link to the resource representing the object to which the change
+                state applies. Shall be present if the object instance is accessible
+                as a resource.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+            changeStateOpOcc:
+              description: >
+                Link to the change state operation occurrence that this notification
+                is related to.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+          required:
+            - subscription
+            - objectInstance
+            - changeStateOpOcc
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timestamp
+        - changeStateOpOccId
+        - stateChangedTime
+        - changeStateOperationState
+        - managedObjectRef
+        - _links

@@ -1,0 +1,543 @@
+openapi: 3.0.2
+info:
+  version: 1.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
+  title: SOL009 - NFV-MANO Fault Management Notification Operation
+  description: >
+    SOL009 - NFV-MANO Fault Management Notification Operation
+
+    IMPORTANT: Please note that this file might be not aligned to the current version of the ETSI Group Specification it refers to. In case of discrepancies the published ETSI Group Specification takes precedence.
+
+    Please report bugs to https://forge.etsi.org/bugzilla/buglist.cgi?component=Nfv-Openapis&list_id=61&product=NFV&resolution=
+  license:
+    name: ETSI Forge copyright notice
+    url: https://forge.etsi.org/etsi-forge-copyright-notice.txt
+externalDocs:
+  description: ETSI GS NFV-SOL 009 V3.3.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.03.01_60/gs_NFV-SOL009v030301p.pdf
+
+security:
+  - OauthSecurity:
+      - all
+
+servers:
+  - url: http://127.0.0.1/callback/v1
+  - url: https://127.0.0.1/callback/v1
+
+paths:
+  /URI-is-provided-by-the-client-when-creating-the-subscription-AlarmNotification:
+    post:
+      description: >
+        The POST method notifies an NFV-MANO functional entity alarm or that the
+        alarm list has been rebuilt. The API consumer shall have previously
+        created an "Individual subscription" resource with a matching filter.
+        This method shall follow the provisions specified in the tables
+        7.5.7.3.1-1 and 7.5.7.3.1-2 for URI query parameters, request and
+        response data structures, and response codes.
+      parameters:
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
+      requestBody:
+        $ref: "#/components/requestBodies/AlarmNotification"
+      responses:
+        "204":
+          $ref: "#/components/responses/AlarmNotification.Post.204"
+        "400":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+        "401":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+        "403":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+        "405":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+        "406":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+        "500":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+        "503":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+    get:
+      description: >
+        The GET method allows the server to test the notification endpoint that
+        is provided by the client, e.g. during subscription. This method shall
+        follow the provisions specified in the tables 7.5.7.3.2-1 and
+        7.5.7.3.2-2 for URI query parameters, request and response data
+        structures, and response codes.
+      parameters:
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
+      responses:
+        "204":
+          $ref: "#/components/responses/AlarmNotification.Get.204"
+        "400":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+        "401":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+        "403":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+        "405":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+        "406":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+        "500":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+        "503":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+  /URI-is-provided-by-the-client-when-creating-the-subscription-AlarmClearedNotification:
+    post:
+      description: >
+        The POST method notifies an NFV-MANO functional entity alarm or that the
+        alarm list has been rebuilt. The API consumer shall have previously
+        created an "Individual subscription" resource with a matching filter.
+        This method shall follow the provisions specified in the tables
+        7.5.7.3.1-1 and 7.5.7.3.1-2 for URI query parameters, request and
+        response data structures, and response codes.
+      parameters:
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
+      requestBody:
+        $ref: "#/components/requestBodies/AlarmClearedNotification"
+      responses:
+        "204":
+          $ref: "#/components/responses/AlarmClearedNotification.Post.204"
+        "400":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+        "401":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+        "403":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+        "405":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+        "406":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+        "500":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+        "503":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+    get:
+      description: >
+        The GET method allows the server to test the notification endpoint that
+        is provided by the client, e.g. during subscription. This method shall
+        follow the provisions specified in the tables 7.5.7.3.2-1 and
+        7.5.7.3.2-2 for URI query parameters, request and response data
+        structures, and response codes.
+      parameters:
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
+      responses:
+        "204":
+          $ref: "#/components/responses/AlarmClearedNotification.Get.204"
+        "400":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+        "401":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+        "403":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+        "405":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+        "406":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+        "500":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+        "503":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+  /URI-is-provided-by-the-client-when-creating-the-subscription-AlarmListRebuiltNotification:
+    post:
+      description: >
+        The POST method notifies an NFV-MANO functional entity alarm or that the
+        alarm list has been rebuilt. The API consumer shall have previously
+        created an "Individual subscription" resource with a matching filter.
+        This method shall follow the provisions specified in the tables
+        7.5.7.3.1-1 and 7.5.7.3.1-2 for URI query parameters, request and
+        response data structures, and response codes.
+      parameters:
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
+      requestBody:
+        $ref: "#/components/requestBodies/AlarmListRebuiltNotification"
+      responses:
+        "204":
+          $ref: "#/components/responses/AlarmListRebuiltNotification.Post.204"
+        "400":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+        "401":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+        "403":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+        "405":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+        "406":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+        "500":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+        "503":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+    get:
+      description: >
+        The GET method allows the server to test the notification endpoint that
+        is provided by the client, e.g. during subscription. This method shall
+        follow the provisions specified in the tables 7.5.7.3.2-1 and
+        7.5.7.3.2-2 for URI query parameters, request and response data
+        structures, and response codes.
+      parameters:
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
+      responses:
+        "204":
+          $ref: "#/components/responses/AlarmListRebuiltNotification.Get.204"
+        "400":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+        "401":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+        "403":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+        "405":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+        "406":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+        "500":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+        "503":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+
+components:
+  requestBodies:
+    AlarmNotification:
+      description: >
+        Information of a NFV-MANO functional entity alarm.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/AlarmNotification"
+      required: true
+
+    AlarmClearedNotification:
+      description: |
+        Information of the clearance of an NFV-MANO functional entity alarm.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/AlarmClearedNotification"
+      required: true
+
+    AlarmListRebuiltNotification:
+      description: >
+        Information that the alarm list has been rebuilt by the NFV-MANO
+        functional entity.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/AlarmListRebuiltNotification"
+      required: true
+
+  schemas:
+    AlarmNotification:
+      description: >
+        This type represents an alarm notification about NFV-MANO functional entity faults.
+        It shall comply with the provisions defined in table 7.6.2.5-1.
+        This notification shall be triggered by the NFV-MANO functional entity when:
+        -	An alarm has been created.
+        -	An alarm has been updated, e.g. if the severity of the alarm has changed.
+
+      type: object
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timeStamp
+        - alarm
+        - _links
+      properties:
+        id:
+          description: >
+            Identifier of this notification. If a notification is sent multiple
+            times due to multiple subscriptions, the "id" attribute of all these
+            notifications shall have the same value.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        notificationType:
+          description: >
+            Discriminator for the different notification types. Shall be set to
+            "AlarmNotification" for this notification type.
+          type: string
+          enum:
+            - AlarmNotification
+        subscriptionId:
+          description: >
+            Identifier of the subscription that this notification relates to.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        timeStamp:
+          description: >
+            Date-time of the generation of the notification.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        alarm:
+          description: >
+            Information about an alarm including AlarmId, affected VNF
+            identifier, and FaultDetails.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Alarm"
+        _links:
+          description: >
+            Links to resources related to this notification.
+          type: object
+          required:
+            - subscription
+          properties:
+            subscription:
+              description: >
+                Link to the related subscription.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+
+    AlarmClearedNotification:
+      description: >
+        This type represents an alarm cleared notification about VNF faults.
+        The notification shall be triggered by the VNFM when an alarm has been
+        cleared.
+      type: object
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timeStamp
+        - alarmId
+        - alarmClearedTime
+        - _links
+      properties:
+        id:
+          description: >
+            Identifier of this notification. If a notification is sent multiple
+            times due to multiple subscriptions, the "id" attribute of all these
+            notifications shall have the same value.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        notificationType:
+          description: >
+            Discriminator for the different notification types. Shall be set to
+            "AlarmClearedNotification" for this notification type.
+          type: string
+          enum:
+            - AlarmClearedNotification
+        subscriptionId:
+          description: >
+            Identifier of the subscription that this notification relates to.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        timeStamp:
+          description: >
+            Date-time of the generation of the notification.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        alarmId:
+          description: >
+            Alarm identifier.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        alarmClearedTime:
+          description: >
+            The time stamp indicating when the alarm was cleared.
+        _links:
+          description: >
+            Links to resources related to this notification.
+          type: object
+          required:
+            - subscription
+            - alarm
+          properties:
+            subscription:
+              description: >
+                Link to the related subscription.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+            alarm:
+              description: >
+                Link to the resource that represents the related alarm.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+
+    AlarmListRebuiltNotification:
+      description: >
+        This type represents a notification that the alarm list has been
+        rebuilt, e.g. if the VNFM detects its storage holding the alarm
+        list is corrupted.
+        The notification shall be triggered by the VNFM when the alarm list has
+        been rebuilt.
+      type: object
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timeStamp
+        - _links
+      properties:
+        id:
+          description: >
+            Identifier of this notification. If a notification is sent multiple
+            times due to multiple subscriptions, the "id" attribute of all these
+            notifications shall have the same value.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        notificationType:
+          description: >
+            Discriminator for the different notification types. Shall be set to
+            "AlarmListRebuiltNotification" for this notification type.
+          type: string
+          enum:
+            - AlarmListRebuiltNotification
+        subscriptionId:
+          description: >
+            Identifier of the subscription that this notification relates to.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+        timeStamp:
+          description: >
+            Date-time of the generation of the notification.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        _links:
+          description: >
+            Links to resources related to this notification.
+          type: object
+          required:
+            - subscription
+            - alarms
+          properties:
+            subscription:
+              description: >
+                Link to the related subscription.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+            alarms:
+              description: >
+                Link to the alarm list, i.e. the "Alarms" resource.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+
+  responses:
+    AlarmNotification.Post.204:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned when the notification has been delivered successfully. The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+        Version:
+          description: |
+            Version of the API used in the response.
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+
+    AlarmNotification.Get.204:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned to indicate that the notification endpoint has been tested successfully.
+        The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+        Version:
+          description: |
+            Version of the API used in the response.
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+
+    AlarmClearedNotification.Post.204:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned when the notification has been delivered successfully. The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+        Version:
+          description: |
+            Version of the API used in the response.
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+
+    AlarmClearedNotification.Get.204:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned to indicate that the notification endpoint has been tested successfully.
+        The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+        Version:
+          description: |
+            Version of the API used in the response.
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+
+    AlarmListRebuiltNotification.Post.204:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned when the notification has been delivered successfully. The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+        Version:
+          description: |
+            Version of the API used in the response.
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
+
+    AlarmListRebuiltNotification.Get.204:
+      description: >
+        204 NO CONTENT
+
+        Shall be returned to indicate that the notification endpoint has been tested successfully. The response body shall be empty.
+      headers:
+        WWW-Authenticate:
+          description: >-
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+            minimum: 0
+            maximum: 1
+        Version:
+          description: >-
+            Version of the API used in the response.
+          schema:
+            type: string
+            minimum: 1
+            maximum: 1
