@@ -1,9 +1,9 @@
 # NFV SOL009 - OpenAPIs for the management of NFV-MANO
 
-This repository contains OpenAPIs for ETSI GS NFV-SOL 009, RESTful protocols 
+This repository contains OpenAPIs for ETSI GS NFV-SOL 009 v3.5.1, RESTful protocols 
 specification for the management of NFV-MANO.
 
-**IMPORTANT: In case of discrepancies the published ETSI Group Specification takes precedence.**
+**IMPORTANT: These [OpenAPI](https://www.openapis.org/) specifications are in development phase. In case of discrepancies the published ETSI Group Specification takes precedence.**
 
 More information at [NFV Solutions wiki](https://nfvwiki.etsi.org/index.php?title=NFV_Solutions).
 
