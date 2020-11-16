@@ -934,14 +934,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ClockSyncInfo"
-        clockSyncsDeleteIds:
-          description: >
-            List of identifiers entries to be deleted from the "clockSyncs" 
-            attribute array in the "ManoEntityConfigurableParams", as defined 
-            below this table.
-          type: array
-          items:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         defaultLogCompileBySizeValue:
           description: >
             New value of the "defaultLogCompileBySizeValue" attribute in the 
