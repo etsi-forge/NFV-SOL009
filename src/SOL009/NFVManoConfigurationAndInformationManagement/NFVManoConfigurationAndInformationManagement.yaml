@@ -1631,13 +1631,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ConsumedManoInterfaceInfo"
-        consumedManoInterfaceDeleteIds:
-          description: >
-            List of identifiers entries to be deleted from the "consumedManoInterfaces" 
-            attribute array in the " PeerEntity ", as defined below this table.
-          type: array
-          items:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         operationalState:
           description: >
             New content of the "operationalState" attribute in the "peerEntityState" 
