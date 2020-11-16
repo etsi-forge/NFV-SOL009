@@ -1007,14 +1007,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ClockSyncInfo"
-        clockSyncsDeleteIds: 
-          description: >
-            If present, this attribute signals modifications of certain entries in 
-            "clockSyncs" attribute in "ManoEntityConfigurableParams", as defined 
-            in clause 5.6.2.3.
-          type: array
-          items:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         defaultLogCompileBySizeValue: 
           description: >
             If present, this attribute signals modifications of the 
