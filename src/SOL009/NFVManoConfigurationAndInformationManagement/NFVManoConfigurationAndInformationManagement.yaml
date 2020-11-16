@@ -1678,14 +1678,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ConsumedManoInterfaceInfo"
-        consumedManoInterfaceDeleteIds:
-          description: >
-            If present, this attribute signals the deletions of certain entries in the 
-            "consumedManoInterfaces" attribute in "PeerEntity", as defined in 
-            clause 5.6.2.15.
-          type: array
-          items:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         operationalState:
           description: >
             If present, this attribute signals modifications of the "operationalState" 
