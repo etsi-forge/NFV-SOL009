@@ -2089,11 +2089,6 @@ components:
         This type represents parameters for connecting to an NTP server. 
       type: object
       properties:
-        id:
-          description: >
-            The identifier of the clock synchronization information entry. 
-            This identifier is managed by the API consumer.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         type:
           description: >
             Type of clock synchronization.
@@ -2131,7 +2126,6 @@ components:
             May be present if type = "OTHER".
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
       required:
-        - id
         - type
         
     ServerInterfaceSecurityInfo:
