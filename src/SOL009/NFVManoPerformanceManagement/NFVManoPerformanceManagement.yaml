@@ -718,6 +718,10 @@ components:
           description: >
             Criteria that define this threshold.
           $ref: "#/components/schemas/ThresholdCriteria"
+        callbackUri:
+          description: >
+            The URI of the endpoint to send the notification to.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
         _links:
           description: >
             Links for this resource.
@@ -742,6 +746,7 @@ components:
         - subjObjectInstanceIds
         - criteria
         - _links
+        - callbackUri
     
     PerformanceReport:
       description: >
