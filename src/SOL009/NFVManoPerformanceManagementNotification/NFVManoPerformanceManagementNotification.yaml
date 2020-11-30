@@ -180,10 +180,6 @@ components:
             Discriminator for the different notification types. Shall be set to
             "ThresholdCrossedNotification" for this notification type.
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/String"
-        subscriptionId:
-          description: >
-            Identifier of the subscription that this notification relates to.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         timeStamp:
           description: >
             Date and time of the generation of the notification.
@@ -234,10 +230,6 @@ components:
             Links to resources related to this notification.
           type: object
           properties:
-            subscription:
-              description: >
-                Link to the related subscription.
-              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
             objectInstance:
               description: >
                 Link to the resource representing the measured object instance to which
@@ -249,12 +241,10 @@ components:
                 Link to the resource that represents the threshold that was crossed.
               $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
           required:
-            - subscription
             - objectInstance
       required:
         - id
         - notificationType
-        - subscriptionId
         - timeStamp
         - thresholdId
         - crossingDirection
