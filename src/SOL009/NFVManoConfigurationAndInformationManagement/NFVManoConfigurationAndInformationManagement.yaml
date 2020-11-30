@@ -1977,11 +1977,6 @@ components:
         functional entity from another peer functional entity. 
       type: object
       properties:
-        id:
-          description: >
-            Identifier of the consumed NFV-MANO interface. This identifier is
-            managed by the API consumer.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         name:
           description: >
             Human-readable name of the NFV-MANO interface.
