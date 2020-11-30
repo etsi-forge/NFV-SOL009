@@ -572,6 +572,10 @@ components:
           description: >
             Criteria of the collection of performance information.
           $ref: "#/components/schemas/PmJobCriteria"
+        callbackUri:
+          description: >
+            The URI of the endpoint to send the notification to.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
         reports:
           description: >
             Information about available reports collected by this PM job.
@@ -623,6 +627,7 @@ components:
         - objectInstanceIds
         - criteria
         - _links
+        - callbackUri
 
     CreateThresholdRequest :
       description: >
