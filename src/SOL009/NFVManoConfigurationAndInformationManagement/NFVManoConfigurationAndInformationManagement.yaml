@@ -1671,7 +1671,7 @@ components:
           type: string
         consumedManoInterfaces:
           description: >
-            If present, this attribute signals modifications of certain entries in 
+            If present, this attribute signals modifications of the
             "consumedManoInterfaces" attribute in "PeerEntity", as defined in 
             clause 5.6.2.15. 
             
@@ -1682,8 +1682,8 @@ components:
             In case the API consumer is not allowed to read the value of the security 
             sensitive attribute, the attribute shall be omitted when the information 
             is to be provided in a response message.
-          type: array
-          items:
+          type: object
+          additionalProperties:
             $ref: "#/components/schemas/ConsumedManoInterfaceInfo"
         operationalState:
           description: >
