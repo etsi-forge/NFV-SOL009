@@ -820,6 +820,54 @@ components:
       required:
         - entries
 
+    PmJobModifications:
+      description: >
+        This type represents modifications to a PM job.
+      type: object
+      properties:
+        callbackUri:
+          description: >
+            New value of the "callbackUri" attribute.The value "null" is not permitted.
+
+            NOTE: At least one of the attributes defined in this type
+            shall be present in request bodies.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
+        authentication:
+          description: >
+            New value of the "authentication" attribute, or "null" to remove the attribute.
+            If present in a request body, these modifications shall be applied according
+            to the rules of JSONMerge PATCH (see IETF RFC 7396).
+
+            This attribute shall not be present in response bodies.
+
+            NOTE: At least one of the attributes defined in this type
+            shall be present in request bodies..
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
+
+    ThresholdModifications:
+      description: >
+        This type represents modifications to a threshold.
+      type: object
+      properties:
+        callbackUri:
+          description: >
+            New value of the "callbackUri" attribute.The value "null" is not permitted.
+
+            NOTE: At least one of the attributes defined in this type
+            shall be present in request bodies.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
+        authentication:
+          description: >
+            New value of the "authentication" attribute, or "null" to remove the attribute.
+            If present in a request body, these modifications shall be applied according
+            to the rules of JSONMerge PATCH (see IETF RFC 7396).
+
+            This attribute shall not be present in response bodies.
+
+            NOTE: At least one of the attributes defined in this type
+            shall be present in request bodies..
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
+
     #----------
 
     PmNotificationsFilter:
