@@ -992,13 +992,12 @@ components:
             If present, this attribute signals modifications of the "description" 
             attribute in "ManoEntity", as defined in clause 5.6.2.3.
           type: string
-        clockSyncs: 
+        clockSyncs:
           description: >
-            If present, this attribute signals modifications of the "clockSyncs" 
-            attribute in "ManoEntityConfigurableParams", as defined in 
-            clause 5.6.2.3.
-          type: array
-          items:
+            If present, this attribute signals modifications of the "clockSyncs" attribute in
+            "ManoEntityConfigurableParams", as defined in clause 5.6.2.3.
+          type: object
+          additionalProperties:
             $ref: "#/components/schemas/ClockSyncInfo"
         defaultLogCompileBySizeValue: 
           description: >
