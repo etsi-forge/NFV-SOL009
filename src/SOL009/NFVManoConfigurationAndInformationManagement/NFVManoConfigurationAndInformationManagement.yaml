@@ -1951,8 +1951,11 @@ components:
           description: 
             Properties of the clock synchronization to be used by the NFV-MANO 
             functional entity.
-          type: array
-          items:
+
+            The keys of the map, each of which identifies a particular ClockSyncInfo
+            structure, are managed by the API consumer.
+          type: object
+          additionalProperties:
             $ref: "#/components/schemas/ClockSyncInfo"
           minItems: 1
         defaultLogCompileBySizeValue:
