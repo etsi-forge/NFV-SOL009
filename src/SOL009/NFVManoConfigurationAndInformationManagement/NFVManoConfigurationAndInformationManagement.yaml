@@ -1506,10 +1506,10 @@ components:
           type: string
         consumedManoInterfaces:
           description: >
-            Information of the interface consumed by the NFV-MANO functional entity 
+            Initial information of the interface consumed by the NFV-MANO functional entity
             from the peer functional entity.
-          type: array
-          items:
+          type: object
+          additionalProperties:
             $ref: "#/components/schemas/ConsumedManoInterfaceInfo"
         peerEntityState:
           description: >
