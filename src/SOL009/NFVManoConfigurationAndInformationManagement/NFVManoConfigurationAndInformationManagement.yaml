@@ -1573,8 +1573,12 @@ components:
             from the peer functional entity.
 
             This attribute can be modified with the PATCH method.
-          type: array
-          items:
+
+            The keys of the map, each of which identifies information about a particular
+            consumed NFV-MANO interface, are managed by the API consumer and referenced
+            from other data structures via the "consumedManoInterfaceIds" attribute.
+          type: object
+          additionalProperties:
             $ref: "#/components/schemas/ConsumedManoInterfaceInfo" 
         peerEntityState:
           description: >
