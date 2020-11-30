@@ -471,67 +471,6 @@ paths:
 
 components:
   schemas:
-    PmSubscriptionRequest:
-      description: >
-        This type represents a subscription request. 
-      type: object
-      properties:
-        filter:
-          description: >
-            Filter settings for this subscription, to define the subset of all 
-            notifications this subscription relates to. A particular notification 
-            is sent to the subscriber if the filter matches, or if there is no filter.
-          $ref: "#/components/schemas/PmNotificationsFilter"
-        callbackUri:
-          description: >
-            The URI of the endpoint to send the notification to.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
-        authentication:
-          description: >
-            Authentication parameters to configure the use of Authorization when 
-            sending notifications corresponding to this subscription, as defined 
-            in clause 8.3.4 of ETSI GS NFV-SOL 013.
-            This attribute shall only be present if the subscriber requires authorization 
-            of notifications.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
-      required:
-        - callbackUri
-
-    PmSubscription:
-      description: >
-        This type represents a subscription. 
-      type: object
-      properties:
-        id:
-          description: >
-            Identifier that identifies the subscription
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
-        filter:
-          description: >
-            Filter settings for this subscription, to define the subset of all 
-            notifications this subscription relates to. A particular notification 
-            is sent to the subscriber if the filter matches, or if there is no filter.
-          $ref: "#/components/schemas/PmNotificationsFilter"
-        callbackUri:
-          description: >
-            The URI of the endpoint to send the notification to.
-          type: object
-          properties:
-            links:
-              description: >
-                Links to resources related to this resource.
-              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
-            self:
-              description: >
-                URI of this resource.
-              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
-          required:            
-            - links
-            - self
-      required: 
-        - id
-        - callbackUri
-
     CreatePmJobRequest:
       description: >
         This type represents a request to create a PM job. 
@@ -1506,13 +1445,4 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/CreateThresholdRequest"
-      required: true
-
-    CreateSubscriptionRequest:
-      description: >
-        Details of the subscription to be created.
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/PmSubscriptionRequest"
       required: true
