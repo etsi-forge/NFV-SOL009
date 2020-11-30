@@ -929,10 +929,11 @@ components:
           type: string
         clockSyncs:
           description: >
-            New content of certain entries in the "clockSyncs" attribute array in 
-            the "ManoEntityConfigurableParams", as defined below this table. 
-          type: array
-          items:
+            Modifications of the "clockSyncs" attribute in the "ManoEntityConfigurableParams".
+            If present, these modifications shall be applied according to the rules of JSON Merge PATCH
+            (see IETF RFC 7396).
+          type: object
+          additionalProperties:
             $ref: "#/components/schemas/ClockSyncInfo"
         defaultLogCompileBySizeValue:
           description: >
