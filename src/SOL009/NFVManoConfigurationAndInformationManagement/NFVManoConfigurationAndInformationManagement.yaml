@@ -1621,8 +1621,11 @@ components:
           type: string
         consumedManoInterfaces:
           description: >
-            New content of certain entries in the "consumedManoInterfaces" attribute 
-            array in the "PeerEntity", as defined below this table. 
+            Modification of the "consumedManoInterfaces" attribute
+            in the "PeerEntity", as defined below this table.
+
+            If present, these modifications shall be applied according to the rules of
+            JSON Merge PATCH (see IETF RFC 7396).
             
             NOTE:	Due to the security sensitive information contained within the attribute 
             (refer to "securityInfo" within the "ConsumedManoInterfaceInfo"), based on 
@@ -1632,8 +1635,8 @@ components:
             attribute, and the modification request includes new attribute values, 
             the whole modification request shall be rejected, and proper error information 
             returned.
-          type: array
-          items:
+          type: object
+          additionalProperties:
             $ref: "#/components/schemas/ConsumedManoInterfaceInfo"
         operationalState:
           description: >
