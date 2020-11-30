@@ -271,14 +271,14 @@ components:
             Shall be set to "PerformanceInformationAvailableNotification" for this
             notification type.
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/String"
-        subscriptionId:
-          description: >
-            Identifier of the subscription that this notification relates to.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         timeStamp:
           description: >
             Date and time of the generation of the notification.
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+        pmJobId:
+          description: >
+            Identifier of the PM job for which performance information is available.
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
         objectType:
           description: >
             Type of measured object.
@@ -304,10 +304,6 @@ components:
             Links to resources related to this notification.
           type: object
           properties:
-            subscription:
-              description: >
-                Link to the related subscription.
-              $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
             objectInstance:
               description: >
                 Link to the resource representing the measured object instance to which the
@@ -326,13 +322,12 @@ components:
                 This link should point to an "Individual performance report" resource.
               $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
           required:
-            - subscription
             - pmJob
             - performanceReport
       required:
         - id
         - notificationType
-        - subscriptionId
+        - pmJobId
         - timeStamp
         - objectType
         - objectInstanceId
