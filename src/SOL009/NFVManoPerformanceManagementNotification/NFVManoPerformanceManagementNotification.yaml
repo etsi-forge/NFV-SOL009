@@ -32,13 +32,13 @@ paths:
     description: >
       This resource represents a notification endpoint for NFV-MANO performance management. 
       The API producer can use this resource to send notifications related to performance 
-      management events to a subscribed API consumer, which has provided the URI of this 
-      resource during the subscription process.
+      management events to an API consumer, which has provided the URI of this
+      resource during the PM jobor threshold creation process.
     post:
       description: >
         The POST method delivers a notification regarding a performance management event
         from the API producer to an API consumer. The API consumer shall have previously 
-        created an "Individual subscription" resource with a matching filter.
+        created an " Individual PM job resource" or "Individual threshold resource".
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -72,7 +72,7 @@ paths:
     get:
       description: >
         The GET method allows the server to test the notification endpoint that is 
-        provided by the client, e.g. during subscription. 
+        provided by the client, e.g. during creation of the PM job or threshold.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
