@@ -304,6 +304,45 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
+    patch:
+      description: >
+        This method allows to modify an "Individual threshold" resource.
+        This method shall follow the provisions specified in the tables
+        6.5.7.3.4-1 and 6.5.7.3.4-2 for URI query parameters, request and
+        response data structures, and response codes
+      parameters:
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
+      requestBody:
+        $ref: "#/components/requestBodies/ThresholdModificationRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/threshold.patch.200"
+        "412":
+          $ref: "#/components/responses/threshold.patch.412"
+        "422":
+          $ref: "#/components/responses/threshold.patch.422"
+        "400":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+        "401":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+        "403":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+        "404":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/404
+        "405":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+        "406":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+        "409":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/409
+        "500":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+        "503":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+        "504":
+          $ref: ../components/SOL009_resp.yaml#/components/responses/504
     delete:
       description: >
         This method allows to delete a threshold.
@@ -1249,6 +1288,96 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/Threshold"
+
+    threshold.patch.200:
+      description: >
+        200 OK
+
+        Shall be returned when the request has been processed successfully.
+
+        The response body shall contain a data structure of type "ThresholdModifications"
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ThresholdModifications"
+    threshold.patch.412:
+      description: >
+        412 PRECONDITION FAILED
+
+        Shall be returned upon the following error: A precondition given in
+        an HTTP request header is not fulfilled.
+
+        Typically, this is due to an ETag mismatch, indicating that the resource
+        was modified by another entity.
+
+        The response body should contain a ProblemDetails structure, in which
+        the "detail" attribute should convey more information about the error.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
+    threshold.patch.422:
+      description: >
+        422 Unprocessable Entity
+
+        Shall be returned upon the following error: The content type
+        of the payload body is supported and the payload body of a request
+        contains syntactically correct data but the data cannot be processed.
+
+        The general cause for this error and its handling is specified in
+        clause 6.4 of ETSI GS NFV-SOL 013, including rules for the presence
+        of the response body.
+
+        Specifically in case of this resource, the response code 422 shall also
+        be returned if the API producer has tested the Notification endpoint as
+        described in clause 6.5.10.3.2 and the test has failed.
+
+        In this case, the "detail" attribute in the "ProblemDetails" structure
+        shall convey more information about the error.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
+
     threshold.delete.204:
       description: >
         204 NO CONTENT
@@ -1367,4 +1496,16 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/CreateThresholdRequest"
+      required: true
+
+    ThresholdModificationRequest:
+      description: >
+        Parameters for the threshold modification.
+
+        The Content-Type header shall be set to "application/merge-patch+json"
+        according to IETF RFC 7396.
+      content:
+        application/merge-patch+json:
+          schema:
+            $ref: "#/components/schemas/ThresholdModifications"
       required: true
