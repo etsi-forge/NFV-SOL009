@@ -886,6 +886,16 @@ components:
             specific type of NFV-MANO functional entity is specified by the 
             manoServices attribute.
           $ref: "#/components/schemas/VimSpecificInfo"
+        wimSpecificInfo:
+          description: >
+            The information specific to a WIM entity. See notes 4 and 6.
+
+            NOTE 4: The information about the NFV-MANO services offered by a
+            specific type of NFV-MANO functional entity is specified by the
+            manoServices attribute.
+            NOTE 6: It shall be present when "type" attribute is "WIM",
+            and it shall be absent in any other case.
+          $ref: "#/components/schemas/wimSpecificInfo"
         _links:
           description: >
             Links to resources related to this resource.
@@ -1156,7 +1166,7 @@ components:
             administrativeStateAction:
               description: > 
                 The desired administrative state to change the managed object to.
-              $ref: "#/components/schemas/ChangeAdministrativeStateEnumType"
+              type:
           required:
             - administrativeStateAction
 
@@ -1940,7 +1950,69 @@ components:
         and that can be relevant to more than one NFV-MANO service offered by 
         a VIM entity.
       type: object
-        
+
+    WimSpecificInfo:
+      description: >
+        This type represents information attributes specific to a WIM entity,
+        and that can be relevant to more than one NFV MANO service offered by
+        a WIM entity.
+      type: object
+      properties:
+        maxMscsNums:
+          description: >
+            Maximum number of MSCS that the WIM can manage.
+          type: object
+          properties:
+            numMscs:
+              description: >
+                Maximum number of MSCS.
+              type: integer
+            criteriaNumMscs:
+              description: >
+                Reference criteria for derivation/computation of the referred
+                maximum number of MSCS in attribute "numMscs".
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+          required:
+            - numMscs
+        maxMsncNum:
+          description: >
+            Maximum number of MSNC that the WIM can manage
+          type: object
+          properties:
+            numMsnc:
+              description: >
+                Maximum number of MSNC..
+              type: integer
+            criteriaNumMsnc:
+              description: >
+                Reference criteria for derivation/computation of the referred maximum
+                number of MSNC in attribute "numMsnc".
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+          required:
+            - numMsnc
+        mscsLayerProtocolSupport:
+          description: >
+            List of protocols of particular layers used to realize an MSCS
+            that are supported by the WIM.
+
+            Permitted values:
+              - EVPN_BGP_MPLS: L2 MSCS realized by BGP MPLS-based Ethernet VPN (EVPN) as specified in IETF RFC 7432.
+              - EVPN_VPWS: L2 MSCS realized by EVPN Virtual Private Wire Service (VPWS) as specified in IETF RFC 8214.
+              - VPLS_BGP: L2 MSCS realized by Virtual Private LAN Service (VPLS) using BGP as specified
+                in IETF RFC 4761 and IETF RFC.
+              - VPLS_LDP_L2TP: L2 MSCS realized by VPLS using Label Distribution Protocol (LDP) Layer 2
+                Tunnelling Protocol (L2TP) as specified in IETF RFC 4762 and IETF RFC 6074.
+              - VPWS_LDP_L2TP: L2 MSCS realized by VPWS using LDP L2TP as specified in IETF RFC 6074.
+              - BGP_IP_VPN: L3 MSCS realized by BGP/MPLS based IP VPN as specified in IETF RFC 4364.
+          type: string
+          enum:
+            - EVPN_BGP_MPLS
+            - EVPN_VPWS
+            - VPLS_BGP
+            - VPLS_LDP_L2TP
+            - VPWS_LDP_L2TP
+            - BGP_IP_VPN
+
     ManoEntityConfigurableParams:
       description: >
         This type represents list of parameters that can be configured on the 
@@ -2405,12 +2477,14 @@ components:
         the provisions :
           - NFVO	The NFV-MANO functional entity is an NFVO.
           - VNFM	The NFV-MANO functional entity is a VNFM.
-          - VIM	The NFV-MANO functional entity is a VIM.
+          - VIM	    The NFV-MANO functional entity is a VIM.
+          - WIM     The NFV-MANO functional entity is a WIM.
       type: string
       enum:
         - NFVO
         - VNFM
         - VIM
+        - WIM
 
     PeerEntityEnumType:
       description: >
@@ -2423,6 +2497,7 @@ components:
         - WIM	  The peer functional entity is a WIM.
         - EM	  The peer functional entity is an EM.
         - OSS	  The peer functional entity is an OSS/BSS.
+        - WIM     The peer functional is a WIM.
       type: string
       enum:
         - NFVO
@@ -2431,6 +2506,7 @@ components:
         - WIM
         - EM
         - OSS
+        - WIM
 
   parameters:
 
