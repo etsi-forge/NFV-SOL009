@@ -16,8 +16,8 @@ info:
   contact:
     name: NFV-SOL WG
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.3.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.03.01_60/gs_NFV-SOL009v030301p.pdf
+  description: ETSI GS NFV-SOL 009 V3.5.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.05.01_60/gs_NFV-SOL009v030501p.pdf
 
 servers:
   - url: http://0.0.0.0/nfvmanocim/v1
@@ -34,11 +34,8 @@ paths:
   /mano_entity:
     get:
       description: >
-        Retrives information about an NFV-MANO functional entity 
-        by reading the NFV-MANO entity resource.
-        This method shall follow the provisions specified in the 
-        tables 5.5.3.3.2-1 and 5.5.3.3.2-2 for URI query parameters, 
-        request and response data structures, and response codes.       
+        The GET method retrieves information about an NFV-MANO functional entity by reading the NFV-MANO entity resource.
+        See clause 5.5.3.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -68,13 +65,7 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
     patch:
       description: >
-        Modifies the NFV-MANO entity resource.
-        Changes to the various configuration and information 
-        attributes are applied to the NFV-MANO functional entity, 
-        and are reflected in the representation of this resource.
-        This method shall follow the provisions specified in the 
-        tables 5.5.3.3.4-1 and 5.5.3.3.4-2 for URI query parameters, 
-        request and response data structures, and response codes.
+        The PATCH method modifies the NFV-MANO entity resource. See clause 5.5.3.3.4.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -112,12 +103,8 @@ paths:
   /mano_entity/change_state:
     post:
       description: >
-        Requests to change the state of the NFV-MANO functional 
-        entity application.
-
-        This method shall follow the provisions specified in the tables 
-        5.5.7.3.1-1 and 5.5.7.3.1-2 for URI query parameters, request and 
-        response data structures, and response codes.
+        The POST method requests to change the state of the NFV-MANO functional entity application.
+        See clause 5.5.7.3.1.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -153,11 +140,8 @@ paths:
   /mano_entity/mano_interfaces:
     get:
       description: >
-        Queries information about multiple NFV-MANO service interfaces of 
-        the NFV-MANO functional entity.
-        This method shall follow the provisions specified in the tables 
-        5.5.10.3.2-1 and 5.5.10.3.2-2 for URI query parameters, request 
-        and response data structures, and response codes.
+        The GET method queries information about multiple NFV-MANO service interfaces
+        of the NFV-MANO functional entity. See clause 5.5.10.3.2.
       parameters:
         - $ref: "#/components/parameters/filter.ManoServiceInterface"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/all_fields"
@@ -191,18 +175,15 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
+
   /mano_entity/mano_interfaces/{manoServiceInterfaceId}:
     parameters:
       - $ref: "#/components/parameters/manoServiceInterfaceId"
     get:
       description: >
-        retrieves information about an NFV-MANO service interface of the 
-        producer NFV-MANO functional entity by reading an "Individual 
-        NFV-MANO service interface" resource.
-
-        This method shall follow the provisions specified in the tables 
-        5.5.11.3.2-1 and 5.5.11.3.2-2 for URI query parameters, request 
-        and response data structures, and response codes.
+        The GET method retrieves information about an NFV-MANO service interface of the producer
+        NFV-MANO functional entity by reading an "Individual NFV-MANO service interface" resource.
+        See clause 5.5.11.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -230,16 +211,7 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
     patch:
       description: >
-        Modifies an "Individual NFV-MANO service interface" resource.
-
-        Changes to the configurable parameters of the corresponding 
-        NFV-MANO service interface are applied to the information managed 
-        by the producer NFV-MANO functional entity and reflected in the 
-        representation of this resource.
-
-        This method shall follow the provisions specified in the tables 
-        5.5.11.3.4-1 and 5.5.11.3.4-2 for URI query parameters, request 
-        and response data structures, and response codes.
+        This method is used to modify an "Individual NFV-MANO service interface" resource. See clause 5.5.11.3.4.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -279,12 +251,8 @@ paths:
       - $ref: "#/components/parameters/manoServiceInterfaceId"
     post:
       description: >
-        Requests to change the state of the NFV-MANO service interface 
-        produced by the NFV-MANO functional entity.
-
-        This method shall follow the provisions specified in the tables 
-        5.5.12.3.1-1 and 5.5.12.3.1-2 for URI query parameters, request 
-        and response data structures, and response codes.
+        The POST method requests to change the state of the NFV-MANO service interface
+        produced by the NFV-MANO functional entity. See clause 5.5.12.3.1.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -320,11 +288,7 @@ paths:
   /subscriptions:
     post:
       description: >
-        Creates a new subscription.
-
-        This method shall follow the provisions specified in the tables 
-        5.5.4.3.1-1 and 5.5.4.3.1-2 for URI query parameters, request and 
-        response data structures, and response codes.
+        The POST method creates a new subscription. See clause 5.5.4.3.1.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -358,13 +322,9 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
     get:
       description: >
-        queries the list of active subscriptions of the API consumer that 
-        invokes the method. It can be used, e.g., for resynchronization 
-        after error situations.
-
-        This method shall follow the provisions specified in the tables 
-        5.5.4.3.2-1 and 5.5.4.3.2-2 for URI query parameters, request 
-        and response data structures, and response codes.
+        The GET method queries the list of active subscriptions of the API consumer that
+        invokes the method. It can be used, e.g. for resynchronization after error situations.
+        See clause 5.5.4.3.2.
       parameters:
         - $ref: "#/components/parameters/filter.CimSubscription"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
@@ -400,12 +360,8 @@ paths:
       - $ref: "#/components/parameters/subscriptionId"
     get:
       description: >
-        Retrieves information about a subscription by reading an "Individual 
-        subscription" resource.
-
-        This method shall follow the provisions specified in the tables 
-        5.5.5.3.2-1 and 5.5.5.3.2-2 for URI query parameters, request and 
-        response data structures, and response codes.
+        The GET method retrieves information about a subscription by reading an "Individual subscription" resource.
+        See clause 5.5.5.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -435,11 +391,7 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504              
     delete:
       description: >
-        Terminates an individual subscription.
-
-        This method shall follow the provisions specified in the tables 
-        5.5.5.3.5-1 and 5.5.5.3.5-2 for URI query parameters, request 
-        and response data structures, and response codes.
+        The DELETE method terminates an individual subscription. See clause 5.5.5.3.5.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -472,11 +424,7 @@ paths:
     get:
       description: >
         The API consumer can use the GET method to query status information 
-        about multiple change state operation occurrences.
-
-        This method shall follow the provisions specified in the tables 
-        5.5.8.3.2-1 and 5.5.8.3.2-2 for URI query parameters, request and 
-        response data structures, and response codes.
+        about multiple change state operation occurrences. See clause 5.5.8.3.2.
       parameters:
         - $ref: "#/components/parameters/filter.ChangeStateOpOcc"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/all_fields"
@@ -518,11 +466,7 @@ paths:
       description: >
         The API consumer can use the GET method to retrieve status 
         information about a change state operation occurrence by reading 
-        an "Individual change state operation occurrence" resource.
-
-        This method shall follow the provisions specified in the tables 
-        5.5.9.3.2-1 and 5.5.9.3.2-2 for URI query parameters, request 
-        and response data structures, and response codes.
+        an "Individual change state operation occurrence" resource. See clause 5.5.9.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -554,13 +498,9 @@ paths:
   /peer_entities:
     post:
       description: >
-        Creates in the producer NFV-MANO functional entity a new peer 
-        entity resource which contains configuration and information 
-        with regards to the peer functional entity.
-
-        This method shall follow the provisions specified in the tables 
-        5.5.13.3.1-1 and 5.5.13.3.1-2 for URI query parameters, request 
-        and response data structures, and response codes.
+        The POST method creates in the producer NFV-MANO functional entity a new peer
+        entity resource which contains configuration and information with regards to the
+        peer functional entity. See clause 5.5.13.3.1
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -592,12 +532,8 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
     get:
       description: >
-        Queries information and configuration in the producer NFV-MANO 
-        functional entity with regards to multiple peer entities.
-
-        This method shall follow the provisions specified in the tables 
-        5.5.13.3.2-1 and 5.5.13.3.2-2 for URI query parameters, request 
-        and response data structures, and response codes.
+        The GET method queries information and configuration in the producer NFV-MANO functional
+        entity with regards to multiple peer entities. See clause 5.5.13.3.2.
       parameters:
         - $ref: "#/components/parameters/filter.PeerEntity"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/all_fields"
@@ -637,13 +573,8 @@ paths:
       - $ref: "#/components/parameters/peerEntityId"
     get:
       description: >
-        Retrieves information and configuration hold in the producer NFV-MANO 
-        functional entity with regards to a peer entity by reading an individual 
-        peer entity resource.
-
-        This method shall follow the provisions specified in the tables 
-        5.5.14.3.2-1 and 5.5.14.3.2-2 for URI query parameters, request 
-        and response data structures, and response codes.
+        The GET method retrieves information and configuration hold in the producer NFV-MANO functional entity
+        with regards to a peer entity by reading an individual peer entity resource. See clause 5.5.14.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -673,18 +604,9 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
     patch:
       description: >
-        Modifies configuration and information of the producer NFV-MANO 
-        functional entity with regards to a peer functional entity by 
-        updating the corresponding "Individual peer entity" resource.
-
-        Changes to the configurable parameters of the corresponding peer 
-        entity are applied to the information managed by the producer 
-        NFV-MANO functional entity and reflected in the representation 
-        of this resource.
-
-        This method shall follow the provisions specified in the tables 
-        5.5.14.3.4-1 and 5.5.14.3.4-2 for URI query parameters, request 
-        and response data structures, and response codes.
+        This method modifies configuration and information of the producer NFV-MANO functional
+        entity with regards to a peer functional entity by updating the corresponding
+        "Individual peer entity" resource. See clause 5.5.14.3.4.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -718,18 +640,12 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
     delete:
       description: >
-        Ddeletes an individual peer entity resource. By deleting such 
-        a resource in the producer NFV-MANO functional entity representing 
-        a peer NFV-MANO entity, the configuration and information with 
-        regards to such peer entity is deleted. Consequently, the peering 
-        relationship between the producer NFV-MANO functional entity and 
-        the peer entity is terminated, i.e., the producer NFV-MANO functional 
-        entity does not have the necessary information to communicate/interact 
-        with the peer entity.
-
-        This method shall follow the provisions specified in the tables 
-        5.5.14.3.5-1 and 5.5.14.3.5-2 for URI query parameters, request 
-        and response data structures, and response codes.
+        This method deletes an individual peer entity resource. By deleting such a resource in the
+        producer NFV-MANO functional entity representing a peer NFV-MANO entity, the configuration
+        and information with regards to such peer entity is deleted. Consequently, the peering relationship
+        between the producer NFV-MANO functional entity and the peer entity is terminated, i.e.
+        the producer NFV-MANO functional entity does not have the necessary information to
+        communicate/interact with the peer entity. See clause 5.5.14.3.5.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -765,6 +681,13 @@ components:
     ManoEntity:
       description: >
         This type represents an NFV-MANO functional entity.
+        *  NOTE 1:	It shall be present when "type" attribute is "NFVO", and it shall be absent in any other case.
+        *  NOTE 2:	It shall be present when "type" attribute is "VNFM", and it shall be absent in any other case.
+        *  NOTE 3:	It shall be present when "type" attribute is "VIM", and it shall be absent in any other case.
+        *  NOTE 4:	The information about the NFV-MANO services offered by a specific type of NFV-MANO functional
+                    entity is specified by the manoServices attribute.
+        *  NOTE 5:	It is optional for the API producer to support the "manoEntityComponents" attribute.
+        *  NOTE 6:	It shall be present when "type" attribute is "WIM", and it shall be absent in any other case.
       type: object
       required:
         - id
@@ -812,10 +735,7 @@ components:
         manoEntityComponents:
           description: >
             The deployed NFV-MANO functional entity components which realize the 
-            NFV-MANO functional entity. 
-
-            NOTE:	It is optional for the API producer to support the "manoEntityComponents" 
-            attribute.
+            NFV-MANO functional entity. See note 5.
           type: array
           items: 
             $ref: "#/components/schemas/ManoEntityComponent"
@@ -857,44 +777,19 @@ components:
               $ref: "#/components/schemas/UsageStateEnumType"
         nfvoSpecificInfo:
           description: >
-            The information specific to an NFVO entity.
-
-            NOTE: It shall be present when "type" attribute is "NFVO", and it 
-            shall be absent in any other case.
-
-            NOTE: The information about the NFV-MANO services offered by a 
-            specific type of NFV-MANO functional entity is specified by the 
-            manoServices attribute.
+            The information specific to an NFVO entity. See note 1 and not 4.
           $ref: "#/components/schemas/NfvoSpecificInfo"
         vnfmSpecificInfo:
           description: >
-            The information specific to a VNFM entity.
-
-            NOTE: It shall be present when "type" attribute is "VNFM", and 
-            it shall be absent in any other case.
-            NOTE: The information about the NFV-MANO services offered by a 
-            specific type of NFV-MANO functional entity is specified by the 
-            manoServices attribute.
+            The information specific to a VNFM entity. See note 2 and not 4.
           $ref: "#/components/schemas/VnfmSpecificInfo"
         vimSpecificInfo:
           description: >
-            The information specific to an VIM entity.
-
-            NOTE: It shall be present when "type" attribute is "VIM", and 
-            it shall be absent in any other case.
-            NOTE: The information about the NFV-MANO services offered by a 
-            specific type of NFV-MANO functional entity is specified by the 
-            manoServices attribute.
+            The information specific to an VIM entity. See note 3 and not 4.
           $ref: "#/components/schemas/VimSpecificInfo"
         wimSpecificInfo:
           description: >
             The information specific to a WIM entity. See notes 4 and 6.
-
-            NOTE 4: The information about the NFV-MANO services offered by a
-            specific type of NFV-MANO functional entity is specified by the
-            manoServices attribute.
-            NOTE 6: It shall be present when "type" attribute is "WIM",
-            and it shall be absent in any other case.
           $ref: "#/components/schemas/wimSpecificInfo"
         _links:
           description: >
@@ -926,7 +821,9 @@ components:
     ManoConfigModificationRequest:
       description: >
         This type represents attribute modifications for configuration parameters 
-        of an NFV-MANO functional entity. 
+        of an NFV-MANO functional entity.
+        * NOTE:	At least one of these attributes shall be provided if requesting a modification
+                of the NFV-MANO service identified by "id".
       type: object
       properties:
         name:
@@ -959,9 +856,25 @@ components:
           description: >
             New content of certain entries in the "manoServices" attribute array 
             in the "ManoEntity", as defined below this table.
+            The following provisions shall apply when modifying an attribute that is an array of structured
+            "manoServiceModifications".
+            Assumptions:
+              A)	"oldList" is the array to be modified, "newList" is the array that contains the changes.
+              B)	"oldEntry" is an entry in "oldList" and "newEntry" is an entry in "newList".
+              C)	A "newEntry" has a "corresponding entry" if there exists an "oldEntry" that has the same
+                    content of "id" attribute as the "newEntry".
+              D)	In any array of objects, the content of "id" is unique (i.e. there are no two entries
+                    with the same content of "id").
+            Provisions:
+              1)	For each "newEntry" in "newList" that has a corresponding "oldEntry" in "oldList", the values of
+                    the sub-attributes of "oldEntry" shall be replaced by the value of the sub-attributes in the "newEntry".
+              2)	If the "newEntry" in "newList" has no corresponding "oldEntry" in "oldList" (i.e. the "id" is
+                    not found), the modification operation will fail as a whole and an error message shall be raised.
           type: array
           items:
             type: object
+            required:
+              - id
             properties:
               id:
                 description: >
@@ -969,20 +882,12 @@ components:
                 $ref: "../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
               name:
                 description: >
-                  New value for the "name" attribute in the "ManoService". 
-                  
-                  NOTE:	At least one of these attributes shall be provided if requesting 
-                  a modification of the NFV-MANO service identified by "id".
+                  New value for the "name" attribute in the "ManoService". See note.
                 type: string
               description:
                 description: >
-                  New value for the "description" attribute in the "ManoService".
-                  
-                  NOTE:	At least one of these attributes shall be provided if requesting 
-                  a modification of the NFV-MANO service identified by "id".
+                  New value for the "description" attribute in the "ManoService". See note.
                 type: string
-            required:
-              - id
 
     ManoConfigModifications:
       description: >
@@ -1112,16 +1017,19 @@ components:
 
     ChangeStateRequest:
       description: >
-        This type represents request parameters for changing the state of a managed entity. 
+        This type represents request parameters for changing the state of a managed entity.
+        * NOTE 1:	In the present document version, a request shall only include an operational state change
+                    (attribute "operationalStateChange") or an administrative state change request (attribute
+                    "administrativeStateChange"), but not both.
+        * NOTE 2:	The "stopType" shall only be provided when the "operationalStateAction" attribute is equal
+                    to "STOP" or "RESTART". The "gracefulStopTimeout" shall be absent when the "stopType" attribute
+                    is equal to "FORCEFUL", and may be provided otherwise.
       type: object
       properties:
         operationalStateChange:
           description: >
             A change of operational state. Shall be present if the state change request
-            refers to the operational state. 
-            NOTE:	In the present document version, a request shall only include an 
-            operational state change (attribute "operationalStateChange") or an 
-            administrative state change request (attribute "administrativeStateChange"), 
+            refers to the operational state. See note 1.
             but not both.
           type: object
           properties:
@@ -1133,33 +1041,19 @@ components:
               $ref: "#/components/schemas/ChangeOperationalStateEnumType"
             stopType:
               description: >
-                It signals the type of stop. 
-                
-                NOTE:	The "stopType" shall only be provided when the "operationalStateAction" 
-                attribute is equal to "STOP" or "RESTART".  The "gracefulStopTimeout" shall 
-                be absent when the "stopType" attribute is equal to "FORCEFUL", and may 
-                be provided otherwise.
+                It signals the type of stop. See note 2.
               $ref: "#/components/schemas/StopEnumType"
             gracefulStopTimeout:
               description: >
                 The time internal (in seconds) to wait for the entity to be taken out 
-                of service during graceful stop. 
-                
-                NOTE:	The "stopType" shall only be provided when the "operationalStateAction" 
-                attribute is equal to "STOP" or "RESTART".  The "gracefulStopTimeout" shall 
-                be absent when the "stopType" attribute is equal to "FORCEFUL", and may 
-                be provided otherwise.
+                of service during graceful stop. See note 2.
               type: integer
           required:
             - operationalStateAction
         administrativeStateChange:
           description: >
             A change of administrative state. Shall be present if the state change request
-            refers to the administrative state. 
-            
-            NOTE:	In the present document version, a request shall only include an 
-            operational state change (attribute "operationalStateChange") or an 
-            administrative state change request (attribute "administrativeStateChange"), 
+            refers to the administrative state. See note 1.
             but not both.
           type: object
           properties:
@@ -1233,8 +1127,30 @@ components:
     ManoServiceInterface:
       description: >
         This type represents an individual NFV-MANO service interface produced by 
-        an NFV-MANO functional entity. 
+        an NFV-MANO functional entity.
+        * NOTE 1:	The information to be provided in this attribute shall relate to the specification and
+                    version of the specification. For instance, "ETSI GS NFV-SOL 003 (V2.4.1)".
+        * NOTE 2:	If this attribute is not present, the value of this parameter is undefined. Overload is
+                    handled by the error handling schemes defined by the applicable API specification.
+        * NOTE 3:	Due to the security sensitive information associated to the attribute, based on access
+                    control policies, the API consumer might have read only, write only, read/write, or no access
+                    at all to the attribute's value. In case the API consumer is not allowed to read the value of
+                    the security sensitive attribute, the attribute shall be omitted when the information is to be
+                    provided in a response message, and shall be provided otherwise. In case the API consumer is
+                    not allowed to modify the value of the security sensitive attribute, and the modification request
+                    includes new attribute values, the whole modification request shall be rejected, and proper
+                    error information returned.
       type: object
+      required:
+        - id
+        - name
+        - type
+        - standardVersion
+        - providerSpecificApiVersion
+        - apiVersion
+        - apiEndpoint
+        - supportedOperations
+        - interfaceState
       properties:
         id:
           description: >
@@ -1253,11 +1169,7 @@ components:
           type: string
         standardVersion:
           description: >
-            Version of the standard the interface is compliant to. 
-            
-            NOTE 1:	The information to be provided in this attribute shall relate to 
-            the specification and version of the specification. For instance, 
-            "ETSI GS NFV-SOL 003 (V2.4.1)".
+            Version of the standard the interface is compliant to. See note 1.
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/Version"
         providerSpecificApiVersion:
           description: >
@@ -1311,11 +1223,7 @@ components:
             - apiUri
         maxConcurrentIntOpNumber:
           description: >
-            Maximum number of concurrent operation requests supported on this interface. 
-            
-            NOTE:	If this attribute is not present, the value of this parameter 
-            is undefined. Overload is handled by the error handling schemes defined 
-            by the applicable API specification.
+            Maximum number of concurrent operation requests supported on this interface. See note 2.
           type: integer
         supportedOperations:
           description: >
@@ -1330,11 +1238,7 @@ components:
                 type: string
               maxConcurrentOpNumber:
                 description: >
-                  Maximum number of concurrent requests supported by the interface operation. 
-                  
-                  NOTE:	If this attribute is not present, the value of this parameter 
-                  is undefined. Overload is handled by the error handling schemes defined 
-                  by the applicable API specification.
+                  Maximum number of concurrent requests supported by the interface operation. See note 2.
                 type: integer
             required:
               - operationName
@@ -1363,18 +1267,7 @@ components:
           description: >
             Security related information.
 
-            This attribute can be modified with the PATCH method. 
-            
-            NOTE:	Due to the security sensitive information associated to the attribute, 
-            based on access control policies, the API consumer might have read only, 
-            write only, read/write, or no access at all to the attribute’s value. 
-            In case the API consumer is not allowed to read the value of the security 
-            sensitive attribute, the attribute shall be omitted when the information 
-            is to be provided in a response message, and shall be provided otherwise. 
-            In case the API consumer is not allowed to modify the value of the security 
-            sensitive attribute, and the modification request includes new attribute 
-            values, the whole modification request shall be rejected, and proper error 
-            information returned.
+            This attribute can be modified with the PATCH method. See note 3.
           $ref: "#/components/schemas/ServerInterfaceSecurityInfo"
         metadata:
           description: >
@@ -1383,60 +1276,39 @@ components:
             These attributes can be created, modified or removed with the PATCH 
             method.
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
-      required:
-        - id
-        - name
-        - type
-        - standardVersion
-        - providerSpecificApiVersion
-        - apiVersion
-        - apiEndpoint
-        - supportedOperations
-        - interfaceState
 
     ManoServiceInterfaceModificationRequest:
       description: >
         This type represents attribute modifications for configuration parameters of 
-        an NFV-MANO service interface of the producer NFV-MANO functional entity. 
+        an NFV-MANO service interface of the producer NFV-MANO functional entity.
+        * NOTE 1:	Changing the name does not change the corresponding standardized API name in the resource URI
+                    (refer to "{apiName}" defined in clause 4.1 of ETSI GS NFV-SOL 013).
+        * NOTE 2:	The change of apiRoot or apiUri on an enabled and in use API may be service disruptive. Also,
+                    that change invalidates any related URI that might have been cached at API consumers.
+        * NOTE 3:	Due to the security sensitive information associated to the attribute, based on access control
+                    policies, the API consumer might have read only, write only, read/write, or no access at all
+                    to the attribute's value. In case the API consumer is not allowed to modify the value of the
+                    security sensitive attribute, and the modification request includes new attribute values,
+                    the whole modification request shall be rejected, and proper error information returned.
       type: object
       properties:
         name:
           description: >
-            New value of the "name" attribute in "ManoServiceInterface". 
-            
-            NOTE:	Changing the name does not change the corresponding standardized 
-            API name in the resource URI (refer to "{apiName}" defined in clause 4.1 
-            of ETSI GS NFV-SOL 013).
+            New value of the "name" attribute in "ManoServiceInterface". See note 1.
           type: string
         apiRoot:
           description: >
-            New value of the "apiRoot" attribute in "ManoServiceInterface". 
-            
-            NOTE:	The change of apiRoot or apiUri on an enabled and in use API may 
-            be service disruptive. Also, that change invalidates any related URI that 
-            might have been cached at API consumers.
+            New value of the "apiRoot" attribute in "ManoServiceInterface". See note 2.
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
         apiUri:
           description: >
-            New value of the "apiUri" attribute in "ManoServiceInterface". 
-            
-            NOTE:	The change of apiRoot or apiUri on an enabled and in use API may 
-            be service disruptive. Also, that change invalidates any related URI that 
-            might have been cached at API consumers.
+            New value of the "apiUri" attribute in "ManoServiceInterface". See note 2.
             
             Shall not be provided if a change of "apiRoot" is present in the request.
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
         securityInfo:
           description: >
-            New value of the "securityInfo" attribute in "ManoServiceInterface".
-            
-            NOTE:	Due to the security sensitive information associated to the attribute, 
-            based on access control policies, the API consumer might have read only, 
-            write only, read/write, or no access at all to the attribute’s value. 
-            In case the API consumer is not allowed to modify the value of the security 
-            sensitive attribute, and the modification request includes new attribute 
-            values, the whole modification request shall be rejected, and proper error 
-            information returned.
+            New value of the "securityInfo" attribute in "ManoServiceInterface". See note 3.
           $ref: "#/components/schemas/ServerInterfaceSecurityInfo"
         metadata:
           description: >
@@ -1452,7 +1324,12 @@ components:
         be included consist of those requested to be modified explicitly in the 
         "ManoServiceInterfaceModificationRequest" data structure. If applicable, 
         additional attributes of the "ManoServiceInterface" data structure that 
-        were modified implicitly shall also be provided. 
+        were modified implicitly shall also be provided.
+        * NOTE:	Due to the security sensitive information associated to the attribute, based on access control
+                policies, the API consumer might have read only, write only, read/write, or no access at all
+                to the attribute's value. In case the API consumer is not allowed to read the value of the security
+                sensitive attribute, the attribute shall be omitted when the information is to be provided
+                in a response message.
       type: object
       properties:
         name:
@@ -1473,14 +1350,7 @@ components:
         securityInfo:
           description: >
             If present, this attribute signals modifications of the "securityInfo" 
-            attribute in "ManoServiceInterface", as defined in clause 5.6.2.11. 
-            
-            NOTE:	Due to the security sensitive information associated to the attribute, 
-            based on access control policies, the API consumer might have read only, 
-            write only, read/write, or no access at all to the attribute’s value. 
-            In case the API consumer is not allowed to read the value of the security 
-            sensitive attribute, the attribute shall be omitted when the information 
-            is to be provided in a response message.
+            attribute in "ManoServiceInterface", as defined in clause 5.6.2.11. See note.
           $ref: "#/components/schemas/ServerInterfaceSecurityInfo"
         metadata:
           description: >
@@ -1490,17 +1360,19 @@ components:
 
     CreatePeerEntityRequest:
       description: >
-        This type represents request parameters for the creation of a new peer entity resource. 
+        This type represents request parameters for the creation of a new peer entity resource.
+        * NOTE:	The value of the "peerEntityId" attribute is the same as the value of the "id" attribute
+                in the "ManoEntity" of the corresponding NFV-MANO functional entity that acts as peer entity,
+                and shall follow the uniqueness requirements set out in clause 5.6.2.2 for the "id" attribute.
       type: object
+      required:
+        - peerEntityId
+        - name
+        - type
       properties:
         peerEntityId:
           description: >
-            Identifier of the peer functional entity. 
-            
-            NOTE:	The value of the "peerEntityId" attribute is the same as the value of 
-            the "id" attribute in the "ManoEntity" of the corresponding NFV-MANO functional 
-            entity that acts as peer entity, and shall follow the uniqueness requirements 
-            set out in clause 5.6.2.2 for the "id" attribute.
+            Identifier of the peer functional entity. See note.
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier" 
         name:
           description: >
@@ -1537,15 +1409,22 @@ components:
           required:
             - operationalState
             - administrativeState
-      required:
-        - peerEntityId
-        - name
-        - type
 
     PeerEntity:
       description: >
-        This type represents an individual peer entity. 
+        This type represents an individual peer entity.
+        * NOTE 1:	The value of the "peerEntityId" attribute is the same as the value of the "id" attribute in the
+                    "ManoEntity" of the corresponding NFV-MANO functional entity that acts as peer entity, and shall
+                    follow the uniqueness requirements set out in clause 5.6.2.2 for the "id" attribute.
+        * NOTE 2:	ETSI GS NFV-IFA 031 [1] defines an additional attribute named "apiDiscoveryEndpoint" in the
+                    PeerManoEntity. The modelling of this attribute is not specified in the present document version.
       type: object
+      required:
+        - id
+        - peerEntityId
+        - name
+        - type
+        - peerEntityState
       properties:
         id:
           description: >
@@ -1554,12 +1433,7 @@ components:
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier" 
         peerEntityId:
           description: >
-            Identifier of the peer functional entity. 
-            
-            NOTE :	The value of the "peerEntityId" attribute is the same as the value 
-            of the "id" attribute in the "ManoEntity" of the corresponding NFV-MANO 
-            functional entity that acts as peer entity, and shall follow the uniqueness 
-            requirements set out in clause 5.6.2.2 for the "id" attribute.
+            Identifier of the peer functional entity. See note 1.
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier" 
         name:
           description: >
@@ -1607,17 +1481,16 @@ components:
           required:
             - operationalState
             - administrativeState
-      required:
-        - id
-        - peerEntityId
-        - name
-        - type
-        - peerEntityState
 
     PeerEntityConfigModificationRequest:
       description: >
-        This type represents attribute modifications for configuration parameters 
-        of a peer entity. 
+        This type represents attribute modifications for configuration parameters of a peer entity.
+        * NOTE:	Due to the security sensitive information contained within the attribute (refer to "securityInfo"
+                within the "ConsumedManoInterfaceInfo"), based on access control policies, the API consumer might have
+                read only, write only, read/write, or no access at all to the attribute's value. In case the
+                API consumer is not allowed to modify the value of the security sensitive attribute, and the
+                modification request includes new attribute values, the whole modification request shall be rejected,
+                and proper error information returned.
       type: object
       properties:
         name:
@@ -1635,16 +1508,7 @@ components:
             in the "PeerEntity", as defined below this table.
 
             If present, these modifications shall be applied according to the rules of
-            JSON Merge PATCH (see IETF RFC 7396).
-            
-            NOTE:	Due to the security sensitive information contained within the attribute 
-            (refer to "securityInfo" within the "ConsumedManoInterfaceInfo"), based on 
-            access control policies, the API consumer might have read only, write only, 
-            read/write, or no access at all to the attribute’s value. In case the 
-            API consumer is not allowed to modify the value of the security sensitive 
-            attribute, and the modification request includes new attribute values, 
-            the whole modification request shall be rejected, and proper error information 
-            returned.
+            JSON Merge PATCH (see IETF RFC 7396). See note.
           type: object
           additionalProperties:
             $ref: "#/components/schemas/ConsumedManoInterfaceInfo"
@@ -1667,6 +1531,11 @@ components:
         "PeerEntityConfigModificationRequest" data structure. If applicable, 
         additional attributes of the "PeerEntity" data structure that were 
         modified implicitly shall also be provided.
+        * NOTE:	Due to the security sensitive information contained within the attribute (refer to "securityInfo"
+                within the "ConsumedManoInterfaceInfo"), based on access control policies, the API consumer might have
+                read only, write only, read/write, or no access at all to the attribute's value. In case the
+                API consumer is not allowed to read the value of the security sensitive attribute, the attribute shall
+                be omitted when the information is to be provided in a response message.
       type: object
       properties:
         name:
@@ -1683,15 +1552,7 @@ components:
           description: >
             If present, this attribute signals modifications of the
             "consumedManoInterfaces" attribute in "PeerEntity", as defined in 
-            clause 5.6.2.15. 
-            
-            NOTE:	Due to the security sensitive information contained within the 
-            attribute (refer to "securityInfo" within the "ConsumedManoInterfaceInfo"), 
-            based on access control policies, the API consumer might have read only, 
-            write only, read/write, or no access at all to the attribute’s value. 
-            In case the API consumer is not allowed to read the value of the security 
-            sensitive attribute, the attribute shall be omitted when the information 
-            is to be provided in a response message.
+            clause 5.6.2.15. See note.
           type: object
           additionalProperties:
             $ref: "#/components/schemas/ConsumedManoInterfaceInfo"
@@ -1720,6 +1581,8 @@ components:
         NFV-MANO functional entity. It is optional for the API producer to support 
         this type. 
       type: object
+      required:
+        - id
       properties:
           id:
             description: >
@@ -1734,13 +1597,13 @@ components:
             type: array
             items:
               $ref: "../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
-      required:
-        - id
 
     ManoService:
       description: >
         This type represents information about an NFV-MANO service provided by the 
         NFV-MANO functional entity.
+        * NOTE:	A cardinality greater than one supports having different interface versions or api Endpoints
+                to be used for accessing the same instance of an NFV-MANO service.
       type: object
       properties:
         id:
@@ -1764,11 +1627,7 @@ components:
             Reference to the NFV-MANO interfaces associated to the NFV-MANO service. 
             If cardinality is greater than one, the type of ManoServiceInterface 
             (see clause 5.6.3.3) shall be the same. The identifier of the 
-            ManoServiceInterface is referred. 
-
-            NOTE:	A cardinality greater than one supports having different interface 
-            versions or apiEndpoints to be used for accessing the same instance of a 
-            NFV-MANO service.
+            ManoServiceInterface is referred. See note
           type: array
           items:
             $ref: "../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
@@ -1798,23 +1657,19 @@ components:
     NfvoSpecificInfo:
       description: >
         This type represents information attributes specific to an NFVO entity, 
-        and that can be relevant to more than one NFV-MANO service offered by an 
-        NFVO entity. 
+        and that can be relevant to more than one NFV-MANO service offered by an NFVO entity.
+        * NOTE 1:	The information to be provided in this attribute shall relate to the specification and version
+                    of the specification. For instance, "ETSI GS NFV-SOL 001 (V2.5.1)".
+          NOTE 2:	If this attribute is not present, the value of this parameter is undefined.
       type: object
       properties:
         maxOnboardedNsdNum:
           description: >
-            Maximum number of NSDs that can be on-boarded on the NFVO. 
-            
-            NOTE: If this attribute is not present, the value of this parameter 
-            is undefined.
+            Maximum number of NSDs that can be on-boarded on the NFVO. See note 2.
           type: integer
         maxOnboardedVnfPkgNum:
           description: >
-            Maximum number of VNF Packages that can be on-boarded on the NFVO. 
-
-            NOTE: If this attribute is not present, the value of this parameter 
-            is undefined.
+            Maximum number of VNF Packages that can be on-boarded on the NFVO. See note 2.
           type: integer
         supportedVnfdFormats:
           description: >
@@ -1836,11 +1691,7 @@ components:
                 - YANG
             standardVersion:
               description: >
-                Name and version of the standard the VNFD is compliant to. 
-                
-                NOTE: The information to be provided in this attribute shall relate 
-                to the specification and version of the specification. For instance, 
-                "ETSI GS NFV-SOL 001 (V2.5.1)".
+                Name and version of the standard the VNFD is compliant to. See note 1.
               $ref: "../components/SOL009_schemas.yaml#/components/schemas/Version"
           required:
             - vnfdFormat
@@ -1865,11 +1716,7 @@ components:
                 - YANG
             standardVersion:
               description: >
-                Name and version of the standard the NSD is compliant to. 
-                
-                NOTE: The information to be provided in this attribute shall relate 
-                to the specification and version of the specification. For instance, 
-                "ETSI GS NFV-SOL 001 (V2.5.1)".
+                Name and version of the standard the NSD is compliant to. See note 1.
               $ref: "../components/SOL009_schemas.yaml#/components/schemas/Version"
           required:
             - nsdFormat
@@ -1881,8 +1728,9 @@ components:
     VnfmSpecificInfo:
       description: >
         This type represents information attributes specific to a VNFM entity, 
-        and that can be relevant to more than one NFV-MANO service offered by 
-        a VNFM entity.
+        and that can be relevant to more than one NFV-MANO service offered by a VNFM entity.
+        * NOTE:	The information to be provided in this attribute shall relate to the specification and version
+                of the specification. For instance, "ETSI GS NFV-SOL 001 (V2.5.1)".
       type: object
       properties:
         resoruceMgmtModeSupport:
@@ -1929,11 +1777,7 @@ components:
                   - YANG
               standardVersion:
                 description: >
-                  Name and version of the standard the VNFD is compliant to. 
-
-                  NOTE: The information to be provided in this attribute shall relate 
-                  to the specification and version of the specification. For instance, 
-                  "ETSI GS NFV-SOL 001 (V2.5.1)".
+                  Name and version of the standard the VNFD is compliant to. See note
                 $ref: "../components/SOL009_schemas.yaml#/components/schemas/Version"
             required:
               - vnfdFormat
@@ -2020,7 +1864,7 @@ components:
       type: object
       properties:
         clockSyncs:
-          description: 
+          description: >
             Properties of the clock synchronization to be used by the NFV-MANO 
             functional entity.
 
@@ -2046,7 +1890,16 @@ components:
     ConsumedManoInterfaceInfo:
       description: >
         This type represents an interface consumed by the producer NFV MANO 
-        functional entity from another peer functional entity. 
+        functional entity from another peer functional entity.
+        * NOTE 1:	The information to be provided in this attribute shall relate to the specification and its version.
+                    For instance, "ETSI GS NFV-SOL 003 (V2.4.1)".
+        * NOTE 2:	Due to the security sensitive information associated to the attribute, based on access control
+                    policies, the API consumer might have read only, write only, read/write, or no access at all to
+                    the attribute's value. In case the API consumer is not allowed to read the value of the security
+                    sensitive attribute, the attribute shall be omitted when the information is to be provided in a
+                    response message, and shall be provided otherwise. In case the API consumer is not allowed to
+                    modify the value of the security sensitive attribute, and the modification request includes new
+                    attribute values, the whole modification request shall be rejected, and proper error information returned.
       type: object
       properties:
         name:
@@ -2060,11 +1913,7 @@ components:
           type: string
         standardVersion:
           description: >
-            Version of the standard the interface is compliant to.
-            
-            NOTE: The information to be provided in this attribute shall relate 
-            to the specification and its version. For instance, 
-            "ETSI GS NFV-SOL 003 (V2.4.1)".
+            Version of the standard the interface is compliant to. See note 1.
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/Version"
         apiVersion:
           description: >
@@ -2111,18 +1960,7 @@ components:
         securityInfo:
           description: >
             Security related information including credentials information if needed 
-            for consuming the API.
-
-            NOTE: Due to the security sensitive information associated to the attribute, 
-            based on access control policies, the API consumer might have read only, 
-            write only, read/write, or no access at all to the attribute’s value. 
-            In case the API consumer is not allowed to read the value of the security 
-            sensitive attribute, the attribute shall be omitted when the information 
-            is to be provided in a response message, and shall be provided otherwise. 
-            In case the API consumer is not allowed to modify the value of the security 
-            sensitive attribute, and the modification request includes new attribute values, 
-            the whole modification request shall be rejected, and proper error information 
-            returned.
+            for consuming the API. See note 2.
           $ref: "#/components/schemas/ClientInterfaceSecurityInfo"
       required:
         - id
@@ -2135,7 +1973,9 @@ components:
     CimNotificationsFilter:
       description: >
         This type represents a subscription filter related to notifications 
-        about NFV-MANO configuration and information management. 
+        about NFV-MANO configuration and information management.
+        * NOTE:	The permitted values of the "notificationTypes" attribute are spelled exactly as the names
+                of the notification types to facilitate automated code generation systems.
       type: object
       properties:
         manoEntitySubscriptionFilter:
@@ -2151,9 +1991,7 @@ components:
               - InformationChangedNotification
               - ChangeStateNotification
 
-            NOTE:	The permitted values of the "notificationTypes" attribute are 
-            spelled exactly as the names of the notification types to facilitate 
-            automated code generation systems.
+            See note.
           type: array
           items:
             type: string
@@ -2163,7 +2001,8 @@ components:
 
     ClockSyncInfo:
       description: >
-        This type represents parameters for connecting to an NTP server. 
+        This type represents parameters for connecting to an NTP server.
+        * NOTE:	Either ipAddress or hostname shall be set, but not both at the same time.
       type: object
       properties:
         type:
@@ -2179,23 +2018,16 @@ components:
             - OTHER
         ntpServerInfo:
           description: >
-            Information for the NTP based clock synchronization. 
-            Shall be present if type = "NTP".
+            Information for the NTP based clock synchronization. Shall be present if type = "NTP".
           type: object
           properties:
             ipAddress:
               description: >
-                0..1	IP address of the NTP server. 
-                
-                NOTE:	Either ipAddress or hostname shall be set, but not both 
-                at the same time.
+                IP address of the NTP server. See note
               $ref: "../components/SOL009_schemas.yaml#/components/schemas/IpAddress"
             hostname:
               description: >
-                Indicates the hostname of the NTP server. 
-                
-                NOTE:	Either ipAddress or hostname shall be set, but not both 
-                at the same time.
+                Indicates the hostname of the NTP server. See note.
               type: string
         otherClockSyncParams:
           description: >
@@ -2208,8 +2040,13 @@ components:
     ServerInterfaceSecurityInfo:
       description: >
         This type represents security related information of an NFV-MANO 
-        service interface produced by an NFV-MANO functional entity. 
+        service interface produced by an NFV-MANO functional entity.
+        * NOTE:	Provided configuration of the OAuth 2.0 authorization server information and configuration
+                shall be supported, and dynamic configuration may be supported.
       type: object
+      required:
+        - authType
+        - oauthServerInfo
       properties:
         authType:
           description: >
@@ -2233,16 +2070,17 @@ components:
           description: >
             OAuth 2.0 authorization server information and configuration.
           type: object
+          required:
+            - providedConfiguration
+            - tlsCipherSuites
           properties:
             dynamicDiscovery:
               description: >
                 Configuration data used when performing dynamic discovery of 
-                the authorization server identifier. 
-                
-                NOTE:	Provided configuration of the OAuth 2.0 authorization 
-                server information and configuration shall be supported, and 
-                dynamic configuration may be supported.
+                the authorization server identifier. See note.
               type: object
+              required:
+                - webFingerHost
               properties:
                 webFingerHost:
                   description: >
@@ -2250,36 +2088,27 @@ components:
                     the request to the WebFinger resource shall conform as specified 
                     in clause 5.1.3 of ETSI GS NFV-SEC 022.
                   $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
-              required:
-                - webFingerHost
             providedConfiguration:
               description: >
-                Configuration data used to setup the authorization server identifier. 
-                
-                NOTE:	Provided configuration of the OAuth 2.0 authorization 
-                server information and configuration shall be supported, and 
-                dynamic configuration may be supported.
+                Configuration data used to setup the authorization server identifier. See note.
               type: object
+              required:
+                - authServerId
               properties:
                 authServerId:
                   description: >
                     Authorization server identifier as defined in ETSI GS NFV-SEC 022.
                   $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
-              required:
-                - authServerId
             tlsCipherSuites:
               description: >
-                List of cipher suites that shall be declared as supported by the 
-                API producer when performing the SSL or TLS negotiation with the 
-                authorization server. Valid values of cipher suites are defined 
+                List of cipher suites that shall be declared as supported by the
+                API producer when performing the SSL or TLS negotiation with the
+                authorization server. Valid values of cipher suites are defined
                 in IETF RFC 8447.
               type: array
               items:
                 type: string
-              minItems: 1
-          required:
-            - providedConfiguration
-            - tlsCipherSuites
+                minItems: 1
         tlsTunnelInfo:
           description: >
             Information and configuration related to the use of TLS tunnel. 
@@ -2287,7 +2116,7 @@ components:
           type: object
           properties:
             tlsTunnelCipherSuites:
-              description: 
+              description: >
                 List of cipher suites that shall be declared as supported by the API 
                 producer when performing the SSL or TLS negotiation with the API client. 
                 Valid values of cipher suites are defined in IETF RFC 8447.
@@ -2297,14 +2126,13 @@ components:
               minItems: 1
           required:
             - tlsTunnelCipherSuites
-      required:
-        - authType
-        - oauthServerInfo
         
     ClientInterfaceSecurityInfo:
       description: >
         This type represents security related information for accessing an NFV-MANO 
         service interface produced by an NFV-MANO functional entity.
+        * NOTE:	Provided configuration of the OAuth 2.0 authorization server information and configuration
+                shall be supported, and dynamic configuration may be supported.
       type: object
       required:
         - authType
@@ -2337,10 +2165,7 @@ components:
             dynamicDiscovery:
               description: >
                 Configuration data used when performing dynamic discovery of the authorization 
-                server identifier. 
-
-                NOTE:	Provided configuration of the OAuth 2.0 authorization server information 
-                and configuration shall be supported, and dynamic configuration may be supported.
+                server identifier. See note.
               type: object
               required:
                 - webFingerHost
@@ -2354,10 +2179,7 @@ components:
                   format: uri
             providedConfiguration:
               description: >
-                Configuration data used to setup the authorization server identifier. 
-
-                NOTE:	Provided configuration of the OAuth 2.0 authorization server information 
-                and configuration shall be supported, and dynamic configuration may be supported.
+                Configuration data used to setup the authorization server identifier. See note.
               type: object
               required:
                 - authServerId
@@ -2665,7 +2487,7 @@ components:
     changeStateOpOccId:
       name: changeStateOpOccId
       in: path
-      description: >-
+      description: >
         Identifier of the change state operation occurrence
       required: true
       schema:
@@ -2674,7 +2496,7 @@ components:
     peerEntityId:
       name: peerEntityId
       in: path
-      description: >-
+      description: >
         Identifier of the peer entity
       required: true
       schema:

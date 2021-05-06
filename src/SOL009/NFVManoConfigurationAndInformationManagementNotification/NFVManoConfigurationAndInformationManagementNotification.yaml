@@ -16,8 +16,8 @@ info:
   contact:
     name: NFV-SOL WG
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.3.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.03.01_60/gs_NFV-SOL009v030301p.pdf
+  description: ETSI GS NFV-SOL 009 V3.5.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.05.01_60/gs_NFV-SOL009v030501p.pdf
 
 servers:
   - url: http://0.0.0.0/callback/v1
@@ -36,9 +36,9 @@ paths:
       resource during the subscription process.
     post:
       description: >
-        The POST method delivers a notification from the API producer to an API consumer. 
-        The API consumer shall have previously created an "Individual subscription" 
-        resource with a matching filter.
+        The POST method delivers a notification from the API producer to an API consumer.
+        The API consumer shall have previously created an "Individual subscription" resource
+        with a matching filter. See clause 5.5.6.3.1.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -72,7 +72,7 @@ paths:
     get:
       description: >
         TThe GET method allows the API producer to test the notification endpoint that 
-        is provided by the API consumer, e.g., during the subscription process.
+        is provided by the API consumer, e.g., during the subscription process. See clause 5.5.6.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
