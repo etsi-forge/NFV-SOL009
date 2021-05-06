@@ -12,8 +12,8 @@ info:
     name: ETSI Forge copyright notice
     url: https://forge.etsi.org/etsi-forge-copyright-notice.txt
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.3.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.03.01_60/gs_NFV-SOL009v030301p.pdf
+  description: ETSI GS NFV-SOL 009 V3.5.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.05.01_60/gs_NFV-SOL009v030501p.pdf
 
 servers:
   - url: http://127.0.0.1/nfvmanofm/v1
@@ -26,10 +26,7 @@ paths:
   /alarms:
     get:
       description: >
-        Get Alarm List. The client can use this method to retrieve information
-        about the alarm list. This method shall follow the provisions specified
-        in the tables 7.5.3.3.2-1 and 7.5.3.3.2-2 for URI query parameters,
-        request and response data structures, and response codes.
+        The client can use this method to retrieve information about the alarm list. See clause 7.5.3.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -64,10 +61,7 @@ paths:
       - $ref: "#/components/parameters/alarmId"
     get:
       description: >
-        The client can use this method to read an individual alarm. This method
-        shall follow the provisions specified in the tables 7.5.4.3.2-1 and
-        7.5.4.3.2-2 for URI query parameters, request and response data
-        structures, and response codes.
+        The client can use this method to read an individual alarm. See clause 7.5.4.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -97,10 +91,7 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
     patch:
       description: >
-        This method modifies an "Individual alarm" resource. This method shall
-        follow the provisions specified in the tables 7.5.4.3.4-1 and
-        7.5.4.3.4-2 for URI query parameters, request and response data
-        structures, and response codes.
+        This method modifies an "Individual alarm" resource. See clause 7.5.4.3.4.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -138,24 +129,7 @@ paths:
   /subscriptions:
     post:
       description: >
-        Subscribe. The POST method creates a new subscription. This method shall
-        follow the provisions specified in the tables 7.5.5.3.1-1 and
-        7.5.5.3.1-2 for URI query parameters, request and response data
-        structures, and response codes. As the result of successfully executing
-        this method, a new "Individual subscription" resource as defined in
-        clause 7.5.6 shall have been created. This method shall not trigger any
-        notification. Creation of two "Individual subscription" resources with
-        the same callbackURI and the same filter can result in performance
-        degradation and will provide duplicates of notifications to the API
-        consumer, and might make sense only in very rare use cases.
-        Consequently, the NFV-MANO functional entity may either allow creating a
-        new "Individual subscription" resource if another "Individual
-        subscription" resource with the same filter and callbackUri already
-        exists (in which case it shall return the "201 Created" response code),
-        or may decide to not create a duplicate "Individual subscription"
-        resource (in which case it shall return a "303 See Other" response code
-        referencing the existing "Individual subscription" resource with the
-        same filter and callbackUri).
+        The POST method creates a new subscription. See clause 7.5.5.3.1.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -190,12 +164,9 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
     get:
       description: >
-        Query Subscription Information
-
         The client can use this method to retrieve the list of active subscriptions for NFV-MANO functional entity
-        alarms subscribed by the client. It can be used e.g. for resynchronization after error situations. This method
-        shall follow the provisions specified in the tables 7.5.5.3.2-1 and 7.5.5.3.2-2 for URI query parameters,
-        request and response data structures, and response codes.
+        alarms subscribed by the client. It can be used e.g. for resynchronization after error situations.
+        See clause 7.5.5.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -230,11 +201,8 @@ paths:
       - $ref: "#/components/parameters/subscriptionId"
     get:
       description: >
-        Query Subscription Information. The client can use this method for
-        reading an individual subscription for NFV-MANO functional entity alarms
-        subscribed by the client. This method shall follow the provisions
-        specified in the tables 7.5.6.3.2-1 and 7.5.6.3.2-2 for URI query
-        parameters, request and response data structures, and response codes.
+        The client can use this method for reading an individual subscription for NFV-MANO functional entity alarms
+        subscribed by the client. See clause 7.5.6.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -264,16 +232,7 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
     delete:
       description: >
-        Terminate Subscription. This method terminates an individual
-        subscription. This method shall follow the provisions specified in the
-        tables 7.5.6.3.5-1 and 7.5.6.3.5-2 for URI query parameters, request and
-        response data structures, and response codes. As the result of
-        successfully executing this method, the "Individual subscription"
-        resource shall not exist any longer. This means that no notifications
-        for that subscription shall be sent to the formerly-subscribed API
-        consumer. NOTE:	Due to race conditions, some notifications might still
-        be received by the formerly-subscribed API consumer for a certain time
-        period after the deletion.
+        This method terminates an individual subscription. See clause 7.5.6.3.5.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
@@ -417,7 +376,8 @@ components:
         structure, the following applies: All attributes shall match in order for the filter to match (logical "and"
         between different filter attributes). If an attribute is an array, the attribute shall match if at least one
         of the values in the array matches (logical "or" between the values of one filter attribute).
-
+        * NOTE:	The permitted values of the "notificationTypes" attribute are spelled exactly as the names
+                of the notification types to facilitate automated code generation systems.
       type: object
       properties:
         notificationTypes:
@@ -427,9 +387,8 @@ components:
             * AlarmNotification
             * AlarmClearedNotification
             * AlarmListRebuiltNotification
-            The permitted values of the "notificationTypes" attribute are
-            spelled exactly as the names of the notification types to
-            facilitate automated code generation systems.
+
+            See note.
           type: array
           items:
             type: string
