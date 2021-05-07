@@ -23,8 +23,8 @@ info:
     name: NFV-SOL WG
 
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.3.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.03.01_60/gs_NFV-SOL009v030301p.pdf
+  description: ETSI GS NFV-SOL 009 V3.5.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.05.01_60/gs_NFV-SOL009v030501p.pdf
 
 paths:
   /nfvmanocim/api_versions:
