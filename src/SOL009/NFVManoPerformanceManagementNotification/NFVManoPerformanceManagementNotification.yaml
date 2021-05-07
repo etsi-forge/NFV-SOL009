@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  version: 1.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
+  version: 2.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
   title: SOL009 - NFV-MANO Performance Management Notification Operation
   description: >
     SOL009 - NFV-MANO Performance Management Notification Operation
@@ -20,10 +20,10 @@ externalDocs:
   url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.05.01_60/gs_NFV-SOL009v030501p.pdf
 
 servers:
-  - url: http://0.0.0.0/callback/v1
+  - url: http://0.0.0.0/callback/v2
     description: >
       API HTTP Server
-  - url: https://0.0.0.0/callback/v1
+  - url: https://0.0.0.0/callback/v2
     description: >
       API HTTPS Server
 

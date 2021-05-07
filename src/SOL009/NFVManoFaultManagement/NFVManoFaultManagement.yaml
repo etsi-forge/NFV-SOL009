@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  version: 1.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
+  version: 1.0.1-impl:etsi.org:ETSI_NFV_OpenAPI:1
   title: SOL009 - NFV-MANO Fault Management interface
   description: >
     SOL009 - NFV-MANO Fault Management interface
