@@ -790,7 +790,7 @@ components:
         wimSpecificInfo:
           description: >
             The information specific to a WIM entity. See notes 4 and note 6.
-          $ref: "#/components/schemas/wimSpecificInfo"
+          $ref: "#/components/schemas/WimSpecificInfo"
         _links:
           description: >
             Links to resources related to this resource.
