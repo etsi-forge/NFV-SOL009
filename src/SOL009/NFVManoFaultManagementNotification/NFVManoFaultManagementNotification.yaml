@@ -24,7 +24,7 @@ servers:
   - url: https://127.0.0.1/callback/v1
 
 paths:
-  /URI-is-provided-by-the-client-when-creating-the-subscription-AlarmNotification:
+  /URI_is_provided_by_the_client_when_creating_the_subscription-AlarmNotification:
     post:
       description: >
         The POST method notifies an NFV-MANO functional entity alarm or that the
@@ -77,7 +77,7 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
           $ref: ../components/SOL009_resp.yaml#/components/responses/503
-  /URI-is-provided-by-the-client-when-creating-the-subscription-AlarmClearedNotification:
+  /URI_is_provided_by_the_client_when_creating_the_subscription-AlarmClearedNotification:
     post:
       description: >
         The POST method notifies an NFV-MANO functional entity alarm or that the
@@ -130,7 +130,7 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
           $ref: ../components/SOL009_resp.yaml#/components/responses/503
-  /URI-is-provided-by-the-client-when-creating-the-subscription-AlarmListRebuiltNotification:
+  /URI_is_provided_by_the_client_when_creating_the_subscription-AlarmListRebuiltNotification:
     post:
       description: >
         The POST method notifies an NFV-MANO functional entity alarm or that the

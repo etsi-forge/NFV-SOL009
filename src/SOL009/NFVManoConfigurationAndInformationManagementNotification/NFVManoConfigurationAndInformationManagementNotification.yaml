@@ -28,7 +28,7 @@ servers:
       API HTTPS Server
 
 paths:
-  /URI-is-provided-by-the-client-when-creating-the-subscription-ConfigurationAndInformationNotification:
+  /URI_is_provided_by_the_client_when_creating_the_subscription-ConfigurationAndInformationNotification:
     description: >
       This resource represents a notification endpoint. The API producer can use this 
       resource to send notifications related to NFV-MANO configuration and information 

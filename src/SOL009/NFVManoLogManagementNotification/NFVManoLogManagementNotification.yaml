@@ -13,7 +13,7 @@ info:
     name: ETSI Forge copyright notice
     url: https://forge.etsi.org/etsi-forge-copyright-notice.txt
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.3.1
+  description: ETSI GS NFV-SOL 009 V3.5.1
   url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.05.01_60/gs_NFV-SOL009v030501p.pdf
 
 security:
@@ -25,7 +25,7 @@ servers:
   - url: https://127.0.0.1/callback/v1
 
 paths:
-  /URI-is-provided-by-the-client-when-creating-the-subscription-AlarmNotification:
+  /URI_is_provided_by_the_client_when_creating_the_subscription-AlarmNotification:
     description: >-
       This resource represents a notification endpoint for NFV-MANO log management.
       The API producer can use this resource to send notifications related to log management events to a

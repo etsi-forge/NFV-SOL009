@@ -28,7 +28,7 @@ servers:
       API HTTPS Server
 
 paths:
-  /URI-is-provided-by-the-client-when-creating-the-subscription-PerformanceInformationNotification:
+  /URI_is_provided_by_the_client_when_creating_the_subscription-PerformanceInformationNotification:
     description: >
       This resource represents a notification endpoint for NFV-MANO performance management. 
       The API producer can use this resource to send notifications related to performance 
