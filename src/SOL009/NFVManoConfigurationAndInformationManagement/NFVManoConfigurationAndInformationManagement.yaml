@@ -731,7 +731,7 @@ components:
         softwareVersion:
           description: >
             The version of the software of the NFV-MANO functional entity.
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/Version"
+          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Version"
         manoEntityComponents:
           description: >
             The deployed NFV-MANO functional entity components which realize the 
@@ -1056,13 +1056,13 @@ components:
             refers to the administrative state. See note 1.
             but not both.
           type: object
+          required:
+            - administrativeStateAction
           properties:
             administrativeStateAction:
               description: > 
                 The desired administrative state to change the managed object to.
-              type:
-          required:
-            - administrativeStateAction
+              $ref: "#/components/schemas/ChangeAdministrativeStateEnumType"
 
     ChangeStateOpOcc:
       description: >
