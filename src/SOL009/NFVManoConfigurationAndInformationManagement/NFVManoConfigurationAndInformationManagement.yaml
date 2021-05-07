@@ -789,7 +789,7 @@ components:
           $ref: "#/components/schemas/VimSpecificInfo"
         wimSpecificInfo:
           description: >
-            The information specific to a WIM entity. See notes 4 and 6.
+            The information specific to a WIM entity. See notes 4 and note 6.
           $ref: "#/components/schemas/wimSpecificInfo"
         _links:
           description: >
@@ -1801,11 +1801,17 @@ components:
         and that can be relevant to more than one NFV MANO service offered by
         a WIM entity.
       type: object
+      required:
+        - maxMscsNums
+        - maxMsncNum
+        - mscsLayerProtocolSupport
       properties:
         maxMscsNums:
           description: >
             Maximum number of MSCS that the WIM can manage.
           type: object
+          required:
+            - numMscs
           properties:
             numMscs:
               description: >
@@ -1813,15 +1819,16 @@ components:
               type: integer
             criteriaNumMscs:
               description: >
-                Reference criteria for derivation/computation of the referred
-                maximum number of MSCS in attribute "numMscs".
+                Reference criteria for derivation/computation of the referred maximum number of MSCS in
+                attribute "numMscs". Shall be provided if specific criteria has been taken into account
+                for deriving the referred number.
               $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
-          required:
-            - numMscs
         maxMsncNum:
           description: >
             Maximum number of MSNC that the WIM can manage
           type: object
+          required:
+            - numMsnc
           properties:
             numMsnc:
               description: >
@@ -1832,8 +1839,6 @@ components:
                 Reference criteria for derivation/computation of the referred maximum
                 number of MSNC in attribute "numMsnc".
               $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
-          required:
-            - numMsnc
         mscsLayerProtocolSupport:
           description: >
             List of protocols of particular layers used to realize an MSCS
