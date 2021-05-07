@@ -88,25 +88,25 @@ endpoints:
         Method Not Allowed" response as defined in SOL013 clause 6.4.
       responses:
         405:
-          $ref: ../responses/SOL002SOL003_resp.yaml#/components/responses/405
+          $ref: '../components/SOL009_resp.yaml#/components/responses/405'
     put:
       description: >
         This method is not supported. When this method is requested on this resource, the API producer shall return a "405
         Method Not Allowed" response as defined in SOL013 clause 6.4.
       responses:
         405:
-          $ref: ../responses/SOL002SOL003_resp.yaml#/components/responses/405
+          $ref: '../components/SOL009_resp.yaml#/components/responses/405'
     patch:
       description: >
         This method is not supported. When this method is requested on this resource, the API producer shall return a "405
         Method Not Allowed" response as defined in SOL013 clause 6.4.
       responses:
         405:
-          $ref: ../responses/SOL002SOL003_resp.yaml#/components/responses/405
+          $ref: '../components/SOL009_resp.yaml#/components/responses/405'
     delete:
       description: >
         This method is not supported. When this method is requested on this resource, the API producer shall return a "405
         Method Not Allowed" response as defined in SOL013 clause 6.4.
       responses:
         405:
-          $ref: ../responses/SOL002SOL003_resp.yaml#/components/responses/405
+          $ref: '../components/SOL009_resp.yaml#/components/responses/405'
