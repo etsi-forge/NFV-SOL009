@@ -939,7 +939,7 @@ components:
             items:
               $ref: "#/components/schemas/LoggingJob"
 
-    LogReportAvailableNotification.Post.201:
+    LogReportAvailableNotification.Post.204:
       description: >-
         Shall be returned when the notification has been delivered successfully.
       headers:
@@ -960,7 +960,7 @@ components:
           schema:
             type: string
 
-    LogReportNotification.Get.200:
+    LogReportAvailableNotification.Get.204:
       description: >-
         Shall be returned to indicate that the notification endpoint has been tested successfully.
         The response body shall be empty.
@@ -1804,7 +1804,7 @@ components:
               - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
             responses:
               "204":
-                $ref: '#/components/responses/LogReportNotification.Get.204'
+                $ref: '#/components/responses/LogReportAvailableNotification.Get.204'
               "400":
                 $ref: '../components/SOL009_resp.yaml#/components/responses/400'
               "401":

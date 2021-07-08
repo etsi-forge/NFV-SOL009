@@ -27,7 +27,7 @@ servers:
   - url: https://127.0.0.1/callback/v1
 
 paths:
-  /URI_is_provided_by_the_client_when_creating_the_subscription-AlarmNotification:
+  /URI_is_provided_by_the_client_when_creating_the_subscription-LogNotification:
     description: >-
       This resource represents a notification endpoint for NFV-MANO log management.
       The API producer can use this resource to send notifications related to log management events to a
