@@ -43,7 +43,7 @@ paths:
         $ref: "#/components/requestBodies/CreatePMJobRequest"
       responses:
         "201": 
-          $ref: "#/components/responses/pm_jobs.post.201"
+          $ref: "#/components/responses/pm_jobs.Post.201"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -79,9 +79,9 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200": 
-          $ref: "#/components/responses/pm_jobs.get.200"
+          $ref: "#/components/responses/pm_jobs.Get.200"
         "400": 
-          $ref: "#/components/responses/pm_jobs.get.400"
+          $ref: "#/components/responses/pm_jobs.Get.400"
         "401":
           $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
@@ -113,7 +113,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200": 
-          $ref: "#/components/responses/pm_job.get.200"
+          $ref: "#/components/responses/IndividualPmJob.Get.200"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -145,11 +145,11 @@ paths:
         $ref: "#/components/requestBodies/PmJobModificationRequest"
       responses:
         "200":
-          $ref: "#/components/responses/threshold.patch.200"
+          $ref: "#/components/responses/IndividualPmJob.Patch.200"
         "412":
-          $ref: "#/components/responses/threshold.patch.412"
+          $ref: "#/components/responses/IndividualPmJob.Patch.412"
         "422":
-          $ref: "#/components/responses/threshold.patch.422"
+          $ref: "#/components/responses/IndividualPmJob.Patch.422"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -179,7 +179,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204": 
-          $ref: "#/components/responses/pm_job.delete.204"
+          $ref: "#/components/responses/IndividualPmJob.Delete.204"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -214,7 +214,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200": 
-          $ref: "#/components/responses/pm_job.report.get.200"
+          $ref: "#/components/responses/IndividualPerformanceReport.Get.200"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -248,7 +248,9 @@ paths:
         $ref: "#/components/requestBodies/CreateThesholdRequest"
       responses:
         "201": 
-          $ref: "#/components/responses/thresholds.post.201"
+          $ref: "#/components/responses/Thresholds.Post.201"
+        "422":
+          $ref: "#/components/responses/Thresholds.Post.422"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -261,8 +263,6 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/405
         "406":
           $ref: ../components/SOL009_resp.yaml#/components/responses/406
-        "422":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/422
         "500":
           $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
@@ -280,9 +280,9 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200": 
-          $ref: "#/components/responses/thresholds.get.200"
+          $ref: "#/components/responses/Thresholds.Get.200"
         "400": 
-          $ref: "#/components/responses/thresholds.get.400"
+          $ref: "#/components/responses/Thresholds.Get.400"
         "401":
           $ref: ../components/SOL009_resp.yaml#/components/responses/401
         "403":
@@ -314,7 +314,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200": 
-          $ref: "#/components/responses/threshold.get.200"
+          $ref: "#/components/responses/Threshold.Get.200"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -346,11 +346,11 @@ paths:
         $ref: "#/components/requestBodies/ThresholdModificationRequest"
       responses:
         "200":
-          $ref: "#/components/responses/threshold.patch.200"
+          $ref: "#/components/responses/Threshold.Patch.200"
         "412":
-          $ref: "#/components/responses/threshold.patch.412"
+          $ref: "#/components/responses/Threshold.Patch.412"
         "422":
-          $ref: "#/components/responses/threshold.patch.422"
+          $ref: "#/components/responses/Threshold.Patch.422"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -380,7 +380,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204": 
-          $ref: "#/components/responses/threshold.delete.204"
+          $ref: "#/components/responses/Threshold.Delete.204"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -907,7 +907,7 @@ components:
     #----------------
 
   responses:
-    pm_jobs.post.201:
+    pm_jobs.Post.201:
       description: >
         201 CREATED
 
@@ -935,7 +935,7 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/PmJob"
-    pm_jobs.post.422:
+    pm_jobs.Post.422:
       description: >
         422 Unprocessable Entity
 
@@ -971,7 +971,7 @@ components:
           schema:
             $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
 
-    pm_jobs.get.200:
+    pm_jobs.Get.200:
       description: >
         200 OK
 
@@ -1018,7 +1018,7 @@ components:
             type: array
             items:
               $ref: "#/components/schemas/PmJob"
-    pm_jobs.get.400:
+    pm_jobs.Get.400:
       description: >
         400 BAD REQUEST
 
@@ -1052,7 +1052,7 @@ components:
           schema:
             $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
 
-    pm_job.get.200:
+    IndividualPmJob.Get.200:
       description: >
         200 OK
 
@@ -1078,7 +1078,7 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/PmJob"
-    pm_job.patch.200:
+    IndividualPmJob.Patch.200:
       description: >
         200 OK
 
@@ -1102,7 +1102,7 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/PmJobModifications"
-    pm_job.patch.412:
+    IndividualPmJob.Patch.412:
       description: >
         412 PRECONDITION FAILED
 
@@ -1131,7 +1131,7 @@ components:
         application/json:
           schema:
             $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
-    pm_job.patch.422:
+    IndividualPmJob.Patch.422:
       description: >
         422 Unprocessable Entity
 
@@ -1166,7 +1166,7 @@ components:
         application/json:
           schema:
             $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
-    pm_job.delete.204:
+    IndividualPmJob.Delete.204:
       description: >
         204 NO CONTENT
 
@@ -1187,7 +1187,7 @@ components:
           schema:
             type: string
 
-    pm_job.report.get.200:
+    IndividualPerformanceReport.Get.200:
       description: >
         200 OK
 
@@ -1215,7 +1215,7 @@ components:
           schema:
             $ref: "#/components/schemas/PerformanceReport"
 
-    thresholds.post.201:
+    Thresholds.Post.201:
       description: >
         201 CREATED
 
@@ -1253,7 +1253,7 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/Threshold"
-    thresholds.post.422:
+    Thresholds.Post.422:
       description: >
         422 Unprocessable Entity
 
@@ -1289,7 +1289,7 @@ components:
           schema:
             $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
 
-    thresholds.get.200:
+    Thresholds.Get.200:
       description: >
         200 OK
 
@@ -1326,7 +1326,7 @@ components:
             type: array
             items:
               $ref: "#/components/schemas/Threshold"
-    thresholds.get.400:
+    Thresholds.Get.400:
       description: >
         400 BAD REQUEST
 
@@ -1357,7 +1357,7 @@ components:
           schema:
             $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
 
-    threshold.get.200:
+    Threshold.Get.200:
       description: >
         200 OK
 
@@ -1384,7 +1384,7 @@ components:
           schema:
             $ref: "#/components/schemas/Threshold"
 
-    threshold.patch.200:
+    Threshold.Patch.200:
       description: >
         200 OK
 
@@ -1408,7 +1408,7 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/ThresholdModifications"
-    threshold.patch.412:
+    Threshold.Patch.412:
       description: >
         412 PRECONDITION FAILED
 
@@ -1437,7 +1437,7 @@ components:
         application/json:
           schema:
             $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
-    threshold.patch.422:
+    Threshold.Patch.422:
       description: >
         422 Unprocessable Entity
 
@@ -1473,7 +1473,7 @@ components:
           schema:
             $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
 
-    threshold.delete.204:
+    Threshold.Delete.204:
       description: >
         204 NO CONTENT
         

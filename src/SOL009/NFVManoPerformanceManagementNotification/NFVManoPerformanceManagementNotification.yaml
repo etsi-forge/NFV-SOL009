@@ -46,7 +46,7 @@ paths:
         $ref: "#/components/requestBodies/PerfomanceInfoNotification"
       responses:
         "204": 
-          $ref: "#/components/responses/notification.post.204"
+          $ref: "#/components/responses/Notification.Post.204"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -78,7 +78,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204": 
-          $ref: "#/components/responses/notification.get.204"
+          $ref: "#/components/responses/Notification.Get.204"
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -102,7 +102,7 @@ paths:
 
 components:
   responses:
-    notification.post.204:
+    Notification.Post.204:
       description: >
         204 NO CONTENT
 
@@ -121,7 +121,7 @@ components:
           schema:
             type: string
 
-    notification.get.204:
+    Notification.Get.204:
       description: >
         204 NO CONTENT
 

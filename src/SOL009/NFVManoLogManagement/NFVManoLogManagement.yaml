@@ -45,7 +45,7 @@ paths:
         $ref: "#/components/requestBodies/CreateLoggingJobRequest"
       responses:
         "201":
-          $ref: '#/components/responses/LoggingJob.Post'
+          $ref: '#/components/responses/LoggingJobs.Post.201'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -81,7 +81,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
-          $ref: '#/components/responses/LoggingJobs.Get'
+          $ref: '#/components/responses/LoggingJobs.Get.200'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -119,7 +119,7 @@ paths:
 
       responses:
         "200":
-          $ref: '#/components/responses/LoggingJob.Get'
+          $ref: '#/components/responses/IndividualLoggingJob.Get.200'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -149,7 +149,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
-          $ref: '#/components/responses/LoggingJob.Delete'
+          $ref: '#/components/responses/IndividualLoggingJob.Delete.204'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -281,9 +281,9 @@ paths:
         $ref: '#/components/requestBodies/LogmSubscriptionRequest'
       responses:
         "201":
-          $ref: '#/components/responses/subscriptions.post.201'
+          $ref: '#/components/responses/Subscriptions.Post.201'
         "303":
-          $ref: '#/components/responses/subscriptions.post.303'
+          $ref: '#/components/responses/Subscriptions.Post.303'
         "422":
           $ref: '../components/SOL009_resp.yaml#/components/responses/422'
         "400":
@@ -320,7 +320,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
-          $ref: '#/components/responses/subscriptions.get.200'
+          $ref: '#/components/responses/Subscriptions.Get.200'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -357,7 +357,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
-          $ref: '#/components/responses/subscription.get.200'
+          $ref: '#/components/responses/Subscription.Get.200'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -385,7 +385,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
-          $ref: '#/components/responses/subscription.delete.204'
+          $ref: '#/components/responses/Subscription.Delete.204'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -468,7 +468,7 @@ components:
             $ref: "#/components/schemas/LogReportAvailableNotification"
 
   responses:
-    subscription.delete.204:
+    Subscription.Delete.204:
       description: >-
         Shall be returned when the "Individual subscription" resource has been deleted successfully.
         The response body shall be empty.
@@ -490,7 +490,7 @@ components:
           schema:
             type: string
 
-    subscription.get.200:
+    Subscription.Get.200:
       description: >-
         Shall be returned when the subscription has been read successfully.
         The response body shall contain a representation of the "Individual subscription" resource,
@@ -517,7 +517,7 @@ components:
           schema:
             $ref: "#/components/schemas/LogmSubscription"
 
-    subscriptions.get.200:
+    Subscriptions.Get.200:
       description: >-
         Shall be returned when the list of subscriptions has been queried successfully.
         The response body shall contain in an array the representations of all active subscriptions of
@@ -552,7 +552,7 @@ components:
             items:
               $ref: "#/components/schemas/LogmSubscription"
 
-    subscriptions.post.201:
+    Subscriptions.Post.201:
       description: >-
         Shall be returned when the subscription has been created successfully.
         A representation of the created "Individual subscription" resource shall be returned in the response body,
@@ -586,7 +586,7 @@ components:
           schema:
             $ref: "#/components/schemas/LogmSubscription"
 
-    subscriptions.post.303:
+    Subscriptions.Post.303:
       description: >-
         Shall be returned when a subscription with the same callbackURI and the same filter already exists and the
         policy of the NFV-MANO functional entity is to not create redundant subscriptions.
@@ -829,7 +829,7 @@ components:
           schema:
             type: string
 
-    LoggingJob.Get:
+    IndividualLoggingJob.Get.200:
       description: >-
         Shall be returned when information about an individual logging job has been read successfully.
         The response body shall contain a representation of the "Individual logging job" resource,
@@ -856,7 +856,7 @@ components:
           schema:
             $ref: "#/components/schemas/LoggingJob"
 
-    LoggingJob.Delete:
+    IndividualLoggingJob.Delete.204:
       description: >-
         Shall be returned when the logging job has been deleted successfully.
         The response body shall be empty.
@@ -874,7 +874,7 @@ components:
           schema:
             type: string
 
-    LoggingJob.Post:
+    LoggingJobs.Post.201:
       description: >-
         The response body contains the Application Context as it was created
         by the MEC system
@@ -900,7 +900,7 @@ components:
           schema:
             $ref: "#/components/schemas/LoggingJob"
 
-    LoggingJobs.Get:
+    LoggingJobs.Get.200:
       description: >-
         Shall be returned when information about zero or more logging jobs has been queried successfully.
 
@@ -939,7 +939,7 @@ components:
             items:
               $ref: "#/components/schemas/LoggingJob"
 
-    LogReportAvailableNotification.Post:
+    LogReportAvailableNotification.Post.201:
       description: >-
         Shall be returned when the notification has been delivered successfully.
       headers:
@@ -960,7 +960,7 @@ components:
           schema:
             type: string
 
-    LogReportNotification.Get:
+    LogReportNotification.Get.200:
       description: >-
         Shall be returned to indicate that the notification endpoint has been tested successfully.
         The response body shall be empty.

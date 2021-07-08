@@ -42,7 +42,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
       responses:
         "200":
-          $ref: '#/components/responses/Alarms.Get'
+          $ref: '#/components/responses/Alarms.Get.200'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -75,7 +75,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
-          $ref: '#/components/responses/Alarm.Get'
+          $ref: '#/components/responses/Alarm.Get.200'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -108,7 +108,7 @@ paths:
         $ref: "#/components/requestBodies/AlarmModifications"
       responses:
         "200":
-          $ref: '#/components/responses/Alarm.Patch'
+          $ref: '#/components/responses/Alarm.Patch.200'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -146,7 +146,7 @@ paths:
         $ref: "#/components/requestBodies/FmSubscriptionRequest"
       responses:
         "201":
-          $ref: '#/components/responses/subscriptions.post.201'
+          $ref: '#/components/responses/Subscriptions.Post.201'
         "303":
           $ref: ../components/SOL009_resp.yaml#/components/responses/303
         "400":
@@ -182,7 +182,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
       responses:
         "200":
-          $ref: '#/components/responses/subscriptions.get.200'
+          $ref: '#/components/responses/Subscriptions.Get.200'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -216,7 +216,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
-          $ref: '#/components/responses/subscription.get.200'
+          $ref: '#/components/responses/Subscription.Get.200'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -245,7 +245,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
-          $ref: '#/components/responses/subscription.delete.204'
+          $ref: '#/components/responses/Subscription.Delete.204'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -444,7 +444,7 @@ components:
       required: true
 
   responses:
-    Alarms.Get:
+    Alarms.Get.200:
       description: >
         200 OK
 
@@ -486,7 +486,7 @@ components:
             items:
               $ref: "../components/SOL009_schemas.yaml#/components/schemas/Alarm"
 
-    Alarm.Get:
+    Alarm.Get.200:
       description: >
         200 OK
 
@@ -506,7 +506,7 @@ components:
           schema:
             $ref: "../components/SOL009_schemas.yaml#/components/schemas/Alarm"
 
-    Alarm.Patch:
+    Alarm.Patch.200:
       description: >
         200 OK
 
@@ -535,7 +535,7 @@ components:
           schema:
             $ref: "#/components/schemas/AlarmModifications"
 
-    subscriptions.post.201:
+    Subscriptions.Post.201:
       description: >
         201 CREATED
 
@@ -572,7 +572,7 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/FmSubscription"
-    subscriptions.post.303:
+    Subscriptions.Post.303:
       description: >
         303 SEE OTHER
 
@@ -607,7 +607,7 @@ components:
             format: url
             minimum: 1
             maximum: 1
-    subscriptions.post.422:
+    Subscriptions.Post.422:
       description: >
         422 Unprocessable Entity
 
@@ -643,7 +643,7 @@ components:
           schema:
             $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
 
-    subscriptions.get.200:
+    Subscriptions.Get.200:
       description: >
         200 OK
 
@@ -695,7 +695,7 @@ components:
             items:
               $ref: "#/components/schemas/FmSubscription"
 
-    subscription.get.200:
+    Subscription.Get.200:
       description: >
         200 OK
 
@@ -731,7 +731,7 @@ components:
           schema:
             $ref: "#/components/schemas/FmSubscription"
 
-    subscription.delete.204:
+    Subscription.Delete.204:
       description: >
         204 NO CONTENT
 
