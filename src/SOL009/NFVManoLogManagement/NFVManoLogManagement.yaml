@@ -1771,7 +1771,7 @@ components:
               $ref: "#/components/requestBodies/LogReportAvailableNotification"
             responses:
               "204":
-                $ref: '#/components/responses/LogReportAvailableNotification.Post'
+                $ref: '#/components/responses/LogReportAvailableNotification.Post.204'
               "400":
                 $ref: '../components/SOL009_resp.yaml#/components/responses/400'
               "401":
@@ -1804,7 +1804,7 @@ components:
               - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
             responses:
               "204":
-                $ref: '#/components/responses/LogReportNotification.Get'
+                $ref: '#/components/responses/LogReportNotification.Get.204'
               "400":
                 $ref: '../components/SOL009_resp.yaml#/components/responses/400'
               "401":
