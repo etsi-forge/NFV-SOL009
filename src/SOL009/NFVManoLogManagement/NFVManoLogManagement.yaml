@@ -442,6 +442,8 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/LogmSubscriptionRequest"
+      required: true
+
     CreateLoggingJobRequest:
       description: >-
         This type represents a request to create a logging job. It shall comply with the provisions
@@ -466,6 +468,7 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/LogReportAvailableNotification"
+      required: true
 
   responses:
     Subscription.Delete.204:
