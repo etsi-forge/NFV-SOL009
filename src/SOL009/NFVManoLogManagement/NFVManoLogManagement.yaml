@@ -238,8 +238,8 @@ paths:
       requestBody:
         $ref: "#/components/requestBodies/CompileLogRequest"
       responses:
-        "200":
-          $ref: '#/components/responses/LogReportCompiled.Post.200'
+        "201":
+          $ref: '#/components/responses/LogReportCompiled.Post.201'
         "202":
           $ref: '#/components/responses/LogReportCompiled.Post.202'
         "303":
@@ -472,7 +472,9 @@ components:
 
   responses:
     Subscription.Delete.204:
-      description: >-
+      description: >
+        204 NO CONTENT
+
         Shall be returned when the "Individual subscription" resource has been deleted successfully.
         The response body shall be empty.
       headers:
@@ -494,7 +496,9 @@ components:
             type: string
 
     Subscription.Get.200:
-      description: >-
+      description: >
+        200 OK
+
         Shall be returned when the subscription has been read successfully.
         The response body shall contain a representation of the "Individual subscription" resource,
         as defined in clause 8.6.2.3.
@@ -521,7 +525,9 @@ components:
             $ref: "#/components/schemas/LogmSubscription"
 
     Subscriptions.Get.200:
-      description: >-
+      description: >
+        200 OK
+
         Shall be returned when the list of subscriptions has been queried successfully.
         The response body shall contain in an array the representations of all active subscriptions of
         the functional block that invokes the method, i.e. zero or more representations of log management
@@ -556,7 +562,9 @@ components:
               $ref: "#/components/schemas/LogmSubscription"
 
     Subscriptions.Post.201:
-      description: >-
+      description: >
+        201 CREATED
+
         Shall be returned when the subscription has been created successfully.
         A representation of the created "Individual subscription" resource shall be returned in the response body,
         as defined in clause 8.6.2.3.
@@ -590,7 +598,9 @@ components:
             $ref: "#/components/schemas/LogmSubscription"
 
     Subscriptions.Post.303:
-      description: >-
+      description: >
+        303 SEE OTHER
+
         Shall be returned when a subscription with the same callbackURI and the same filter already exists and the
         policy of the NFV-MANO functional entity is to not create redundant subscriptions.
         The HTTP response shall include a "Location" HTTP header that contains the resource URI of the existing
@@ -619,8 +629,10 @@ components:
           schema:
             type: string
 
-    LogReportCompiled.Post.200:
-      description: >-
+    LogReportCompiled.Post.201:
+      description: >
+        201 CREATED
+
         Shall be returned for a successful compilation of the log data and creation of the associated log report
         (synchronous mode).
         The response body shall contain a representation of the log report resource, as defined in clause 8.6.2.7.
@@ -655,7 +667,7 @@ components:
 
     subscriptions.post.422:
       description: >
-        422 Unprocessable Entity
+        422 UNPROCESSABLE ENTITY
 
         Shall be returned upon the following error: The content type
         of the payload body is supported and the payload body of a request
@@ -690,7 +702,9 @@ components:
             $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
 
     LogReportCompiled.Post.202:
-      description: >-
+      description: >
+        202 ACCEPTED
+
         Shall be returned when the request has been accepted for processing, and it is expected to take some
         time to compile the log file and create the associated log report (asynchronous mode).
         The response body shall be empty.
@@ -721,7 +735,9 @@ components:
             type: string
 
     LogReportCompiled.Post.303:
-      description: >-
+      description: >
+        303 SEE OTHER
+
         Shall be returned when a log data compilation and report creation is already ongoing, or a log report has just been
         created, for the specified logging job at the time of processing the request.
         The response body shall be empty.
@@ -752,7 +768,9 @@ components:
             type: string
 
     LogReportCompiled.Post.422:
-      description: >-
+      description: >
+        422 UNPROCESSABLE ENTITY
+
         The general cause for this error and its handling is specified in clause 6.4 of ETSI GS NFV-SOL 013,
         including rules for the presence of the response body.
         Specifically, in case of this task resource, the response code 422 shall also be returned if the
@@ -783,7 +801,9 @@ components:
             $ref: '../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails'
 
     LogReport.Get.200:
-      description: >-
+      description: >
+        200 OK
+
         Shall be returned when information of an individual log report has been read successfully.
         The response body shall contain a representation of the "Individual log report" resource, as
         defined in clause 8.6.2.7.
@@ -810,7 +830,9 @@ components:
             $ref: "#/components/schemas/LogReport"
 
     LogReport.Get.202:
-      description: >-
+      description: >
+        202 ACCEPTED
+
         Shall be returned if the creation of the log report is ongoing and no log report is available yet
         (applicable in asynchronous mode of the "Compile log task" resource).
         The response body shall be empty.
@@ -833,7 +855,9 @@ components:
             type: string
 
     IndividualLoggingJob.Get.200:
-      description: >-
+      description: >
+        200 OK
+
         Shall be returned when information about an individual logging job has been read successfully.
         The response body shall contain a representation of the "Individual logging job" resource,
         as defined in clause 8.6.2.6.
@@ -860,7 +884,9 @@ components:
             $ref: "#/components/schemas/LoggingJob"
 
     IndividualLoggingJob.Delete.204:
-      description: >-
+      description: >
+        204 NO CONTENT
+
         Shall be returned when the logging job has been deleted successfully.
         The response body shall be empty.
       headers:
@@ -878,7 +904,9 @@ components:
             type: string
 
     LoggingJobs.Post.201:
-      description: >-
+      description: >
+        201 CREATED
+
         The response body contains the Application Context as it was created
         by the MEC system
       headers:
@@ -904,7 +932,9 @@ components:
             $ref: "#/components/schemas/LoggingJob"
 
     LoggingJobs.Get.200:
-      description: >-
+      description: >
+        200 OK
+
         Shall be returned when information about zero or more logging jobs has been queried successfully.
 
         The response body shall contain in an array the representations of zero or more logging jobs, as
@@ -943,7 +973,9 @@ components:
               $ref: "#/components/schemas/LoggingJob"
 
     LogReportAvailableNotification.Post.204:
-      description: >-
+      description: >
+        204 NO CONTENT
+        
         Shall be returned when the notification has been delivered successfully.
       headers:
         Content-Type:
@@ -964,7 +996,9 @@ components:
             type: string
 
     LogReportAvailableNotification.Get.204:
-      description: >-
+      description: >
+        204 NO CONTENT
+
         Shall be returned to indicate that the notification endpoint has been tested successfully.
         The response body shall be empty.
       headers:

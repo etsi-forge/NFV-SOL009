@@ -167,6 +167,17 @@ components:
         The notification shall be triggered by the NFV-MANO functional entity when
         a threshold has been crossed.
       type: object
+      required:
+        - id
+        - notificationType
+        - timeStamp
+        - thresholdId
+        - crossingDirection
+        - objectType
+        - objectInstanceId
+        - performanceMetric
+        - performanceValue
+        - _links
       properties:
         id:
           description: >
@@ -241,22 +252,19 @@ components:
               $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
           required:
             - objectInstance
-      required:
-        - id
-        - notificationType
-        - timeStamp
-        - thresholdId
-        - crossingDirection
-        - objectType
-        - objectInstanceId
-        - performanceMetric
-        - performanceValue
-        - _links
 
     PerformanceInformationAvailableNotification:
       description: >
         This notification informs the receiver that performance information is available.
       type: object
+      required:
+        - id
+        - notificationType
+        - pmJobId
+        - timeStamp
+        - objectType
+        - objectInstanceId
+        - _links
       properties:
         id:
           description: >
@@ -323,12 +331,4 @@ components:
           required:
             - pmJob
             - performanceReport
-      required:
-        - id
-        - notificationType
-        - pmJobId
-        - timeStamp
-        - objectType
-        - objectInstanceId
-        - _links
 

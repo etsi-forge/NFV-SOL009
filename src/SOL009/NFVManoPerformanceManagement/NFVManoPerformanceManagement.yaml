@@ -245,7 +245,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       requestBody:
-        $ref: "#/components/requestBodies/CreateThesholdRequest"
+        $ref: "#/components/requestBodies/CreateThresholdRequest"
       responses:
         "201": 
           $ref: "#/components/responses/Thresholds.Post.201"
@@ -408,6 +408,11 @@ components:
       description: >
         This type represents a request to create a PM job. 
       type: object
+      required:
+        - objectType
+        - objectInstanceIds
+        - criteria
+        - callbackUri
       properties:
         objectType:
           description: >
@@ -457,16 +462,18 @@ components:
             This attribute shall only be present if the subscriber requires
             authorization of notifications.
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
-      required:
-        - objectType
-        - objectInstanceIds
-        - criteria
-        - callbackUri
 
     PmJob:
       description: >
         This type represents a PM job. 
       type: object
+      required:
+        - id
+        - objectType
+        - objectInstanceIds
+        - criteria
+        - _links
+        - callbackUri
       properties:
         id:
           description: >
@@ -554,18 +561,16 @@ components:
                 $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
           required:
             - self
-      required:
-        - id
-        - objectType
-        - objectInstanceIds
-        - criteria
-        - _links
-        - callbackUri
 
     CreateThresholdRequest :
       description: >
         This type represents a request to create a threshold. 
       type: object
+      required:
+        - objectType
+        - objectInstanceId
+        - criteria
+        - callbackUri
       properties:
         objectType:
           description: >
@@ -608,16 +613,19 @@ components:
             This attribute shall only be present if the subscriber requires
             authorization of notifications.
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
-      required:
-        - objectType
-        - objectInstanceId
-        - criteria
-        - callbackUri
 
     Threshold:
       description: >
-
+        This type represents a threshold.
       type: object
+      required:
+        - id
+        - objectType
+        - objectInstanceId
+        - subjObjectInstanceIds
+        - criteria
+        - _links
+        - callbackUri
       properties:
         id:
           description: >
@@ -672,14 +680,6 @@ components:
               $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
           required:
             - self
-      required:
-        - id
-        - objectType
-        - objectInstanceId
-        - subjObjectInstanceIds
-        - criteria
-        - _links
-        - callbackUri
     
     PerformanceReport:
       description: >
@@ -687,6 +687,8 @@ components:
         entity to the API consumer as a result of collecting performance information as part 
         of a PM job. 
       type: object
+      required:
+        - entries
       properties:
         entries: 
           description: >
@@ -750,8 +752,6 @@ components:
               - performanceMetric
               - performanceValues
           minItems: 1
-      required:
-        - entries
 
     PmJobModifications:
       description: >
@@ -803,6 +803,9 @@ components:
         * NOTE 2:	In particular when choosing short collection and reporting periods, the number of PM jobs that can
                     be supported depends on the capability of the producing entity.
       type: object
+      required:
+        - collectionPeriod
+        - reportingPeriod
       properties:
         performanceMetric: 
           description: >
@@ -840,9 +843,6 @@ components:
             The boundary shall allow a single reporting as well as periodic reporting up to 
             the boundary.
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
-      required:
-        - collectionPeriod
-        - reportingPeriod
 
     ThresholdCriteria:
       description: >
@@ -853,6 +853,9 @@ components:
                     When processing a request to create a threshold, implementations should enforce a suitable minimum
                     value for this attribute (e.g. override the value or reject the request).
       type: object
+      required:
+        - performanceMetric
+        - thresholdType
       properties:
         performanceMetric:
           description: >
@@ -898,9 +901,6 @@ components:
           required: 
             - thresholdValue
             - hysteresis
-      required:
-        - performanceMetric
-        - thresholdType
 
     #----------------
     # common types to SOL009
@@ -1584,7 +1584,7 @@ components:
             $ref: "#/components/schemas/CreatePmJobRequest"
       required: true
 
-    CreateThesholdRequest:
+    CreateThresholdRequest:
       description: >
         Request parameters to create a threshold. 
       content:

@@ -164,6 +164,15 @@ components:
         configuration and information of the NFV-MANO functional entity
         have been changed.
       type: object
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timeStamp
+        - informationChangedTime
+        - manoEntityId
+        - changedInfo
+        - _links
       properties:
         id:
           description: >
@@ -212,20 +221,21 @@ components:
               $ref: "../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
           required:
             - self
-      required:
-        - id
-        - notificationType
-        - subscriptionId
-        - timeStamp
-        - informationChangedTime
-        - manoEntityId
-        - changedInfo
-        - _links
 
     ChangeStateNotification:
       description: >
         This type represents a Change state operation occurrence.
       type: object
+      required:
+        - id
+        - notificationType
+        - subscriptionId
+        - timestamp
+        - changeStateOpOccId
+        - stateChangedTime
+        - changeStateOperationState
+        - managedObjectRef
+        - _links
       properties:
         id:
           description: >
@@ -298,13 +308,3 @@ components:
             - subscription
             - objectInstance
             - changeStateOpOcc
-      required:
-        - id
-        - notificationType
-        - subscriptionId
-        - timestamp
-        - changeStateOpOccId
-        - stateChangedTime
-        - changeStateOperationState
-        - managedObjectRef
-        - _links

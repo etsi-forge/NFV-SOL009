@@ -576,7 +576,7 @@ components:
       description: >
         303 SEE OTHER
 
-        SShall be returned when a subscription with the same
+        Shall be returned when a subscription with the same
         callbackURI and the same filter already exists and the
         policy of NFV-MANO functional entity is to not create
         redundant subscriptions.

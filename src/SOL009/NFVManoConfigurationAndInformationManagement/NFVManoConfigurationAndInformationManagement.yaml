@@ -955,6 +955,8 @@ components:
         This type represents a subscription request related to notifications 
         about NFV-MANO configuration and information management changes. 
       type: object
+      required:
+        - callbackUri
       properties:
         filter:
           description: >
@@ -975,14 +977,16 @@ components:
             This attribute shall only be present if the subscriber requires 
             authorization of notifications.
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
-      required:
-        - callbackUri
 
     CimSubscription:
       description: >
         This type represents a subscription related to notifications about 
         NFV-MANO configuration and information management changes
       type: object
+      required:
+        - id
+        - callbackUri
+        - _links
       properties:
         id:
           description: >
@@ -1009,10 +1013,6 @@ components:
               $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
           required:
             - self
-      required:
-        - id
-        - callbackUri
-        - _links
 
     ChangeStateRequest:
       description: >
@@ -1067,6 +1067,12 @@ components:
       description: >
         This type represents a Change state operation occurrence. 
       type: object
+      required:
+        - id
+        - operationState
+        - stateEnteredTime
+        - startTime
+        - managedObjectRef
       properties:
         id: 
           description: >
@@ -1116,12 +1122,6 @@ components:
             to reading an individual resource, and may be present according to the chosen 
             attribute selector parameter if this data type is returned in a response to 
             a query of a container resource.
-      required:
-        - id
-        - operationState
-        - stateEnteredTime
-        - startTime
-        - managedObjectRef
 
     ManoServiceInterface:
       description: >
@@ -1604,6 +1604,12 @@ components:
         * NOTE:	A cardinality greater than one supports having different interface versions or api Endpoints
                 to be used for accessing the same instance of an NFV-MANO service.
       type: object
+      required:
+        - id
+        - name
+        - description
+        - manoServiceInterfaceIds
+        - _links
       properties:
         id:
           description: >
@@ -1646,12 +1652,6 @@ components:
               minItems: 1
           required:
             - manoServiceInterfaces
-      required:
-        - id
-        - name
-        - description
-        - manoServiceInterfaceIds
-        - _links
 
     NfvoSpecificInfo:
       description: >
@@ -1661,6 +1661,9 @@ components:
                     of the specification. For instance, "ETSI GS NFV-SOL 001 (V2.5.1)".
           NOTE 2:	If this attribute is not present, the value of this parameter is undefined.
       type: object
+      required:
+        - supportedVnfdFormats
+        - supportedNsdFormats
       properties:
         maxOnboardedNsdNum:
           description: >
@@ -1720,9 +1723,6 @@ components:
           required:
             - nsdFormat
             - standardVersion
-      required:
-        - supportedVnfdFormats
-        - supportedNsdFormats
         
     VnfmSpecificInfo:
       description: >
@@ -1731,6 +1731,10 @@ components:
         * NOTE:	The information to be provided in this attribute shall relate to the specification and version
                 of the specification. For instance, "ETSI GS NFV-SOL 001 (V2.5.1)".
       type: object
+      required:
+        - resoruceMgmtModeSupport
+        - managedVnfInstanceInfos
+        - supportedVnfdFormats
       properties:
         resoruceMgmtModeSupport:
           description: >
@@ -1782,10 +1786,6 @@ components:
               - vnfdFormat
               - standardVersion
           minItems: 1
-      required:
-        - resoruceMgmtModeSupport
-        - managedVnfInstanceInfos
-        - supportedVnfdFormats
 
     VimSpecificInfo:
       description: >
@@ -1866,6 +1866,10 @@ components:
         This type represents list of parameters that can be configured on the 
         NFV MANO functional entity. 
       type: object
+      required:
+        - clockSyncs
+        - defaultLogCompileBySizeValue
+        - defaultLogCompileByTimerValue
       properties:
         clockSyncs:
           description: >
@@ -1886,10 +1890,6 @@ components:
           description: 
             Default value for the log compilation by timer to be used.
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/UnsignedInt"
-      required:
-        - clockSyncs
-        - defaultLogCompileBySizeValue
-        - defaultLogCompileByTimerValue
         
     ConsumedManoInterfaceInfo:
       description: >
@@ -1905,6 +1905,13 @@ components:
                     modify the value of the security sensitive attribute, and the modification request includes new
                     attribute values, the whole modification request shall be rejected, and proper error information returned.
       type: object
+      required:
+        - id
+        - name
+        - type
+        - standardVersion
+        - apiVersion
+        - apiEndpoint
       properties:
         name:
           description: >
@@ -1966,13 +1973,6 @@ components:
             Security related information including credentials information if needed 
             for consuming the API. See note 2.
           $ref: "#/components/schemas/ClientInterfaceSecurityInfo"
-      required:
-        - id
-        - name
-        - type
-        - standardVersion
-        - apiVersion
-        - apiEndpoint
         
     CimNotificationsFilter:
       description: >
@@ -2008,6 +2008,8 @@ components:
         This type represents parameters for connecting to an NTP server.
         * NOTE:	Either ipAddress or hostname shall be set, but not both at the same time.
       type: object
+      required:
+        - type
       properties:
         type:
           description: >
@@ -2038,8 +2040,6 @@ components:
             Information for the other types of clock synchronization. 
             May be present if type = "OTHER".
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
-      required:
-        - type
         
     ServerInterfaceSecurityInfo:
       description: >
@@ -3056,7 +3056,7 @@ components:
       description: >
         303 SEE OTHER
 
-        SShall be returned when a subscription with the same 
+        Shall be returned when a subscription with the same 
         callbackURI and the same filter already exists and the 
         policy of NFV-MANO functional entity is to not create 
         redundant subscriptions.
