@@ -1,24 +1,27 @@
 openapi: 3.0.2
+
 info:
-  version: 1.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
   title: SOL009 - NFV-MANO Log Management interface
-  description: >
+  description: |
     SOL009 - NFV-MANO Log Management interface
 
-    IMPORTANT: Please note that this file might be not aligned to the current version of the ETSI Group Specification
-     it refers to. In case of discrepancies the published ETSI Group Specification takes precedence.
+    IMPORTANT: Please note that this file might be not aligned to the current
+    version of the ETSI Group Specification it refers to. In case of
+    discrepancies the published ETSI Group Specification takes precedence.
 
-    Please report bugs to https://forge.etsi.org/bugzilla/buglist.cgi?component=Nfv-Openapis&list_id=61&product=NFV&resolution=
+    Please report bugs to https://forge.etsi.org/rep/nfv/SOL009/issues
+
+  contact:
+    name: NFV-SOL WG
   license:
     name: ETSI Forge copyright notice
     url: https://forge.etsi.org/etsi-forge-copyright-notice.txt
-externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.3.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.03.01_60/gs_NFV-SOL009v030301p.pdf
+  version: 1.0.1-impl:etsi.org:ETSI_NFV_OpenAPI:1
 
-security:
-  - OauthSecurity:
-      - all
+externalDocs:
+  description: ETSI GS NFV-SOL 009 V3.5.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.05.01_60/gs_NFV-SOL009v030501p.pdf
+
 servers:
   - url: http://127.0.0.1/nfvmanologm/v1
   - url: https://127.0.0.1/nfvmanologm/v1
@@ -32,11 +35,7 @@ paths:
       This resource represents logging jobs. The API consumer can use this resource to create and query logging jobs.
     post:
       description: >-
-        The POST method creates a logging job.
-        This method shall follow the provisions specified in the tables 8.5.3.3.1-1 and 8.5.3.3.1-2 for URI query
-        parameters, request and response data structures, and response codes.
-        As the result of successfully executing this method, a new "Individual logging job" resource as defined in
-        clause 9.5.4 shall have been created.
+        The POST method creates a logging job. See clause 8.5.3.3.1.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -46,7 +45,7 @@ paths:
         $ref: "#/components/requestBodies/CreateLoggingJobRequest"
       responses:
         "201":
-          $ref: '#/components/responses/LoggingJob.Post'
+          $ref: '#/components/responses/LoggingJobs.Post.201'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -69,9 +68,7 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
     get:
       description: >-
-        The API consumer can use this method to retrieve information about logging jobs.
-        This method shall follow the provisions specified in the tables 8.5.3.3.2-1 and 8.5.3.3.2-2 for
-        URI query parameters, request and response data structures, and response codes.
+        The API consumer can use this method to retrieve information about logging jobs. See clause 8.5.3.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/filter"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/all_fields"
@@ -84,7 +81,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
-          $ref: '#/components/responses/LoggingJobs.Get'
+          $ref: '#/components/responses/LoggingJobs.Get.200'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -114,9 +111,7 @@ paths:
       - $ref: "#/components/parameters/logJobId"
     get:
       description: >-
-        The API consumer can use this method for reading an individual logging job.
-        This method shall follow the provisions specified in the tables 8.5.4.3.2-1 and 8.5.4.3.2-2 for
-        URI query parameters, request and response data structures, and response codes.
+        The API consumer can use this method for reading an individual logging job. See clause 8.5.4.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -124,7 +119,7 @@ paths:
 
       responses:
         "200":
-          $ref: '#/components/responses/LoggingJob.Get'
+          $ref: '#/components/responses/IndividualLoggingJob.Get.200'
         "400":
           $ref: ../components/SOL009_resp.yaml#/components/responses/400
         "401":
@@ -148,17 +143,13 @@ paths:
 
     delete:
       description: >-
-        This method terminates an individual logging job.
-        This method shall follow the provisions specified in the tables 8.5.4.3.5-1 and 8.5.4.3.5-2 for URI
-        query parameters, request and response data structures, and response codes.
-        As the result of successfully executing this method, the "Individual logging job" resource shall not
-        exist any longer
+        This method terminates an individual logging job. See clause 8.5.4.3.5.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
-          $ref: '#/components/responses/LoggingJob.Delete'
+          $ref: '#/components/responses/IndividualLoggingJob.Delete.204'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -192,9 +183,7 @@ paths:
       - $ref: "#/components/parameters/logReportId"
     get:
       description: >-
-        The API consumer can use this method for reading an individual log report.
-        This method shall follow the provisions specified in the tables 8.5.5.3.2-1 and
-        8.5.5.3.2-2 for URI query parameters, request and response data structures, and response codes.
+        The API consumer can use this method for reading an individual log report. See clause 8.5.5.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -240,8 +229,7 @@ paths:
     post:
       description: >-
         The POST method requests to compile the logged data into a file and create an associated log report.
-        This method shall follow the provisions specified in the tables 8.5.6.3.1-1 and 8.5.6.3.1-2 for URI
-        query parameters, request and response data structures, and response codes.
+        See clause 8.5.6.3.1.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -250,8 +238,8 @@ paths:
       requestBody:
         $ref: "#/components/requestBodies/CompileLogRequest"
       responses:
-        "200":
-          $ref: '#/components/responses/LogReportCompiled.Post.200'
+        "201":
+          $ref: '#/components/responses/LogReportCompiled.Post.201'
         "202":
           $ref: '#/components/responses/LogReportCompiled.Post.202'
         "303":
@@ -283,18 +271,7 @@ paths:
       related to NFV-MANO performance management and to query its subscriptions.
     post:
       description: >-
-        The POST method creates a new subscription.
-        This method shall follow the provisions specified in the tables 8.5.7.3.1-1 and 8.5.7.3.1-2 for URI query
-         parameters, request and response data structures, and response codes.
-        As the result of successfully executing this method, a new "Individual subscription" resource as defined in
-        clause 8.5.8 shall have been created. This method shall not trigger any notification.
-        Creation of two "Individual subscription" resources with the same callbackURI and the same filter can result
-        in performance degradation and will provide duplicates of notifications to the API consumer, and might make
-        sense only in very rare use cases. Consequently, the NFV-MANO functional entity may either allow creating a
-        new "Individual subscription" resource if another "Individual subscription" resource with the same filter
-        and callbackUri already exists (in which case it shall return the "201 Created" response code), or may decide
-        to not create a duplicate "Individual subscription" resource (in which case it shall return a "303 See Other"
-        response code referencing the existing "Individual subscription" resource with the same filter and callbackUri).
+        The POST method creates a new subscription. See clause 8.5.7.3.1.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -304,9 +281,9 @@ paths:
         $ref: '#/components/requestBodies/LogmSubscriptionRequest'
       responses:
         "201":
-          $ref: '#/components/responses/subscriptions.post.201'
+          $ref: '#/components/responses/Subscriptions.Post.201'
         "303":
-          $ref: '#/components/responses/subscriptions.post.303'
+          $ref: '#/components/responses/Subscriptions.Post.303'
         "422":
           $ref: '../components/SOL009_resp.yaml#/components/responses/422'
         "400":
@@ -333,9 +310,7 @@ paths:
     get:
       description: >-
         The API consumer can use this method to query the list of active subscriptions to log management
-        notifications subscribed by the API consumer.
-        This method shall follow the provisions specified in the tables 8.5.7.3.2-1 and 8.5.7.3.2-2 for URI
-        query parameters, request and response data structures, and response codes.
+        notifications subscribed by the API consumer. See clause 8.5.7.3.2.
 
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/filter"
@@ -345,7 +320,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
-          $ref: '#/components/responses/subscriptions.get.200'
+          $ref: '#/components/responses/Subscriptions.Get.200'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -375,16 +350,14 @@ paths:
     get:
       description: >-
         The API consumer can use this method for reading an individual subscription about log management
-        notifications subscribed by the API consumer.
-        This method shall follow the provisions specified in the tables 8.5.8.3.2-1 and 8.5.8.3.2-2 for
-        URI query parameters, request and response data structures, and response codes.
+        notifications subscribed by the API consumer. See clause 8.5.8.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "200":
-          $ref: '#/components/responses/subscription.get.200'
+          $ref: '#/components/responses/Subscription.Get.200'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -406,20 +379,13 @@ paths:
 
     delete:
       description: >-
-        This method terminates an individual subscription.
-        This method shall follow the provisions specified in the tables 8.5.8.3.5-1 and 8.5.8.3.5-2 for
-        URI query parameters, request and response data structures, and response codes.
-        As the result of successfully executing this method, the "Individual subscription" resource shall not exist any
-        longer. This means that no notifications for that subscription shall be sent to the
-        formerly-subscribed API consumer.
-        NOTE:	Due to race conditions, some notifications might still be received by the formerly-subscribed
-        API consumer for a certain time period after the deletion.
+        This method terminates an individual subscription. See clause 8.5.8.3.5.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
-          $ref: '#/components/responses/subscription.delete.204'
+          $ref: '#/components/responses/Subscription.Delete.204'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -476,6 +442,8 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/LogmSubscriptionRequest"
+      required: true
+
     CreateLoggingJobRequest:
       description: >-
         This type represents a request to create a logging job. It shall comply with the provisions
@@ -500,10 +468,13 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/LogReportAvailableNotification"
+      required: true
 
   responses:
-    subscription.delete.204:
-      description: >-
+    Subscription.Delete.204:
+      description: >
+        204 NO CONTENT
+
         Shall be returned when the "Individual subscription" resource has been deleted successfully.
         The response body shall be empty.
       headers:
@@ -524,8 +495,10 @@ components:
           schema:
             type: string
 
-    subscription.get.200:
-      description: >-
+    Subscription.Get.200:
+      description: >
+        200 OK
+
         Shall be returned when the subscription has been read successfully.
         The response body shall contain a representation of the "Individual subscription" resource,
         as defined in clause 8.6.2.3.
@@ -551,8 +524,10 @@ components:
           schema:
             $ref: "#/components/schemas/LogmSubscription"
 
-    subscriptions.get.200:
-      description: >-
+    Subscriptions.Get.200:
+      description: >
+        200 OK
+
         Shall be returned when the list of subscriptions has been queried successfully.
         The response body shall contain in an array the representations of all active subscriptions of
         the functional block that invokes the method, i.e. zero or more representations of log management
@@ -586,8 +561,10 @@ components:
             items:
               $ref: "#/components/schemas/LogmSubscription"
 
-    subscriptions.post.201:
-      description: >-
+    Subscriptions.Post.201:
+      description: >
+        201 CREATED
+
         Shall be returned when the subscription has been created successfully.
         A representation of the created "Individual subscription" resource shall be returned in the response body,
         as defined in clause 8.6.2.3.
@@ -620,8 +597,10 @@ components:
           schema:
             $ref: "#/components/schemas/LogmSubscription"
 
-    subscriptions.post.303:
-      description: >-
+    Subscriptions.Post.303:
+      description: >
+        303 SEE OTHER
+
         Shall be returned when a subscription with the same callbackURI and the same filter already exists and the
         policy of the NFV-MANO functional entity is to not create redundant subscriptions.
         The HTTP response shall include a "Location" HTTP header that contains the resource URI of the existing
@@ -650,8 +629,10 @@ components:
           schema:
             type: string
 
-    LogReportCompiled.Post.200:
-      description: >-
+    LogReportCompiled.Post.201:
+      description: >
+        201 CREATED
+
         Shall be returned for a successful compilation of the log data and creation of the associated log report
         (synchronous mode).
         The response body shall contain a representation of the log report resource, as defined in clause 8.6.2.7.
@@ -684,8 +665,46 @@ components:
           schema:
             $ref: "#/components/schemas/LogReport"
 
+    subscriptions.post.422:
+      description: >
+        422 UNPROCESSABLE ENTITY
+
+        Shall be returned upon the following error: The content type
+        of the payload body is supported and the payload body of a request
+        contains syntactically correct data but the data cannot be processed.
+
+        The general cause for this error and its handling is specified in
+        clause 6.4 of ETSI GS NFV-SOL 013, including rules for the presence
+        of the response body.
+
+        Specifically in case of this resource, the response code 422 shall also
+        be returned if the API producer has tested the Notification endpoint as
+        described in clause 8.5.9.3.2 and the test has failed.
+
+        In this case, the "detail" attribute in the "ProblemDetails" structure
+        shall convey more information about the error.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
+
     LogReportCompiled.Post.202:
-      description: >-
+      description: >
+        202 ACCEPTED
+
         Shall be returned when the request has been accepted for processing, and it is expected to take some
         time to compile the log file and create the associated log report (asynchronous mode).
         The response body shall be empty.
@@ -716,7 +735,9 @@ components:
             type: string
 
     LogReportCompiled.Post.303:
-      description: >-
+      description: >
+        303 SEE OTHER
+
         Shall be returned when a log data compilation and report creation is already ongoing, or a log report has just been
         created, for the specified logging job at the time of processing the request.
         The response body shall be empty.
@@ -747,7 +768,9 @@ components:
             type: string
 
     LogReportCompiled.Post.422:
-      description: >-
+      description: >
+        422 UNPROCESSABLE ENTITY
+
         The general cause for this error and its handling is specified in clause 6.4 of ETSI GS NFV-SOL 013,
         including rules for the presence of the response body.
         Specifically, in case of this task resource, the response code 422 shall also be returned if the
@@ -778,7 +801,9 @@ components:
             $ref: '../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails'
 
     LogReport.Get.200:
-      description: >-
+      description: >
+        200 OK
+
         Shall be returned when information of an individual log report has been read successfully.
         The response body shall contain a representation of the "Individual log report" resource, as
         defined in clause 8.6.2.7.
@@ -805,7 +830,9 @@ components:
             $ref: "#/components/schemas/LogReport"
 
     LogReport.Get.202:
-      description: >-
+      description: >
+        202 ACCEPTED
+
         Shall be returned if the creation of the log report is ongoing and no log report is available yet
         (applicable in asynchronous mode of the "Compile log task" resource).
         The response body shall be empty.
@@ -827,8 +854,10 @@ components:
           schema:
             type: string
 
-    LoggingJob.Get:
-      description: >-
+    IndividualLoggingJob.Get.200:
+      description: >
+        200 OK
+
         Shall be returned when information about an individual logging job has been read successfully.
         The response body shall contain a representation of the "Individual logging job" resource,
         as defined in clause 8.6.2.6.
@@ -854,8 +883,10 @@ components:
           schema:
             $ref: "#/components/schemas/LoggingJob"
 
-    LoggingJob.Delete:
-      description: >-
+    IndividualLoggingJob.Delete.204:
+      description: >
+        204 NO CONTENT
+
         Shall be returned when the logging job has been deleted successfully.
         The response body shall be empty.
       headers:
@@ -872,8 +903,10 @@ components:
           schema:
             type: string
 
-    LoggingJob.Post:
-      description: >-
+    LoggingJobs.Post.201:
+      description: >
+        201 CREATED
+
         The response body contains the Application Context as it was created
         by the MEC system
       headers:
@@ -898,8 +931,10 @@ components:
           schema:
             $ref: "#/components/schemas/LoggingJob"
 
-    LoggingJobs.Get:
-      description: >-
+    LoggingJobs.Get.200:
+      description: >
+        200 OK
+
         Shall be returned when information about zero or more logging jobs has been queried successfully.
 
         The response body shall contain in an array the representations of zero or more logging jobs, as
@@ -937,8 +972,10 @@ components:
             items:
               $ref: "#/components/schemas/LoggingJob"
 
-    LogReportAvailableNotification.Post:
-      description: >-
+    LogReportAvailableNotification.Post.204:
+      description: >
+        204 NO CONTENT
+        
         Shall be returned when the notification has been delivered successfully.
       headers:
         Content-Type:
@@ -958,8 +995,10 @@ components:
           schema:
             type: string
 
-    LogReportNotification.Get:
-      description: >-
+    LogReportAvailableNotification.Get.204:
+      description: >
+        204 NO CONTENT
+
         Shall be returned to indicate that the notification endpoint has been tested successfully.
         The response body shall be empty.
       headers:
@@ -1018,11 +1057,9 @@ components:
     LogmNotificationsFilter:
       description: >-
         This type represents a filter that can be used to subscribe for notifications related to log
-        management events. It shall comply with the provisions defined in table 8.6.3.7-1.
-        At a particular nesting level in the filter structure, the following applies: All attributes
-        shall match in order for the filter to match (logical "and" between different filter attributes).
-        If an attribute is an array, the attribute shall match if at least one of the values in the array matches
-        (logical "or" between the values of one filter attribute).
+        management events.
+        * NOTE:	The permitted values of the "notificationTypes" attribute are spelled exactly as the names
+                of the notification types to facilitate automated code generation systems.
       type: object
       properties:
         objectInstanceFilter:
@@ -1034,6 +1071,7 @@ components:
             Match particular notification types.
             Permitted values:
             - LogReportAvailableNotification
+            See note.
           type: string
           enum: [LogReportAvailableNotification]
 
@@ -1120,7 +1158,8 @@ components:
     LogReport:
       description: >
         This type represents a log report, which provides information about a compiled log and how to obtain it.
-        It shall comply with the provisions defined in table 8.6.2.7-1.
+        * NOTE:	It is not specified in the present document how the NFV-MANO functional entity's private
+                key is provided to the NFV-MANO functional entity.
       type: object
       required:
         - id
@@ -1185,8 +1224,8 @@ components:
                 - HTTPS: transmission over HTTP Secure (HTTPS).
                 - SFTP: transmission over SSH file transfer protocol (SFTP).
                 - SCP: transmission over secure copy protocol (SCP).
-                - FTPS: transmission over file transfer protocol secure (FTPS), as specified in IETF RFC 2228 [i.11],
-                     using explicit mode as specified in IETF RFC 4217 [i.12]. If FTPS is supported, "private" protection level shall be used.
+                - FTPS: transmission over file transfer protocol secure (FTPS), as specified in IETF RFC 2228,
+                     using explicit mode as specified in IETF RFC 4217. If FTPS is supported, "private" protection level shall be used.
 
                 HTTPS shall be supported, and other protocols may be supported.
               type: string
@@ -1226,13 +1265,13 @@ components:
               description: >-
                 The cryptographic algorithm used for the encryption. Shall be present if the compiled log file is
                 encrypted. Valid values are: "AES-CBC-128", "AES-GCM-128", "AES-CBC-256", and "AES-GCM-256",
-                as specified in clause 6.5 of ETSI GS NFV-SEC 012 [14].
+                as specified in clause 6.5 of ETSI GS NFV-SEC 012.
               type: string
             logFileSignature:
               description: >-
                 Signature to the compiled log file generated with the NFV-MANO functional entity’s private key,
                 which is used to ensure the authenticity of the compiled log file. The signature shall be applied
-                according to the "encryptAndSignOrder" of the "LoggingJobConfig".
+                according to the "encryptAndSignOrder" of the "LoggingJobConfig". See note.
               type: string
             signingCertificate:
               description: >-
@@ -1380,8 +1419,10 @@ components:
 
     LoggingJobCriteria:
       description: >-
-        This type represents collection criteria for logging jobs. It shall comply with the provisions
-        defined in table 8.6.3.2-1.
+        This type represents collection criteria for logging jobs.
+        * NOTE:	The value of the loggingType has dependency on the object that is requested to be logged
+                (refer to the CreateLoggingJobRequest): a) the logging of messages is only applicable to
+                ManoServiceInterface and ConsumedManoInterface objects.
       type: object
       required:
         - loggingType
@@ -1394,6 +1435,8 @@ components:
             - MESSAGES: logged NFV-MANO service interface messages.
             - SERVICES: logged messages about processes pertaining to NFV-MANO services.
             - SYSTEM: logged messages about the NFV-MANO functional entity’s system enabled by the provider.
+
+            See note.
           type: string
           enum: [MESSAGES, SERVICES, SYSTEM]
         messagesLogDetail:
@@ -1417,7 +1460,8 @@ components:
     LoggingJobMessagesCriteria:
       description: >-
         This type represents criteria for logging jobs to collect logged messages on NFV-MANO service interfaces.
-        It shall comply with the provisions defined in table 8.6.3.3-1.
+        * NOTE:	If a matching pattern is present, at least one of the "srcIpAddress", "dstIpAddress", "requestMethod",
+                "requestUriPattern" or "responseCodes" shall be provided.
       type: object
       required:
         - direction
@@ -1438,6 +1482,7 @@ components:
             values provided in the sub-attributes shall be logged. An API consumer can provide more than one
             "matchingPattern" if combinations of patterns are to be considered to match diverse sets of interface
             messages.
+            See note.
           type: array
           items:
             type: object
@@ -1518,18 +1563,23 @@ components:
     LoggingJobServicesCriteria:
       description: >-
         This type represents criteria for logging jobs to collect logged messages about processes pertaining
-        to NFV-MANO services. It shall comply with the provisions defined in table 8.6.3.4-1.
+        to NFV-MANO services.
+        * NOTE:	In the present version of the present document, only one attribute, i.e.
+                "logGarbageCollection", is available.
       type: object
       properties:
         logGarbageCollection:
           description: >-
             Indicates to collect logged information about garbage collection processes associated to NFV-MANO services.
+            See note.
           type: boolean
 
     LoggingJobSystemCriteria:
       description: >-
         This type represents criteria for logging jobs to collect logged system events of the NFV-MANO functional
-        entity. It shall comply with the provisions defined in table 8.6.3.5-1.
+        entity.
+        * NOTE:	The set of properties and values for this attribute are assumed to be known to the consumer
+                by means defined outside of the present document.
       type: object
       required:
         - systemLogs
@@ -1537,7 +1587,7 @@ components:
       properties:
         systemLogs:
           description: >-
-            Values for the provider enabled system logs.
+            Values for the provider enabled system logs. See note.
           $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
         severityLevelScheme:
           description: >-
@@ -1558,6 +1608,17 @@ components:
         defined in table 8.6.3.6-1.
         NOTE: The present document version does not specify the support for "log compilation and reporting based
         on events" as specified in clause 6.6.2.2 of ETSI GS NFV-IFA 031.
+
+        * NOTE 1:	The minimumReportingPeriod is used to throttle possible flooding of reports by providing a lower
+                    limit on the gap between two log availability notification to be emitted by the same logging job.
+          NOTE 2:	More than one logCompilingCondition is possible to provide a combination of different conditions
+                    for the compilation. This covers use cases when the compilation of the log can be based on, e.g.
+                    a timer value and a size value, whichever first condition is met first. For instance, compile a
+                    log every 3 600 seconds, or whenever during the 3 600 seconds period the log grows in
+                    size to 1 000 000 bytes.
+          NOTE 3:	The value is indicative, as the actual size of the compiled log files might not match the provided
+                    compileBySizeValue due to possible deviations in the tracking of the size of the log data by the
+                    API producer, and the size of individual logged data entries when these are collected.
       type: object
       required:
         - reportingCondition
@@ -1593,7 +1654,7 @@ components:
             minimumReportingPeriod:
               description: >-
                 Specifies the minimum periodicity at which the producer will report to the consumer about the
-                collected log information, in seconds.
+                collected log information, in seconds. See note 1.
               type: integer
               format: int32
         compileBySizeValue:
@@ -1601,14 +1662,15 @@ components:
             An indicative size threshold for compiling the collected log data, in bytes. It is used when the
             compilation is based on the size of the collected log data. If not present, a default value as
             specified with the "defaultLogCompileBySizeValue" configuration in the "ManoEntityConfigurableParams"
-            shall be used
+            shall be used. See note 2 and note 3.
           type: integer
           format: int32
         compileByTimerValue:
           description: >-
             The periodicity threshold for compiling the filtered log, in seconds. It is used when the compilation
             is based on a timer (e.g., every 24 hours). If not present, a default value as specified with the
-            "defaultLogCompileByTimerValue" configuration in the "ManoEntityConfigurableParams" shall be used
+            "defaultLogCompileByTimerValue" configuration in the "ManoEntityConfigurableParams" shall be used.
+            See note 2.
           type: integer
           format: int32
         securityConf:
@@ -1746,7 +1808,7 @@ components:
               $ref: "#/components/requestBodies/LogReportAvailableNotification"
             responses:
               "204":
-                $ref: '#/components/responses/LogReportAvailableNotification.Post'
+                $ref: '#/components/responses/LogReportAvailableNotification.Post.204'
               "400":
                 $ref: '../components/SOL009_resp.yaml#/components/responses/400'
               "401":
@@ -1779,7 +1841,7 @@ components:
               - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
             responses:
               "204":
-                $ref: '#/components/responses/LogReportNotification.Get'
+                $ref: '#/components/responses/LogReportAvailableNotification.Get.204'
               "400":
                 $ref: '../components/SOL009_resp.yaml#/components/responses/400'
               "401":

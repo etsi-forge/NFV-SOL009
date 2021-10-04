@@ -1,31 +1,33 @@
 openapi: 3.0.2
 info:
-  version: 1.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
-  title: SOL009 - NFV-MANO Log Management Notification Operation
-  description: >
-    SOL009 - NFV-MANO Log Management Notification Operation
 
-    IMPORTANT: Please note that this file might be not aligned to the current version of the ETSI Group Specification
-     it refers to. In case of discrepancies the published ETSI Group Specification takes precedence.
+  title: SOL009 - NFV-MANO Log Management Notification Interface
+  description: |
+    SOL009 - NFV-MANO Log Management Notification Interface
 
-    Please report bugs to https://forge.etsi.org/bugzilla/buglist.cgi?component=Nfv-Openapis&list_id=61&product=NFV&resolution=
+    IMPORTANT: Please note that this file might be not aligned to the current
+    version of the ETSI Group Specification it refers to. In case of
+    discrepancies the published ETSI Group Specification takes precedence.
+
+    Please report bugs to https://forge.etsi.org/rep/nfv/SOL009/issues
+
+  contact:
+    name: NFV-SOL WG
   license:
     name: ETSI Forge copyright notice
     url: https://forge.etsi.org/etsi-forge-copyright-notice.txt
-externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.3.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.03.01_60/gs_NFV-SOL009v030301p.pdf
+  version: 1.0.1-impl:etsi.org:ETSI_NFV_OpenAPI:1
 
-security:
-  - OauthSecurity:
-      - all
+externalDocs:
+  description: ETSI GS NFV-SOL 009 V3.5.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.05.01_60/gs_NFV-SOL009v030501p.pdf
 
 servers:
   - url: http://127.0.0.1/callback/v1
   - url: https://127.0.0.1/callback/v1
 
 paths:
-  /URI-is-provided-by-the-client-when-creating-the-subscription-AlarmNotification:
+  /URI_is_provided_by_the_client_when_creating_the_subscription-LogNotification:
     description: >-
       This resource represents a notification endpoint for NFV-MANO log management.
       The API producer can use this resource to send notifications related to log management events to a
@@ -35,9 +37,7 @@ paths:
       description: >-
         The POST method delivers a notification regarding a log management event from the API producer to the API
         consumer. The API consumer shall have previously created an "Individual subscription" resource with a
-        matching filter.
-        This method shall follow the provisions specified in the tables 8.5.9.3.1-1 and 8.5.9.3.1-2 for URI query
-        parameters, request and response data structures, and response codes.
+        matching filter. See clause 8.5.9.3.1.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
@@ -45,7 +45,7 @@ paths:
         $ref: "#/components/requestBodies/LogReportAvailableNotification"
       responses:
         "204":
-          $ref: '#/components/responses/notification.post.204'
+          $ref: '#/components/responses/Notification.Post.204'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -70,16 +70,14 @@ paths:
     get:
       description: >-
         The GET method allows the API producer to test the notification endpoint that is provided by the API
-        consumer, e.g. during subscription.
-        This method shall follow the provisions specified in the tables 8.5.9.3.2-1 and 8.5.9.3.2-2 for URI
-        query parameters, request and response data structures, and response codes.
+        consumer, e.g. during subscription. See clause 8.5.9.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
       responses:
         "204":
-          $ref: '#/components/responses/notification.get.204'
+          $ref: '#/components/responses/Notification.Get.204'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -110,9 +108,10 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/LogReportAvailableNotification"
+      required: true
 
   responses:
-    notification.post.204:
+    Notification.Post.204:
       description: >-
         Shall be returned when the notification has been delivered successfully.
       headers:
@@ -133,7 +132,7 @@ components:
           schema:
             type: string
 
-    notification.get.204:
+    Notification.Get.204:
       description: >-
         Shall be returned to indicate that the notification endpoint has been tested successfully.
         The response body shall be empty.

@@ -1,38 +1,38 @@
 openapi: 3.0.2
+
 info:
-  version: 1.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
-  title: SOL009 - NFV-MANO Fault Management Notification Operation
-  description: >
-    SOL009 - NFV-MANO Fault Management Notification Operation
+  title: SOL009 - NFV-MANO Fault Management Notification Interface
+  description: |
+    SOL009 - NFV-MANO Fault Management Notification Interface
 
-    IMPORTANT: Please note that this file might be not aligned to the current version of the ETSI Group Specification it refers to. In case of discrepancies the published ETSI Group Specification takes precedence.
+    IMPORTANT: Please note that this file might be not aligned to the current
+    version of the ETSI Group Specification it refers to. In case of
+    discrepancies the published ETSI Group Specification takes precedence.
 
-    Please report bugs to https://forge.etsi.org/bugzilla/buglist.cgi?component=Nfv-Openapis&list_id=61&product=NFV&resolution=
+    Please report bugs to https://forge.etsi.org/rep/nfv/SOL009/issues
+
+  contact:
+    name: NFV-SOL WG
   license:
     name: ETSI Forge copyright notice
     url: https://forge.etsi.org/etsi-forge-copyright-notice.txt
-externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.3.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.03.01_60/gs_NFV-SOL009v030301p.pdf
+  version: 1.0.1-impl:etsi.org:ETSI_NFV_OpenAPI:1
 
-security:
-  - OauthSecurity:
-      - all
+externalDocs:
+  description: ETSI GS NFV-SOL 009 V3.5.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.05.01_60/gs_NFV-SOL009v030501p.pdf
 
 servers:
   - url: http://127.0.0.1/callback/v1
   - url: https://127.0.0.1/callback/v1
 
 paths:
-  /URI-is-provided-by-the-client-when-creating-the-subscription-AlarmNotification:
+  /URI_is_provided_by_the_client_when_creating_the_subscription-AlarmNotification:
     post:
       description: >
         The POST method notifies an NFV-MANO functional entity alarm or that the
         alarm list has been rebuilt. The API consumer shall have previously
-        created an "Individual subscription" resource with a matching filter.
-        This method shall follow the provisions specified in the tables
-        7.5.7.3.1-1 and 7.5.7.3.1-2 for URI query parameters, request and
-        response data structures, and response codes.
+        created an "Individual subscription" resource with a matching filter. See clause 7.5.7.3.1.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
@@ -59,10 +59,7 @@ paths:
     get:
       description: >
         The GET method allows the server to test the notification endpoint that
-        is provided by the client, e.g. during subscription. This method shall
-        follow the provisions specified in the tables 7.5.7.3.2-1 and
-        7.5.7.3.2-2 for URI query parameters, request and response data
-        structures, and response codes.
+        is provided by the client, e.g. during subscription. See clause 7.5.7.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
@@ -83,15 +80,12 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
           $ref: ../components/SOL009_resp.yaml#/components/responses/503
-  /URI-is-provided-by-the-client-when-creating-the-subscription-AlarmClearedNotification:
+  /URI_is_provided_by_the_client_when_creating_the_subscription-AlarmClearedNotification:
     post:
       description: >
         The POST method notifies an NFV-MANO functional entity alarm or that the
         alarm list has been rebuilt. The API consumer shall have previously
-        created an "Individual subscription" resource with a matching filter.
-        This method shall follow the provisions specified in the tables
-        7.5.7.3.1-1 and 7.5.7.3.1-2 for URI query parameters, request and
-        response data structures, and response codes.
+        created an "Individual subscription" resource with a matching filter. See clause 7.5.7.3.1.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
@@ -118,10 +112,7 @@ paths:
     get:
       description: >
         The GET method allows the server to test the notification endpoint that
-        is provided by the client, e.g. during subscription. This method shall
-        follow the provisions specified in the tables 7.5.7.3.2-1 and
-        7.5.7.3.2-2 for URI query parameters, request and response data
-        structures, and response codes.
+        is provided by the client, e.g. during subscription. See clause 7.5.7.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
@@ -142,15 +133,12 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
           $ref: ../components/SOL009_resp.yaml#/components/responses/503
-  /URI-is-provided-by-the-client-when-creating-the-subscription-AlarmListRebuiltNotification:
+  /URI_is_provided_by_the_client_when_creating_the_subscription-AlarmListRebuiltNotification:
     post:
       description: >
         The POST method notifies an NFV-MANO functional entity alarm or that the
         alarm list has been rebuilt. The API consumer shall have previously
-        created an "Individual subscription" resource with a matching filter.
-        This method shall follow the provisions specified in the tables
-        7.5.7.3.1-1 and 7.5.7.3.1-2 for URI query parameters, request and
-        response data structures, and response codes.
+        created an "Individual subscription" resource with a matching filter. See clause 7.5.7.3.1.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/ContentType"
@@ -177,10 +165,7 @@ paths:
     get:
       description: >
         The GET method allows the server to test the notification endpoint that
-        is provided by the client, e.g. during subscription. This method shall
-        follow the provisions specified in the tables 7.5.7.3.2-1 and
-        7.5.7.3.2-2 for URI query parameters, request and response data
-        structures, and response codes.
+        is provided by the client, e.g. during subscription. See clause 7.5.7.3.2.
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
