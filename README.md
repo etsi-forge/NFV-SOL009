@@ -3,7 +3,7 @@
 This repository contains OpenAPIs for ETSI GS NFV-SOL 009 v3.5.1, RESTful protocols 
 specification for the management of NFV-MANO functional entities.
 
-**IMPORTANT: These [OpenAPI](https://www.openapis.org/) specifications are in development phase. In case of discrepancies the published ETSI Group Specification takes precedence.**
+**IMPORTANT: In case of discrepancies the published ETSI Group Specification takes precedence.**
 
 More information at [NFV Solutions wiki](https://nfvwiki.etsi.org/index.php?title=NFV_Solutions).
 
