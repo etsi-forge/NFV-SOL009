@@ -62,6 +62,7 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/503
         "504":
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
+          
     patch:
       description: >
         The PATCH method modifies the NFV-MANO entity resource. See clause 5.5.3.3.4.
