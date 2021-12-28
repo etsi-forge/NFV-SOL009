@@ -19,7 +19,7 @@ info:
   version: 2.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
 
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.5.1
+  description: ETSI GS NFV-SOL 009 V3.6.1
   url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.05.01_60/gs_NFV-SOL009v030501p.pdf
 
 servers:

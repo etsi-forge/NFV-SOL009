@@ -16,10 +16,10 @@ info:
   license:
     name: ETSI Forge copyright notice
     url: https://forge.etsi.org/etsi-forge-copyright-notice.txt
-  version: 2.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
+  version: 2.1.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
 
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.5.1
+  description: ETSI GS NFV-SOL 009 V3.6.1
   url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.05.01_60/gs_NFV-SOL009v030501p.pdf
 
 servers:
@@ -1790,10 +1790,103 @@ components:
     VimSpecificInfo:
       description: >
         This type represents information attributes specific to a VIM entity, 
-        and that can be relevant to more than one NFV-MANO service offered by 
-        a VIM entity.
-      type: object
+        and that can be relevant to more than one NFV MANO service offered by 
+        a VIM entity. It shall comply with the provisions defined in table 
+        5.6.3.6-1.
+        The present document version does not specify the support for 
+        "maximum number of virtualised resources (attribute "maxVirtualResourceNum")" 
+        as specified in clause 7.2.9.2 of ETSI GS NFV IFA 031 [1].
 
+        NOTE:	Recommendations on appropriate algorithms and key lengths are given e.g., 
+        in NIST Special Publication 800-57 Part 3 Revision 1 [i.26] or in documents 
+        related to local legislation.
+      type: object
+      required:
+        - imageContainerFormats
+        - imageDiskFormats
+        - imageSignatureVerification
+        - imageDigestAlgorithms
+      properties:
+        imageContainerFormats:
+          description: >
+            List of supported image container formats. Container format indicates whether a 
+            software image is in a file that also contains metadata about the actual software.
+            Valid values are all values for "container_format" as defined in ETSI GS NFV-SOL 001 
+            [i.16] and all values for "container-format" as defined in ETSI GS NFV-SOL 006 [i.17].
+          type: array
+          items:
+            type: string
+        imageDiskFormats:
+          description: >
+            List of supported image disk formats. The Disk format of a software image is the format 
+            of the underlying disk image. 
+            Valid values are all values for "disk_format" as defined in ETSI GS NFV-SOL 001 [16] and 
+            all values of "disk-format" as defined in ETSI GS NFV-SOL 006 [i.17].
+          type: array
+          items:
+            type: string
+        imageSignatureVerification:
+          description: >
+            Information about the supported mechanisms, algorithms, and protocols for verifying the 
+            signature of software images.
+          type: object
+          required:
+            - signatureVerificationAlgorithms
+          properties:
+            additionalVerificationCapabilities:
+              description: >
+                List of additional image signature verification capabilities. The "key" in the KeyValuePairs 
+                determines the name of the capability, and the "value" shall indicate whether or not the 
+                capability is enabled. Examples of capabilities can include performing a validation of the 
+                image’s signing certificate during the image signature verification.
+              $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+            signatureVerificationAlgorithms:
+              description: >
+                List of algorithms for verifying the signature of software images that are supported by the VIM.
+              type: array
+              items:
+                type: object
+                required:
+                  - algorithm
+                  - keyLengths
+                properties:
+                  algorithm:
+                    description: >
+                      The name of the algorithm. Permitted values are: "RSA", "DSA", "ECDSA".
+                    type: string
+                  keyLengths:
+                    description: >
+                      List of supported key lengths of the algorithm. The key length indicates the number of bits, 
+                      such as “256”, “512”, etc. See note.
+                    type: array
+                    items:
+                      type: string
+                  additionalAlgParams:
+                    description: >
+                      Additional parameters specific to the signature verification algorithm.
+                    $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+        imageDigestAlgorithms:
+          description: >
+            List of supported digest algorithms that can be used for digital signatures.
+          type: array
+          items:
+            type: object
+            required:
+              - algorithm
+              - keyLengths
+            properties:
+              algorithm:
+                description: >
+                  The name of the algorithm. Permitted values are: “SHA2“,“SHA3“.
+                type: string
+              keyLengths:
+                description: >
+                  List of supported key lengths of the algorithm. The key length indicates the number of bits, 
+                  such as “256”, “512”, etc. See note.
+                type: array
+                items:
+                  type: string      
+            
     WimSpecificInfo:
       description: >
         This type represents information attributes specific to a WIM entity,
