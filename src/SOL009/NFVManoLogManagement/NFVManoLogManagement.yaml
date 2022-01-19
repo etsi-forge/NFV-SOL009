@@ -70,11 +70,11 @@ paths:
       description: >-
         The API consumer can use this method to retrieve information about logging jobs. See clause 8.5.3.3.2.
       parameters:
-        - $ref: "../components/SOL009_params.yaml#/components/parameters/filter"
+        - $ref: "#/components/parameters/filter.LoggingJobs"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/all_fields"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/fields"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/exclude_fields"
-        - $ref: "../components/SOL009_params.yaml#/components/parameters/exclude_default"
+        - $ref: "#/components/parameters/exclude_default.LoggingJobs"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -313,7 +313,7 @@ paths:
         notifications subscribed by the API consumer. See clause 8.5.7.3.2.
 
       parameters:
-        - $ref: "../components/SOL009_params.yaml#/components/parameters/filter"
+        - $ref: "#/components/parameters/filter.LogmSubscriptions"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -409,6 +409,47 @@ paths:
 
 components:
   parameters:
+    filter.LoggingJobs:
+      name: filter
+      description: >
+        Attribute-based filtering expression according to clause 5.2 of ETSI GS NFV-SOL 013.
+
+        The NFV-MANO functional entity shall support receiving this parameter as part of the URI query string.
+        The API consumer may supply this parameter.
+
+        All attribute names that appear in the FmSubscription and in data types referenced from it shall be supported
+        by the NFV-MANO functional entity in the filter expression.
+      in: query
+      required: false
+      schema:
+        type: string
+    exclude_default.LoggingJobs:
+      name: exclude_default
+      description: >
+        Indicates to exclude the following complex attributes from the response. See clause 5.3 of ETSI GS NFV-SOL 013
+        for details. The NFV-MANO functional entity shall support this parameter.
+
+        The following attributes shall be excluded from the LoggingJob structure in the response body if this parameter
+        is provided, or none of the parameters "all_fields", "fields", "exclude_fields", "exclude_default" are provided:
+        •	logReports
+      in: query
+      required: false
+      schema:
+        type: string
+    filter.LogmSubscriptions:
+      name: filter
+      description: >
+        Attribute-based filtering expression according to clause 5.2 of ETSI GS NFV-SOL 013.
+
+        The NFV-MANO functional entity shall support receiving this parameter as part of the URI query string.
+        The API consumer may supply this parameter.
+
+        All attribute names that appear in the LogmSubscription and in data types referenced from it shall be supported
+        by the NFV-MANO functional entity in the filter expression.
+      in: query
+      required: false
+      schema:
+        type: string
     logJobId:
       name: logJobId
       in: path

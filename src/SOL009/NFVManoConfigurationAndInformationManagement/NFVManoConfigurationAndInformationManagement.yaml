@@ -20,7 +20,7 @@ info:
 
 externalDocs:
   description: ETSI GS NFV-SOL 009 V3.6.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.05.01_60/gs_NFV-SOL009v030501p.pdf
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.06.01_60/gs_NFV-SOL009v030601p.pdf
 
 servers:
   - url: http://127.0.0.1/nfvmanocim/v2
@@ -2515,22 +2515,6 @@ components:
       required: false
       schema:
         type: string
-    exclude_default.CimSubscription:
-      name: exclude_default
-      description: >
-        Indicates to exclude the following complex attributes from the 
-        response. See clause 5.3 of ETSI GS NFV-SOL 013 for details. 
-        The NFV-MANO functional entity shall support this parameter.
-
-        The following attributes shall be excluded from the CimSubscription 
-        structure in the response body if this parameter is provided, or none of 
-        the parameters "all_fields," "fields", "exclude_fields", "exclude_default" 
-        are provided:
-        - none
-      in: query
-      required: false
-      schema:
-        type: string
     exclude_default.ChangeStateOpOcc:
       name: exclude_default
       description: >
@@ -2542,7 +2526,7 @@ components:
         structure in the response body if this parameter is provided, or none of 
         the parameters "all_fields," "fields", "exclude_fields", "exclude_default" 
         are provided:
-        - none
+        - operationParams
       in: query
       required: false
       schema:
@@ -2550,15 +2534,12 @@ components:
     exclude_default.PeerEntity:
       name: exclude_default
       description: >
-        Indicates to exclude the following complex attributes from the 
-        response. See clause 5.3 of ETSI GS NFV-SOL 013 for details. 
-        The NFV-MANO functional entity shall support this parameter.
+        Indicates to exclude the following complex attributes from the response. See clause 5.3 of ETSI GS NFV-SOL 013
+        for details. The NFV-MANO functional entity which acts as API producer shall support this parameter.
 
-        The following attributes shall be excluded from the PeerEntity 
-        structure in the response body if this parameter is provided, or none of 
-        the parameters "all_fields," "fields", "exclude_fields", "exclude_default" 
-        are provided:
-        - none
+        The following attributes shall be excluded from the PeerEntity structure in the response body if this parameter
+        is provided, or none of the parameters "all_fields", "fields", "exclude_fields", "exclude_default" are provided:
+        •	consumedManoInterfaces.
       in: query
       required: false
       schema:
