@@ -1739,7 +1739,6 @@ components:
         - WIM	  The peer functional entity is a WIM.
         - EM	  The peer functional entity is an EM.
         - OSS	  The peer functional entity is an OSS/BSS.
-        - WIM     The peer functional is a WIM.
       type: string
       enum:
         - NFVO
@@ -1748,6 +1747,5 @@ components:
         - WIM
         - EM
         - OSS
-        - WIM
 
   
