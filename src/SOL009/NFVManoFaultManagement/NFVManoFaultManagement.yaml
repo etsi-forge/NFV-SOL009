@@ -19,8 +19,8 @@ info:
   version: 1.0.1-impl:etsi.org:ETSI_NFV_OpenAPI:1
 
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.5.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.05.01_60/gs_NFV-SOL009v030501p.pdf
+  description: ETSI GS NFV-SOL 009 V3.6.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.06.01_60/gs_NFV-SOL009v030601p.pdf
 
 servers:
   - url: http://127.0.0.1/nfvmanofm/v1
@@ -38,7 +38,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
-        - $ref: "../components/SOL009_params.yaml#/components/parameters/filter"
+        - $ref: "#/components/parameters/filter.Alarms"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
       responses:
         "200":
@@ -178,7 +178,7 @@ paths:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
-        - $ref: "../components/SOL009_params.yaml#/components/parameters/filter"
+        - $ref: "#/components/parameters/filter.FmSubscriptions"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/nextpage_opaque_marker"
       responses:
         "200":
@@ -269,6 +269,35 @@ paths:
 
 components:
   parameters:
+    filter.Alarms:
+      name: filter
+      description: >
+        Attribute-based filtering expression according to clause 5.2 of ETSI GS NFV SOL 013.
+
+        The NFV-MANO functional entity shall support receiving this parameter as part of the URI query string.
+        The API consumer may supply this parameter.
+
+        The following attribute names shall be supported by the NFV-MANO functional entity in the attribute-based
+        filtering expression: id, managedObjectId, eventType, perceivedSeverity, probableCause.
+
+      in: query
+      required: false
+      schema:
+        type: string
+    filter.FmSubscriptions:
+      name: filter
+      description: >
+        Attribute-based filtering expression according to clause 5.2 of ETSI GS NFV-SOL 013.
+
+        The NFV-MANO functional entity shall support receiving this parameter as part of the URI query string.
+        The API consumer may supply this parameter.
+
+        All attribute names that appear in the FmSubscription and in data types referenced from it shall be supported
+        by the NFV-MANO functional entity in the filter expression.
+      in: query
+      required: false
+      schema:
+        type: string
     alarmId:
       name: alarmId
       description: >
@@ -293,134 +322,7 @@ components:
       required: true
       schema:
         type: string
-  schemas:
-    FmSubscriptionRequest:
-      description: >
-        This type represents a subscription request related to notifications
-        about NFV-MANO faults.
-      type: object
-      required:
-        - callbackUri
-      properties:
-        filter:
-          description: >
-            Filter settings for this subscription, to define the subset of all
-            notifications this subscription relates to. A particular
-            notification is sent to the subscriber if the filter matches, or if
-            there is no filter.
-          $ref: "#/components/schemas/FmNotificationsFilter"
-        callbackUri:
-          description: >
-            The URI of the endpoint to send the notification to.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
-        authentication:
-          description: >
-            Authentication parameters to configure the use of Authorization when sending notifications
-            corresponding to this subscription, as defined in clause 8.3.4 of ETSI GS NFV-SOL 013.
-            This attribute shall only be present if the subscriber requires authorization of notifications.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
 
-    FmSubscription:
-      description: >
-        This type represents a subscription related to notifications about VNF
-        faults.
-      type: object
-      required:
-        - id
-        - callbackUri
-        - _links
-      properties:
-        id:
-          description: >
-            Identifier of this "Individual subscription" resource.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
-        filter:
-          description: >
-            Filter settings for this subscription, to define the subset of all
-            notifications this subscription relates to. A particular
-            notification is sent to the subscriber if the filter matches, or if
-            there is no filter.
-          $ref: "#/components/schemas/FmNotificationsFilter"
-        callbackUri:
-          description: >
-            The URI of the endpoint to send the notification to.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
-        _links:
-          description: >
-            Links for this resource.
-          type: object
-          required:
-            - self
-          properties:
-            self:
-              description: >
-                URI of this resource.
-              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
-
-    AlarmModifications:
-      description: >
-        This type represents attribute modifications for an "Individual alarm"
-        resource, i.e. modifications to a resource representation based on the
-        "Alarm" data type. The attributes of "Alarm" that can be modified
-        are included in the "AlarmModifications" data type.
-      type: object
-      required:
-        - ackState
-      properties:
-        ackState:
-          description: >
-            New value of the "ackState" attribute in "Alarm".
-            Permitted values:
-            * ACKNOWLEDGED
-          type: string
-          enum:
-            - ACKNOWLEDGED
-
-    FmNotificationsFilter:
-      description: >
-        This type represents a subscription filter related to notifications about NFV-MANO functional entity faults.
-        It shall comply with the provisions defined in table 7.6.3.2-1. At a particular nesting level in the filter
-        structure, the following applies: All attributes shall match in order for the filter to match (logical "and"
-        between different filter attributes). If an attribute is an array, the attribute shall match if at least one
-        of the values in the array matches (logical "or" between the values of one filter attribute).
-        * NOTE:	The permitted values of the "notificationTypes" attribute are spelled exactly as the names
-                of the notification types to facilitate automated code generation systems.
-      type: object
-      properties:
-        notificationTypes:
-          description: >
-            Match particular notification types.
-            Permitted values:
-            * AlarmNotification
-            * AlarmClearedNotification
-            * AlarmListRebuiltNotification
-
-            See note.
-          type: array
-          items:
-            type: string
-            enum:
-              - AlarmNotification
-              - AlarmClearedNotification
-              - AlarmListRebuiltNotification
-        perceivedSeverities:
-          description: >
-            Match VNF alarms with a perceived severity listed in this attribute.
-          type: array
-          items:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/PerceivedSeverityType"
-        eventTypes:
-          description: >
-            Match VNF alarms with an event type listed in this attribute.
-          type: array
-          items:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/EventType"
-        probableCauses:
-          description: >
-            Match VNF alarms with a probable cause listed in this attribute.
-          type: array
-          items:
-            type: string
   requestBodies:
     AlarmModifications:
       description: >
@@ -430,7 +332,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/AlarmModifications"
+            $ref: "./components/NFVManoFaultManagement_def.yaml#/components/schemas/AlarmModifications"
       required: true
 
     FmSubscriptionRequest:
@@ -440,7 +342,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/FmSubscriptionRequest"
+            $ref: "./components/NFVManoFaultManagement_def.yaml#/components/schemas/FmSubscriptionRequest"
       required: true
 
   responses:
@@ -533,7 +435,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/AlarmModifications"
+            $ref: "./components/NFVManoFaultManagement_def.yaml#/components/schemas/AlarmModifications"
 
     Subscriptions.Post.201:
       description: >
@@ -571,7 +473,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/FmSubscription"
+            $ref: "./components/NFVManoFaultManagement_def.yaml#/components/schemas/FmSubscription"
     Subscriptions.Post.303:
       description: >
         303 SEE OTHER
@@ -693,7 +595,7 @@ components:
           schema:
             type: array
             items:
-              $ref: "#/components/schemas/FmSubscription"
+              $ref: "./components/NFVManoFaultManagement_def.yaml#/components/schemas/FmSubscription"
 
     Subscription.Get.200:
       description: >
@@ -729,7 +631,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/FmSubscription"
+            $ref: "./components/NFVManoFaultManagement_def.yaml#/components/schemas/FmSubscription"
 
     Subscription.Delete.204:
       description: >

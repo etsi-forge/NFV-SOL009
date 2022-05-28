@@ -20,8 +20,8 @@ info:
   version: 2.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
 
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.5.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.05.01_60/gs_NFV-SOL009v030501p.pdf
+  description: ETSI GS NFV-SOL 009 V3.6.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.06.01_60/gs_NFV-SOL009v030601p.pdf
 
 servers:
   - url: http://127.0.0.1/nfvmanopm/v2
@@ -403,509 +403,6 @@ paths:
           $ref: ../components/SOL009_resp.yaml#/components/responses/504
 
 components:
-  schemas:
-    CreatePmJobRequest:
-      description: >
-        This type represents a request to create a PM job. 
-      type: object
-      required:
-        - objectType
-        - objectInstanceIds
-        - criteria
-        - callbackUri
-      properties:
-        objectType:
-          description: >
-            Type of measured object. The applicable measured object type for a measurement 
-            is defined in clause 8.2 of ETSI GS NFV-IFA 031.
-          type: string
-        objectInstanceIds:
-          description: >
-            Identifiers of the measured object instance for which performance information 
-            is requested to be collected. This attribute shall contain the identifier of 
-            the instance of the measure object according to their type.
-            See also definitions in clause 8.2 of ETSI GS NFV-IFA 031.
-            If more than one identifier is provided, values shall all refer to measured 
-            object instances of the same type, for which the same criteria is then applicable.
-          type: array
-          items:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
-          minItems: 1
-        subObjectInstanceIds:
-          description: >
-            Identifiers of the sub-object instances of the measured object instance for 
-            which performance information is requested to be collected. 
-            May be present if a sub-object is defined in clause 8.2 of ETSI GS NFV-IFA 031
-            for the related measured object type.
-            If this attribute is present, the cardinality of the "objectInstanceIds" 
-            attribute shall be 1.
-            If this attribute is absent and a sub-object is defined in clause 8.2 of 
-            ETSI GS NFV-IFA 031 for the related measured object type, measurements will 
-            be taken for all sub-object instances of the measured object instance.
-          type: array
-          items:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
-        criteria:
-          description: >
-            Criteria of the collection of performance information.
-          $ref: "#/components/schemas/PmJobCriteria"
-        callbackUri:
-          description: >
-            The URI of the endpoint to send the notification to.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
-        authentication:
-          description: >
-            Authentication parameters to configure the use of Authorization when
-            sending notifications corresponding to this subscription, as defined
-            in clause 8.3.4 of ETSI GS NFV-SOL 013.
-
-            This attribute shall only be present if the subscriber requires
-            authorization of notifications.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
-
-    PmJob:
-      description: >
-        This type represents a PM job. 
-      type: object
-      required:
-        - id
-        - objectType
-        - objectInstanceIds
-        - criteria
-        - _links
-        - callbackUri
-      properties:
-        id:
-          description: >
-            Identifier of this PM job.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
-        objectType:
-          description: >
-            Type of measured object. The applicable measured object type for a measurement is 
-            defined in clause 8.2 of ETSI GS NFV-IFA 031.
-          type: string
-        objectInstanceIds:
-          description: >
-            Identifiers of the measured object instance for which performance information 
-            is collected. This attribute shall contain the identifier of the instance of 
-            the measure object according to their type.
-            See also definitions in clause 8.2 of ETSI GS NFV-IFA 031.
-          type: array 
-          items:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
-          minItems: 1
-        subObjectInstanceIds:
-          description: >
-            Identifiers of the sub-object instances of the measured object instance for 
-            which performance information is requested to be collected. 
-            May be present if a sub-object is defined in clause 8.2 of ETSI GS NFV-IFA 031
-            for the related measured object type.
-            If this attribute is present, the cardinality of the "objectInstanceIds" 
-            attribute shall be 1.
-            If this attribute is absent and a sub-object is defined in clause 8.2 of 
-            ETSI GS NFV-IFA 031 for the related measured object type, measurements will 
-            be taken for all sub-object instances of the measured object instance.
-          type: array 
-          items:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
-        criteria:
-          description: >
-            Criteria of the collection of performance information.
-          $ref: "#/components/schemas/PmJobCriteria"
-        callbackUri:
-          description: >
-            The URI of the endpoint to send the notification to.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
-        reports:
-          description: >
-            Information about available reports collected by this PM job.
-          type: array 
-          items:
-            type: object 
-            properties:
-              href:
-                description: >
-                  The Uri where the report can be obtained.
-                $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
-              readyTime:
-                description: >
-                  The time when the report was made available.
-                $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
-              expiryTime:
-                description: >
-                  The time when the report will expire.
-                $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
-              fileSize:
-                description: >
-                  The size of the report file in bytes, if known.
-                $ref: "../components/SOL009_schemas.yaml#/components/schemas/UnsignedInt"
-            required:
-              - href
-              - readyTime
-        _links:
-          description: >
-            Links for this resource.
-          type: object
-          properties:
-            self:
-              description: >
-                  URI of this resource.
-              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
-            objects:
-              description: >
-                Links to resources representing the measured object instances for which 
-                performance information is collected. Shall be present if the measured 
-                object instance information is accessible as a resource.
-              type: array
-              items:
-                $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
-          required:
-            - self
-
-    CreateThresholdRequest :
-      description: >
-        This type represents a request to create a threshold. 
-      type: object
-      required:
-        - objectType
-        - objectInstanceId
-        - criteria
-        - callbackUri
-      properties:
-        objectType:
-          description: >
-            Type of measured object. The applicable measured object type for a measurement 
-            is defined in clause 8.2 of ETSI GS NFV-IFA 031.
-          type: string
-        objectInstanceId:
-          description: >
-            Identifier of the measured object instance associated with this threshold. 
-            This attribute shall contain the identifier of the instance of the measure 
-            object according to their type.
-            See also definitions in clause 8.2 of ETSI GS NFV-IFA 031.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
-        subjObjectInstanceIds:
-          description: >
-            Identifiers of the sub-object instances of the measured object instance 
-            associated with this threshold. 
-            May be present if a sub-object is defined in clause 8.2 of ETSI GS NFV-IFA 031
-            for the related measured object type.
-            If this attribute is absent and a sub-object is defined in clause 8.2 of ETSI 
-            GS NFV-IFA 031 for the related measured object type, thresholds will be set 
-            for all sub-object instances of the measured object instance.
-          type: array
-          items:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
-        criteria:
-          description: >
-            Criteria that define this threshold.
-          $ref: "#/components/schemas/ThresholdCriteria"
-        callbackUri:
-          description: >
-            The URI of the endpoint to send the notification to.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
-        authentication:
-          description: >
-            Authentication parameters to configure the use of Authorization when
-            sending notifications corresponding to this subscription, as defined
-            in clause 8.3.4 of ETSI GS NFV-SOL 013.
-
-            This attribute shall only be present if the subscriber requires
-            authorization of notifications.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
-
-    Threshold:
-      description: >
-        This type represents a threshold.
-      type: object
-      required:
-        - id
-        - objectType
-        - objectInstanceId
-        - subjObjectInstanceIds
-        - criteria
-        - _links
-        - callbackUri
-      properties:
-        id:
-          description: >
-            Identifier of this threshold resource.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
-        objectType:
-          description: >
-            Type of measured object. The applicable measured object type for a measurement 
-            is defined in clause 8.2 of ETSI GS NFV-IFA 031.
-          type: string
-        objectInstanceId:
-          description: >
-            Identifier of the measured object instance associated with the threshold. 
-            This attribute shall contain the identifier of the instance of the measure 
-            object according to their type.
-            See also definitions in clause 8.2 of ETSI GS NFV-IFA 031.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Identifier"
-        subjObjectInstanceIds:
-          description: >
-            Identifiers of the sub-object instances of the measured object instance 
-            associated with this threshold. 
-            May be present if a sub-object is defined in clause 8.2 of ETSI GS NFV-IFA 031
-            for the related measured object type.
-            If this attribute is absent and a sub-object is defined in clause 8.2 of ETSI 
-            GS NFV-IFA 031 for the related measured object type, thresholds are set for 
-            all sub-object instances of the measured object instance.
-          type: array 
-          items:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
-        criteria:
-          description: >
-            Criteria that define this threshold.
-          $ref: "#/components/schemas/ThresholdCriteria"
-        callbackUri:
-          description: >
-            The URI of the endpoint to send the notification to.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
-        _links:
-          description: >
-            Links for this resource.
-          type: object
-          properties:
-            self:
-              description: >
-                URI for this resource.
-              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
-            object:
-              description: >
-                Link to a resource representing the measured object instance for which performance 
-                information is collected. Shall be present if the measured object instance information 
-                is accessible as a resource.
-              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Link"
-          required:
-            - self
-    
-    PerformanceReport:
-      description: >
-        This type defines the format of a performance report provided by the NFV-MANO functional 
-        entity to the API consumer as a result of collecting performance information as part 
-        of a PM job. 
-      type: object
-      required:
-        - entries
-      properties:
-        entries: 
-          description: >
-            List of performance information entries. Each performance report entry is for a given 
-            metric of a given object (i.e. measured object instance) corresponding to the related 
-            measured object types, but can include multiple collected values.
-          type: array
-          items:
-            type: object
-            properties:
-              objectType:
-                description: >
-                  Type of measured object. The applicable measured object type for a measurement is 
-                  defined in clause 8.2 of ETSI GS NFV-IFA 031.
-                type: string
-              objectInstanceId:
-                description: >
-                  The object instance (i.e. measured object instance) for which the performance metric 
-                  is reported. This attribute shall contain the identifier of the instance of the 
-                  measure object according to their type.
-                  See also definitions in clause 8.2 of ETSI GS NFV-IFA 031.
-                $ref: "../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
-              subObjectInstanceId:
-                description: >
-                  Identifier of the sub-object instance of the measured object instance for which the 
-                  performance metric is reported. Shall be present if this is required in clause 8.2 
-                  of ETSI GS NFV-IFA 031 [1] for the related measured object type.
-                $ref: "../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
-              performanceMetric:
-                description: >
-                  Name of the metric collected. This attribute shall contain the related 
-                  "Measurement Name" value as defined in clause 8.4 of ETSI GS NFV-IFA 031.
-                type: string
-              performanceValues:
-                description: >
-                  List of performance values with associated timestamp.
-                type: array
-                items:
-                  type: object
-                  properties:
-                    timeStamp:
-                      description: >
-                        Time stamp indicating when the data was collected.
-                      $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
-                    value:
-                      description: >
-                        Value of the metric collected. The type of this attribute shall correspond to 
-                        the related "Measurement Unit" as defined in clause 8.4 of ETSI GS NFV-IFA 031.
-                    context:
-                      description: >
-                        Measurement context information related to the measured value. The set of 
-                        applicable keys is defined per measurement in clause 8.4 of ETSI GS NFV-IFA 031.
-                      $ref: "../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
-                  required:
-                    - timeStamp
-                    - value
-                minItems: 1
-            required:
-              - objectType
-              - objectInstanceId
-              - performanceMetric
-              - performanceValues
-          minItems: 1
-
-    PmJobModifications:
-      description: >
-        This type represents modifications to a PM job.
-        * NOTE: At least one of the attributes defined in this type shall be present in request bodies.
-      type: object
-      properties:
-        callbackUri:
-          description: >
-            New value of the "callbackUri" attribute.The value "null" is not permitted. See note.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
-        authentication:
-          description: >
-            New value of the "authentication" attribute, or "null" to remove the attribute.
-            If present in a request body, these modifications shall be applied according
-            to the rules of JSONMerge PATCH (see IETF RFC 7396).
-
-            This attribute shall not be present in response bodies. See note.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
-
-    ThresholdModifications:
-      description: >
-        This type represents modifications to a threshold.
-        * NOTE: At least one of the attributes defined in this type shall be present in request bodies.
-      type: object
-      properties:
-        callbackUri:
-          description: >
-            New value of the "callbackUri" attribute.The value "null" is not permitted. See note.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/Uri"
-        authentication:
-          description: >
-            New value of the "authentication" attribute, or "null" to remove the attribute.
-            If present in a request body, these modifications shall be applied according
-            to the rules of JSONMerge PATCH (see IETF RFC 7396).
-
-            This attribute shall not be present in response bodies. See note.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
-
-    #----------
-
-    PmJobCriteria:
-      description: >
-        This type represents collection criteria for PM jobs.
-        * NOTE 1:	At the end of each reportingPeriod, the producer will inform the API consumer about availability
-                    of the performance data collected for each completed collection period during this reportingPeriod.
-                    The reportingPeriod should be equal to or a multiple of the collectionPeriod. In the latter case,
-                    the performance data for the collection periods within one reporting period are reported together.
-        * NOTE 2:	In particular when choosing short collection and reporting periods, the number of PM jobs that can
-                    be supported depends on the capability of the producing entity.
-      type: object
-      required:
-        - collectionPeriod
-        - reportingPeriod
-      properties:
-        performanceMetric: 
-          description: >
-            This defines the types of performance metrics for the specified measured 
-            object(s). This attribute’s value shall contain the related "Measurement Name" 
-            values as defined in clause 8.4 of ETSI GS NFV-IFA 031. 
-            At least one of the two attributes (performance metric or group) shall be present.
-          type: array
-          items:
-            type: string
-        performanceMetricGroup:
-          description: >
-            Group of performance metrics.
-            A metric group is a pre-defined list of metrics, known to the producer that it 
-            can decompose to individual metrics. This attribute’s value shall contain the 
-            related "Measurement Group" values as defined in clause 8.4 of ETSI GS 
-            NFV-IFA 031.
-            At least one of the two attributes (performance metric or group) shall be present.
-          type: array
-          items:
-            type: string
-        collectionPeriod:
-          description: >
-            Specifies the periodicity at which the producer will collect performance 
-            information. The unit shall be seconds. See note 1 and note 2.
-          type: integer
-        reportingPeriod:
-          description: >
-            Specifies the periodicity at which the producer will report to the API consumer 
-            about performance information. The unit shall be seconds. See note 1 and note 2.
-          type: integer
-        reportingBoundary:
-          description: >
-            Identifies a time boundary after which the reporting will stop.
-            The boundary shall allow a single reporting as well as periodic reporting up to 
-            the boundary.
-          $ref: "../components/SOL009_schemas.yaml#/components/schemas/DateTime"
-
-    ThresholdCriteria:
-      description: >
-        This type represents criteria that define a threshold.
-        * NOTE 1:	In the present document, simple thresholds are defined. The definition of additional threshold
-                    types is left for future specification.
-        * NOTE 2:	The hysteresis is defined to prevent storms of threshold crossing notifications.
-                    When processing a request to create a threshold, implementations should enforce a suitable minimum
-                    value for this attribute (e.g. override the value or reject the request).
-      type: object
-      required:
-        - performanceMetric
-        - thresholdType
-      properties:
-        performanceMetric:
-          description: >
-            Defines the performance metric associated with the threshold. 
-            This attribute’s value shall contain the related "Measurement Name" values 
-            as defined in clause 8.4 of ETSI GS NFV-IFA 031 
-          type: string
-        thresholdType:
-          description: >
-            Type of threshold. This attribute determines which other attributes are 
-            present in the data structure.
-            Permitted values:
-              - SIMPLE: Single-valued static threshold
-            
-            In the present document, simple thresholds are defined. The definition 
-            of additional threshold types is left for future specification.
-          type: string
-          enum:
-            - SIMPLE
-        simpleThresholdDetails:
-          description: >
-            Details of a simple threshold. Shall be present if thresholdType="SIMPLE".
-          type: object
-          properties:
-            thresholdValue:
-              description: >
-                The threshold value. Shall be represented as a floating point number. 
-              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Number"
-            hysteresis:
-              description: >
-                The hysteresis of the threshold. 
-                Shall be represented as a non-negative floating point number.
-                A notification with crossing direction "UP" will be generated if the 
-                measured value reaches or exceeds "thresholdValue" + "hysteresis". 
-                A notification with crossing direction "DOWN" will be generated if 
-                the measured value reaches or undercuts "thresholdValue" - "hysteresis". 
-
-                The hysteresis is defined to prevent storms of threshold crossing notifications.
-                When processing a request to create a threshold, implementations should enforce 
-                a suitable minimum value for this attribute (e.g. override the value or reject 
-                the request). 
-              $ref: "../components/SOL009_schemas.yaml#/components/schemas/Number"
-          required: 
-            - thresholdValue
-            - hysteresis
-
-    #----------------
-    # common types to SOL009
-    #----------------
-
   responses:
     pm_jobs.Post.201:
       description: >
@@ -934,7 +431,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PmJob"
+            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/PmJob"
     pm_jobs.Post.422:
       description: >
         422 Unprocessable Entity
@@ -1017,7 +514,7 @@ components:
           schema:
             type: array
             items:
-              $ref: "#/components/schemas/PmJob"
+              $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/PmJob"
     pm_jobs.Get.400:
       description: >
         400 BAD REQUEST
@@ -1077,7 +574,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PmJob"
+            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/PmJob"
     IndividualPmJob.Patch.200:
       description: >
         200 OK
@@ -1101,7 +598,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PmJobModifications"
+            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/PmJobModifications"
     IndividualPmJob.Patch.412:
       description: >
         412 PRECONDITION FAILED
@@ -1213,7 +710,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/PerformanceReport"
+            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/PerformanceReport"
 
     Thresholds.Post.201:
       description: >
@@ -1252,7 +749,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Threshold"
+            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/Threshold"
     Thresholds.Post.422:
       description: >
         422 Unprocessable Entity
@@ -1325,7 +822,7 @@ components:
           schema:
             type: array
             items:
-              $ref: "#/components/schemas/Threshold"
+              $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/Threshold"
     Thresholds.Get.400:
       description: >
         400 BAD REQUEST
@@ -1382,7 +879,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Threshold"
+            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/Threshold"
 
     Threshold.Patch.200:
       description: >
@@ -1407,7 +904,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/ThresholdModifications"
+            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/ThresholdModifications"
     Threshold.Patch.412:
       description: >
         412 PRECONDITION FAILED
@@ -1541,7 +1038,7 @@ components:
         structure in the response body if this parameter is provided, or none of 
         the parameters "all_fields," "fields", "exclude_fields", "exclude_default" 
         are provided:
-        - none
+        - reports
       in: query
       required: false
       schema:
@@ -1581,7 +1078,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/CreatePmJobRequest"
+            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/CreatePmJobRequest"
       required: true
 
     CreateThresholdRequest:
@@ -1590,7 +1087,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/CreateThresholdRequest"
+            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/CreateThresholdRequest"
       required: true
 
     ThresholdModificationRequest:
@@ -1602,7 +1099,7 @@ components:
       content:
         application/merge-patch+json:
           schema:
-            $ref: "#/components/schemas/ThresholdModifications"
+            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/ThresholdModifications"
       required: true
 
     PmJobModificationRequest:
@@ -1614,5 +1111,5 @@ components:
       content:
         application/merge-patch+json:
           schema:
-            $ref: "#/components/schemas/PmJobModifications"
+            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/PmJobModifications"
       required: true
