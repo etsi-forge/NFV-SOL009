@@ -12,7 +12,7 @@ RUN apk add asciidoctor
 RUN apk add openjdk8
 RUN apk add ca-certificates wget && update-ca-certificates 
 RUN apk add openssl
-RUN gem install rdoc --pre || gem install rdoc --pre
+RUN gem install rdoc -v 6.3.3 || gem install rdoc -v 6.3.3
 RUN gem install asciidoctor-pdf-cjk
 RUN wget https://forge.etsi.org/swagger2markup-cli-1.3.2.jar
 RUN npm config set proxy $http_proxy
