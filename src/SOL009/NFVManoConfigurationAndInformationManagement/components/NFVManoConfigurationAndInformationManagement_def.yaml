@@ -10,6 +10,7 @@ components:
                     entity is specified by the manoServices attribute.
         *  NOTE 5:	It is optional for the API producer to support the "manoEntityComponents" attribute.
         *  NOTE 6:	It shall be present when "type" attribute is "WIM", and it shall be absent in any other case.
+        *  NOTE 7:	It shall be present when "type" attribute is "CISM", and it shall be absent in any other case. 
       type: object
       required:
         - id
@@ -54,6 +55,13 @@ components:
           description: >
             The version of the software of the NFV-MANO functional entity.
           $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Version"
+        softwareInfo:
+          description: >
+            Additional information about the software used to realize the NFV-MANO 
+            functional entity. For instance, the attribute can provide information 
+            about sourced software and corresponding release(s) used to build the 
+            entity’s software. 
+          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
         manoEntityComponents:
           description: >
             The deployed NFV-MANO functional entity components which realize the
@@ -113,6 +121,11 @@ components:
           description: >
             The information specific to a WIM entity. See notes 4 and note 6.
           $ref: "#/components/schemas/WimSpecificInfo"
+        cismSpecificInfo:
+          description: >
+           The information specific to a CISM entity, See notes 4 and 7. 
+          $ref: "#/components/schemas/CismSpecificInfo"
+
         _links:
           description: >
             Links to resources related to this resource.
@@ -139,6 +152,18 @@ components:
             changeStateOpOccs:
               description: Link to the "Change state operation occurrences" resource.
               $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Link"
+
+    CismSpecificInfo:
+      description: >
+        This type represents information attributes specific to a CISM entity, and that 
+        can be relevant to more than one NFV-MANO service offered by a CISM entity. It 
+        shall comply with the provisions defined in table 5.6.3.14-1. 
+        NOTE:	No attributes are specified in the present document version. The definition of attributes is left for future specification. 
+      type: object
+      properties:
+        none:
+          type: object 
+      
 
     ManoConfigModificationRequest:
       description: >
@@ -1135,7 +1160,7 @@ components:
             List of supported image container formats. Container format indicates whether a
             software image is in a file that also contains metadata about the actual software.
             Valid values are all values for "container_format" as defined in ETSI GS NFV-SOL 001
-            [i.16] and all values for "container-format" as defined in ETSI GS NFV-SOL 006 [i.17].
+            [16] and all values for "container-format" as defined in ETSI GS NFV-SOL 006 [i.17].
           type: array
           items:
             type: string
@@ -1721,12 +1746,14 @@ components:
           - VNFM	The NFV-MANO functional entity is a VNFM.
           - VIM	    The NFV-MANO functional entity is a VIM.
           - WIM     The NFV-MANO functional entity is a WIM.
+          - CISM  The NFV-MANO functional entity is a CISM. 
       type: string
       enum:
         - NFVO
         - VNFM
         - VIM
         - WIM
+        - CISM
 
     PeerEntityEnumType:
       description: >
@@ -1737,6 +1764,7 @@ components:
         - VNFM	The peer functional entity is a VNFM.
         - VIM	  The peer functional entity is a VIM.
         - WIM	  The peer functional entity is a WIM.
+        - CISM   The peer functional entity is a CISM. 
         - EM	  The peer functional entity is an EM.
         - OSS	  The peer functional entity is an OSS/BSS.
       type: string
@@ -1745,6 +1773,7 @@ components:
         - VNFM
         - VIM
         - WIM
+        - CISM
         - EM
         - OSS
 
