@@ -3,13 +3,6 @@
 endpoints:
   api_versions:
     parameters:
-      - name: Version
-        description: >
-          Version of the API requested to use when responding to this request.
-        in: header
-        required: false
-        schema:
-          type: string
       - name: Authorization
         description: >-
           The authorization token for the request. Reference: IETF RFC 7235
