@@ -986,7 +986,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../definitions/SOL009_def.yaml#/definition/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
     ManoEntity.Patch.412:
       description: >
         412 PRECONDITION FAILED
@@ -1015,7 +1015,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../definitions/SOL009_def.yaml#/definition/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
 
     ChangeState.Post.202:
       description: >
@@ -1077,7 +1077,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../definitions/SOL009_def.yaml#/definition/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
 
     ManoInterfaces.Get.200:
       description: >
@@ -1159,7 +1159,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../definitions/SOL009_def.yaml#/definition/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
 
     IndividualManoInterface.Get.200:
       description: >
@@ -1243,7 +1243,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../definitions/SOL009_def.yaml#/definition/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
     IndividualManoInterface.Patch.412:
       description: >
         412 PRECONDITION FAILED
@@ -1273,7 +1273,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../definitions/SOL009_def.yaml#/definition/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
 
     ManoInterfaceChangeState.Post.202:
       description: >
@@ -1337,7 +1337,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../definitions/SOL009_def.yaml#/definition/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
 
     Subscriptions.Post.201:
       description: >
@@ -1445,7 +1445,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../definitions/SOL009_def.yaml#/definition/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
 
     Subscriptions.Get.200:
       description: >
@@ -1523,7 +1523,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../definitions/SOL009_def.yaml#/definition/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
 
     Subscription.Get.200:
       description: >
@@ -1653,7 +1653,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../definitions/SOL009_def.yaml#/definition/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
 
     IndividualChangeStateOpOcc.Get.200:
       description: >
@@ -1800,7 +1800,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../definitions/SOL009_def.yaml#/definition/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
 
     IndividualPeerEntity.Get.200:
       description: >
@@ -1882,7 +1882,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../definitions/SOL009_def.yaml#/definition/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
     IndividualPeerEntity.Patch.412:
       description: >
         412 PRECONDITION FAILED
@@ -1911,7 +1911,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../definitions/SOL009_def.yaml#/definition/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
     IndividualPeerEntity.Delete.204:
       description: >
         204 NO CONTENT
@@ -1961,7 +1961,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../definitions/SOL009_def.yaml#/definition/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
     IndividualPeerEntity.Delete.412:
       description: >
         412 PRECONDITION FAILED
@@ -1990,6 +1990,6 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../definitions/SOL009_def.yaml#/definition/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
     
   #callbacks:
