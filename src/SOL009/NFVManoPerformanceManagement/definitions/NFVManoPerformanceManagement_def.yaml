@@ -1,4 +1,4 @@
-components:
+definitions:
   schemas:
     CreatePmJobRequest:
       description: >
@@ -25,7 +25,7 @@ components:
             object instances of the same type, for which the same criteria is then applicable.
           type: array
           items:
-            $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+            $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
           minItems: 1
         subObjectInstanceIds:
           description: >
@@ -40,15 +40,15 @@ components:
             be taken for all sub-object instances of the measured object instance.
           type: array
           items:
-            $ref: "../../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
+            $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/IdentifierInManoEntity"
         criteria:
           description: >
             Criteria of the collection of performance information.
-          $ref: "#/components/schemas/PmJobCriteria"
+          $ref: "#/definitions/schemas/PmJobCriteria"
         callbackUri:
           description: >
             The URI of the endpoint to send the notification to.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
         authentication:
           description: >
             Authentication parameters to configure the use of Authorization when
@@ -57,7 +57,7 @@ components:
 
             This attribute shall only be present if the subscriber requires
             authorization of notifications.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/SubscriptionAuthentication"
 
     PmJob:
       description: >
@@ -74,7 +74,7 @@ components:
         id:
           description: >
             Identifier of this PM job.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         objectType:
           description: >
             Type of measured object. The applicable measured object type for a measurement is
@@ -88,7 +88,7 @@ components:
             See also definitions in clause 8.2 of ETSI GS NFV-IFA 031.
           type: array
           items:
-            $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+            $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
           minItems: 1
         subObjectInstanceIds:
           description: >
@@ -103,15 +103,15 @@ components:
             be taken for all sub-object instances of the measured object instance.
           type: array
           items:
-            $ref: "../../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
+            $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/IdentifierInManoEntity"
         criteria:
           description: >
             Criteria of the collection of performance information.
-          $ref: "#/components/schemas/PmJobCriteria"
+          $ref: "#/definitions/schemas/PmJobCriteria"
         callbackUri:
           description: >
             The URI of the endpoint to send the notification to.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
         reports:
           description: >
             Information about available reports collected by this PM job.
@@ -122,19 +122,19 @@ components:
               href:
                 description: >
                   The Uri where the report can be obtained.
-                $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
               readyTime:
                 description: >
                   The time when the report was made available.
-                $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/DateTime"
               expiryTime:
                 description: >
                   The time when the report will expire.
-                $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/DateTime"
               fileSize:
                 description: >
                   The size of the report file in bytes, if known.
-                $ref: "../../components/SOL009_schemas.yaml#/components/schemas/UnsignedInt"
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/UnsignedInt"
             required:
               - href
               - readyTime
@@ -146,7 +146,7 @@ components:
             self:
               description: >
                 URI of this resource.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Link"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Link"
             objects:
               description: >
                 Links to resources representing the measured object instances for which
@@ -154,7 +154,7 @@ components:
                 object instance information is accessible as a resource.
               type: array
               items:
-                $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Link"
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Link"
           required:
             - self
 
@@ -179,7 +179,7 @@ components:
             This attribute shall contain the identifier of the instance of the measure
             object according to their type.
             See also definitions in clause 8.2 of ETSI GS NFV-IFA 031.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         subjObjectInstanceIds:
           description: >
             Identifiers of the sub-object instances of the measured object instance
@@ -191,15 +191,15 @@ components:
             for all sub-object instances of the measured object instance.
           type: array
           items:
-            $ref: "../../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
+            $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/IdentifierInManoEntity"
         criteria:
           description: >
             Criteria that define this threshold.
-          $ref: "#/components/schemas/ThresholdCriteria"
+          $ref: "#/definitions/schemas/ThresholdCriteria"
         callbackUri:
           description: >
             The URI of the endpoint to send the notification to.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
         authentication:
           description: >
             Authentication parameters to configure the use of Authorization when
@@ -208,7 +208,7 @@ components:
 
             This attribute shall only be present if the subscriber requires
             authorization of notifications.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/SubscriptionAuthentication"
 
     Threshold:
       description: >
@@ -226,7 +226,7 @@ components:
         id:
           description: >
             Identifier of this threshold resource.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         objectType:
           description: >
             Type of measured object. The applicable measured object type for a measurement
@@ -238,7 +238,7 @@ components:
             This attribute shall contain the identifier of the instance of the measure
             object according to their type.
             See also definitions in clause 8.2 of ETSI GS NFV-IFA 031.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         subjObjectInstanceIds:
           description: >
             Identifiers of the sub-object instances of the measured object instance
@@ -250,15 +250,15 @@ components:
             all sub-object instances of the measured object instance.
           type: array
           items:
-            $ref: "../../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
+            $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/IdentifierInManoEntity"
         criteria:
           description: >
             Criteria that define this threshold.
-          $ref: "#/components/schemas/ThresholdCriteria"
+          $ref: "#/definitions/schemas/ThresholdCriteria"
         callbackUri:
           description: >
             The URI of the endpoint to send the notification to.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
         _links:
           description: >
             Links for this resource.
@@ -267,13 +267,13 @@ components:
             self:
               description: >
                 URI for this resource.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Link"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Link"
             object:
               description: >
                 Link to a resource representing the measured object instance for which performance
                 information is collected. Shall be present if the measured object instance information
                 is accessible as a resource.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Link"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Link"
           required:
             - self
 
@@ -306,13 +306,13 @@ components:
                   is reported. This attribute shall contain the identifier of the instance of the
                   measure object according to their type.
                   See also definitions in clause 8.2 of ETSI GS NFV-IFA 031.
-                $ref: "../../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/ManoManagedObjectReference"
               subObjectInstanceId:
                 description: >
                   Identifier of the sub-object instance of the measured object instance for which the
                   performance metric is reported. Shall be present if this is required in clause 8.2
                   of ETSI GS NFV-IFA 031 [1] for the related measured object type.
-                $ref: "../../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/IdentifierInManoEntity"
               performanceMetric:
                 description: >
                   Name of the metric collected. This attribute shall contain the related
@@ -328,7 +328,7 @@ components:
                     timeStamp:
                       description: >
                         Time stamp indicating when the data was collected.
-                      $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+                      $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/DateTime"
                     value:
                       description: >
                         Value of the metric collected. The type of this attribute shall correspond to
@@ -337,7 +337,7 @@ components:
                       description: >
                         Measurement context information related to the measured value. The set of
                         applicable keys is defined per measurement in clause 8.4 of ETSI GS NFV-IFA 031.
-                      $ref: "../../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+                      $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"
                   required:
                     - timeStamp
                     - value
@@ -358,7 +358,7 @@ components:
         callbackUri:
           description: >
             New value of the "callbackUri" attribute.The value "null" is not permitted. See note.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
         authentication:
           description: >
             New value of the "authentication" attribute, or "null" to remove the attribute.
@@ -366,7 +366,7 @@ components:
             to the rules of JSONMerge PATCH (see IETF RFC 7396).
 
             This attribute shall not be present in response bodies. See note.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/SubscriptionAuthentication"
 
     ThresholdModifications:
       description: >
@@ -377,7 +377,7 @@ components:
         callbackUri:
           description: >
             New value of the "callbackUri" attribute.The value "null" is not permitted. See note.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
         authentication:
           description: >
             New value of the "authentication" attribute, or "null" to remove the attribute.
@@ -385,7 +385,7 @@ components:
             to the rules of JSONMerge PATCH (see IETF RFC 7396).
 
             This attribute shall not be present in response bodies. See note.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/SubscriptionAuthentication"
 
     #----------
 
@@ -438,7 +438,7 @@ components:
             Identifies a time boundary after which the reporting will stop.
             The boundary shall allow a single reporting as well as periodic reporting up to
             the boundary.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/DateTime"
 
     ThresholdCriteria:
       description: >
@@ -479,7 +479,7 @@ components:
             thresholdValue:
               description: >
                 The threshold value. Shall be represented as a floating point number.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Number"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Number"
             hysteresis:
               description: >
                 The hysteresis of the threshold.
@@ -493,7 +493,7 @@ components:
                 When processing a request to create a threshold, implementations should enforce
                 a suitable minimum value for this attribute (e.g. override the value or reject
                 the request).
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Number"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Number"
           required:
             - thresholdValue
             - hysteresis

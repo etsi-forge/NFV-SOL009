@@ -1,4 +1,4 @@
-components:
+definitions:
   schemas:
     ManoEntity:
       description: >
@@ -29,11 +29,11 @@ components:
             the initial deployment of the NFV-MANO functional entity and its value allocated
             based on network operator policies. The value of this identifier shall be unique
             at least in the scope of the NFV-MANO deployment.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         type:
           description: >
             Type of NFV-MANO functional entity.
-          $ref: "#/components/schemas/ManoEntityEnumType"
+          $ref: "#/definitions/schemas/ManoEntityEnumType"
         name:
           description: >
             Human-readable name of the NFV-MANO functional entity.
@@ -54,21 +54,21 @@ components:
         softwareVersion:
           description: >
             The version of the software of the NFV-MANO functional entity.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Version"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Version"
         softwareInfo:
           description: >
             Additional information about the software used to realize the NFV-MANO 
             functional entity. For instance, the attribute can provide information 
             about sourced software and corresponding release(s) used to build the 
             entity’s software. 
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"
         manoEntityComponents:
           description: >
             The deployed NFV-MANO functional entity components which realize the
             NFV-MANO functional entity. See note 5.
           type: array
           items:
-            $ref: "#/components/schemas/ManoEntityComponent"
+            $ref: "#/definitions/schemas/ManoEntityComponent"
             minItems: 0
         manoServices:
           description: >
@@ -76,14 +76,14 @@ components:
             functional entity.
           type: array
           items:
-            $ref: "#/components/schemas/ManoService"
+            $ref: "#/definitions/schemas/ManoService"
             minItems: 1
         manoConfigurableParams:
           description: >
             Information and current values of the configurable parameters.
 
             This attribute can be modified with the PATCH method.
-          $ref: "#/components/schemas/ManoConfigurableParams"
+          $ref: "#/definitions/schemas/ManoConfigurableParams"
         manoApplicationState:
           description: >
             Information and current values of the NFV-MANO functional entity’s application state.
@@ -96,35 +96,35 @@ components:
             operationalState:
               description: >
                 The operational state of the NFV-MANO functional entity application.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/OperationalStateEnumType"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/OperationalStateEnumType"
             administrativeState:
               description: >
                 The administrative state of the NFV-MANO functional entity application.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/AdministrativeStateEnumType"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/AdministrativeStateEnumType"
             usageState:
               description: >
                 The usage state of the NFV-MANO functional entity application.
-              $ref: "#/components/schemas/UsageStateEnumType"
+              $ref: "#/definitions/schemas/UsageStateEnumType"
         nfvoSpecificInfo:
           description: >
             The information specific to an NFVO entity. See note 1 and not 4.
-          $ref: "#/components/schemas/NfvoSpecificInfo"
+          $ref: "#/definitions/schemas/NfvoSpecificInfo"
         vnfmSpecificInfo:
           description: >
             The information specific to a VNFM entity. See note 2 and not 4.
-          $ref: "#/components/schemas/VnfmSpecificInfo"
+          $ref: "#/definitions/schemas/VnfmSpecificInfo"
         vimSpecificInfo:
           description: >
             The information specific to an VIM entity. See note 3 and not 4.
-          $ref: "#/components/schemas/VimSpecificInfo"
+          $ref: "#/definitions/schemas/VimSpecificInfo"
         wimSpecificInfo:
           description: >
             The information specific to a WIM entity. See notes 4 and note 6.
-          $ref: "#/components/schemas/WimSpecificInfo"
+          $ref: "#/definitions/schemas/WimSpecificInfo"
         cismSpecificInfo:
           description: >
            The information specific to a CISM entity, See notes 4 and 7. 
-          $ref: "#/components/schemas/CismSpecificInfo"
+          $ref: "#/definitions/schemas/CismSpecificInfo"
 
         _links:
           description: >
@@ -139,19 +139,19 @@ components:
           properties:
             self:
               description: URI of this resource.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Link"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Link"
             manoServiceInterfaces:
               description: Link to the "NFV-MANO service interfaces" resource.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Link"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Link"
             peerEntities:
               description: Link to "Peer entities" resource.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Link"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Link"
             changeState:
               description: Link to the "Change state" task resource.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Link"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Link"
             changeStateOpOccs:
               description: Link to the "Change state operation occurrences" resource.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Link"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Link"
 
     CismSpecificInfo:
       description: >
@@ -188,17 +188,17 @@ components:
             (see IETF RFC 7396).
           type: object
           additionalProperties:
-            $ref: "#/components/schemas/ClockSyncInfo"
+            $ref: "#/definitions/schemas/ClockSyncInfo"
         defaultLogCompileBySizeValue:
           description: >
             New value of the "defaultLogCompileBySizeValue" attribute in the
             "ManoEntityConfigurableParams".
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/UnsignedInt"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/UnsignedInt"
         defaultLogCompileByTimerValue:
           description: >
             New value of the "defaultLogCompileByTimerValue" attribute in the
             "ManoEntityConfigurableParams".
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/UnsignedInt"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/UnsignedInt"
         manoServiceModifications:
           description: >
             New content of certain entries in the "manoServices" attribute array
@@ -226,7 +226,7 @@ components:
               id:
                 description: >
                   Identifier of the NFV-MANO service to modify.
-                $ref: "../../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/IdentifierInManoEntity"
               name:
                 description: >
                   New value for the "name" attribute in the "ManoService". See note.
@@ -260,19 +260,19 @@ components:
             "ManoEntityConfigurableParams", as defined in clause 5.6.2.3.
           type: object
           additionalProperties:
-            $ref: "#/components/schemas/ClockSyncInfo"
+            $ref: "#/definitions/schemas/ClockSyncInfo"
         defaultLogCompileBySizeValue:
           description: >
             If present, this attribute signals modifications of the
             "defaultLogCompileBySizeValue" attribute in the
             "ManoEntityConfigurableParams".
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/UnsignedInt"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/UnsignedInt"
         defaultLogCompileByTimerValue:
           description: >
             If present, this attribute signals modifications of the
             "defaultLogCompileByTimerValue" attribute in the
             "ManoEntityConfigurableParams".
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/UnsignedInt"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/UnsignedInt"
         manoServiceModifications:
           description: >
             If present, this attribute signals modifications of the "manoServices"
@@ -284,7 +284,7 @@ components:
               id:
                 description: >
                   Identifier of the NFV-MANO service that has been modified.
-                $ref: "../../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/IdentifierInManoEntity"
               name:
                 description: >
                   If present, this attribute signals modification of the "name"
@@ -311,11 +311,11 @@ components:
             Filter settings for this subscription, to define the subset of all
             notifications this subscription relates to. A particular notification
             is sent to the subscriber if the filter matches, or if there is no filter.
-          $ref: "#/components/schemas/CimNotificationsFilter"
+          $ref: "#/definitions/schemas/CimNotificationsFilter"
         callbackUri:
           description: >
             The URI of the endpoint to send the notification to.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
         authentication:
           description: >
             Authentication parameters to configure the use of Authorization when
@@ -324,7 +324,7 @@ components:
 
             This attribute shall only be present if the subscriber requires
             authorization of notifications.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/SubscriptionAuthentication"
 
     CimSubscription:
       description: >
@@ -339,17 +339,17 @@ components:
         id:
           description: >
             Identifier that identifies the subscription
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         filter:
           description: >
             Filter settings for this subscription, to define the subset of all
             notifications this subscription relates to. A particular notification
             is sent to the subscriber if the filter matches, or if there is no filter.
-          $ref: "#/components/schemas/CimNotificationsFilter"
+          $ref: "#/definitions/schemas/CimNotificationsFilter"
         callbackUri:
           description: >
             The URI of the endpoint to send the notification to.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
         _links:
           description: >
             Links to resources related to this resource.
@@ -358,7 +358,7 @@ components:
             self:
               description: >
                 URI of this resource.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Link"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Link"
           required:
             - self
 
@@ -385,11 +385,11 @@ components:
                 The desired operation state to change the managed object to. In case of
                 changing the state of an NFV-MANO service interface the value
                 "RESTART" shall not be used.
-              $ref: "#/components/schemas/ChangeOperationalStateEnumType"
+              $ref: "#/definitions/schemas/ChangeOperationalStateEnumType"
             stopType:
               description: >
                 It signals the type of stop. See note 2.
-              $ref: "#/components/schemas/StopEnumType"
+              $ref: "#/definitions/schemas/StopEnumType"
             gracefulStopTimeout:
               description: >
                 The time internal (in seconds) to wait for the entity to be taken out
@@ -409,7 +409,7 @@ components:
             administrativeStateAction:
               description: >
                 The desired administrative state to change the managed object to.
-              $ref: "#/components/schemas/ChangeAdministrativeStateEnumType"
+              $ref: "#/definitions/schemas/ChangeAdministrativeStateEnumType"
 
     ChangeStateOpOcc:
       description: >
@@ -425,37 +425,37 @@ components:
         id:
           description: >
             Identifier of this change state operation occurrence.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         operationState:
           description: >
             The state of the "change state operation occurrence".
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/ChangeStateOpOccStateEnumType"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/ChangeStateOpOccStateEnumType"
         stateEnteredTime:
           description: >
             Date-time when the current state was entered.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/DateTime"
         startTime:
           description: >
             Date-time of the start of the operation.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/DateTime"
         managedObjectRef:
           description: >
             Reference of the managed object to which the change state operation
             occurrence relates. The value of the "type" attribute shall be
             "MANO_ENTITY" or "MANO_SERVICE_IF".
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/ManoManagedObjectReference"
         changeOperationalStateRequest:
           description: >
             The type of the change of operational state that was requested. Shall
             be present if the change of state operation triggered a change of
             operational state.
-          $ref: "#/components/schemas/ChangeOperationalStateEnumType"
+          $ref: "#/definitions/schemas/ChangeOperationalStateEnumType"
         changeAdministrativeStateRequest:
           description: >
             The type of the change of administrative state that was requested. Shall
             be present if the change of state operation triggered a change of
             administrative state.
-          $ref: "#/components/schemas/ChangeAdministrativeStateEnumType"
+          $ref: "#/definitions/schemas/ChangeAdministrativeStateEnumType"
         operationParams:
           description: >
             Input parameters of the change state operation. This attribute shall be
@@ -502,7 +502,7 @@ components:
         id:
           description: >
             Identifier of the NFV-MANO functional entity interface.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/IdentifierInManoEntity"
         name:
           description: >
             Human-readable name of the NFV-MANO functional entity interface.
@@ -517,16 +517,16 @@ components:
         standardVersion:
           description: >
             Version of the standard the interface is compliant to. See note 1.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Version"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Version"
         providerSpecificApiVersion:
           description: >
             Provider-specific software API version.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Version"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Version"
         apiVersion:
           description: >
             API version, in compliance with the version identifiers and parameters
             format specified in clause 9.1 of ETSI GS NFV-SOL 013.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Version"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Version"
         apiEndpoint:
           description: >
             Exposed API endpoint of the interface.
@@ -540,7 +540,7 @@ components:
                 (see also clause 4.1 of ETSI GS NFV-SOL 013). May be present otherwise.
 
                 This attribute can be modified with the PATCH method.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
             apiName:
               description: >
                 Indicates the interface name in an abbreviated form. Shall be present
@@ -565,7 +565,7 @@ components:
                 APIs specified by ETSI NFV, this attribute shall not be modified. Instead,
                 changes are handled indirectly via patching of the "apiRoot" attribute’s
                 value.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
           required:
             - apiUri
         maxConcurrentIntOpNumber:
@@ -597,15 +597,15 @@ components:
             operationalState:
               description: >
                 The operational state of the NFV-MANO service interface.
-              $ref: "#/components/schemas/InterfaceOperationalStateEnumType"
+              $ref: "#/definitions/schemas/InterfaceOperationalStateEnumType"
             administrativeState:
               description: >
                 The administrative state of the NFV-MANO service interface.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/AdministrativeStateEnumType"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/AdministrativeStateEnumType"
             usageState:
               description: >
                 The usage state of the NFV-MANO service interface.
-              $ref: "#/components/schemas/UsageStateEnumType"
+              $ref: "#/definitions/schemas/UsageStateEnumType"
           required:
             - operationalState
             - administrativeState
@@ -615,14 +615,14 @@ components:
             Security related information.
 
             This attribute can be modified with the PATCH method. See note 3.
-          $ref: "#/components/schemas/ServerInterfaceSecurityInfo"
+          $ref: "#/definitions/schemas/ServerInterfaceSecurityInfo"
         metadata:
           description: >
             Additional attributes that provide metadata describing the NFV-MANO
             service interface.
             These attributes can be created, modified or removed with the PATCH
             method.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"
 
     ManoServiceInterfaceModificationRequest:
       description: >
@@ -646,23 +646,23 @@ components:
         apiRoot:
           description: >
             New value of the "apiRoot" attribute in "ManoServiceInterface". See note 2.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
         apiUri:
           description: >
             New value of the "apiUri" attribute in "ManoServiceInterface". See note 2.
 
             Shall not be provided if a change of "apiRoot" is present in the request.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
         securityInfo:
           description: >
             New value of the "securityInfo" attribute in "ManoServiceInterface". See note 3.
-          $ref: "#/components/schemas/ServerInterfaceSecurityInfo"
+          $ref: "#/definitions/schemas/ServerInterfaceSecurityInfo"
         metadata:
           description: >
             Modifications of the "metadata" attribute in "ManoServiceInterface".
             If present, these modifications shall be applied according to the rules
             of JSON Merge PATCH (see IETF RFC 7396).
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"
 
     ManoServiceInterfaceModifications:
       description: >
@@ -688,22 +688,22 @@ components:
           description: >
             If present, this attribute signals modifications of the "apiRoot" attribute
             in "ManoServiceInterface", as defined in clause 5.6.2.11.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
         apiUri:
           description: >
             If present, this attribute signals modifications of the "apiUri" attribute
             in "ManoServiceInterface", as defined in clause 5.6.2.11.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
         securityInfo:
           description: >
             If present, this attribute signals modifications of the "securityInfo"
             attribute in "ManoServiceInterface", as defined in clause 5.6.2.11. See note.
-          $ref: "#/components/schemas/ServerInterfaceSecurityInfo"
+          $ref: "#/definitions/schemas/ServerInterfaceSecurityInfo"
         metadata:
           description: >
             If present, this attribute signals modifications of the "metadata" attribute
             in "ManoServiceInterface", as defined in clause 5.6.2.11.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"
 
     CreatePeerEntityRequest:
       description: >
@@ -720,7 +720,7 @@ components:
         peerEntityId:
           description: >
             Identifier of the peer functional entity. See note.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         name:
           description: >
             Human-readable name of the peer functional entity.
@@ -728,7 +728,7 @@ components:
         type:
           description: >
             Type of the peer functional entity.
-          $ref: "#/components/schemas/PeerEntityEnumType"
+          $ref: "#/definitions/schemas/PeerEntityEnumType"
         description:
           description: >
             Human-readable description of the peer functional entity.
@@ -739,7 +739,7 @@ components:
             from the peer functional entity.
           type: object
           additionalProperties:
-            $ref: "#/components/schemas/ConsumedManoInterfaceInfo"
+            $ref: "#/definitions/schemas/ConsumedManoInterfaceInfo"
         peerEntityState:
           description: >
             Current values of the state of the peer functional entity.
@@ -748,11 +748,11 @@ components:
             operationalState:
               description: >
                 TThe operation state of the peer functional entity’s application.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/OperationalStateEnumType"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/OperationalStateEnumType"
             administrativeState:
               description: >
                 The administrative state of the peer functional entity’s application.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/AdministrativeStateEnumType"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/AdministrativeStateEnumType"
           required:
             - operationalState
             - administrativeState
@@ -777,11 +777,11 @@ components:
           description: >
             Identifier of the resource representing the peer functional entity.
             This identifier is allocated by the producer NFV-MANO functional entity.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         peerEntityId:
           description: >
             Identifier of the peer functional entity. See note 1.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         name:
           description: >
             Human-readable name of the peer functional entity.
@@ -791,7 +791,7 @@ components:
         type:
           description: >
             Type of the peer functional entity.
-          $ref: "#/components/schemas/PeerEntityEnumType"
+          $ref: "#/definitions/schemas/PeerEntityEnumType"
         description:
           description: >
             Human-readable description of the peer functional entity.
@@ -810,7 +810,7 @@ components:
             from other data structures via the "consumedManoInterfaceIds" attribute.
           type: object
           additionalProperties:
-            $ref: "#/components/schemas/ConsumedManoInterfaceInfo"
+            $ref: "#/definitions/schemas/ConsumedManoInterfaceInfo"
         peerEntityState:
           description: >
             State of the peer functional entity as provided by the API consumer when
@@ -820,11 +820,11 @@ components:
             operationalState:
               description: >
                 The operational state of the peer functional entity’s application.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/OperationalStateEnumType"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/OperationalStateEnumType"
             administrativeState:
               description:
                 The administrative state of the peer functional entity’s application.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/AdministrativeStateEnumType"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/AdministrativeStateEnumType"
           required:
             - operationalState
             - administrativeState
@@ -858,17 +858,17 @@ components:
             JSON Merge PATCH (see IETF RFC 7396). See note.
           type: object
           additionalProperties:
-            $ref: "#/components/schemas/ConsumedManoInterfaceInfo"
+            $ref: "#/definitions/schemas/ConsumedManoInterfaceInfo"
         operationalState:
           description: >
             New content of the "operationalState" attribute in the "peerEntityState"
             structure in the "PeerEntity".
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/OperationalStateEnumType"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/OperationalStateEnumType"
         administrativeState:
           description: >
             New content of the "administrativeState" attribute in the "peerEntityState"
             structure in the "PeerEntity".
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/AdministrativeStateEnumType"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/AdministrativeStateEnumType"
 
     PeerEntityConfigModifications:
       description: >
@@ -902,19 +902,19 @@ components:
             clause 5.6.2.15. See note.
           type: object
           additionalProperties:
-            $ref: "#/components/schemas/ConsumedManoInterfaceInfo"
+            $ref: "#/definitions/schemas/ConsumedManoInterfaceInfo"
         operationalState:
           description: >
             If present, this attribute signals modifications of the "operationalState"
             attribute in the "peerEntityState" structure in the "PeerEntity", as defined
             in clause 5.6.2.15.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/OperationalStateEnumType"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/OperationalStateEnumType"
         administrativeState:
           description: >
             If present, this attribute signals modifications of the "administrativeState"
             attribute in the "peerEntityState" structure in the "PeerEntity", as defined
             in clause 5.6.2.15.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/AdministrativeStateEnumType"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/AdministrativeStateEnumType"
 
     ManoConfigurableParams:
       description: >
@@ -934,7 +934,7 @@ components:
         id:
           description: >
             Identifier of the NFV-MANO functional entity component.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/IdentifierInManoEntity"
         manoServiceIds:
           description: >
             References to the NFV-MANO services that depend on the NFV-MANO functional
@@ -943,7 +943,7 @@ components:
             component.
           type: array
           items:
-            $ref: "../../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
+            $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/IdentifierInManoEntity"
 
     ManoService:
       description: >
@@ -962,7 +962,7 @@ components:
         id:
           description: >
             Identifier of the NFV-MANO service.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/IdentifierInManoEntity"
         name:
           description: >
             Human-readable name of the NFV-MANO service.
@@ -983,7 +983,7 @@ components:
             ManoServiceInterface is referred. See note
           type: array
           items:
-            $ref: "../../components/SOL009_schemas.yaml#/components/schemas/IdentifierInManoEntity"
+            $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/IdentifierInManoEntity"
           minItems: 1
         _links:
           description: >
@@ -996,7 +996,7 @@ components:
                 information about the associated interfaces to the NFV-MANO service.
               type: array
               items:
-                $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Link"
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Link"
               minItems: 1
           required:
             - manoServiceInterfaces
@@ -1042,7 +1042,7 @@ components:
             standardVersion:
               description: >
                 Name and version of the standard the VNFD is compliant to. See note 1.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Version"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Version"
           required:
             - vnfdFormat
             - standardVersion
@@ -1067,7 +1067,7 @@ components:
             standardVersion:
               description: >
                 Name and version of the standard the NSD is compliant to. See note 1.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Version"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Version"
           required:
             - nsdFormat
             - standardVersion
@@ -1129,7 +1129,7 @@ components:
               standardVersion:
                 description: >
                   Name and version of the standard the VNFD is compliant to. See note
-                $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Version"
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Version"
             required:
               - vnfdFormat
               - standardVersion
@@ -1187,7 +1187,7 @@ components:
                 determines the name of the capability, and the "value" shall indicate whether or not the
                 capability is enabled. Examples of capabilities can include performing a validation of the
                 image’s signing certificate during the image signature verification.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"
             signatureVerificationAlgorithms:
               description: >
                 List of algorithms for verifying the signature of software images that are supported by the VIM.
@@ -1212,7 +1212,7 @@ components:
                   additionalAlgParams:
                     description: >
                       Additional parameters specific to the signature verification algorithm.
-                    $ref: "../../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+                    $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"
         imageDigestAlgorithms:
           description: >
             List of supported digest algorithms that can be used for digital signatures.
@@ -1262,7 +1262,7 @@ components:
                 Reference criteria for derivation/computation of the referred maximum number of MSCS in
                 attribute "numMscs". Shall be provided if specific criteria has been taken into account
                 for deriving the referred number.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"
         maxMsncNum:
           description: >
             Maximum number of MSNC that the WIM can manage
@@ -1278,7 +1278,7 @@ components:
               description: >
                 Reference criteria for derivation/computation of the referred maximum
                 number of MSNC in attribute "numMsnc".
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"
         mscsLayerProtocolSupport:
           description: >
             List of protocols of particular layers used to realize an MSCS
@@ -1321,16 +1321,16 @@ components:
             structure, are managed by the API consumer.
           type: object
           additionalProperties:
-            $ref: "#/components/schemas/ClockSyncInfo"
+            $ref: "#/definitions/schemas/ClockSyncInfo"
           minItems: 1
         defaultLogCompileBySizeValue:
           description:
             Default value for the log compilation by size to be used.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/UnsignedInt"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/UnsignedInt"
         defaultLogCompileByTimerValue:
           description:
             Default value for the log compilation by timer to be used.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/UnsignedInt"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/UnsignedInt"
 
     ConsumedManoInterfaceInfo:
       description: >
@@ -1366,12 +1366,12 @@ components:
         standardVersion:
           description: >
             Version of the standard the interface is compliant to. See note 1.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Version"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Version"
         apiVersion:
           description: >
             API version, in compliance with the version identifiers and parameters
             format specified in clause 9.1 of ETSI GS NFV-SOL 013.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Version"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Version"
         apiEndpoint:
           description: >
             Consumable API endpoint of the interface.
@@ -1386,7 +1386,7 @@ components:
                 represent a prefix path. Shall be present for ETSI NFV specified
                 RESTful NFV-MANO APIs (see also clause 4.1 of ETSI GS NFV-SOL 013).
                 May be present otherwise.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
             apiName:
               description: >
                 Indicates the interface name in an abbreviated form. Shall be present
@@ -1406,14 +1406,14 @@ components:
                 URL of the API endpoint. For ETSI NFV specified RESTful NFV-MANO APIs,
                 the following prefix structure is used (see also clause 4.1 of ETSI
                 GS NFV-SOL 013): {apiRoot}/{apiName}/{apiMajorVersion}
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
           required:
             - apiUri
         securityInfo:
           description: >
             Security related information including credentials information if needed
             for consuming the API. See note 2.
-          $ref: "#/components/schemas/ClientInterfaceSecurityInfo"
+          $ref: "#/definitions/schemas/ClientInterfaceSecurityInfo"
 
     CimNotificationsFilter:
       description: >
@@ -1427,7 +1427,7 @@ components:
           description: >
             Filter criteria to select the NFV-MANO functional entity and its
             associated managed objects.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/ManoEntitySubscriptionFilter"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/ManoEntitySubscriptionFilter"
         notificationTypes:
           description: >
             Match particular notification types.
@@ -1471,7 +1471,7 @@ components:
             ipAddress:
               description: >
                 IP address of the NTP server. See note
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/IpAddress"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/IpAddress"
             hostname:
               description: >
                 Indicates the hostname of the NTP server. See note.
@@ -1480,7 +1480,7 @@ components:
           description: >
             Information for the other types of clock synchronization.
             May be present if type = "OTHER".
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"
 
     ServerInterfaceSecurityInfo:
       description: >
@@ -1532,7 +1532,7 @@ components:
                     Server where the WebFinger service is hosted. When used,
                     the request to the WebFinger resource shall conform as specified
                     in clause 5.1.3 of ETSI GS NFV-SEC 022.
-                  $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+                  $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
             providedConfiguration:
               description: >
                 Configuration data used to setup the authorization server identifier. See note.
@@ -1543,7 +1543,7 @@ components:
                 authServerId:
                   description: >
                     Authorization server identifier as defined in ETSI GS NFV-SEC 022.
-                  $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+                  $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
             tlsCipherSuites:
               description: >
                 List of cipher suites that shall be declared as supported by the
@@ -1670,6 +1670,71 @@ components:
 
         NOTE:	The table is expected to be updated, by removing the corresponding listed entries,
         once the interfaces are specified as a RESTful NFV-MANO API.
+
+        Acronym string value	  Description
+        "sim"	                  Represents the "Software Image Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vcrm"	                  Represents the "Virtualised Compute Resources Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vcrim"	                  Represents the "Virtualised Compute Resources Information Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vcrcam"	              Represents the "Virtualised Compute Resources Capacity Management" interface produced by a VIM (refer to IFA005).
+        "vcrcn"	                  Represents the "Virtualised Compute Resources Change Notification" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vcfm"	                  Represents the "Virtualised Compute Flavour Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vnrm"	                  Represents the "Virtualised Network Resources Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vnrim"	                  Represents the "Virtualised Network Resources Information Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vnrcam"	              Represents the "Virtualised Network Resources Capacity Management" interface produced by a VIM (refer to IFA005).
+        "vnrcn"	                  Represents the "Virtualised Network Resources Change Notification" interface produced by a VIM (refer to IFA005 and IFA006).
+        "nfpm"	                  Represents the "Network Forwarding Path Management" interface produced by a VIM (refer to IFA005).
+        "vsrm"	                  Represents the "Virtualised Storage Resources Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vsrim"	                  Represents the "Virtualised Storage Resources Information Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vsrcam"	              Represents the "Virtualised Storage Resources Capacity Management" interface produced by a VIM (refer to IFA005).
+        "vsrcn"	                  Represents the "Virtualised Storage Resources Change Notification" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vrpm"	                  Represents the "Virtualised Resources Performance Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vrfm"	                  Represents the "Virtualised Resources Fault Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vcrmm"	                  Represents the "Virtualised Compute Resources Reservation Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vnrmm"	                  Represents the "Virtualised Network Resources Reservation Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vsrmm"	                  Represents the "Virtualised Storage Resources Reservation Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vrrcn"	                  Represents the "Virtualised Resources Reservation Change Notification" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vcrqm"	                  Represents the "Virtualised Compute Resources Quota Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vnrqm"	                  Represents the "Virtualised Network Resources Quota Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vsrqm"	                  Represents the "Virtualised Storage Resources Quota Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "vrqcn"	                  Represents the "Virtualised Resources Quota Change Notification" interface produced by a VIM (refer to IFA005 and IFA006).
+        "chrm"	                  Represents the "Compute Host Reservation Management" interface produced by a VIM (refer to IFA005).
+        "chcam"                   Represents the "Compute Host Capacity Management" interface produced by a VIM (refer to IFA005).
+        "vnfspkgm"	              Represents the "VNF Snapshot Package Management" interface produced by a VNFM (refer to IFA007 and IFA013). This value is deprecated and it can be removed in subsequent versions of the present document. ETSI GS NFV SOL 005 [11] has specified to use the string "vnfsnapshotpkgm" as "apiName".
+        "vcrm_ind"	              Represents the indirect "Virtualised Compute Resources Management" interface produced by an NFVO (refer to IFA007).
+        "vcrim_ind"	              Represents the indirect "Virtualised Compute Resources Information Management" interface produced by an NFVO (refer to IFA007).
+        "vcrcn_ind"	              Represents the indirect "Virtualised Compute Resources Change Notification" interface produced by an NFVO (refer to IFA007).
+        "vsrm_ind"	              Represents the indirect "Virtualised Storage Resources Management" interface produced by an NFVO (refer to IFA007).
+        "vsrim_ind"	              Represents the indirect "Virtualised Storage Resources Information Management" interface produced by an NFVO (refer to IFA007).
+        "vsrcn_ind"	              Represents the indirect "Virtualised Storage Resources Change Notification" interface produced by an NFVO (refer to IFA007).
+        "vnrm_ind"	              Represents the indirect "Virtualised Network Resources Management" interface produced by an NFVO (refer to IFA007).
+        "vnrim_ind"	              Represents the indirect "Virtualised Network Resources Information Management" interface produced by an NFVO (refer to IFA007).
+        "vnrcn_ind"	              Represents the indirect "Virtualised Network Resources Change Notification" interface produced by an NFVO (refer to IFA007).
+        "vcrrm_ind"	              Represents the indirect "Virtualised Compute Resources Reservation Management" interface produced by an NFVO (refer to IFA007).
+        "vsrrm_ind"	              Represents the indirect "Virtualised Storage Resources Reservation Management" interface produced by an NFVO (refer to IFA007).
+        "vnrrm_ind"	              Represents the indirect "Virtualised Network Resources Reservation Management" interface produced by an NFVO (refer to IFA007).
+        "vrrcn_ind"	              Represents the indirect "Virtualised Resources Reservation Change Notification" interface produced by an NFVO (refer to IFA007).
+        "vrpm_ind"	              Represents the indirect "Virtualised Resources Performance Management" interface produced by an NFVO (refer to IFA007).
+        "vrfm_ind"	              Represents the indirect "Virtualised Resources Fault Management" interface produced by an NFVO (refer to IFA007).
+        "vcrqm_ind"	              Represents the indirect "Virtualised Resources Compute Quota Management" interface produced by an NFVO (refer to IFA007).
+        "vsrqm_ind"               Represents the indirect "Virtualised Storage Resources Quota Management" interface produced by an NFVO (refer to IFA007).
+        "vnrqm_ind"	              Represents the indirect "Virtualised Network Resources Quota Management" interface produced by an NFVO (refer to IFA007).
+        "vrqcn_ind"	              Represents the indirect "Virtualised Resources Quota Change Notification" interface produced by an NFVO (refer to IFA007).
+        "lcmcoord"	              Represents the "LCM Coordination" interface produced by an EM and OSS (refer to IFA008 and IFA013).
+        "mscsm"	                  Represents the "MSCS Management" interface produced by a WIM (refer to IFA032).
+        "mscscapm"	              Represents the "(MSCS) Capacity Management" interface produced by a WIM (refer to IFA032).
+        "mscsfm"	              Represents the "(MSCS) Fault Management" interface produced by a WIM (refer to IFA032).
+        "mscspm"	              Represents the "(MSCS) Performance Management" interface produced by a WIM (refer to IFA032).
+        "cismwkldm"	              Represents the "OS container workload management" service interface produced by a CISM (refer to IFA040).
+        "cismcompm"	              Represents the "OS container compute management" service interface produced by a CISM (refer to IFA040).
+        "cismstrgm"	              Represents the "OS container storage management" service interface produced by a CISM (refer to IFA040).
+        "cismnetwm"	              Represents the "OS container network management" service interface produced by a CISM (refer to IFA040).
+        "cismcfgm"	              Represents the "OS container configuration management" service interface produced by a CISM (refer to IFA040).
+
+        NOTE:	"IFA005", "IFA006", "IFA007", "IFA008", "IFA013", "IFA032", "IFA040" are used as a shorthand for the
+        specifications ETSI GS NFV-IFA 005 [i.5], ETSI GS NFV-IFA 006 [i.6], ETSI GS NFV-IFA 007 [i.7],
+        ETSI GS NFV IFA 008 [i.8], ETSI GS NFV-IFA 013 [i.9], ETSI GS NFV-IFA 032 [i.18] and
+        ETSI GS NFV-IFA 040 [i.27], respectively.
+
       type: string
 
     UsageStateEnumType:

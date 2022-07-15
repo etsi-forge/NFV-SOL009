@@ -1,4 +1,4 @@
-components:
+definitions:
   schemas:
     LogReportAvailableNotification:
       description: >-
@@ -19,7 +19,7 @@ components:
           description: >-
             Identifier of this notification. If a notification is sent multiple times due to multiple subscriptions,
             the "id" attribute of all these notifications shall have the same value.
-          $ref: '../../components/SOL009_schemas.yaml#/components/schemas/Identifier'
+          $ref: '../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier'
         notificationType:
           description: >-
             Discriminator for the different notification types.
@@ -28,11 +28,11 @@ components:
         subscriptionId:
           description: >-
             Identifier of the subscription that this notification relates to.
-          $ref: '../../components/SOL009_schemas.yaml#/components/schemas/Identifier'
+          $ref: '../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier'
         timeStamp:
           description: >-
             Date and time of the generation of the notification.
-          $ref: '../../components/SOL009_schemas.yaml#/components/schemas/DateTime'
+          $ref: '../../definitions/SOL009_def.yaml#/definitions/schemas/DateTime'
         objectInstanceId:
           description: >-
             Identifier that identifies the object instance for which the log report is available.
@@ -49,16 +49,16 @@ components:
             subscription:
               description: >-
                 Link to the related subscription.
-              $ref: '../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink'
+              $ref: '../../definitions/SOL009_def.yaml#/definitions/schemas/NotificationLink'
             objectInstance:
               description: >-
                 Link to the resource representing the measured object instance to which the notified change applies.
                 Shall be present if the measured object instance information is accessible as a resource.
-              $ref: '../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink'
+              $ref: '../../definitions/SOL009_def.yaml#/definitions/schemas/NotificationLink'
             LoggingJob:
               description: >-
                 Link to the resource that represents the logging job for which the log report is available.
-              $ref: '../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink'
+              $ref: '../../definitions/SOL009_def.yaml#/definitions/schemas/NotificationLink'
             logReports:
               description: >-
                 Link from which the available log report can be obtained. Due to the relationship of the logging
@@ -66,4 +66,4 @@ components:
                 notification link can be provided.
               type: array
               items:
-                $ref: '../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink'
+                $ref: '../../definitions/SOL009_def.yaml#/definitions/schemas/NotificationLink'
