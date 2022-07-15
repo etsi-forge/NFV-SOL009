@@ -37,7 +37,7 @@ definitions:
           description: >-
             Identifier that identifies the object instance for which the log report is available.
             This attribute shall contain the identifier of the logged object according to their type.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/ManoManagedObjectReference"
         _links:
           description: >-
             Links to resources related to this notification.

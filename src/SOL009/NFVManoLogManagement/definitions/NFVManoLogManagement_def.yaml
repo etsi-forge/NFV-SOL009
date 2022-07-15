@@ -135,7 +135,7 @@ definitions:
             value shall correspond to an object instance for which log data is being collected as specified in the
             corresponding "LoggingJob". If not present, the compile log request is requested for all managed object
             instances associated to the logging job.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/ManoManagedObjectReference"
     LogReport:
       description: >
         This type represents a log report, which provides information about a compiled log and how to obtain it.
@@ -295,13 +295,13 @@ definitions:
         callbackUri:
           description: >
             The URI of the endpoint to send the notification to.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
         authentication:
           description: >
             Authentication parameters to configure the use of Authorization when sending notifications
             corresponding to this subscription, as defined in clause 8.3.4 of ETSI GS NFV-SOL 013.
             This attribute shall only be present if the subscriber requires authorization of notifications.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/SubscriptionAuthentication"
 
     CreateLoggingJobRequest:
       description: >-
@@ -321,7 +321,7 @@ definitions:
           type: array
           minItems: 1
           items:
-            $ref: "../../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
+            $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/ManoManagedObjectReference"
         jobCriteria:
           description: >-
             Criteria of the collection of logging information.
@@ -352,7 +352,7 @@ definitions:
             contain the identifier of the instance of the object that is logged according to their type.
           type: array
           items:
-            $ref: "../../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
+            $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/ManoManagedObjectReference"
         jobCriteria:
           description: >-
             Criteria of the collection of logging information.
@@ -569,7 +569,7 @@ definitions:
         systemLogs:
           description: >-
             Values for the provider enabled system logs. See note.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"
         severityLevelScheme:
           description: >-
             Identifies a severity level scheme.
@@ -609,12 +609,12 @@ definitions:
           description: >-
             Specifies the time for the logging job to be started. If not provided, the logging job is
             requested to start immediately.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/DateTime"
         endTime:
           description: >-
             Specifies the time after which the logging job will stop. Shall only be provided if the
             logging job is requested to stop at a specific time.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/DateTime"
         reportingCondition:
           description: >-
             Specifies the condition under which the producer will report to the consumer about the compiled log data.
@@ -738,7 +738,7 @@ definitions:
           description: >-
             Identifier that identifies the object instance for which the log report is available.
             This attribute shall contain the identifier of the logged object according to their type.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/ManoManagedObjectReference"
         _links:
           description: >-
             Links to resources related to this notification.
