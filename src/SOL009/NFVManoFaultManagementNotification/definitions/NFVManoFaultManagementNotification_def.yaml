@@ -1,4 +1,4 @@
-components:
+definitions:
   schemas:
     AlarmNotification:
       description: >
@@ -22,7 +22,7 @@ components:
             Identifier of this notification. If a notification is sent multiple
             times due to multiple subscriptions, the "id" attribute of all these
             notifications shall have the same value.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         notificationType:
           description: >
             Discriminator for the different notification types. Shall be set to
@@ -33,16 +33,16 @@ components:
         subscriptionId:
           description: >
             Identifier of the subscription that this notification relates to.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         timeStamp:
           description: >
             Date-time of the generation of the notification.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/DateTime"
         alarm:
           description: >
             Information about an alarm including AlarmId, affected VNF
             identifier, and FaultDetails.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Alarm"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Alarm"
         _links:
           description: >
             Links to resources related to this notification.
@@ -53,7 +53,7 @@ components:
             subscription:
               description: >
                 Link to the related subscription.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/NotificationLink"
 
     AlarmClearedNotification:
       description: >
@@ -75,7 +75,7 @@ components:
             Identifier of this notification. If a notification is sent multiple
             times due to multiple subscriptions, the "id" attribute of all these
             notifications shall have the same value.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         notificationType:
           description: >
             Discriminator for the different notification types. Shall be set to
@@ -86,15 +86,15 @@ components:
         subscriptionId:
           description: >
             Identifier of the subscription that this notification relates to.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         timeStamp:
           description: >
             Date-time of the generation of the notification.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/DateTime"
         alarmId:
           description: >
             Alarm identifier.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         alarmClearedTime:
           description: >
             The time stamp indicating when the alarm was cleared.
@@ -109,11 +109,11 @@ components:
             subscription:
               description: >
                 Link to the related subscription.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/NotificationLink"
             alarm:
               description: >
                 Link to the resource that represents the related alarm.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/NotificationLink"
 
     AlarmListRebuiltNotification:
       description: >
@@ -135,7 +135,7 @@ components:
             Identifier of this notification. If a notification is sent multiple
             times due to multiple subscriptions, the "id" attribute of all these
             notifications shall have the same value.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         notificationType:
           description: >
             Discriminator for the different notification types. Shall be set to
@@ -146,11 +146,11 @@ components:
         subscriptionId:
           description: >
             Identifier of the subscription that this notification relates to.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         timeStamp:
           description: >
             Date-time of the generation of the notification.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/DateTime"
         _links:
           description: >
             Links to resources related to this notification.
@@ -162,8 +162,8 @@ components:
             subscription:
               description: >
                 Link to the related subscription.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/NotificationLink"
             alarms:
               description: >
                 Link to the alarm list, i.e. the "Alarms" resource.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/NotificationLink"

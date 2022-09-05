@@ -1,4 +1,4 @@
-components:
+definitions:
   schemas:
     InformationChangedNotification:
       description: >
@@ -21,7 +21,7 @@ components:
             Identifier of this notification. If a notification is sent multiple
             times due to multiple subscriptions, the "id" attribute of all these
             notifications shall have the same value.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         notificationType:
           description: >
             Discriminator for the different notification types. Shall be set to
@@ -30,24 +30,24 @@ components:
         subscriptionId:
           description: >
             Identifier of the subscription that this notification relates to.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         timeStamp:
           description: >
             Date and time of the generation of the notification.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/DateTime"
         informationChangedTime:
           description: >
             Timestamp indicating when the information was changed.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/DateTime"
         manoEntityId:
           description: >
             Identifier of the MANO entity of which the information was changed.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         changedInfo:
           description: >
             Data about the changed configuration and information of the NFV-MANO
             functional entity.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/KeyValuePairs"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"
         _links:
           description: >
             Links to resources related to this notification.
@@ -56,11 +56,11 @@ components:
             self:
               description: >
                 Link to the related subscription.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/NotificationLink"
             subscription:
               description: >
                 Link to the related subscription.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/NotificationLink"
           required:
             - self
 
@@ -84,7 +84,7 @@ components:
             Identifier of this notification. If a notification is sent multiple times
             due to multiple subscriptions, the "id" attribute of all these notifications
             shall have the same value.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         notificationType:
           description: >
             Discriminator for the different notification types. Shall be set to
@@ -93,39 +93,39 @@ components:
         subscriptionId:
           description: >
             Identifier of the subscription that this notification relates to.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         timestamp:
           description: >
             Date-time of the generation of the notification.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/DateTime"
         changeStateOpOccId:
           description: >
             Identifier of the change state operation occurrence associated to the
             notification.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         stateChangedTime:
           description: >
             Timestamp indicating when the state on the managed object was changed.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/DateTime"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/DateTime"
         changeStateOperationState:
           description: >
             The state of the "change state operation occurrence".
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/ChangeStateOpOccStateEnumType"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/ChangeStateOpOccStateEnumType"
         managedObjectRef:
           description: >
             Reference of the managed object to which the state change notification relates.
             The value of the "type" attribute shall be "MANO_ENTITY" or "MANO_SERVICE_IF".
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/ManoManagedObjectReference"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/ManoManagedObjectReference"
         operationalState:
           description: >
             New operational state of the managed object. Shall only be present when
             there is a change in the operational state.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/OperationalStateEnumType"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/OperationalStateEnumType"
         administrativeState:
           description: >
             New administrative state of the managed object. Shall only be present
             when there is a change in the administrative state.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/AdministrativeStateEnumType"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/AdministrativeStateEnumType"
         _links:
           description: >
             Links to resources related to this notification.
@@ -134,18 +134,18 @@ components:
             subscription:
               description: >
                 Link to the related subscription.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/NotificationLink"
             objectInstance:
               description: >
                 Link to the resource representing the object to which the change
                 state applies. Shall be present if the object instance is accessible
                 as a resource.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/NotificationLink"
             changeStateOpOcc:
               description: >
                 Link to the change state operation occurrence that this notification
                 is related to.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/NotificationLink"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/NotificationLink"
           required:
             - subscription
             - objectInstance

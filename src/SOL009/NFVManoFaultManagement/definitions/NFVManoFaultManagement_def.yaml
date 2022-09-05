@@ -1,4 +1,4 @@
-components:
+definitions:
   schemas:
     FmSubscriptionRequest:
       description: >
@@ -14,17 +14,17 @@ components:
             notifications this subscription relates to. A particular
             notification is sent to the subscriber if the filter matches, or if
             there is no filter.
-          $ref: "#/components/schemas/FmNotificationsFilter"
+          $ref: "#/definitions/schemas/FmNotificationsFilter"
         callbackUri:
           description: >
             The URI of the endpoint to send the notification to.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
         authentication:
           description: >
             Authentication parameters to configure the use of Authorization when sending notifications
             corresponding to this subscription, as defined in clause 8.3.4 of ETSI GS NFV-SOL 013.
             This attribute shall only be present if the subscriber requires authorization of notifications.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/SubscriptionAuthentication"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/SubscriptionAuthentication"
 
     FmSubscription:
       description: >
@@ -39,18 +39,18 @@ components:
         id:
           description: >
             Identifier of this "Individual subscription" resource.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Identifier"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
         filter:
           description: >
             Filter settings for this subscription, to define the subset of all
             notifications this subscription relates to. A particular
             notification is sent to the subscriber if the filter matches, or if
             there is no filter.
-          $ref: "#/components/schemas/FmNotificationsFilter"
+          $ref: "#/definitions/schemas/FmNotificationsFilter"
         callbackUri:
           description: >
             The URI of the endpoint to send the notification to.
-          $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Uri"
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Uri"
         _links:
           description: >
             Links for this resource.
@@ -61,7 +61,7 @@ components:
             self:
               description: >
                 URI of this resource.
-              $ref: "../../components/SOL009_schemas.yaml#/components/schemas/Link"
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Link"
 
     AlarmModifications:
       description: >
@@ -114,13 +114,13 @@ components:
             Match VNF alarms with a perceived severity listed in this attribute.
           type: array
           items:
-            $ref: "../../components/SOL009_schemas.yaml#/components/schemas/PerceivedSeverityType"
+            $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/PerceivedSeverityType"
         eventTypes:
           description: >
             Match VNF alarms with an event type listed in this attribute.
           type: array
           items:
-            $ref: "../../components/SOL009_schemas.yaml#/components/schemas/EventType"
+            $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/EventType"
         probableCauses:
           description: >
             Match VNF alarms with a probable cause listed in this attribute.

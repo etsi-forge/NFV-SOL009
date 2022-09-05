@@ -20,8 +20,8 @@ info:
   version: 2.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
 
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.6.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.06.01_60/gs_NFV-SOL009v030601p.pdf
+  description: ETSI GS NFV-SOL 009 V4.3.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/04.03.01_60/gs_NFV-SOL009v040301p.pdf
 
 servers:
   - url: http://127.0.0.1/nfvmanopm/v2
@@ -45,25 +45,25 @@ paths:
         "201": 
           $ref: "#/components/responses/pm_jobs.Post.201"
         "400":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
         "401":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
         "403":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
         "404":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/404
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
         "405":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
         "406":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
         "422":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/422
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
         "500":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
         "503":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
         "504":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/504
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
     get:
       description: >
         The client can use this method to retrieve information about PM jobs. See clause 6.5.3.3.2.
@@ -83,23 +83,23 @@ paths:
         "400": 
           $ref: "#/components/responses/pm_jobs.Get.400"
         "401":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
         "403":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
         "404":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/404
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
         "405":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
         "406":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
         "422":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/422
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
         "500":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
         "503":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
         "504":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/504
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
 
   /pm_jobs/{pmJobId}:
     parameters:
@@ -115,25 +115,25 @@ paths:
         "200": 
           $ref: "#/components/responses/IndividualPmJob.Get.200"
         "400":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
         "401":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
         "403":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
         "404":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/404
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
         "405":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
         "406":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
         "422":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/422
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
         "500":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
         "503":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
         "504":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/504
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
     patch:
       description: >
         This method allows to modify an "individual PM job" resource. See clause 6.5.4.3.4.
@@ -151,25 +151,25 @@ paths:
         "422":
           $ref: "#/components/responses/IndividualPmJob.Patch.422"
         "400":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
         "401":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
         "403":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
         "404":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/404
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
         "405":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
         "406":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
         "409":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/409
+          $ref: ../responses/SOL009_resp.yaml#/responses/409
         "500":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
         "503":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
         "504":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/504
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
     delete:
       description: >
         This method terminates an individual PM job. See clause 6.5.4.3.5.
@@ -181,25 +181,25 @@ paths:
         "204": 
           $ref: "#/components/responses/IndividualPmJob.Delete.204"
         "400":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
         "401":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
         "403":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
         "404":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/404
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
         "405":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
         "406":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
         "422":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/422
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
         "500":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
         "503":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
         "504":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/504
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
   
   /pm_jobs/{pmJobId}/reports/{reportId}:
     parameters:
@@ -216,25 +216,25 @@ paths:
         "200": 
           $ref: "#/components/responses/IndividualPerformanceReport.Get.200"
         "400":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
         "401":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
         "403":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
         "404":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/404
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
         "405":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
         "406":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
         "422":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/422
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
         "500":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
         "503":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
         "504":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/504
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
 
   /thresholds:
     post:
@@ -252,23 +252,23 @@ paths:
         "422":
           $ref: "#/components/responses/Thresholds.Post.422"
         "400":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
         "401":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
         "403":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
         "404":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/404
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
         "405":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
         "406":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
         "500":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
         "503":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
         "504":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/504
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
     get:
       description: >
         The client can use this method to query information about thresholds. See clause 6.5.6.3.2.
@@ -284,23 +284,23 @@ paths:
         "400": 
           $ref: "#/components/responses/Thresholds.Get.400"
         "401":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
         "403":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
         "404":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/404
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
         "405":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
         "406":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
         "422":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/422
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
         "500":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
         "503":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
         "504":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/504
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
     
   /thresholds/{thresholdId}:
     parameters:
@@ -316,25 +316,25 @@ paths:
         "200": 
           $ref: "#/components/responses/Threshold.Get.200"
         "400":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
         "401":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
         "403":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
         "404":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/404
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
         "405":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
         "406":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
         "422":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/422
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
         "500":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
         "503":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
         "504":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/504
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
     patch:
       description: >
         This method allows to modify an "Individual threshold" resource. See clause 6.5.7.3.4.
@@ -352,25 +352,25 @@ paths:
         "422":
           $ref: "#/components/responses/Threshold.Patch.422"
         "400":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
         "401":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
         "403":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
         "404":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/404
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
         "405":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
         "406":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
         "409":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/409
+          $ref: ../responses/SOL009_resp.yaml#/responses/409
         "500":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
         "503":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
         "504":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/504
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
     delete:
       description: >
         This method allows to delete a threshold. See clause 6.5.7.3.5.
@@ -382,25 +382,25 @@ paths:
         "204": 
           $ref: "#/components/responses/Threshold.Delete.204"
         "400":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
         "401":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
         "403":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
         "404":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/404
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
         "405":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
         "406":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
         "422":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/422
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
         "500":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
         "503":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
         "504":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/504
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
 
 components:
   responses:
@@ -431,7 +431,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/PmJob"
+            $ref: "./definitions/NFVManoPerformanceManagement_def.yaml#/definitions/schemas/PmJob"
     pm_jobs.Post.422:
       description: >
         422 Unprocessable Entity
@@ -466,7 +466,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
 
     pm_jobs.Get.200:
       description: >
@@ -514,7 +514,7 @@ components:
           schema:
             type: array
             items:
-              $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/PmJob"
+              $ref: "./definitions/NFVManoPerformanceManagement_def.yaml#/definitions/schemas/PmJob"
     pm_jobs.Get.400:
       description: >
         400 BAD REQUEST
@@ -547,7 +547,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
 
     IndividualPmJob.Get.200:
       description: >
@@ -574,7 +574,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/PmJob"
+            $ref: "./definitions/NFVManoPerformanceManagement_def.yaml#/definitions/schemas/PmJob"
     IndividualPmJob.Patch.200:
       description: >
         200 OK
@@ -598,7 +598,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/PmJobModifications"
+            $ref: "./definitions/NFVManoPerformanceManagement_def.yaml#/definitions/schemas/PmJobModifications"
     IndividualPmJob.Patch.412:
       description: >
         412 PRECONDITION FAILED
@@ -627,7 +627,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
     IndividualPmJob.Patch.422:
       description: >
         422 Unprocessable Entity
@@ -662,7 +662,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
     IndividualPmJob.Delete.204:
       description: >
         204 NO CONTENT
@@ -710,7 +710,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/PerformanceReport"
+            $ref: "./definitions/NFVManoPerformanceManagement_def.yaml#/definitions/schemas/PerformanceReport"
 
     Thresholds.Post.201:
       description: >
@@ -749,7 +749,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/Threshold"
+            $ref: "./definitions/NFVManoPerformanceManagement_def.yaml#/definitions/schemas/Threshold"
     Thresholds.Post.422:
       description: >
         422 Unprocessable Entity
@@ -784,7 +784,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
 
     Thresholds.Get.200:
       description: >
@@ -822,7 +822,7 @@ components:
           schema:
             type: array
             items:
-              $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/Threshold"
+              $ref: "./definitions/NFVManoPerformanceManagement_def.yaml#/definitions/schemas/Threshold"
     Thresholds.Get.400:
       description: >
         400 BAD REQUEST
@@ -852,7 +852,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
 
     Threshold.Get.200:
       description: >
@@ -879,7 +879,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/Threshold"
+            $ref: "./definitions/NFVManoPerformanceManagement_def.yaml#/definitions/schemas/Threshold"
 
     Threshold.Patch.200:
       description: >
@@ -904,7 +904,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/ThresholdModifications"
+            $ref: "./definitions/NFVManoPerformanceManagement_def.yaml#/definitions/schemas/ThresholdModifications"
     Threshold.Patch.412:
       description: >
         412 PRECONDITION FAILED
@@ -933,7 +933,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
     Threshold.Patch.422:
       description: >
         422 Unprocessable Entity
@@ -968,7 +968,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
 
     Threshold.Delete.204:
       description: >
@@ -1051,7 +1051,7 @@ components:
         Identifier of the PM Job
       required: true
       schema:
-        $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
+        $ref: '../definitions/SOL009_def.yaml#/definitions/schemas/Identifier'
 
     reportId:
       name: reportId
@@ -1060,7 +1060,7 @@ components:
         Identifier of the PM report
       required: true
       schema:
-        $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
+        $ref: '../definitions/SOL009_def.yaml#/definitions/schemas/Identifier'
 
     thresholdId:
       name: thresholdId
@@ -1069,7 +1069,7 @@ components:
         Identifier of the PM threshold
       required: true
       schema:
-        $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
+        $ref: '../definitions/SOL009_def.yaml#/definitions/schemas/Identifier'
 
   requestBodies:
     CreatePMJobRequest:
@@ -1078,7 +1078,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/CreatePmJobRequest"
+            $ref: "./definitions/NFVManoPerformanceManagement_def.yaml#/definitions/schemas/CreatePmJobRequest"
       required: true
 
     CreateThresholdRequest:
@@ -1087,7 +1087,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/CreateThresholdRequest"
+            $ref: "./definitions/NFVManoPerformanceManagement_def.yaml#/definitions/schemas/CreateThresholdRequest"
       required: true
 
     ThresholdModificationRequest:
@@ -1099,7 +1099,7 @@ components:
       content:
         application/merge-patch+json:
           schema:
-            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/ThresholdModifications"
+            $ref: "./definitions/NFVManoPerformanceManagement_def.yaml#/definitions/schemas/ThresholdModifications"
       required: true
 
     PmJobModificationRequest:
@@ -1111,5 +1111,5 @@ components:
       content:
         application/merge-patch+json:
           schema:
-            $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/PmJobModifications"
+            $ref: "./definitions/NFVManoPerformanceManagement_def.yaml#/definitions/schemas/PmJobModifications"
       required: true

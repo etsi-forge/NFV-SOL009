@@ -19,8 +19,8 @@ info:
   version: 1.0.1-impl:etsi.org:ETSI_NFV_OpenAPI:1
 
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.6.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.06.01_60/gs_NFV-SOL009v030601p.pdf
+  description: ETSI GS NFV-SOL 009 V4.3.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/04.03.01_60/gs_NFV-SOL009v040301p.pdf
 
 servers:
   - url: http://127.0.0.1/nfvmanologm/v1
@@ -47,25 +47,25 @@ paths:
         "201":
           $ref: '#/components/responses/LoggingJobs.Post.201'
         "400":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
         "401":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
         "403":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
         "404":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/404
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
         "405":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
         "406":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
         "422":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/422
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
         "500":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
         "503":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
         "504":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/504
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
     get:
       description: >-
         The API consumer can use this method to retrieve information about logging jobs. See clause 8.5.3.3.2.
@@ -83,25 +83,25 @@ paths:
         "200":
           $ref: '#/components/responses/LoggingJobs.Get.200'
         "400":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
         "401":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
         "403":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
         "404":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/404
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
         "405":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
         "406":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
         "422":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/422
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
         "500":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
         "503":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
         "504":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/504
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
 
   "/log_jobs/{logJobId}":
     description: >-
@@ -121,25 +121,25 @@ paths:
         "200":
           $ref: '#/components/responses/IndividualLoggingJob.Get.200'
         "400":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/400
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
         "401":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/401
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
         "403":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/403
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
         "404":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/404
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
         "405":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/405
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
         "406":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/406
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
         "422":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/422
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
         "500":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/500
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
         "503":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/503
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
         "504":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/504
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
 
     delete:
       description: >-
@@ -151,25 +151,25 @@ paths:
         "204":
           $ref: '#/components/responses/IndividualLoggingJob.Delete.204'
         "400":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/400'
+          $ref: '../responses/SOL009_resp.yaml#/responses/400'
         "401":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/401'
+          $ref: '../responses/SOL009_resp.yaml#/responses/401'
         "403":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/403'
+          $ref: '../responses/SOL009_resp.yaml#/responses/403'
         "404":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/404'
+          $ref: '../responses/SOL009_resp.yaml#/responses/404'
         "405":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/405'
+          $ref: '../responses/SOL009_resp.yaml#/responses/405'
         "406":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/406'
+          $ref: '../responses/SOL009_resp.yaml#/responses/406'
         "422":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/422'
+          $ref: '../responses/SOL009_resp.yaml#/responses/422'
         "500":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/500'
+          $ref: '../responses/SOL009_resp.yaml#/responses/500'
         "503":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/503'
+          $ref: '../responses/SOL009_resp.yaml#/responses/503'
         "504":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/504'
+          $ref: '../responses/SOL009_resp.yaml#/responses/504'
 
   "/log_jobs/{logJobId}/log_reports/{logReportId}":
     description: >-
@@ -194,25 +194,25 @@ paths:
         "202":
           $ref: '#/components/responses/LogReport.Get.202'
         "400":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/400'
+          $ref: '../responses/SOL009_resp.yaml#/responses/400'
         "401":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/401'
+          $ref: '../responses/SOL009_resp.yaml#/responses/401'
         "403":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/403'
+          $ref: '../responses/SOL009_resp.yaml#/responses/403'
         "404":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/404'
+          $ref: '../responses/SOL009_resp.yaml#/responses/404'
         "405":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/405'
+          $ref: '../responses/SOL009_resp.yaml#/responses/405'
         "406":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/406'
+          $ref: '../responses/SOL009_resp.yaml#/responses/406'
         "422":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/422'
+          $ref: '../responses/SOL009_resp.yaml#/responses/422'
         "500":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/500'
+          $ref: '../responses/SOL009_resp.yaml#/responses/500'
         "503":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/503'
+          $ref: '../responses/SOL009_resp.yaml#/responses/503'
         "504":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/504'
+          $ref: '../responses/SOL009_resp.yaml#/responses/504'
 
   "/log_jobs/{logJobId}/compile_log":
     description: >-
@@ -247,23 +247,23 @@ paths:
         "422":
           $ref: '#/components/responses/LogReportCompiled.Post.422'
         "400":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/400'
+          $ref: '../responses/SOL009_resp.yaml#/responses/400'
         "401":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/401'
+          $ref: '../responses/SOL009_resp.yaml#/responses/401'
         "403":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/403'
+          $ref: '../responses/SOL009_resp.yaml#/responses/403'
         "404":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/404'
+          $ref: '../responses/SOL009_resp.yaml#/responses/404'
         "405":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/405'
+          $ref: '../responses/SOL009_resp.yaml#/responses/405'
         "406":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/406'
+          $ref: '../responses/SOL009_resp.yaml#/responses/406'
         "500":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/500'
+          $ref: '../responses/SOL009_resp.yaml#/responses/500'
         "503":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/503'
+          $ref: '../responses/SOL009_resp.yaml#/responses/503'
         "504":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/504'
+          $ref: '../responses/SOL009_resp.yaml#/responses/504'
 
   "/subscriptions":
     description: >-
@@ -285,25 +285,25 @@ paths:
         "303":
           $ref: '#/components/responses/Subscriptions.Post.303'
         "422":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/422'
+          $ref: '../responses/SOL009_resp.yaml#/responses/422'
         "400":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/400'
+          $ref: '../responses/SOL009_resp.yaml#/responses/400'
         "401":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/401'
+          $ref: '../responses/SOL009_resp.yaml#/responses/401'
         "403":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/403'
+          $ref: '../responses/SOL009_resp.yaml#/responses/403'
         "404":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/404'
+          $ref: '../responses/SOL009_resp.yaml#/responses/404'
         "405":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/405'
+          $ref: '../responses/SOL009_resp.yaml#/responses/405'
         "406":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/406'
+          $ref: '../responses/SOL009_resp.yaml#/responses/406'
         "500":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/500'
+          $ref: '../responses/SOL009_resp.yaml#/responses/500'
         "503":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/503'
+          $ref: '../responses/SOL009_resp.yaml#/responses/503'
         "504":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/504'
+          $ref: '../responses/SOL009_resp.yaml#/responses/504'
       callbacks:
         LogReportAvailableNotification:
           $ref: '#/components/callbacks/LogReportAvailableNotification'
@@ -322,23 +322,23 @@ paths:
         "200":
           $ref: '#/components/responses/Subscriptions.Get.200'
         "400":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/400'
+          $ref: '../responses/SOL009_resp.yaml#/responses/400'
         "401":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/401'
+          $ref: '../responses/SOL009_resp.yaml#/responses/401'
         "403":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/403'
+          $ref: '../responses/SOL009_resp.yaml#/responses/403'
         "404":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/404'
+          $ref: '../responses/SOL009_resp.yaml#/responses/404'
         "405":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/405'
+          $ref: '../responses/SOL009_resp.yaml#/responses/405'
         "406":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/406'
+          $ref: '../responses/SOL009_resp.yaml#/responses/406'
         "500":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/500'
+          $ref: '../responses/SOL009_resp.yaml#/responses/500'
         "503":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/503'
+          $ref: '../responses/SOL009_resp.yaml#/responses/503'
         "504":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/504'
+          $ref: '../responses/SOL009_resp.yaml#/responses/504'
 
   "/subscriptions/{subscriptionId}":
     description: >-
@@ -359,23 +359,23 @@ paths:
         "200":
           $ref: '#/components/responses/Subscription.Get.200'
         "400":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/400'
+          $ref: '../responses/SOL009_resp.yaml#/responses/400'
         "401":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/401'
+          $ref: '../responses/SOL009_resp.yaml#/responses/401'
         "403":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/403'
+          $ref: '../responses/SOL009_resp.yaml#/responses/403'
         "404":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/404'
+          $ref: '../responses/SOL009_resp.yaml#/responses/404'
         "405":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/405'
+          $ref: '../responses/SOL009_resp.yaml#/responses/405'
         "406":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/406'
+          $ref: '../responses/SOL009_resp.yaml#/responses/406'
         "500":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/500'
+          $ref: '../responses/SOL009_resp.yaml#/responses/500'
         "503":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/503'
+          $ref: '../responses/SOL009_resp.yaml#/responses/503'
         "504":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/504'
+          $ref: '../responses/SOL009_resp.yaml#/responses/504'
 
     delete:
       description: >-
@@ -387,25 +387,25 @@ paths:
         "204":
           $ref: '#/components/responses/Subscription.Delete.204'
         "400":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/400'
+          $ref: '../responses/SOL009_resp.yaml#/responses/400'
         "401":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/401'
+          $ref: '../responses/SOL009_resp.yaml#/responses/401'
         "403":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/403'
+          $ref: '../responses/SOL009_resp.yaml#/responses/403'
         "404":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/404'
+          $ref: '../responses/SOL009_resp.yaml#/responses/404'
         "405":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/405'
+          $ref: '../responses/SOL009_resp.yaml#/responses/405'
         "406":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/406'
+          $ref: '../responses/SOL009_resp.yaml#/responses/406'
         "422":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/422'
+          $ref: '../responses/SOL009_resp.yaml#/responses/422'
         "500":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/500'
+          $ref: '../responses/SOL009_resp.yaml#/responses/500'
         "503":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/503'
+          $ref: '../responses/SOL009_resp.yaml#/responses/503'
         "504":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/504'
+          $ref: '../responses/SOL009_resp.yaml#/responses/504'
 
 components:
   parameters:
@@ -457,7 +457,7 @@ components:
         Identifier of the logging job.
       required: true
       schema:
-        $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
+        $ref: '../definitions/SOL009_def.yaml#/definitions/schemas/Identifier'
     logReportId:
       name: logReportId
       in: path
@@ -465,7 +465,7 @@ components:
         Identifier of the report.
       required: true
       schema:
-        $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
+        $ref: '../definitions/SOL009_def.yaml#/definitions/schemas/Identifier'
     subscriptionId:
       name: subscriptionId
       in: path
@@ -473,7 +473,7 @@ components:
         Identifier of the subscription
       required: true
       schema:
-        $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
+        $ref: '../definitions/SOL009_def.yaml#/definitions/schemas/Identifier'
 
   requestBodies:
     LogmSubscriptionRequest:
@@ -482,7 +482,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoLogManagement_def.yaml#/components/schemas/LogmSubscriptionRequest"
+            $ref: "./definitions/NFVManoLogManagement_def.yaml#/definitions/schemas/LogmSubscriptionRequest"
       required: true
 
     CreateLoggingJobRequest:
@@ -492,7 +492,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoLogManagement_def.yaml#/components/schemas/CreateLoggingJobRequest"
+            $ref: "./definitions/NFVManoLogManagement_def.yaml#/definitions/schemas/CreateLoggingJobRequest"
       required: true
     CompileLogRequest:
       description: >-
@@ -500,7 +500,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoLogManagement_def.yaml#/components/schemas/CompileLogRequest"
+            $ref: "./definitions/NFVManoLogManagement_def.yaml#/definitions/schemas/CompileLogRequest"
       required: true
     LogReportAvailableNotification:
       description: >-
@@ -508,7 +508,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoLogManagement_def.yaml#/components/schemas/LogReportAvailableNotification"
+            $ref: "./definitions/NFVManoLogManagement_def.yaml#/definitions/schemas/LogReportAvailableNotification"
       required: true
 
   responses:
@@ -563,7 +563,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoLogManagement_def.yaml#/components/schemas/LogmSubscription"
+            $ref: "./definitions/NFVManoLogManagement_def.yaml#/definitions/schemas/LogmSubscription"
 
     Subscriptions.Get.200:
       description: >
@@ -600,7 +600,7 @@ components:
           schema:
             type: array
             items:
-              $ref: "./components/NFVManoLogManagement_def.yaml#/components/schemas/LogmSubscription"
+              $ref: "./definitions/NFVManoLogManagement_def.yaml#/definitions/schemas/LogmSubscription"
 
     Subscriptions.Post.201:
       description: >
@@ -636,7 +636,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoLogManagement_def.yaml#/components/schemas/LogmSubscription"
+            $ref: "./definitions/NFVManoLogManagement_def.yaml#/definitions/schemas/LogmSubscription"
 
     Subscriptions.Post.303:
       description: >
@@ -704,7 +704,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoLogManagement_def.yaml#/components/schemas/LogReport"
+            $ref: "./definitions/NFVManoLogManagement_def.yaml#/definitions/schemas/LogReport"
 
     subscriptions.post.422:
       description: >
@@ -740,7 +740,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
+            $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
 
     LogReportCompiled.Post.202:
       description: >
@@ -839,7 +839,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails'
+            $ref: '../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails'
 
     LogReport.Get.200:
       description: >
@@ -868,7 +868,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoLogManagement_def.yaml#/components/schemas/LogReport"
+            $ref: "./definitions/NFVManoLogManagement_def.yaml#/definitions/schemas/LogReport"
 
     LogReport.Get.202:
       description: >
@@ -922,7 +922,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoLogManagement_def.yaml#/components/schemas/LoggingJob"
+            $ref: "./definitions/NFVManoLogManagement_def.yaml#/definitions/schemas/LoggingJob"
 
     IndividualLoggingJob.Delete.204:
       description: >
@@ -970,7 +970,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "./components/NFVManoLogManagement_def.yaml#/components/schemas/LoggingJob"
+            $ref: "./definitions/NFVManoLogManagement_def.yaml#/definitions/schemas/LoggingJob"
 
     LoggingJobs.Get.200:
       description: >
@@ -1011,7 +1011,7 @@ components:
           schema:
             type: array
             items:
-              $ref: "./components/NFVManoLogManagement_def.yaml#/components/schemas/LoggingJob"
+              $ref: "./definitions/NFVManoLogManagement_def.yaml#/definitions/schemas/LoggingJob"
 
     LogReportAvailableNotification.Post.204:
       description: >
@@ -1083,25 +1083,25 @@ components:
               "204":
                 $ref: '#/components/responses/LogReportAvailableNotification.Post.204'
               "400":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/400'
+                $ref: '../responses/SOL009_resp.yaml#/responses/400'
               "401":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/401'
+                $ref: '../responses/SOL009_resp.yaml#/responses/401'
               "403":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/403'
+                $ref: '../responses/SOL009_resp.yaml#/responses/403'
               "404":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/404'
+                $ref: '../responses/SOL009_resp.yaml#/responses/404'
               "405":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/405'
+                $ref: '../responses/SOL009_resp.yaml#/responses/405'
               "406":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/406'
+                $ref: '../responses/SOL009_resp.yaml#/responses/406'
               "422":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/422'
+                $ref: '../responses/SOL009_resp.yaml#/responses/422'
               "500":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/500'
+                $ref: '../responses/SOL009_resp.yaml#/responses/500'
               "503":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/503'
+                $ref: '../responses/SOL009_resp.yaml#/responses/503'
               "504":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/504'
+                $ref: '../responses/SOL009_resp.yaml#/responses/504'
           get:
             description: >-
               The GET method allows the API producer to test the notification endpoint that is provided by the API
@@ -1116,22 +1116,22 @@ components:
               "204":
                 $ref: '#/components/responses/LogReportAvailableNotification.Get.204'
               "400":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/400'
+                $ref: '../responses/SOL009_resp.yaml#/responses/400'
               "401":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/401'
+                $ref: '../responses/SOL009_resp.yaml#/responses/401'
               "403":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/403'
+                $ref: '../responses/SOL009_resp.yaml#/responses/403'
               "404":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/404'
+                $ref: '../responses/SOL009_resp.yaml#/responses/404'
               "405":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/405'
+                $ref: '../responses/SOL009_resp.yaml#/responses/405'
               "406":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/406'
+                $ref: '../responses/SOL009_resp.yaml#/responses/406'
               "422":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/422'
+                $ref: '../responses/SOL009_resp.yaml#/responses/422'
               "500":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/500'
+                $ref: '../responses/SOL009_resp.yaml#/responses/500'
               "503":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/503'
+                $ref: '../responses/SOL009_resp.yaml#/responses/503'
               "504":
-                $ref: '../components/SOL009_resp.yaml#/components/responses/504'
+                $ref: '../responses/SOL009_resp.yaml#/responses/504'
