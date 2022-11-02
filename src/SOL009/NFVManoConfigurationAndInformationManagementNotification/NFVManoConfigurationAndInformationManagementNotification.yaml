@@ -16,11 +16,11 @@ info:
   license:
     name: ETSI Forge copyright notice
     url: https://forge.etsi.org/etsi-forge-copyright-notice.txt
-  version: 2.1.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
+  version: 2.2.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
 
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.6.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.06.01_60/gs_NFV-SOL009v030601p.pdf
+  description: ETSI GS NFV-SOL 009 V3.7.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.07.01_60/gs_NFV-SOL009v030701p.pdf
 
 servers:
   - url: http://127.0.0.1/callback/v2

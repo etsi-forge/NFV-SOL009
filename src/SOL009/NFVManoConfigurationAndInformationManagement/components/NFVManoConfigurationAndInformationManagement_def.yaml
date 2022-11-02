@@ -738,8 +738,6 @@ components:
         * NOTE 1:	The value of the "peerEntityId" attribute is the same as the value of the "id" attribute in the
                     "ManoEntity" of the corresponding NFV-MANO functional entity that acts as peer entity, and shall
                     follow the uniqueness requirements set out in clause 5.6.2.2 for the "id" attribute.
-        * NOTE 2:	ETSI GS NFV-IFA 031 [1] defines an additional attribute named "apiDiscoveryEndpoint" in the
-                    PeerManoEntity. The modelling of this attribute is not specified in the present document version.
       type: object
       required:
         - id
@@ -1477,6 +1475,7 @@ components:
 
             Permitted values:
               - TLS_TUNNEL: Using TLS tunnel, as defined by TLS 1.2 in IETF RFC 5246.
+              - TLS_TUNNEL_13: Using TLS tunnel, as defined by TLS 1.3 in IETF RFC 8446. 
               - OAUTH2: Using access token, as defined by the OAuth 2.0 specification
               in IETF RFC 6749.
           type: array

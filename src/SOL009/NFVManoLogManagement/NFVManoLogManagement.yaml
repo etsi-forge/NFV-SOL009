@@ -19,8 +19,8 @@ info:
   version: 1.0.1-impl:etsi.org:ETSI_NFV_OpenAPI:1
 
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.6.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.06.01_60/gs_NFV-SOL009v030601p.pdf
+  description: ETSI GS NFV-SOL 009 V3.7.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.07.01_60/gs_NFV-SOL009v030701p.pdf
 
 servers:
   - url: http://127.0.0.1/nfvmanologm/v1
@@ -285,7 +285,7 @@ paths:
         "303":
           $ref: '#/components/responses/Subscriptions.Post.303'
         "422":
-          $ref: '../components/SOL009_resp.yaml#/components/responses/422'
+          $ref: '#/components/responses/Subscriptions.Post.422'
         "400":
           $ref: '../components/SOL009_resp.yaml#/components/responses/400'
         "401":
@@ -423,6 +423,7 @@ components:
       required: false
       schema:
         type: string
+
     exclude_default.LoggingJobs:
       name: exclude_default
       description: >
@@ -436,6 +437,7 @@ components:
       required: false
       schema:
         type: string
+
     filter.LogmSubscriptions:
       name: filter
       description: >
@@ -450,27 +452,39 @@ components:
       required: false
       schema:
         type: string
+
     logJobId:
       name: logJobId
       in: path
       description: >-
-        Identifier of the logging job.
+        Identifier of the logging job. This identifier can be retrieved from the 
+        resource referenced by the "Location" HTTP header in the response to a 
+        POST request creating a new "Individual logging job" resource. 
+        It can also be retrieved from the "id" attribute in the message content of 
+        that response.
       required: true
       schema:
         $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
+
     logReportId:
       name: logReportId
       in: path
       description: >-
-        Identifier of the report.
+        Identifier of the log report. This identifier can be retrieved from: 
+        a) the "logReportsIds" attribute of the applicable element in the message content 
+        of the response to a GET request to a logging job (see clause 8.6.2.6), and 
+        b) the "logReport" attribute available from a LogReportAvailableNotification.
       required: true
       schema:
         $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
+
     subscriptionId:
       name: subscriptionId
       in: path
       description: >-
-        Identifier of the subscription
+        Identifier of the subscription. This identifier can be retrieved from the resource referenced by the "Location" 
+        HTTP header in the response to a POST request creating a new "Individual subscription" resource. 
+        It can also be retrieved from the "id" attribute in the message content of that response.
       required: true
       schema:
         $ref: '../components/SOL009_schemas.yaml#/components/schemas/Identifier'
@@ -494,6 +508,7 @@ components:
           schema:
             $ref: "./components/NFVManoLogManagement_def.yaml#/components/schemas/CreateLoggingJobRequest"
       required: true
+
     CompileLogRequest:
       description: >-
         Log compilation request.
@@ -502,6 +517,7 @@ components:
           schema:
             $ref: "./components/NFVManoLogManagement_def.yaml#/components/schemas/CompileLogRequest"
       required: true
+
     LogReportAvailableNotification:
       description: >-
         Notification about the availability of a log report.
@@ -670,6 +686,42 @@ components:
           schema:
             type: string
 
+    Subscriptions.Post.422:
+      description: >
+        422 UNPROCESSABLE ENTITY
+
+        Shall be returned upon the following error: The content type
+        of the payload body is supported and the payload body of a request
+        contains syntactically correct data but the data cannot be processed.
+
+        The general cause for this error and its handling is specified in
+        clause 6.4 of ETSI GS NFV-SOL 013, including rules for the presence
+        of the response body.
+
+        Specifically in case of this resource, the response code 422 shall also
+        be returned if the API producer has tested the Notification endpoint as
+        described in clause 8.5.9.3.2 and the test has failed.
+
+        In this case, the "detail" attribute in the "ProblemDetails" structure
+        shall convey more information about the error.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"        
+
     LogReportCompiled.Post.201:
       description: >
         201 CREATED
@@ -705,42 +757,6 @@ components:
         application/json:
           schema:
             $ref: "./components/NFVManoLogManagement_def.yaml#/components/schemas/LogReport"
-
-    subscriptions.post.422:
-      description: >
-        422 UNPROCESSABLE ENTITY
-
-        Shall be returned upon the following error: The content type
-        of the payload body is supported and the payload body of a request
-        contains syntactically correct data but the data cannot be processed.
-
-        The general cause for this error and its handling is specified in
-        clause 6.4 of ETSI GS NFV-SOL 013, including rules for the presence
-        of the response body.
-
-        Specifically in case of this resource, the response code 422 shall also
-        be returned if the API producer has tested the Notification endpoint as
-        described in clause 8.5.9.3.2 and the test has failed.
-
-        In this case, the "detail" attribute in the "ProblemDetails" structure
-        shall convey more information about the error.
-      headers:
-        WWW-Authenticate:
-          description: >
-            Challenge if the corresponding HTTP request has not provided
-            authorization, or error details if the corresponding HTTP
-            request has provided an invalid authorization token.
-          schema:
-            type: string
-        Version:
-          description: >
-            Version of the API used in the response.
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: "../components/SOL009_schemas.yaml#/components/schemas/ProblemDetails"
 
     LogReportCompiled.Post.202:
       description: >
@@ -810,12 +826,12 @@ components:
 
     LogReportCompiled.Post.422:
       description: >
-        422 UNPROCESSABLE ENTITY
+        422 UNPROCESSABLE CONTENT
 
         The general cause for this error and its handling is specified in clause 6.4 of ETSI GS NFV-SOL 013,
         including rules for the presence of the response body.
         Specifically, in case of this task resource, the response code 422 shall also be returned if the
-        "objectInstanceId" value provided in the payload body of the request does not correspond to an object
+        "objectInstanceId" value provided in the message content of the request does not correspond to an object
         instance for which log data is being collected by the logging job represented by this resource.
         The response body shall contain a ProblemDetails structure, in which the "detail" attribute should
         convey more information about the error.

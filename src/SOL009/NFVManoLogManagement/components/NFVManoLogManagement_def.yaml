@@ -487,8 +487,8 @@ components:
               requestMethod:
                 description: >-
                   HTTP request method to be matched. To match, the HTTP request method of the message shall be the
-                  same as the value of this attribute. Valid values are specified in IETF RFC 7231. The API producer
-                  shall support this attribute.
+                  same as the value of this attribute. Valid values are specified in IETF RFC 9110 and IETF RFC 5789. 
+                  The API producer shall support this attribute.
                 type: string
               requestUriPattern:
                 description: >-

@@ -19,8 +19,8 @@ info:
   version: 1.0.1-impl:etsi.org:ETSI_NFV_OpenAPI:1
 
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.6.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.06.01_60/gs_NFV-SOL009v030601p.pdf
+  description: ETSI GS NFV-SOL 009 V3.7.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.07.01_60/gs_NFV-SOL009v0307601p.pdf
 
 servers:
   - url: http://127.0.0.1/nfvmanofm/v1
@@ -162,7 +162,7 @@ paths:
         "406":
           $ref: ../components/SOL009_resp.yaml#/components/responses/406
         "422":
-          $ref: ../components/SOL009_resp.yaml#/components/responses/422
+          $ref: '#/components/responses/Subscriptions.Post.422'
         "500":
           $ref: ../components/SOL009_resp.yaml#/components/responses/500
         "503":
@@ -304,7 +304,7 @@ components:
         Identifier of the alarm. This identifier can be retrieved from the
         "id" attribute of the "alarm" attribute in the AlarmNotification or
         AlarmClearedNotification. It can also be retrieved from the "id"
-        attribute of the applicable array element in the payload body of the
+        attribute of the applicable array element in the message content of the
         response to a GET request to the "Alarms" resource.
       in: path
       required: true
@@ -316,7 +316,7 @@ components:
         Identifier of this subscription. This identifier can be retrieved from
         the resource referenced by the "Location" HTTP header in the response
         to a POST request creating a new "Individual subscription" resource.
-        It can also be retrieved from the "id" attribute in the payload body
+        It can also be retrieved from the "id" attribute in the message content
         of that response.
       in: path
       required: true
@@ -511,10 +511,10 @@ components:
             maximum: 1
     Subscriptions.Post.422:
       description: >
-        422 Unprocessable Entity
+        422 Unprocessable Content
 
         Shall be returned upon the following error: The content type
-        of the payload body is supported and the payload body of a request
+        of the message content is supported and the message content of a request
         contains syntactically correct data but the data cannot be processed.
 
         The general cause for this error and its handling is specified in
