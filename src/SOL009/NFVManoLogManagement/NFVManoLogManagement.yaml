@@ -688,10 +688,10 @@ components:
 
     Subscriptions.Post.422:
       description: >
-        422 UNPROCESSABLE ENTITY
+        422 UNPROCESSABLE CONTENT
 
         Shall be returned upon the following error: The content type
-        of the payload body is supported and the payload body of a request
+        of the message content is supported and the message content of a request
         contains syntactically correct data but the data cannot be processed.
 
         The general cause for this error and its handling is specified in

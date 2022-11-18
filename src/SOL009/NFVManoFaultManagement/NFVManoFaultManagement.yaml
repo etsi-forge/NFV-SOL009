@@ -20,7 +20,7 @@ info:
 
 externalDocs:
   description: ETSI GS NFV-SOL 009 V3.7.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.07.01_60/gs_NFV-SOL009v0307601p.pdf
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.07.01_60/gs_NFV-SOL009v030701p.pdf
 
 servers:
   - url: http://127.0.0.1/nfvmanofm/v1

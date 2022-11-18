@@ -20,8 +20,8 @@ info:
   version: 2.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
 
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V3.6.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.06.01_60/gs_NFV-SOL009v030601p.pdf
+  description: ETSI GS NFV-SOL 009 V3.7.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/03.07.01_60/gs_NFV-SOL009v030701p.pdf
 
 servers:
   - url: http://127.0.0.1/nfvmanopm/v2
@@ -434,10 +434,10 @@ components:
             $ref: "./components/NFVManoPerformanceManagement_def.yaml#/components/schemas/PmJob"
     pm_jobs.Post.422:
       description: >
-        422 Unprocessable Entity
+        422 Unprocessable Content
 
         Shall be returned upon the following error: The content type
-        of the payload body is supported and the payload body of a request
+        of the message content is supported and the message content of a request
         contains syntactically correct data but the data cannot be processed.
 
         The general cause for this error and its handling is specified in

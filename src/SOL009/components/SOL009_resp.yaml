@@ -74,7 +74,7 @@ components:
         "ProblemDetails" structure to be returned.
 
         If the request is malformed or syntactically incorrect (e.g. if the request URI contains incorrect
-        query parameters or the payload body contains a syntactically incorrect data structure),
+        query parameters or the message content contains a syntactically incorrect data structure),
         the API producer shall respond with this response code. The "ProblemDetails" structure shall be provided,
         and should include in the "detail" attribute more information about the source of the problem.
 
@@ -206,7 +206,7 @@ components:
         This response code is not appropriate in case the resource addressed by the URI is a container resource
         which is designed to contain child resources, but does not contain any child resource at the time
         the request is received. For a GET request to an existing empty container resource, a typical response
-        contains a 200 OK response code and a payload body with an empty array.
+        contains a 200 OK response code and a message content with an empty array.
       headers:
         Content-Type:
           description: The MIME type of the body of the response.
@@ -375,7 +375,7 @@ components:
       description: >
         413 PAYLOAD TOO LARGE
 
-        If the payload body of a request is larger than the amount of data the API producer is willing or able to process,
+        If the message content of a request is larger than the amount of data the API producer is willing or able to process,
         it shall respond with this response code, following the provisions in IETF RFC 7231 for the use
         of the "Retry-After" HTTP header and for closing the connection. The "ProblemDetails" structure may be omitted.
       headers:
@@ -474,9 +474,9 @@ components:
 
     422:
       description: >
-        422 UNPROCESSABLE ENTITY
+        422 UNPROCESSABLE CONTENT
 
-        If the payload body of a request contains syntactically correct data (e.g. well-formed JSON) but the data
+        If the message content of a request contains syntactically correct data (e.g. well-formed JSON) but the data
         cannot be processed (e.g. because it fails validation against a schema), the API producer shall respond
         with this response code. The "ProblemDetails" structure shall be provided, and should include in the "detail"
         attribute more information about the source of the problem.
