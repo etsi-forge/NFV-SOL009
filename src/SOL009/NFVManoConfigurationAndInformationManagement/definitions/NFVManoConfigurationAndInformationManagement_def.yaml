@@ -1843,20 +1843,20 @@ definitions:
         once the interfaces are specified as a RESTful NFV-MANO API.
 
         Acronym string value	  Description
-        "sim"	                  Represents the "Software Image Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "sim"	                    Represents the "Software Image Management" interface produced by a VIM (refer to IFA005 and IFA006).
         "vcrm"	                  Represents the "Virtualised Compute Resources Management" interface produced by a VIM (refer to IFA005 and IFA006).
         "vcrim"	                  Represents the "Virtualised Compute Resources Information Management" interface produced by a VIM (refer to IFA005 and IFA006).
-        "vcrcam"	              Represents the "Virtualised Compute Resources Capacity Management" interface produced by a VIM (refer to IFA005).
+        "vcrcam"	                Represents the "Virtualised Compute Resources Capacity Management" interface produced by a VIM (refer to IFA005).
         "vcrcn"	                  Represents the "Virtualised Compute Resources Change Notification" interface produced by a VIM (refer to IFA005 and IFA006).
         "vcfm"	                  Represents the "Virtualised Compute Flavour Management" interface produced by a VIM (refer to IFA005 and IFA006).
         "vnrm"	                  Represents the "Virtualised Network Resources Management" interface produced by a VIM (refer to IFA005 and IFA006).
         "vnrim"	                  Represents the "Virtualised Network Resources Information Management" interface produced by a VIM (refer to IFA005 and IFA006).
-        "vnrcam"	              Represents the "Virtualised Network Resources Capacity Management" interface produced by a VIM (refer to IFA005).
+        "vnrcam"	                Represents the "Virtualised Network Resources Capacity Management" interface produced by a VIM (refer to IFA005).
         "vnrcn"	                  Represents the "Virtualised Network Resources Change Notification" interface produced by a VIM (refer to IFA005 and IFA006).
         "nfpm"	                  Represents the "Network Forwarding Path Management" interface produced by a VIM (refer to IFA005).
         "vsrm"	                  Represents the "Virtualised Storage Resources Management" interface produced by a VIM (refer to IFA005 and IFA006).
         "vsrim"	                  Represents the "Virtualised Storage Resources Information Management" interface produced by a VIM (refer to IFA005 and IFA006).
-        "vsrcam"	              Represents the "Virtualised Storage Resources Capacity Management" interface produced by a VIM (refer to IFA005).
+        "vsrcam"	                Represents the "Virtualised Storage Resources Capacity Management" interface produced by a VIM (refer to IFA005).
         "vsrcn"	                  Represents the "Virtualised Storage Resources Change Notification" interface produced by a VIM (refer to IFA005 and IFA006).
         "vrpm"	                  Represents the "Virtualised Resources Performance Management" interface produced by a VIM (refer to IFA005 and IFA006).
         "vrfm"	                  Represents the "Virtualised Resources Fault Management" interface produced by a VIM (refer to IFA005 and IFA006).
@@ -1893,19 +1893,25 @@ definitions:
         "lcmcoord"	              Represents the "LCM Coordination" interface produced by an EM and OSS (refer to IFA008 and IFA013).
         "mscsm"	                  Represents the "MSCS Management" interface produced by a WIM (refer to IFA032).
         "mscscapm"	              Represents the "(MSCS) Capacity Management" interface produced by a WIM (refer to IFA032).
-        "mscsfm"	              Represents the "(MSCS) Fault Management" interface produced by a WIM (refer to IFA032).
-        "mscspm"	              Represents the "(MSCS) Performance Management" interface produced by a WIM (refer to IFA032).
+        "mscsfm"	                Represents the "(MSCS) Fault Management" interface produced by a WIM (refer to IFA032).
+        "mscspm"	                Represents the "(MSCS) Performance Management" interface produced by a WIM (refer to IFA032).
         "cismwkldm"	              Represents the "OS container workload management" service interface produced by a CISM (refer to IFA040).
         "cismcompm"	              Represents the "OS container compute management" service interface produced by a CISM (refer to IFA040).
         "cismstrgm"	              Represents the "OS container storage management" service interface produced by a CISM (refer to IFA040).
         "cismnetwm"	              Represents the "OS container network management" service interface produced by a CISM (refer to IFA040).
         "cismcfgm"	              Represents the "OS container configuration management" service interface produced by a CISM (refer to IFA040).
+        "cismcisim"               Represents the "CIS instance management" service interface produced by a CISM (refer to IFA036).
+        "cismcismccom"            Represents the "CIS MCCO management" service interface produced by a CISM (refer to IFA036).
+        "cirimgm"                 Represents the "OS container image management" service interface produced by a CIR (refer to IFA040).
+        "ccmcisclcm"              Represents the "CIS cluster lifecycle management" service interface produced by a CCM (refer to IFA036).
+        "ccmciscfm"               Represents the "CIS cluster fault management" service interface produced by a CCM (refer to IFA036).
+        "ccmciscpm"               Represents the "CIS cluster performance management" service interface produced by a CCM (refer to IFA036).
+        "ccmcisccm"               Represents the "CIS cluster configuration management" service interface produced by a CCM (refer to IFA036).
+        "ccmciscsm"               Represents the "CIS cluster security management" service interface produced by a CCM (refer to IFA036).
 
         NOTE:	"IFA005", "IFA006", "IFA007", "IFA008", "IFA013", "IFA032", "IFA040" are used as a shorthand for the
-        specifications ETSI GS NFV-IFA 005 [i.5], ETSI GS NFV-IFA 006 [i.6], ETSI GS NFV-IFA 007 [i.7],
-        ETSI GS NFV IFA 008 [i.8], ETSI GS NFV-IFA 013 [i.9], ETSI GS NFV-IFA 032 [i.18] and
-        ETSI GS NFV-IFA 040 [i.27], respectively.
-
+        specifications ETSI GS NFV-IFA 005, ETSI GS NFV-IFA 006, ETSI GS NFV-IFA 007, ETSI GS NFV IFA 008, ETSI GS NFV-IFA 013, 
+        ETSI GS NFV-IFA 032 and ETSI GS NFV-IFA 040, and ETSI GS NFV-IFA 036 respectively.
       type: string
 
     UsageStateEnumType:
@@ -1980,9 +1986,11 @@ definitions:
         the provisions :
           - NFVO	The NFV-MANO functional entity is an NFVO.
           - VNFM	The NFV-MANO functional entity is a VNFM.
-          - VIM	    The NFV-MANO functional entity is a VIM.
-          - WIM     The NFV-MANO functional entity is a WIM.
+          - VIM	  The NFV-MANO functional entity is a VIM.
+          - WIM   The NFV-MANO functional entity is a WIM.
           - CISM  The NFV-MANO functional entity is a CISM. 
+          - CIR   The NFV-MANO functional entity is a CIR.
+          - CCM   The NFV-MANO functional entity is a CCM.
       type: string
       enum:
         - NFVO
@@ -1990,6 +1998,8 @@ definitions:
         - VIM
         - WIM
         - CISM
+        - CIR
+        - CCM 
 
     PeerEntityEnumType:
       description: >
@@ -2001,6 +2011,8 @@ definitions:
         - VIM	  The peer functional entity is a VIM.
         - WIM	  The peer functional entity is a WIM.
         - CISM   The peer functional entity is a CISM. 
+        - CIR   The NFV-MANO functional entity is a CIR.
+        - CCM   The NFV-MANO functional entity is a CCM.
         - EM	  The peer functional entity is an EM.
         - OSS	  The peer functional entity is an OSS/BSS.
       type: string
@@ -2010,6 +2022,8 @@ definitions:
         - VIM
         - WIM
         - CISM
+        - CIR
+        - CCM 
         - EM
         - OSS
 
