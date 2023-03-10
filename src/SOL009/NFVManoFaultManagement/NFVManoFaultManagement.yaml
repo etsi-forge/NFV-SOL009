@@ -162,7 +162,7 @@ paths:
         "406":
           $ref: ../responses/SOL009_resp.yaml#/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: '#/components/responses/Subscriptions.Post.422'
         "500":
           $ref: ../responses/SOL009_resp.yaml#/responses/500
         "503":
@@ -511,10 +511,10 @@ components:
             maximum: 1
     Subscriptions.Post.422:
       description: >
-        422 Unprocessable Entity
+        422 Unprocessable Content
 
         Shall be returned upon the following error: The content type
-        of the payload body is supported and the payload body of a request
+        of the message content is supported and the message content of a request
         contains syntactically correct data but the data cannot be processed.
 
         The general cause for this error and its handling is specified in
