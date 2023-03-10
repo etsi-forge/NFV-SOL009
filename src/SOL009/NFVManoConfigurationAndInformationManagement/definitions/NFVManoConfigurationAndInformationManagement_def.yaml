@@ -11,6 +11,8 @@ definitions:
         *  NOTE 5:	It is optional for the API producer to support the "manoEntityComponents" attribute.
         *  NOTE 6:	It shall be present when "type" attribute is "WIM", and it shall be absent in any other case.
         *  NOTE 7:	It shall be present when "type" attribute is "CISM", and it shall be absent in any other case. 
+        *  NOTE 8:	It shall be present when "type" attribute is "CIR", and it shall be absent in any other case. 
+        *  NOTE 9:	It shall be present when "type" attribute is "CCM", and it shall be absent in any other case. 
       type: object
       required:
         - id
@@ -123,8 +125,16 @@ definitions:
           $ref: "#/definitions/schemas/WimSpecificInfo"
         cismSpecificInfo:
           description: >
-           The information specific to a CISM entity, See notes 4 and 7. 
+           The information specific to a CISM entity. See notes 4 and 7. 
           $ref: "#/definitions/schemas/CismSpecificInfo"
+        cirSpecificInfo:
+          description: >
+           The information specific to a CIR entity. See notes 4 and 8. 
+          $ref: "#/definitions/schemas/CirSpecificInfo"
+        ccmSpecificInfo:
+          description: >
+           The information specific to a CCM entity. See notes 4 and 9. 
+          $ref: "#/definitions/schemas/CcmSpecificInfo"
 
         _links:
           description: >
@@ -761,10 +771,10 @@ definitions:
       description: >
         This type represents an individual peer entity.
         * NOTE 1:	The value of the "peerEntityId" attribute is the same as the value of the "id" attribute in the
-                    "ManoEntity" of the corresponding NFV-MANO functional entity that acts as peer entity, and shall
-                    follow the uniqueness requirements set out in clause 5.6.2.2 for the "id" attribute.
-        * NOTE 2:	ETSI GS NFV-IFA 031 [1] defines an additional attribute named "apiDiscoveryEndpoint" in the
-                    PeerManoEntity. The modelling of this attribute is not specified in the present document version.
+                  "ManoEntity" of the corresponding NFV-MANO functional entity that acts as peer entity, and shall
+                  follow the uniqueness requirements set out in clause 5.6.2.2 for the "id" attribute.
+        * NOTE 2: With this information, the NFVO has available information about the set of VIMs and associated VIM
+                  connection information that have been configured into the VNFM.
       type: object
       required:
         - id
@@ -809,6 +819,30 @@ definitions:
             consumed NFV-MANO interface, are managed by the API consumer and referenced
             from other data structures via the "consumedManoInterfaceIds" attribute.
           type: object
+        vimConnectionInfos:
+          description: >
+            Map of VIM connection information. The VimConnectionInfo is specified in clause
+            4.4.1.6 of ETSI GS NFV-SOL 003. This attribute can be modified with the
+            PATCH method. May be present only if the "type" attribute in the "PeerEntity” is either a
+            "VIM", a "CISM" or a "CIR", and the NFV-MANO entity being configured is a
+            "VNFM" or "NFVO" as indicated by the "type" attribute in the "ManoEntity".
+            In case it is present, the value of the "vimId" in the "VimConnectionInfo" shall
+            be equal to the value of "peerEntityId". In addition, the content of "interfaceInfo",
+            "accessInfo” and "extra" (if applicable) of the “VimConnectionInfo" shall be
+            provided by means in scope of the present document.
+          type: array
+          items: 
+            type: object
+        vnfmConfiguredVimConnectionInfoIds:
+          description: >
+            List of VIM connection information identifiers that identify the set of VIMs
+            and associated VIM connection information that have been configured
+            into the VNFM whose identifier is equal to the “peerEntityId“. See note 2.
+            Only applicable if the "type” attribute in the "ManoEntity" is "NFVO" and the
+            "type” attribute in the "PeerEntity" is a "VNFM".
+          type: array
+          items: 
+            $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
           additionalProperties:
             $ref: "#/definitions/schemas/ConsumedManoInterfaceInfo"
         peerEntityState:
@@ -833,11 +867,11 @@ definitions:
       description: >
         This type represents attribute modifications for configuration parameters of a peer entity.
         * NOTE:	Due to the security sensitive information contained within the attribute (refer to "securityInfo"
-                within the "ConsumedManoInterfaceInfo"), based on access control policies, the API consumer might have
-                read only, write only, read/write, or no access at all to the attribute's value. In case the
-                API consumer is not allowed to modify the value of the security sensitive attribute, and the
-                modification request includes new attribute values, the whole modification request shall be rejected,
-                and proper error information returned.
+                within the "ConsumedManoInterfaceInfo" " and "accessInfo" within the "VimConnectionInfo"), 
+                based on access control policies, the API consumer might have read only, write only, read/write,
+                or no access at all to the attribute's value. In case the API consumer is not allowed to modify 
+                the value of the security sensitive attribute, and the modification request includes new attribute
+                values, the whole modification request shall be rejected, and proper error information returned.
       type: object
       properties:
         name:
@@ -857,6 +891,14 @@ definitions:
             If present, these modifications shall be applied according to the rules of
             JSON Merge PATCH (see IETF RFC 7396). See note.
           type: object
+        vimConnectionInfos:
+          description: >
+            Modification of the "vimConnectionInfos” attribute in
+            the "PeerEntity". If present, these modifications shall be applied
+            according to the rules of JSON Merge PATCH (see IETF RFC  7396). See note.
+          type: array
+          items:
+            type: object
           additionalProperties:
             $ref: "#/definitions/schemas/ConsumedManoInterfaceInfo"
         operationalState:
@@ -872,17 +914,17 @@ definitions:
 
     PeerEntityConfigModifications:
       description: >
-        This type represents attribute modifications that were performed on an
-        "Individual peer entity" resource. The attributes that can be included
-        consist of those requested to be modified explicitly in the
-        "PeerEntityConfigModificationRequest" data structure. If applicable,
-        additional attributes of the "PeerEntity" data structure that were
+        This type represents attribute modifications that were performed on an "Individual peer 
+        entity" resource. The attributes that can be included consist of those requested to be 
+        modified explicitly in the "PeerEntityConfigModificationRequest" data structure. 
+        If applicable, additional attributes of the "PeerEntity" data structure that were
         modified implicitly shall also be provided.
         * NOTE:	Due to the security sensitive information contained within the attribute (refer to "securityInfo"
-                within the "ConsumedManoInterfaceInfo"), based on access control policies, the API consumer might have
-                read only, write only, read/write, or no access at all to the attribute's value. In case the
-                API consumer is not allowed to read the value of the security sensitive attribute, the attribute shall
-                be omitted when the information is to be provided in a response message.
+                within the "ConsumedManoInterfaceInfo" " and "accessInfo" within the "VimConnectionInfo"), based 
+                on access control policies, the API consumer might have read only, write only, read/write, or no
+                access at all to the attribute's value. In case the API consumer is not allowed to read the value 
+                of the security sensitive attribute, the attribute shall be omitted when the information is to be
+                provided in a response message.
       type: object
       properties:
         name:
@@ -901,6 +943,14 @@ definitions:
             "consumedManoInterfaces" attribute in "PeerEntity", as defined in
             clause 5.6.2.15. See note.
           type: object
+        vimConnectionInfos:
+          description: >
+            If present, this attribute signals modifications of the "vimConnectionInfos" attribute in
+            "PeerEntity", as defined in clause 5.6.2.15. See note.
+          type: array
+          items:
+            type: object
+
           additionalProperties:
             $ref: "#/definitions/schemas/ConsumedManoInterfaceInfo"
         operationalState:
@@ -1502,6 +1552,7 @@ definitions:
 
             Permitted values:
               - TLS_TUNNEL: Using TLS tunnel, as defined by TLS 1.2 in IETF RFC 5246.
+              - TLS_TUNNEL_13: Using TLS tunnel, as defined by TLS 1.3 in IETF RFC 8446.
               - OAUTH2: Using access token, as defined by the OAuth 2.0 specification
               in IETF RFC 6749.
           type: array
@@ -1509,6 +1560,7 @@ definitions:
             type: string
             enum:
               - TLS_TUNNEL
+              - TLS_TUNNEL_13
               - OAUTH2
           minItems: 1
         oauthServerInfo:
@@ -1593,6 +1645,7 @@ definitions:
 
             Permitted values:
             - TLS_TUNNEL: Using TLS tunnel, as defined by TLS 1.2 in IETF RFC 5246.
+            - TLS_TUNNEL_13: Using TLS tunnel, as defined by TLS 1.3 in IETF RFC 8446.
             - OAUTH2: Using access token, as defined by the OAuth 2.0 specification
             in IETF RFC 6749.
           type: array
@@ -1600,6 +1653,7 @@ definitions:
             type: string
             enum:
               - TLS_TUNNEL
+              - TLS_TUNNEL_13
               - OAUTH2
           minItems: 1
         oauthServerInfo:
@@ -1658,6 +1712,123 @@ definitions:
               items:
                 type: string
                 minItems: 1
+
+    CirSpecificInfo:
+      description: >
+        This type represents information attributes specific to a CIR entity, and that can be relevant to more than one NFV-
+        MANO service offered by a CIR entity. It shall comply with the provisions defined in table 5.6.3.15-1.
+        NOTE: Recommendations on appropriate algorithms and key lengths are given e.g. in NIST Special Publication 800-57 
+              Part 3 Revision 1 or in documents related to local legislation.
+      type: object
+      required:
+        - osContainerImageFormats
+        - imageSignatureVerification
+        - imageDigestAlgorithms
+      properties:
+        osContainerImageFormats:
+          description: >
+            List of supported OS container image
+            formats. Valid values are all values for "container_format" as defined in ETSI
+            GS NFV-SOL 001 and all values for "container-format" as defined in ETSI GS NFV-SOL 006.
+          type: array
+          minItems: 1
+          items:
+            type: string
+        imageSignatureVerification:
+          $ref: "#/definitions/schemas/CirSpecificInfo.imageSignatureVerification" 
+        imageDigestAlgorithms:
+          type: array
+          items:
+           $ref: "#/definitions/schemas/CirSpecificInfo.imageDigestAlgorithms"
+    CirSpecificInfo.imageDigestAlgorithms:
+        description: >
+          List of supported digest algorithms that can be used for digital signatures.
+        type: object
+        required:
+        - algorithm
+        - keyLengths
+        properties:
+          algorithm:
+            description: >
+             The name of the algorithm. Permitted values are: "SHA2", "SHA3".
+            type: string
+            enum:
+              - SHA2
+              - SHA3
+          keyLengths:
+            description: >
+              List of supported key lengths of the algorithm. The key length indicates the
+              number of bits, such as "256", "512", etc. See note.
+            type: array
+            items:
+              type: string
+    CirSpecificInfo.imageSignatureVerification:
+        description: >
+         Information about the supported mechanisms, algorithms, and protocols for verifying the of software images.
+        type: object
+        required:
+        - signatureVerificationAlgorithms
+        properties:
+          signatureVerificationAlgorithms:
+           description: >
+            List of algorithms for verifying the signature of software images 
+            that are supported by the CIR.
+           type: array
+           items:
+             $ref: "#/definitions/schemas/CirSpecificInfo.imageSignatureVerification.signatureVerificationAlgorithms"
+    CirSpecificInfo.imageSignatureVerification.signatureVerificationAlgorithms:
+        description: >
+         List of algorithms for verifying the signature of software images that are supported by the CIR.
+        type: object
+        required:
+        - algorithm
+        - keyLengths
+        properties:
+         algorithm:
+          description: >
+            The name of the algorithm. Permitted values are: "RSA", "DSA", "ECDSA".
+          type: string
+         keyLengths:
+          description: >
+            List of supported key lengths of the algorithm. The key length
+            indicates the number of bits, such as "256", "512", etc. See note
+          type: array
+          minItems: 1
+          items:
+            type: string
+         additionalAlgParams:
+              $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"  
+
+
+    CcmSpecificInfo:
+      description: >
+        The supported cluster resource management modes. Available modes include: virtual and bare-metal resources,
+        and for both types, on-demand (i.e., CCM requests to corresponding infrastructure managers to build 
+        necessary pools of resources) or pooled (i.e., CCM manages resources from pre-allocated resource pools). 
+        Multiple values can be specified. See note. 
+        Permitted values:
+        - VIRTUAL-ON-DEMAND: virtual resourceson demand.
+        - VIRTUAL-POOLED: virtual resources from a pre-allocated resource pool.
+        - BARE-METAL-ON-DEMAND: bare-metal resources on demand.
+        - BARE-METAL-POOLED: bare-metal resources from a pre-allocated resource pool.
+        
+        NOTE: Hybrid CIS clusters include both physical and virtual CIS cluster nodes and can be supported by a
+              combination of relevant "clusterResourceMgmtModes".
+      type: object
+      required:
+        - clusterResourceMgmtModes
+      properties:
+        clusterResourceMgmtModes:
+          type: array
+          minItems: 1
+          items:
+            type: string
+            enum:
+            - VIRTUAL-ON-DEMAND
+            - VIRTUAL-POOLED
+            - BARE-METAL-ON-DEMAND
+            - BARE-METAL-POOLED
+
 
     #referenced simple data types
     ManoServiceInterfaceTypeShortName:
