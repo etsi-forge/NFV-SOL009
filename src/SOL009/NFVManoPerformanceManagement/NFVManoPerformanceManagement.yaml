@@ -20,8 +20,8 @@ info:
   version: 2.0.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
 
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V4.3.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/04.03.01_60/gs_NFV-SOL009v040301p.pdf
+  description: ETSI GS NFV-SOL 009 V4.4.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/04.04.01_60/gs_NFV-SOL009v040401p.pdf
 
 servers:
   - url: http://127.0.0.1/nfvmanopm/v2
@@ -43,7 +43,7 @@ paths:
         $ref: "#/components/requestBodies/CreatePMJobRequest"
       responses:
         "201": 
-          $ref: "#/components/responses/pm_jobs.Post.201"
+          $ref: "#/components/responses/pmJobs.Post.201"
         "400":
           $ref: ../responses/SOL009_resp.yaml#/responses/400
         "401":
@@ -57,7 +57,7 @@ paths:
         "406":
           $ref: ../responses/SOL009_resp.yaml#/responses/406
         "422":
-          $ref: ../responses/SOL009_resp.yaml#/responses/422
+          $ref: "#/components/responses/pmJobs.Post.422"
         "500":
           $ref: ../responses/SOL009_resp.yaml#/responses/500
         "503":
@@ -404,7 +404,7 @@ paths:
 
 components:
   responses:
-    pm_jobs.Post.201:
+    pmJobs.Post.201:
       description: >
         201 CREATED
 
@@ -432,12 +432,12 @@ components:
         application/json:
           schema:
             $ref: "./definitions/NFVManoPerformanceManagement_def.yaml#/definitions/schemas/PmJob"
-    pm_jobs.Post.422:
+    pmJobs.Post.422:
       description: >
-        422 Unprocessable Entity
+        422 Unprocessable Content
 
         Shall be returned upon the following error: The content type
-        of the payload body is supported and the payload body of a request
+        of the message content is supported and the message content of a request
         contains syntactically correct data but the data cannot be processed.
 
         The general cause for this error and its handling is specified in
@@ -630,10 +630,10 @@ components:
             $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
     IndividualPmJob.Patch.422:
       description: >
-        422 Unprocessable Entity
+        422 Unprocessable Content
 
         Shall be returned upon the following error: The content type
-        of the payload body is supported and the payload body of a request
+        of the message content is supported and the message content of a request
         contains syntactically correct data but the data cannot be processed.
 
         The general cause for this error and its handling is specified in
@@ -683,7 +683,6 @@ components:
             Version of the API used in the response.
           schema:
             type: string
-
     IndividualPerformanceReport.Get.200:
       description: >
         200 OK
@@ -752,10 +751,10 @@ components:
             $ref: "./definitions/NFVManoPerformanceManagement_def.yaml#/definitions/schemas/Threshold"
     Thresholds.Post.422:
       description: >
-        422 Unprocessable Entity
+        422 Unprocessable Content
 
         Shall be returned upon the following error: The content type
-        of the payload body is supported and the payload body of a request
+        of the message content is supported and the message content of a request
         contains syntactically correct data but the data cannot be processed.
 
         The general cause for this error and its handling is specified in
@@ -936,10 +935,10 @@ components:
             $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
     Threshold.Patch.422:
       description: >
-        422 Unprocessable Entity
+        422 Unprocessable Content
 
         Shall be returned upon the following error: The content type
-        of the payload body is supported and the payload body of a request
+        of the message content is supported and the message content of a request
         contains syntactically correct data but the data cannot be processed.
 
         The general cause for this error and its handling is specified in

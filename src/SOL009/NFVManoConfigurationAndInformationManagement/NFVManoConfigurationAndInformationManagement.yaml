@@ -16,11 +16,11 @@ info:
   license:
     name: ETSI Forge copyright notice
     url: https://forge.etsi.org/etsi-forge-copyright-notice.txt
-  version: 2.1.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
+  version: 2.11.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
 
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V4.3.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/04.03.01_60/gs_NFV-SOL009v040301p.pdf
+  description: ETSI GS NFV-SOL 009 V4.4.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/04.04.01_60/gs_NFV-SOL009v040401p.pdf
 
 servers:
   - url: http://127.0.0.1/nfvmanocim/v2
@@ -358,10 +358,12 @@ paths:
   /subscriptions/{subscriptionId}:
     parameters:
       - $ref: "#/components/parameters/subscriptionId"
+      
     get:
       description: >
         The GET method retrieves information about a subscription by reading an "Individual subscription" resource.
         See clause 5.5.5.3.2.
+
       parameters:
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
         - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
@@ -1413,10 +1415,10 @@ components:
             maximum: 1
     Subscriptions.Post.422:
       description: >
-        422 Unprocessable Entity
+        422 Unprocessable Content
 
         Shall be returned upon the following error: The content type
-        of the payload body is supported and the payload body of a request
+        of the message content is supported and the message content of a request
         contains syntactically correct data but the data cannot be processed.
 
         The general cause for this error and its handling is specified in
