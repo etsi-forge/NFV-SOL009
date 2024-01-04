@@ -13,6 +13,8 @@ definitions:
         *  NOTE 7:	It shall be present when "type" attribute is "CISM", and it shall be absent in any other case. 
         *  NOTE 8:	It shall be present when "type" attribute is "CIR", and it shall be absent in any other case. 
         *  NOTE 9:	It shall be present when "type" attribute is "CCM", and it shall be absent in any other case. 
+        *  NOTE 10: It shall be present when "type" attribute is "MDAF", and it shall be absent in any other case.
+        *  NOTE 11: It shall be present when "type" attribute is "CMF", and it shall be absent in any other case.
       type: object
       required:
         - id
@@ -135,6 +137,10 @@ definitions:
           description: >
            The information specific to a CCM entity. See notes 4 and 9. 
           $ref: "#/definitions/schemas/CcmSpecificInfo"
+        mdafSpecificInfo: 
+          description: >
+           The information specific to a MDAF entity. See notes 4 and 10.
+          $ref: "#/definitions/schemas/MdafSpecificInfo" 
 
         _links:
           description: >
@@ -1062,6 +1068,7 @@ definitions:
       required:
         - supportedVnfdFormats
         - supportedNsdFormats
+        - certificateManagementMode
       properties:
         maxOnboardedNsdNum:
           description: >
@@ -1121,6 +1128,19 @@ definitions:
           required:
             - nsdFormat
             - standardVersion
+        certificateManagementMode:
+          description: >
+            The supported list of VNF certificate management mode.
+            Permitted Values:
+            - DELEGATION-MODE: the CMF supports delegation-mode.
+            - DIRECT-MODE: the CMF supports direct-mode.
+          type: array
+          items:
+            type: string
+            minItems: 1
+            enum:
+            - DELEGATION-MODE
+            - DIRECT-MODE
 
     VnfmSpecificInfo:
       description: >
@@ -1133,6 +1153,7 @@ definitions:
         - resoruceMgmtModeSupport
         - managedVnfInstanceInfos
         - supportedVnfdFormats
+        - certificateManagementMode
       properties:
         resoruceMgmtModeSupport:
           description: >
@@ -1184,6 +1205,19 @@ definitions:
               - vnfdFormat
               - standardVersion
           minItems: 1
+        certificateManagementMode:
+          description: >
+            The supported list of VNF certificate management mode.
+            Permitted Values:
+            - DELEGATION-MODE: the CMF supports delegation-mode.
+            - DIRECT-MODE: the CMF supports direct-mode.
+          type: array
+          items:
+            type: string
+            minItems: 1
+            enum:
+            - DELEGATION-MODE
+            - DIRECT-MODE
 
     VimSpecificInfo:
       description: >
@@ -1381,6 +1415,20 @@ definitions:
           description:
             Default value for the log compilation by timer to be used.
           $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/UnsignedInt"
+        certificateManagementMode:
+          description: >
+            The supported list of VNF certificate management mode.
+            Permitted Values:
+            - DELEGATION-MODE: the CMF supports delegation-mode.
+            - DIRECT-MODE: the CMF supports direct-mode.
+
+            NOTE: This attribute shall not be configured into CMF.
+          type: array
+          items:
+            type: string
+            enum:
+            - DELEGATION-MODE
+            - DIRECT-MODE
 
     ConsumedManoInterfaceInfo:
       description: >
@@ -1830,6 +1878,40 @@ definitions:
             - BARE-METAL-POOLED
 
 
+    MdafSpecificInfo:
+      description: >
+        The supported list of data analytics types. Examples include "Network service alarm incident analysis" and others 
+        specified in ETSI GS NFV-IFA 047 [i.30]).
+      type: object
+      required:
+        - dataAnalyticsTypes    
+      properties:
+        dataAnalyticsTypes:
+          type: array
+          minItems: 1
+          items:
+            type: string
+
+
+    CmfSpecificInfo:
+      description: >
+        The supported list of VNF certificate management mode.
+        Permitted Values: 
+        - DELEGATION-MODE: the CMF supports delegation-mode.
+        - DIRECT-MODE: the CMF supports direct mode.
+      type: object
+      required:
+        - certificateManagementMode
+      properties:
+        certificateManagementMode:
+          type: array
+          minItems: 1
+          items:
+            type: string
+            enum:
+            - DELEGATION-MODE
+            - DIRECT-MODE   
+
     #referenced simple data types
     ManoServiceInterfaceTypeShortName:
       description: >
@@ -1908,10 +1990,10 @@ definitions:
         "ccmciscpm"               Represents the "CIS cluster performance management" service interface produced by a CCM (refer to IFA036).
         "ccmcisccm"               Represents the "CIS cluster configuration management" service interface produced by a CCM (refer to IFA036).
         "ccmciscsm"               Represents the "CIS cluster security management" service interface produced by a CCM (refer to IFA036).
-
-        NOTE:	"IFA005", "IFA006", "IFA007", "IFA008", "IFA013", "IFA032", "IFA040" are used as a shorthand for the
+        "mdafda"                  Represents the "Data analytics" service interface produced by a MDAF (refer to IFA047).
+        NOTE:	"IFA005", "IFA006", "IFA007", "IFA008", "IFA013", "IFA032", "IFA040", "IFA036", "IFA037" are used as a shorthand for the
         specifications ETSI GS NFV-IFA 005, ETSI GS NFV-IFA 006, ETSI GS NFV-IFA 007, ETSI GS NFV IFA 008, ETSI GS NFV-IFA 013, 
-        ETSI GS NFV-IFA 032 and ETSI GS NFV-IFA 040, and ETSI GS NFV-IFA 036 respectively.
+        ETSI GS NFV-IFA 032 and ETSI GS NFV-IFA 040, ETSI GS NFV-IFA 036 and ETSI GS NFV-IFA 047 respectively.
       type: string
 
     UsageStateEnumType:
@@ -1991,6 +2073,8 @@ definitions:
           - CISM  The NFV-MANO functional entity is a CISM. 
           - CIR   The NFV-MANO functional entity is a CIR.
           - CCM   The NFV-MANO functional entity is a CCM.
+          - MDAF  The NFV-MANO functional entity is a MDAF.
+          - CMF   The NFV-MANO functional entity is a CMF.
       type: string
       enum:
         - NFVO
@@ -2000,7 +2084,9 @@ definitions:
         - CISM
         - CIR
         - CCM 
-
+        - MDAF
+        - CMF
+        
     PeerEntityEnumType:
       description: >
         The enumeration PeerEntityEnumType defines the permitted values
@@ -2010,9 +2096,11 @@ definitions:
         - VNFM	The peer functional entity is a VNFM.
         - VIM	  The peer functional entity is a VIM.
         - WIM	  The peer functional entity is a WIM.
-        - CISM   The peer functional entity is a CISM. 
+        - CISM  The peer functional entity is a CISM. 
         - CIR   The NFV-MANO functional entity is a CIR.
         - CCM   The NFV-MANO functional entity is a CCM.
+        - MDAF  The peer functional entity is a MDAF.
+        - CMF   The peer functional entity is a CMF.
         - EM	  The peer functional entity is an EM.
         - OSS	  The peer functional entity is an OSS/BSS.
       type: string
@@ -2024,6 +2112,8 @@ definitions:
         - CISM
         - CIR
         - CCM 
+        - MDAF
+        - CMF
         - EM
         - OSS
 
