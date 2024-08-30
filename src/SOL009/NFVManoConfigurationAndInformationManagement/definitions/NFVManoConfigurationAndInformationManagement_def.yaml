@@ -1062,7 +1062,7 @@ definitions:
         This type represents information attributes specific to an NFVO entity,
         and that can be relevant to more than one NFV-MANO service offered by an NFVO entity.
         * NOTE 1:	The information to be provided in this attribute shall relate to the specification and version
-                  of the specification. For instance, "ETSI GS NFV-SOL 001 (V5.5.1)".
+                  of the specification. For instance, "ETSI GS NFV-SOL 001 (V2.5.1)".
           NOTE 2:	If this attribute is not present, the value of this parameter is undefined.
       type: object
       required:
@@ -1147,7 +1147,7 @@ definitions:
         This type represents information attributes specific to a VNFM entity,
         and that can be relevant to more than one NFV-MANO service offered by a VNFM entity.
         * NOTE:	The information to be provided in this attribute shall relate to the specification and version
-                of the specification. For instance, "ETSI GS NFV-SOL 001 (V2.5.1)".
+                of the specification. For instance, "ETSI GS NFV-SOL 001 (V5.5.1)".
       type: object
       required:
         - resoruceMgmtModeSupport
