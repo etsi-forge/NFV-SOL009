@@ -1062,7 +1062,7 @@ definitions:
         This type represents information attributes specific to an NFVO entity,
         and that can be relevant to more than one NFV-MANO service offered by an NFVO entity.
         * NOTE 1:	The information to be provided in this attribute shall relate to the specification and version
-                    of the specification. For instance, "ETSI GS NFV-SOL 001 (V2.5.1)".
+                  of the specification. For instance, "ETSI GS NFV-SOL 001 (V2.5.1)".
           NOTE 2:	If this attribute is not present, the value of this parameter is undefined.
       type: object
       required:
@@ -1147,7 +1147,7 @@ definitions:
         This type represents information attributes specific to a VNFM entity,
         and that can be relevant to more than one NFV-MANO service offered by a VNFM entity.
         * NOTE:	The information to be provided in this attribute shall relate to the specification and version
-                of the specification. For instance, "ETSI GS NFV-SOL 001 (V2.5.1)".
+                of the specification. For instance, "ETSI GS NFV-SOL 001 (V5.5.1)".
       type: object
       required:
         - resoruceMgmtModeSupport
@@ -1218,7 +1218,87 @@ definitions:
             enum:
             - DELEGATION-MODE
             - DIRECT-MODE
-
+        pmJobConnectionInfos:
+          description: >
+              PM job connection information
+          type: array
+          items:
+            type: object
+            required:
+              - monitoringType
+            properties:
+              monitoringType:
+                description: >
+                  Indicates the type of tool to monitor the PM of the VNF instance managed by the VNFM.
+                  Permitted values:
+                  • VIM_CISM
+                  • EXTERNAL
+                type: string
+                enum:
+                  - VIM_CISM
+                  - EXTERNAL
+              vimId:
+                description: >
+                  Information about VIM or CISM connection(s) for monitoring resources for the VNF instance.
+                  May be present only if the “monitoringType“ attribute in the “VnfmSpecificInfo“ is “VIM_CISM“.
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
+              interfaceInfo:
+                description: >
+                  Information about the interface(s) to the external monitoring tool, if available, including 
+                  interface endpoint e.g., URL API version, and protocol type. May be present only if the “monitoringType“
+                  attribute in the “VnfmSpecificInfo“ is “EXTERNAL“.
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"          
+              accessInfo:
+                description: >
+                  Information about authentication credentials for accessing the external monitoring tool. Examples can 
+                  include those to support different authentication schemes, e.g., OAuth, Token, Username/password, etc.
+                  May be present only if the “monitoringType“ attribute in the “VnfmSpecificInfo“ is “EXTERNAL“.
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"         
+              extra:
+                description: >
+                  Monitoring type specific additional information.
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"     
+        fmConnectionInfos:
+          description: >
+              FM connection information
+          type: array
+          items:
+            type: object
+            required:
+              - monitoringType
+            properties:
+              monitoringType:
+                description: >
+                  Indicates the type of tool to monitor faults of the VNF instance managed by the VNFM.
+                  Permitted values:
+                  • VIM_CISM
+                  • EXTERNAL
+                type: string
+                enum:
+                  - VIM_CISM
+                  - EXTERNAL
+              vimId:
+                description: >
+                  Information about VIM or CISM connection(s) for monitoring resources for the VNF instance.
+                  May be present only if the “monitoringType“ attribute in the “VnfmSpecificInfo“ is “VIM_CISM“.
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/Identifier"
+              interfaceInfo:
+                description: >
+                  Information about the interface(s) to the external monitoring tool, if available, including 
+                  interface endpoint e.g., URL API version, and protocol type.
+                  May be present only if the “monitoringType“ attribute in the “VnfmSpecificInfo“ is “EXTERNAL“.
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"          
+              accessInfo:
+                description: >
+                  Information about authentication credentials for accessing the external monitoring tool. 
+                  Examples can include those to support different authentication schemes, e.g., OAuth, Token, Username/password, etc.
+                  May be present only if the “monitoringType“ attribute in the “VnfmSpecificInfo“ is “EXTERNAL“.
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"         
+              extra:
+                description: >
+                  Monitoring type specific additional information.
+                $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/KeyValuePairs"  
+              
     VimSpecificInfo:
       description: >
         This type represents information attributes specific to a VIM entity,
