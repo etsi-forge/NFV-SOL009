@@ -3,6 +3,9 @@ definitions:
     ManoEntity:
       description: >
         This type represents an NFV-MANO functional entity.
+        NOTE: As of the current release of the present document the Certificate Management Function (CMF) is out of 
+              scope of ETSI GS NFV 006 [i.3] however it is included in the present document with the rest of 
+              NFV-MANO interoperability for the purpose of discovery only.
         *  NOTE 1:	It shall be present when "type" attribute is "NFVO", and it shall be absent in any other case.
         *  NOTE 2:	It shall be present when "type" attribute is "VNFM", and it shall be absent in any other case.
         *  NOTE 3:	It shall be present when "type" attribute is "VIM", and it shall be absent in any other case.
@@ -15,6 +18,7 @@ definitions:
         *  NOTE 9:	It shall be present when "type" attribute is "CCM", and it shall be absent in any other case. 
         *  NOTE 10: It shall be present when "type" attribute is "MDAF", and it shall be absent in any other case.
         *  NOTE 11: It shall be present when "type" attribute is "CMF", and it shall be absent in any other case.
+        *  NOTE 12: It shall be present when "type" attribute is "IM", and it shall be absent in any other case.
       type: object
       required:
         - id
@@ -141,6 +145,14 @@ definitions:
           description: >
            The information specific to a MDAF entity. See notes 4 and 10.
           $ref: "#/definitions/schemas/MdafSpecificInfo" 
+        imSpecificInfo:
+          description: >
+            The information specific to a IM entity. See notes 4 and 12.
+          $ref: "#/definitions/schemas/ImSpecificInfo"
+        cmfSpecificInfo:
+          description: >
+            The information specific to an CMF entity. See notes 4 and 11.
+          $ref: "#/definitions/schemas/CmfSpecificInfo"
 
         _links:
           description: >
@@ -380,20 +392,27 @@ definitions:
 
     ChangeStateRequest:
       description: >
-        This type represents request parameters for changing the state of a managed entity.
+        This type represents request parameters for changing the state of a managed entity. It shall comply with the provisions 
+        defined in table 5.6.2.8-1. 
+        NOTE: The ChangeStateRequest data type can be used for requesting operational and administrative state 
+        changes on different types of managed entities, such as the NFV-MANO functional entity application and 
+        NFV-MANO service interfaces, as indicated by the supported method request/response of a resource.
+        
         * NOTE 1:	In the present document version, a request shall only include an operational state change
                     (attribute "operationalStateChange") or an administrative state change request (attribute
                     "administrativeStateChange"), but not both.
         * NOTE 2:	The "stopType" shall only be provided when the "operationalStateAction" attribute is equal
                     to "STOP" or "RESTART". The "gracefulStopTimeout" shall be absent when the "stopType" attribute
                     is equal to "FORCEFUL", and may be provided otherwise.
+        * NOTE 3: In the present document version, a request shall only include an operational state change (attribute 
+                  "operationalStateChange") in case of changing the state of an NFV-MANO functional entity application 
+                  and/or specific NFV-MANO service iinterface. 
       type: object
       properties:
         operationalStateChange:
           description: >
-            A change of operational state. Shall be present if the state change request
-            refers to the operational state. See note 1.
-            but not both.
+            A change of operational state shall be present if the state change request refers 
+            to the operational state.  See notes 1 and 3.
           type: object
           properties:
             operationalStateAction:
@@ -1515,7 +1534,7 @@ definitions:
         This type represents an interface consumed by the producer NFV MANO
         functional entity from another peer functional entity.
         * NOTE 1:	The information to be provided in this attribute shall relate to the specification and its version.
-                    For instance, "ETSI GS NFV-SOL 003 (V2.4.1)".
+                    For instance, "ETSI GS NFV-SOL 003 (V5.2.1)".
         * NOTE 2:	Due to the security sensitive information associated to the attribute, based on access control
                     policies, the API consumer might have read only, write only, read/write, or no access at all to
                     the attribute's value. In case the API consumer is not allowed to read the value of the security
@@ -1531,6 +1550,7 @@ definitions:
         - standardVersion
         - apiVersion
         - apiEndpoint
+        - administrativeState
       properties:
         name:
           description: >
@@ -1592,6 +1612,10 @@ definitions:
             Security related information including credentials information if needed
             for consuming the API. See note 2.
           $ref: "#/definitions/schemas/ClientInterfaceSecurityInfo"
+        administrativeState:
+          description: >
+            Administrative state of the consumed NFV-MANO service interface.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/AdministrativeStateEnumType"
 
     CimNotificationsFilter:
       description: >
@@ -2032,6 +2056,8 @@ definitions:
         "vrqcn"	                  Represents the "Virtualised Resources Quota Change Notification" interface produced by a VIM (refer to IFA005 and IFA006).
         "chrm"	                  Represents the "Compute Host Reservation Management" interface produced by a VIM (refer to IFA005).
         "chcam"                   Represents the "Compute Host Capacity Management" interface produced by a VIM (refer to IFA005).
+        "pom"                     Represents the "Policy Management" interface produced by a VIM (refer to IFA005 and IFA006).
+        "dafm"                    Represents the "Data Flow Mirroring Management" interface produced by a VIM (refer to IFA005).
         "vnfspkgm"	              Represents the "VNF Snapshot Package Management" interface produced by a VNFM (refer to IFA007 and IFA013). This value is deprecated and it can be removed in subsequent versions of the present document. ETSI GS NFV SOL 005 [11] has specified to use the string "vnfsnapshotpkgm" as "apiName".
         "vcrm_ind"	              Represents the indirect "Virtualised Compute Resources Management" interface produced by an NFVO (refer to IFA007).
         "vcrim_ind"	              Represents the indirect "Virtualised Compute Resources Information Management" interface produced by an NFVO (refer to IFA007).
@@ -2062,6 +2088,8 @@ definitions:
         "cismstrgm"	              Represents the "OS container storage management" service interface produced by a CISM (refer to IFA040).
         "cismnetwm"	              Represents the "OS container network management" service interface produced by a CISM (refer to IFA040).
         "cismcfgm"	              Represents the "OS container configuration management" service interface produced by a CISM (refer to IFA040).
+        "cismwkldpm"              Represents the "OS container workload performance management" service interface produced by a CISM (refer to IFA040).
+        "cismwkldfm"              Represents the "OS container workload fault management" service interface produced by a CISM (refer to IFA040).
         "cismcisim"               Represents the "CIS instance management" service interface produced by a CISM (refer to IFA036).
         "cismcismccom"            Represents the "CIS MCCO management" service interface produced by a CISM (refer to IFA036).
         "cirimgm"                 Represents the "OS container image management" service interface produced by a CIR (refer to IFA040).
@@ -2071,9 +2099,10 @@ definitions:
         "ccmcisccm"               Represents the "CIS cluster configuration management" service interface produced by a CCM (refer to IFA036).
         "ccmciscsm"               Represents the "CIS cluster security management" service interface produced by a CCM (refer to IFA036).
         "mdafda"                  Represents the "Data analytics" service interface produced by a MDAF (refer to IFA047).
+        "imim"                    Represents the "Intent Management" service interface produced by a Intent Management (refer to IFA050).
         NOTE:	"IFA005", "IFA006", "IFA007", "IFA008", "IFA013", "IFA032", "IFA040", "IFA036", "IFA037" are used as a shorthand for the
         specifications ETSI GS NFV-IFA 005, ETSI GS NFV-IFA 006, ETSI GS NFV-IFA 007, ETSI GS NFV IFA 008, ETSI GS NFV-IFA 013, 
-        ETSI GS NFV-IFA 032 and ETSI GS NFV-IFA 040, ETSI GS NFV-IFA 036 and ETSI GS NFV-IFA 047 respectively.
+        ETSI GS NFV-IFA 032, ETSI GS NFV-IFA 040, ETSI GS NFV-IFA 036, ETSI GS NFV-IFA 047 and ETSI GS NFV-IFA 050 respectively.
       type: string
 
     UsageStateEnumType:
@@ -2155,6 +2184,7 @@ definitions:
           - CCM   The NFV-MANO functional entity is a CCM.
           - MDAF  The NFV-MANO functional entity is a MDAF.
           - CMF   The NFV-MANO functional entity is a CMF.
+          - IM    The NFV-MANO functional entity is a Intent Management.
       type: string
       enum:
         - NFVO
@@ -2166,6 +2196,7 @@ definitions:
         - CCM 
         - MDAF
         - CMF
+        - IM
         
     PeerEntityEnumType:
       description: >
@@ -2181,6 +2212,7 @@ definitions:
         - CCM   The NFV-MANO functional entity is a CCM.
         - MDAF  The peer functional entity is a MDAF.
         - CMF   The peer functional entity is a CMF.
+        - IM    The peer functional entity is a Intent Management.
         - EM	  The peer functional entity is an EM.
         - OSS	  The peer functional entity is an OSS/BSS.
       type: string
@@ -2194,7 +2226,20 @@ definitions:
         - CCM 
         - MDAF
         - CMF
+        - IM
         - EM
         - OSS
 
-  
+    ImSpecificInfo:
+      description: >
+        This type represents information attributes specific to a IM entity, and that can be relevant to more than one NFV
+        MANO service offered by a IM entity. It shall comply with the provisions defined in table 5.6.3.19-1.
+      type: object
+      required:
+        - supportedIntentObjectTypes
+      properties:
+        supportedIntentObjectTypes:
+          type: array
+          minItems: 1
+          items:
+            type: string

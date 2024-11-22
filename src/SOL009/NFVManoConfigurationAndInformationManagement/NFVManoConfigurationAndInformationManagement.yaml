@@ -16,11 +16,11 @@ info:
   license:
     name: ETSI Forge copyright notice
     url: https://forge.etsi.org/etsi-forge-copyright-notice.txt
-  version: 2.13.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
+  version: 2.14.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
 
 externalDocs:
-  description: ETSI GS NFV-SOL 009 V5.1.1
-  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/05.01.01_60/gs_nfv-sol009v050101p.pdf
+  description: ETSI GS NFV-SOL 009 V5.2.1
+  url: https://www.etsi.org/deliver/etsi_gs/NFV-SOL/001_099/009/05.02.01_60/gs_nfv-sol009v050201p.pdf
   
 servers:
   - url: http://127.0.0.1/nfvmanocim/v2
@@ -677,6 +677,47 @@ paths:
           $ref: ../responses/SOL009_resp.yaml#/responses/503
         "504":
           $ref: ../responses/SOL009_resp.yaml#/responses/504
+  /peer_entities/{peerEntityId}/consumed_mano_interfaces/{consumedManoInterfaceId}/change_state:
+    parameters:
+      - $ref: "#/components/parameters/peerEntityId"
+      - $ref: "#/components/parameters/consumedManoInterfaceId"
+    post:
+      description: >
+        The POST method requests to change the state of the consumed NFV-MANO service interface. 
+        This method shall follow the provisions specified in tables 5.5.15.3.1-1 and 5.5.15.3.1-2 for URI query parameters, 
+        request and response data structures, and response codes. 
+        The steps and conditions that apply as the result of successfully executing this method are specified in clause 5.7.
+      parameters:
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Version"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Accept"
+        - $ref: "../components/SOL009_params.yaml#/components/parameters/Authorization"
+      requestBody:
+        $ref: "#/components/requestBodies/ChangeStateRequest"
+      responses:
+        "202": 
+          $ref: "#/components/responses/ChangeConsumedNFVMANOInterfaceStateTask.Post.202"
+        "400":
+          $ref: ../responses/SOL009_resp.yaml#/responses/400
+        "401":
+          $ref: ../responses/SOL009_resp.yaml#/responses/401
+        "403":
+          $ref: ../responses/SOL009_resp.yaml#/responses/403
+        "404":
+          $ref: ../responses/SOL009_resp.yaml#/responses/404
+        "405":
+          $ref: ../responses/SOL009_resp.yaml#/responses/405
+        "406":
+          $ref: ../responses/SOL009_resp.yaml#/responses/406
+        "409":
+          $ref: "#/components/responses/ChangeConsumedNFVMANOInterfaceStateTask.Post.409"
+        "422":
+          $ref: ../responses/SOL009_resp.yaml#/responses/422
+        "500":
+          $ref: ../responses/SOL009_resp.yaml#/responses/500
+        "503":
+          $ref: ../responses/SOL009_resp.yaml#/responses/503
+        "504":
+          $ref: ../responses/SOL009_resp.yaml#/responses/504
 
 components:
   parameters:
@@ -831,7 +872,14 @@ components:
       required: true
       schema:
         $ref: '../definitions/SOL009_def.yaml#/definitions/schemas/Identifier'
-
+    consumedManoInterfaceId:
+      name: consumedManoInterfaceId
+      in: path
+      description: >
+        Identifier of the individual consumed NFV-MANO service interface.
+      required: true
+      schema:
+        $ref: '../definitions/SOL009_def.yaml#/definitions/schemas/Identifier'
   requestBodies:
     ModifyManoEntityRequest:
       description: >
@@ -909,6 +957,15 @@ components:
             $ref: "./definitions/NFVManoConfigurationAndInformationManagement_def.yaml#/definitions/schemas/PeerEntityConfigModificationRequest"
       required: true
 
+    ChangeStateRequest:
+      description: >
+        Parameters for the change state operation, as defined in
+        clause 5.6.2.8.
+      content:
+        application/json:
+          schema:
+            $ref: "./definitions/NFVManoConfigurationAndInformationManagement_def.yaml#/definitions/schemas/ChangeStateRequest"
+      required: true
   responses:
     ManoEntity.Get.200:
       description: >
@@ -1993,5 +2050,72 @@ components:
         application/json:
           schema:
             $ref: "../definitions/SOL009_def.yaml#/definitions/schemas/ProblemDetails"
-    
+    ChangeConsumedNFVMANOInterfaceStateTask.Post.202:
+      description: >
+        Shall be returned when the request has been 
+        accepted for processing. 
+
+        The response body shall be empty. 
+
+        The HTTP response shall include a "Location" 
+        HTTP header that contains the URI of the 
+        newly-created "Individual change state 
+        operation occurrence" resource corresponding 
+        to the operation.
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+        Location:
+          description: >
+            The resource URI of the created "Individual subscription" resource.
+          schema:
+            type: string
+            format: url
+            minimum: 1
+            maximum: 1
+    ChangeConsumedNFVMANOInterfaceStateTask.Post.409:
+      description: >
+        Shall be returned upon the following error: The 
+        operation cannot be executed currently, due to 
+        a conflict with the state of the resource. 
+
+        Typically, this is due to the fact that the 
+        resource is in an incompatible state, or that 
+        another change state operation is ongoing. 
+
+        The response body shall contain a 
+        ProblemDetails structure, in which the "detail" 
+        attribute shall convey more information about 
+        the error. 
+      headers:
+        WWW-Authenticate:
+          description: >
+            Challenge if the corresponding HTTP request has not provided
+            authorization, or error details if the corresponding HTTP
+            request has provided an invalid authorization token.
+          schema:
+            type: string
+        Version:
+          description: >
+            Version of the API used in the response.
+          schema:
+            type: string
+        Location:
+          description: >
+            The resource URI of the created "Individual subscription" resource.
+          schema:
+            type: string
+            format: url
+            minimum: 1
+            maximum: 1
   #callbacks:

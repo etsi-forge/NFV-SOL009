@@ -470,6 +470,12 @@ components:
         managedObjectId:
           description: >
             Identifier of the affected NFV-MANO instance.
+            The managed objects will be NFV-MANO functional 
+            entities. An NFV-MANO functional entity can have 
+            fault monitored sub-object types and identification 
+            information is carried as defined in the respective 
+            Alarm definition as defined in clause 7.8 of ETSI GS 
+            NFV-IFA 04
           $ref: "#/components/schemas/Identifier"
         associatedFaultyInstanceId:
           description: >
@@ -503,6 +509,10 @@ components:
         perceivedSeverity:
           description: >
             Perceived severity of the managed object failure.
+            Valid values applicable to specific Alarms are 
+            specified as "Perceived severity" values of the Alarm 
+            applicable to NFV-MANO functional entities, as 
+            defined in clause 7.8 of ETSI GS NFV-IFA 045 [17]
           $ref: "#/components/schemas/PerceivedSeverityType"
         eventTime:
           description: >
@@ -511,14 +521,27 @@ components:
         eventType:
           description: >
             Type of event.
+            Valid values applicable to specific Alarms are 
+            specified as "Event type " values of the Alarm 
+            applicable to NFV-MANO functional entities, as 
+            defined in clause 7.8 of ETSI GS NFV-IFA 045 [17].
           $ref: "#/components/schemas/EventType"
         faultType:
           description: >
             Additional information to clarify the type of the fault.
+            Valid values applicable to specific Alarms are 
+            specified as "Alarm definition identifier" values of the 
+            Alarm applicable to NFV-MANO functional entities, 
+            as defined in clause 7.8 of ETSI GS NFV-IFA 045 
+            [17].
           type: string
         probableCause:
           description: >
             Information about the probable cause of the fault.
+            Valid values applicable to specific Alarms are 
+            specified as "Probable cause" values of the Alarm 
+            applicable to NFV-MANO functional entities, as 
+            defined in clause 7.8 of ETSI GS NFV-IFA 045 [17].
           type: string
         isRootCause:
           description: >
@@ -535,6 +558,10 @@ components:
         faultDetails:
           description: >
             Provides additional information about the fault.
+            Valid values applicable to specific Alarms are 
+            specified as "Fault details" values of the Alarm 
+            applicable to NFV-MANO functional entities, as 
+            defined in clause 7.8 of ETSI GS NFV-IFA 045 [17].
           type: array
           items:
             type: string
@@ -628,11 +655,17 @@ components:
           - LOCKED	The managed entity is administratively prohibited to be used.
           - UNLOCKED	The managed entity is administratively allowed to be used.
           - LOCKING	The managed entity is in the transition to be locked.
+          - SUSPENDED The managed entity is administratively prohibited from use, including for current objects managed by the managed entity.
+          - SUSPENDING The managed entity is in the transition to be suspended.
+          - RESUMING The managed entity is in the transition to be resumed.
       type: string
       enum:
         - LOCKED
         - UNLOCKED
         - LOCKING
+        - SUSPENDED
+        - SUSPENDING
+        - RESUMING
 
     OperationalStateEnumType:
       description: >
