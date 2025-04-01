@@ -227,6 +227,11 @@ definitions:
             New value of the "defaultLogCompileByTimerValue" attribute in the
             "ManoEntityConfigurableParams".
           $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/UnsignedInt"
+        defaultLcmOpOccExpiryTime:
+          description: >
+            New value of the "defaultLcmOpOccExpiryTime" attribute in the
+            "ManoEntityConfigurableParams".
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/UnsignedInt"
         manoServiceModifications:
           description: >
             New content of certain entries in the "manoServices" attribute array
@@ -299,6 +304,12 @@ definitions:
           description: >
             If present, this attribute signals modifications of the
             "defaultLogCompileByTimerValue" attribute in the
+            "ManoEntityConfigurableParams".
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/UnsignedInt"
+        defaultLcmOpOccExpiryTime:
+          description: >
+            If present, this attribute signals modifications of the
+            "defaultLcmOpOccExpiryTime" attribute in the
             "ManoEntityConfigurableParams".
           $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/UnsignedInt"
         manoServiceModifications:
@@ -1494,6 +1505,7 @@ definitions:
         - clockSyncs
         - defaultLogCompileBySizeValue
         - defaultLogCompileByTimerValue
+        - defaultLcmOpOccExpiryTime
       properties:
         clockSyncs:
           description: >
@@ -1528,6 +1540,14 @@ definitions:
             enum:
             - DELEGATION-MODE
             - DIRECT-MODE
+        defaultLcmOpOccExpiryTime:
+          description: >
+            Default value for the expiration time for LCM operation
+            occurrences managed by an NFV-MANO functional entity.
+            This applies only if the NFV-MANO function is responsible
+            for handling LCM operation occurrences. This attribute
+            applies to configuration of VNFM and NFVO only.
+          $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/UnsignedInt"
 
     ConsumedManoInterfaceInfo:
       description: >
