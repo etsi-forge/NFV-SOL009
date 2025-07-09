@@ -285,7 +285,7 @@ components:
                   Permitted values:
                   - x5t#S256: The SHA-256 thumbprint of the X.509 certificate as defined in section 4.1.8 of
                     IETF RFC 7515 [23].
-                $ref: "#/definitions/String"
+                $ref: "#/components/schemas/String"
                 enum:
                   - x5t#S256
               value:
@@ -296,7 +296,7 @@ components:
             description: >
               The token endpoint from which the access token can be
               obtained.
-            $ref: "#/definitions/Uri"
+            $ref: "#/components/schemas/Uri"
       paramsOauth2ClientCredentials:
         description: >
           Parameters for authentication/authorization using OAUTH2_CLIENT_CREDENTIALS.
@@ -325,7 +325,7 @@ components:
             description: >
               The token endpoint from which the access token can be obtained.
               Shall be present if it has not been provisioned out of band.
-            $ref: "#/definitions/Uri"
+            $ref: "#/components/schemas/Uri"
 
     ManoEntitySubscriptionFilter:
       description: >

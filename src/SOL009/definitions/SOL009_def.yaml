@@ -285,13 +285,13 @@ definitions:
                   Permitted values:
                   - x5t#S256: The SHA-256 thumbprint of the X.509 certificate as defined in section 4.1.8 of
                     IETF RFC 7515 [23].
-                $ref: "#/definitions/String"
+                $ref: "#/definitions/schemas/String"
                 enum:
                   - x5t#S256
               value:
                 description: >
                   The fingerprint value as defined by the type.
-                $ref: "#/definitions/String"
+                $ref: "#/definitions/schemas/String"
           tokenEndpoint:
             description: >
               The token endpoint from which the access token can be
@@ -325,7 +325,7 @@ definitions:
             description: >
               The token endpoint from which the access token can be obtained.
               Shall be present if it has not been provisioned out of band.
-            $ref: "#/definitions/Uri"
+            $ref: "#/definitions/schemas/Uri"
 
     ManoEntitySubscriptionFilter:
       description: >
