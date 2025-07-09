@@ -291,7 +291,7 @@ components:
                 value:
                   description: >
                     The fingerprint value as defined by the type.
-                  $ref: "#/definitions/String"
+                  $ref: "#/components/schemas/String"
             tokenEndpoint:
               description: >
                 The token endpoint from which the access token can be

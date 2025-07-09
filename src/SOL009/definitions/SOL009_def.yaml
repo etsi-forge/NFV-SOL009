@@ -296,7 +296,7 @@ definitions:
               description: >
                 The token endpoint from which the access token can be
                 obtained.
-              $ref: "#/definitions/Uri"
+              $ref: "#/definitions/schemas/Uri"
         paramsOauth2ClientCredentials:
           description: >
             Parameters for authentication/authorization using OAUTH2_CLIENT_CREDENTIALS.
