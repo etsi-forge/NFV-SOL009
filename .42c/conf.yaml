@@ -1,3 +1,0 @@
-apis:
-  src/SOL009/NFVManoConfigurationAndInformationManagement/NFVManoConfigurationAndInformationManagement.yaml:
-    alias: sol009-nfv-mano-configuration-an
