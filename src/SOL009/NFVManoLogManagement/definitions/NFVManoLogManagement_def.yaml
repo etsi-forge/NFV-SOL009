@@ -203,9 +203,9 @@ definitions:
 
                 Permitted values:
                 - HTTPS: transmission over HTTP Secure (HTTPS).
-                - SFTP: transmission over SSH file transfer protocol (SFTP).
-                - SCP: transmission over secure copy protocol (SCP).
-                - FTPS: transmission over file transfer protocol secure (FTPS), as specified in IETF RFC 2228,
+                - SFTP: transmission over SSH File Transfer Protocol (SFTP).
+                - SCP: transmission over Secure Copy Protocol (SCP).
+                - FTPS: transmission over File Transfer Protocol Secure (FTPS), as specified in IETF RFC 2228,
                      using explicit mode as specified in IETF RFC 4217. If FTPS is supported, "private" protection level shall be used.
 
                 HTTPS shall be supported, and other protocols may be supported.
