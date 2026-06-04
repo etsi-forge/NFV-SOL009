@@ -3,9 +3,7 @@ definitions:
     ManoEntity:
       description: >
         This type represents an NFV-MANO functional entity.
-        NOTE: As of the current release of the present document the Certificate Management Function (CMF) is out of 
-              scope of ETSI GS NFV 006 [i.3] however it is included in the present document with the rest of 
-              NFV-MANO interoperability for the purpose of discovery only.
+
         *  NOTE 1:	It shall be present when "type" attribute is "NFVO", and it shall be absent in any other case.
         *  NOTE 2:	It shall be present when "type" attribute is "VNFM", and it shall be absent in any other case.
         *  NOTE 3:	It shall be present when "type" attribute is "VIM", and it shall be absent in any other case.
@@ -1500,6 +1498,8 @@ definitions:
       description: >
         This type represents list of parameters that can be configured on the
         NFV MANO functional entity.
+
+        * NOTE: This attribute shall not be configured into CMF.
       type: object
       required:
         - clockSyncs
