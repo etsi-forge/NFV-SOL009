@@ -16,7 +16,7 @@ info:
   license:
     name: ETSI Forge copyright notice
     url: https://forge.etsi.org/etsi-forge-copyright-notice.txt
-  version: 2.15.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
+  version: 2.16.0-impl:etsi.org:ETSI_NFV_OpenAPI:1
 
 externalDocs:
   description: ETSI GS NFV-SOL 009 V5.3.1
