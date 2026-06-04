@@ -87,7 +87,7 @@ definitions:
             Information and current values of the configurable parameters.
 
             This attribute can be modified with the PATCH method.
-          $ref: "#/definitions/schemas/ManoConfigurableParams"
+          $ref: "#/definitions/schemas/ManoEntityConfigurableParams"
         manoApplicationState:
           description: >
             Information and current values of the NFV-MANO functional entity’s application state.
@@ -971,11 +971,6 @@ definitions:
             attribute in the "peerEntityState" structure in the "PeerEntity", as defined
             in clause 5.6.2.15.
           $ref: "../../definitions/SOL009_def.yaml#/definitions/schemas/AdministrativeStateEnumType"
-
-    ManoConfigurableParams:
-      description: >
-        # Warning: No definition found in the document
-        ManoConfigurableParams
 
     #referenced
     ManoEntityComponent:
