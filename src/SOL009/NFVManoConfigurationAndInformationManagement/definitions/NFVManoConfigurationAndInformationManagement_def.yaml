@@ -141,6 +141,10 @@ definitions:
           description: >
            The information specific to a CCM entity. See notes 4 and 9. 
           $ref: "#/definitions/schemas/CcmSpecificInfo"
+        pimSpecificInfo:
+          description: >
+           The information specific to a PIM entity. See notes 4 and 9. 
+          $ref: "#/definitions/schemas/PimSpecificInfo"
         mdafSpecificInfo: 
           description: >
            The information specific to a MDAF entity. See notes 4 and 10.
@@ -2000,7 +2004,15 @@ definitions:
             - VIRTUAL-POOLED
             - BARE-METAL-ON-DEMAND
             - BARE-METAL-POOLED
-
+    
+    PimSpecificInfo:
+      description: >
+        This type represents information attributes specific to a PIM entity, and that can be relevant to
+        more than one NFV-MANO service offered by a PIM entity. It shall comply with the provisions defined
+        in table 5.6.3.20-1.
+        
+        NOTE: No attributes are specified in the present document version. The definition of attributes is
+        left for future specification.
 
     MdafSpecificInfo:
       description: >
@@ -2118,6 +2130,12 @@ definitions:
         "ccmciscpm"               Represents the "CIS cluster performance management" service interface produced by a CCM (refer to IFA036).
         "ccmcisccm"               Represents the "CIS cluster configuration management" service interface produced by a CCM (refer to IFA036).
         "ccmciscsm"               Represents the "CIS cluster security management" service interface produced by a CCM (refer to IFA036).
+        "pimprlcm"	              Represents the "Physical resource provisioning and lifecycle management" service interface produced by a PIM (refer to IFA053).
+        "pimprim"	                Represents the "Physical resource inventory management" service interface produced by a PIM (refer to IFA053).
+        "pimprtm"	                Represents the "Physical resource topology management" service interface produced by a PIM (refer to IFA053).
+        "pimprpm"	                Represents the "Physical resource performance management" service interface produced by a PIM (refer to IFA053).
+        "pimprfm"	                Represents the "Physical resource fault management" service interface produced by a PIM (refer to IFA053).
+        "pimprlm"	                Represents the "Physical resource log management" service interface produced by a PIM (refer to IFA053).
         "mdafda"                  Represents the "Data analytics" service interface produced by a MDAF (refer to IFA047).
         "imim"                    Represents the "Intent Management" service interface produced by a Intent Management (refer to IFA050).
         NOTE:	"IFA005", "IFA006", "IFA007", "IFA008", "IFA013", "IFA032", "IFA040", "IFA036", "IFA037" are used as a shorthand for the
@@ -2202,6 +2220,7 @@ definitions:
           - CISM  The NFV-MANO functional entity is a CISM. 
           - CIR   The NFV-MANO functional entity is a CIR.
           - CCM   The NFV-MANO functional entity is a CCM.
+          - PIM   PIM	The NFV-MANO functional entity is a PIM.
           - MDAF  The NFV-MANO functional entity is a MDAF.
           - CMF   The NFV-MANO functional entity is a CMF.
           - IM    The NFV-MANO functional entity is a Intent Management.
@@ -2213,7 +2232,8 @@ definitions:
         - WIM
         - CISM
         - CIR
-        - CCM 
+        - CCM
+        - PIM
         - MDAF
         - CMF
         - IM
@@ -2230,6 +2250,7 @@ definitions:
         - CISM  The peer functional entity is a CISM. 
         - CIR   The NFV-MANO functional entity is a CIR.
         - CCM   The NFV-MANO functional entity is a CCM.
+        - PIM   PIM	The NFV-MANO functional entity is a PIM.
         - MDAF  The peer functional entity is a MDAF.
         - CMF   The peer functional entity is a CMF.
         - IM    The peer functional entity is a Intent Management.
@@ -2243,7 +2264,8 @@ definitions:
         - WIM
         - CISM
         - CIR
-        - CCM 
+        - CCM
+        - PIM
         - MDAF
         - CMF
         - IM
