@@ -2078,7 +2078,6 @@ definitions:
         "chcam"                   Represents the "Compute Host Capacity Management" interface produced by a VIM (refer to IFA005).
         "pom"                     Represents the "Policy Management" interface produced by a VIM (refer to IFA005 and IFA006).
         "dafm"                    Represents the "Data Flow Mirroring Management" interface produced by a VIM (refer to IFA005).
-        "vnfspkgm"	              Represents the "VNF Snapshot Package Management" interface produced by a VNFM (refer to IFA007 and IFA013). This value is deprecated and it can be removed in subsequent versions of the present document. ETSI GS NFV SOL 005 [11] has specified to use the string "vnfsnapshotpkgm" as "apiName".
         "vcrm_ind"	              Represents the indirect "Virtualised Compute Resources Management" interface produced by an NFVO (refer to IFA007).
         "vcrim_ind"	              Represents the indirect "Virtualised Compute Resources Information Management" interface produced by an NFVO (refer to IFA007).
         "vcrcn_ind"	              Represents the indirect "Virtualised Compute Resources Change Notification" interface produced by an NFVO (refer to IFA007).
@@ -2098,7 +2097,6 @@ definitions:
         "vsrqm_ind"               Represents the indirect "Virtualised Storage Resources Quota Management" interface produced by an NFVO (refer to IFA007).
         "vnrqm_ind"	              Represents the indirect "Virtualised Network Resources Quota Management" interface produced by an NFVO (refer to IFA007).
         "vrqcn_ind"	              Represents the indirect "Virtualised Resources Quota Change Notification" interface produced by an NFVO (refer to IFA007).
-        "lcmcoord"	              Represents the "LCM Coordination" interface produced by an EM and OSS (refer to IFA008 and IFA013).
         "mscsm"	                  Represents the "MSCS Management" interface produced by a WIM (refer to IFA032).
         "mscscapm"	              Represents the "(MSCS) Capacity Management" interface produced by a WIM (refer to IFA032).
         "mscsfm"	                Represents the "(MSCS) Fault Management" interface produced by a WIM (refer to IFA032).
@@ -2118,7 +2116,6 @@ definitions:
         "ccmciscpm"               Represents the "CIS cluster performance management" service interface produced by a CCM (refer to IFA036).
         "ccmcisccm"               Represents the "CIS cluster configuration management" service interface produced by a CCM (refer to IFA036).
         "ccmciscsm"               Represents the "CIS cluster security management" service interface produced by a CCM (refer to IFA036).
-        "mdafda"                  Represents the "Data analytics" service interface produced by a MDAF (refer to IFA047).
         "imim"                    Represents the "Intent Management" service interface produced by a Intent Management (refer to IFA050).
         NOTE:	"IFA005", "IFA006", "IFA007", "IFA008", "IFA013", "IFA032", "IFA040", "IFA036", "IFA037" are used as a shorthand for the
         specifications ETSI GS NFV-IFA 005, ETSI GS NFV-IFA 006, ETSI GS NFV-IFA 007, ETSI GS NFV IFA 008, ETSI GS NFV-IFA 013, 
